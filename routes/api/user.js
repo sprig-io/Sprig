@@ -1,20 +1,20 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-const keys = require("../../config/keys");
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const keys = require('../../config/keys');
 
 // Load input validation
-const validateRegisterInput = require("../../validation/register");
-const validateLoginInput = require("../../validation/login");
+const validateRegisterInput = require('../../validation/register');
+const validateLoginInput = require('../../validation/login');
 // Load User model
-const User = require("../../models/User");
+const User = require('../../models/User');
 
 // @route POST api/users/register
 // @desc Register user
 // @access Public
 
-router.post("/register", async (req, res, next) => {
+router.post('/register', async (req, res, next) => {
   const { errors, isValid } = validateRegisterInput(req.body);
   try {
     if (!isValid) {
@@ -22,12 +22,12 @@ router.post("/register", async (req, res, next) => {
     }
     const user = await User.findOne({ email: req.body.email });
     if (user) {
-      return res.status(400).json({ email: "Email already exists" });
+      return res.status(400).json({ email: 'Email already exists' });
     }
     const newUser = new User({
       name: req.body.name,
       email: req.body.email,
-      password: req.body.password
+      password: req.body.password,
     });
 
     //Hash password before saving in database
@@ -35,7 +35,7 @@ router.post("/register", async (req, res, next) => {
       bcrypt.hash(newUser.password, salt, async function(hash) {
         newUser.password = hash;
         const savedUser = await newUser.save();
-        console.log("SAVED USER", savedUser);
+        console.log('SAVED USER', savedUser);
         res.json(savedUser);
       });
     });
