@@ -1,0 +1,19 @@
+{
+  "name": "sprig",
+  "version": "1.0.0",
+  "description": "",
+  "main": "newFile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sprig-io/Sprig.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sprig-io/Sprig/issues"
+  },
+  "homepage": "https://github.com/sprig-io/Sprig#readme"
+}
