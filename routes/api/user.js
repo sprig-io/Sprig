@@ -31,14 +31,54 @@ router.post('/register', async (req, res, next) => {
     });
 
     //Hash password before saving in database
-    bcrypt.genSalt(10, function(salt) {
-      bcrypt.hash(newUser.password, salt, async function(hash) {
-        newUser.password = hash;
-        const savedUser = await newUser.save();
-        console.log('SAVED USER', savedUser);
-        res.json(savedUser);
+    const salt = await bcrypt.genSalt(10);
+    const hashed = await bcrypt.hash(newUser.password, salt);
+    newUser.password = hashed;
+    const savedUser = await newUser.save();
+    console.log('SAVED USER', savedUser);
+    res.json(savedUser);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.post('/login', async (req, res, next) => {
+  const { errors, isValid } = validateLoginInput(req.body);
+  try {
+    if (!isValid) {
+      return res.status(400).json(errors);
+    }
+
+    const email = req.body.email;
+    const password = req.body.password;
+
+    //Find user by email
+    const foundUser = await User.findOne({ email });
+    if (!foundUser) {
+      return res.status(404).json({ emailnotfound: 'Email not found' });
+    }
+
+    //Check password
+    const isMatch = await bcrypt.compare(password, foundUser.password);
+    if (isMatch) {
+      //User matched
+      //Create JWT Payload
+      const payload = {
+        id: foundUser.id,
+        name: foundUser.name,
+      };
+
+      //Sign token
+      const token = await jwt.sign(payload, keys.secretOrKey, {
+        expiresIn: 31556926,
       });
-    });
+      res.json({
+        success: true,
+        token: 'Bearer ' + token,
+      });
+    } else {
+      return res.status(400).json({ passwordincorrect: 'Password incorrect' });
+    }
   } catch (error) {
     next(error);
   }
