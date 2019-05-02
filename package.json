@@ -4,7 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "mocha"
+    "start": "webpack --mode development",
+    "build": "webpack --mode production"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,7 @@
   },
   "homepage": "https://github.com/sprig-io/Sprig#readme",
   "dependencies": {
+    "@babel/polyfill": "^7.4.4",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "concurrently": "^4.1.0",
@@ -27,11 +29,26 @@
     "mongoose": "^5.5.5",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-redux": "^7.0.3",
+    "react-router-dom": "^5.0.0",
+    "redux": "^4.0.1",
     "validator": "^10.11.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^7.0.0",
     "chai": "^4.2.0",
+    "css-loader": "^2.1.1",
     "mocha": "^6.1.4",
-    "nodemon": "^1.19.0"
+    "nodemon": "^1.19.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.30.0",
+    "webpack-cli": "^3.3.1"
   }
 }
