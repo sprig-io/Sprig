@@ -5,7 +5,7 @@ export default class Login extends React.Component {
     super();
     this.state = {
       email: '',
-      passowrd: '',
+      password: '',
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -17,6 +17,7 @@ export default class Login extends React.Component {
     //this is where we wanna map dispatch the thunk?
   }
   render() {
+    console.log('in login');
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
