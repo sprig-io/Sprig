@@ -8,18 +8,33 @@ opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 opts.secretOrKey = keys.secretOrKey;
 const passport = require('passport');
 
-passport.use(
-  new JwtStrategy(opts, async (jwtPayload, done) => {
-    try {
-      const foundUser = await User.findById(jwtPayload.id);
-      if (foundUser) {
-        return done(null, foundUser);
-      }
-      return done(null, false);
-    } catch (error) {
-      console.error(error);
-    }
-  })
-);
+// passport.use(
+//   new JwtStrategy(opts, async (jwtPayload, done) => {
+//     try {
+//       const foundUser = await User.findById(jwtPayload.id);
+//       if (foundUser) {
+//         return done(null, foundUser);
+//       }
+//       return done(null, false);
+//     } catch (error) {
+//       console.error(error);
+//     }
+//   })
+// );
 
-module.exports = passport;
+// module.exports = passport;
+
+module.exports = passport => {
+  passport.use(
+    new JwtStrategy(opts, (jwtpayload, done) => {
+      User.findById(jwtpayload.id)
+        .then(user => {
+          if (user) {
+            return done(null, user);
+          }
+          return done(null, false);
+        })
+        .catch(err => console.log(err));
+    })
+  );
+};

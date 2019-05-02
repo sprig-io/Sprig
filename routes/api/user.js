@@ -31,14 +31,12 @@ router.post('/register', async (req, res, next) => {
     });
 
     //Hash password before saving in database
-    bcrypt.genSalt(10, function(salt) {
-      bcrypt.hash(newUser.password, salt, async function(hash) {
-        newUser.password = hash;
-        const savedUser = await newUser.save();
-        console.log('SAVED USER', savedUser);
-        res.json(savedUser);
-      });
-    });
+    const salt = await bcrypt.genSalt(10);
+    const hashed = await bcrypt.hash(newUser.password, salt);
+    newUser.password = hashed;
+    const savedUser = await newUser.save();
+    console.log('SAVED USER', savedUser);
+    res.json(savedUser);
   } catch (error) {
     next(error);
   }
@@ -66,24 +64,18 @@ router.post('/login', async (req, res, next) => {
       //User matched
       //Create JWT Payload
       const payload = {
-        id: newUser.id,
-        name: newUser.name,
+        id: foundUser.id,
+        name: foundUser.name,
       };
 
       //Sign token
-      jwt.sign(
-        payload,
-        keys.secretOrKey,
-        {
-          expiresIn: 31556926,
-        },
-        token => {
-          res.json({
-            success: true,
-            token: 'Bearer ' + token,
-          });
-        }
-      );
+      const token = await jwt.sign(payload, keys.secretOrKey, {
+        expiresIn: 31556926,
+      });
+      res.json({
+        success: true,
+        token: 'Bearer ' + token,
+      });
     } else {
       return res.status(400).json({ passwordincorrect: 'Password incorrect' });
     }
