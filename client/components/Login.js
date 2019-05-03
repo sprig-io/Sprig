@@ -1,6 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { loggedInUser } from '../store/userReducer';
 
-export default class Login extends React.Component {
+class Login extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -15,9 +17,11 @@ export default class Login extends React.Component {
   }
   handleSubmit(event) {
     //this is where we wanna map dispatch the thunk?
+    event.preventDefault();
+    console.log(this.state, 'STATE');
+    this.props.loggedInUser(this.state);
   }
   render() {
-    console.log('in login');
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
@@ -45,3 +49,17 @@ export default class Login extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  currentUser: state.userReducer.user,
+  isLoggedIn: state.userReducer.isLoggedIn,
+});
+
+const mapDispatchToProps = dispatch => ({
+  loggedInUser: user => dispatch(loggedInUser(user)),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Login);
