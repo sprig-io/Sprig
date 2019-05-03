@@ -1,21 +1,25 @@
-const express = require("express");
-const plaid = require("plaid");
+const express = require('express');
+const plaid = require('plaid');
 const router = express.Router();
-const passport = require("passport");
-const moment = require("moment");
-const mongoose = require("mongoose");
-import { PLAID_CLIENT_ID, PLAID_SECRET, PLAID_PUBLIC_KEY } from "../secret";
+const passport = require('passport');
+const moment = require('moment');
+const mongoose = require('mongoose');
+const {
+  PLAID_CLIENT_ID,
+  PLAID_SECRET,
+  PLAID_PUBLIC_KEY,
+} = require('../secret');
 
 // Load Account and User models
-const Account = require("../../models/Account");
-const User = require("../../models/User");
+const Account = require('../../models/Account');
+const User = require('../../models/User');
 
 const client = new plaid.Client(
   PLAID_CLIENT_ID,
   PLAID_SECRET,
   PLAID_PUBLIC_KEY,
   plaid.environments.sandbox,
-  { version: "2018-05-22" }
+  { version: '2018-05-22' }
 );
 
 var PUBLIC_TOKEN = null;
@@ -27,8 +31,8 @@ var ITEM_ID = null;
 // @access Private
 
 router.get(
-  "/accounts",
-  passport.authenticate("jwt", { session: false }),
+  '/accounts',
+  passport.authenticate('jwt', { session: false }),
   async (req, res, next) => {
     try {
       const accounts = await Account.find({ userId: req.user.id });
@@ -44,8 +48,8 @@ router.get(
 // @access Private
 
 router.post(
-  "/accounts/add",
-  passport.authenticate("jwt", { session: false }),
+  '/accounts/add',
+  passport.authenticate('jwt', { session: false }),
   async (req, res, next) => {
     try {
       PUBLIC_TOKEN = req.body.public_token;
@@ -58,17 +62,17 @@ router.post(
         ITEM_ID = exchangeResponse.item_id;
         const account = await Account.findOne({
           userId: req.user.id,
-          institutionId: institution_id
+          institutionId: institution_id,
         });
         if (account) {
-          return res.send("Account already exists");
+          return res.send('Account already exists');
         } else {
           const newAccount = new Account({
             userId: userId,
             accessToken: ACCESS_TOKEN,
             itemId: ITEM_ID,
             institutionId: institution_id,
-            institutionName: name
+            institutionName: name,
           });
           await newAccount.save();
           return res.json(newAccount);
@@ -84,8 +88,8 @@ router.post(
 // @access Private
 
 router.delete(
-  "/accounts/:id",
-  passport.authenticate("jwt", { session: false }),
+  '/accounts/:id',
+  passport.authenticate('jwt', { session: false }),
   async (req, res, next) => {
     try {
       const account = await Account.findById(req.params.id);
@@ -101,12 +105,12 @@ router.delete(
 // @desc Fetch transactions from past 30 days from all linked accounts
 // @access Private
 router.post(
-  "/accounts/transactions",
-  passport.authenticate("jwt", { session: false }),
+  '/accounts/transactions',
+  passport.authenticate('jwt', { session: false }),
   (req, res) => {
     const now = moment();
-    const today = now.format("YYYY-MM-DD");
-    const thirtyDaysAgo = now.subtract(30, "days").format("YYYY-MM-DD");
+    const today = now.format('YYYY-MM-DD');
+    const thirtyDaysAgo = now.subtract(30, 'days').format('YYYY-MM-DD');
 
     let transactions = [];
 
@@ -122,7 +126,7 @@ router.post(
           .then(response => {
             transactions.push({
               accountName: institutionName,
-              transactions: response.transactions
+              transactions: response.transactions,
             });
 
             if (transactions.length === accounts.length) {
