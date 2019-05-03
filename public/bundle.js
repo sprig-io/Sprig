@@ -223,6 +223,121 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
+/***/ "./client/components/PlaidAccount.js":
+/*!*******************************************!*\
+  !*** ./client/components/PlaidAccount.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _store_accountReducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../store/accountReducer */ "./client/store/accountReducer.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react_plaid_link_button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-plaid-link-button */ "./node_modules/react-plaid-link-button/dist/react-plaid-link-button/react-plaid-link-button.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+var PlaidAccount =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(PlaidAccount, _Component);
+
+  function PlaidAccount(props) {
+    var _this;
+
+    _classCallCheck(this, PlaidAccount);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(PlaidAccount).call(this, props));
+    _this.state = {
+      loaded: false
+    };
+    _this.handleOnSuccess = _this.handleOnSuccess.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(PlaidAccount, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {}
+  }, {
+    key: "handleOnSuccess",
+    value: function handleOnSuccess(token, metadata) {
+      var plaidData = {
+        public_token: token,
+        metadata: metadata
+      };
+      console.log('plaid data', plaidData);
+      this.props.addingAccount(plaidData);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_plaid_link_button__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        buttonProps: {
+          className: 'btn btn-large waves-effect waves-light hoverable blue accent-3 main-btn'
+        },
+        plaidLinkProps: {
+          clientName: 'Sprig',
+          key: '371579f573cc098b5fbbee72dcc928',
+          env: 'sandbox',
+          product: ['transactions'],
+          onSuccess: this.handleOnSuccess
+        },
+        onScriptLoad: function onScriptLoad() {
+          return _this2.setState({
+            loaded: true
+          });
+        }
+      }, "Link Account"));
+    }
+  }]);
+
+  return PlaidAccount;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    user: state.user
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    addingAccount: function addingAccount(plaidData) {
+      return dispatch(Object(_store_accountReducer__WEBPACK_IMPORTED_MODULE_1__["addingAccount"])(plaidData));
+    }
+  };
+};
+
+var connectedPlaidAccount = Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProps, mapDispatchToProps)(PlaidAccount);
+/* harmony default export */ __webpack_exports__["default"] = (connectedPlaidAccount);
+
+/***/ }),
+
 /***/ "./client/components/Register.js":
 /*!***************************************!*\
   !*** ./client/components/Register.js ***!
@@ -396,6 +511,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _components_Login_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Login.js */ "./client/components/Login.js");
 /* harmony import */ var _components_Register_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Register.js */ "./client/components/Register.js");
+/* harmony import */ var _components_PlaidAccount__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/PlaidAccount */ "./client/components/PlaidAccount.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -415,6 +531,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 //Here is where the routes are gonna be
+
 
 
 
@@ -441,6 +558,10 @@ function (_React$Component) {
         exact: true,
         path: "/register",
         component: _components_Register_js__WEBPACK_IMPORTED_MODULE_3__["default"]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+        exact: true,
+        path: "/addAccount",
+        component: _components_PlaidAccount__WEBPACK_IMPORTED_MODULE_4__["default"]
       }));
     }
   }]);
@@ -449,6 +570,93 @@ function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 
+
+/***/ }),
+
+/***/ "./client/store/accountReducer.js":
+/*!****************************************!*\
+  !*** ./client/store/accountReducer.js ***!
+  \****************************************/
+/*! exports provided: addingAccount, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addingAccount", function() { return addingAccount; });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+ //ACTION TYPES
+
+var ADD_ACCOUNT = 'ADD_ACCOUNT'; //ACTION CREATOR
+
+var addAccount = function addAccount(accountData) {
+  return {
+    type: ADD_ACCOUNT,
+    accountData: accountData
+  };
+};
+
+var addingAccount = function addingAccount(plaidData) {
+  return (
+    /*#__PURE__*/
+    function () {
+      var _ref = _asyncToGenerator(
+      /*#__PURE__*/
+      regeneratorRuntime.mark(function _callee(dispatch) {
+        var accounts, _ref2, data;
+
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                accounts = plaidData.accounts;
+                _context.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/plaid/accounts/add', plaidData.metadata);
+
+              case 3:
+                _ref2 = _context.sent;
+                data = _ref2.data;
+                dispatch(addAccount(data));
+
+              case 6:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      return function (_x) {
+        return _ref.apply(this, arguments);
+      };
+    }()
+  );
+};
+var initialState = [];
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case ADD_ACCOUNT:
+      return [].concat(_toConsumableArray(state), [action.accountData]);
+
+    default:
+      return state;
+  }
+});
 
 /***/ }),
 
@@ -468,13 +676,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux_devtools_extension__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! redux-devtools-extension */ "./node_modules/redux-devtools-extension/index.js");
 /* harmony import */ var redux_devtools_extension__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(redux_devtools_extension__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _userReducer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./userReducer */ "./client/store/userReducer.js");
+/* harmony import */ var _accountReducer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./accountReducer */ "./client/store/accountReducer.js");
+
 
 
 
 
 
 var reducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-  userReducer: _userReducer__WEBPACK_IMPORTED_MODULE_4__["default"]
+  userReducer: _userReducer__WEBPACK_IMPORTED_MODULE_4__["default"],
+  accountReducer: _accountReducer__WEBPACK_IMPORTED_MODULE_5__["default"]
 });
 var middleware = Object(redux_devtools_extension__WEBPACK_IMPORTED_MODULE_3__["composeWithDevTools"])(Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_2__["default"], Object(redux_logger__WEBPACK_IMPORTED_MODULE_1__["createLogger"])({
   collapsed: true
@@ -36126,6 +36337,150 @@ if (false) {} else {
 
 /***/ }),
 
+/***/ "./node_modules/react-plaid-link-button/dist/react-plaid-link-button/react-plaid-link-button.js":
+/*!******************************************************************************************************!*\
+  !*** ./node_modules/react-plaid-link-button/dist/react-plaid-link-button/react-plaid-link-button.js ***!
+  \******************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __assign = (undefined && undefined.__assign) || Object.assign || function(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+    }
+    return t;
+};
+
+
+var PlaidLinkButton = /** @class */ (function (_super) {
+    __extends(PlaidLinkButton, _super);
+    function PlaidLinkButton(props) {
+        var _this = _super.call(this, props) || this;
+        _this.handleButtonClick = function () {
+            _this.plaidLinkHandler.open();
+        };
+        _this.handleScriptLoad = function () {
+            _this.setState({ scriptLoaded: true });
+            _this.plaidLinkHandler = window.Plaid.create(__assign({}, _this.props.plaidLinkProps));
+            if (_this.props.onScriptLoad)
+                _this.props.onScriptLoad();
+        };
+        _this.handleScriptError = function () {
+            _this.setState({ scriptErrored: true });
+            if (_this.props.onScriptError)
+                _this.props.onScriptError();
+        };
+        _this.getScriptEl = function () {
+            return document.querySelector("script[src=\"" + _this.props.scriptUrl + "\"]");
+        };
+        _this.state = {
+            scriptErrored: false,
+            scriptLoaded: false,
+        };
+        return _this;
+    }
+    PlaidLinkButton.prototype.componentDidMount = function () {
+        var scriptEl = this.getScriptEl();
+        var scriptAlreadyInserted = scriptEl != null;
+        var scriptAlreadyLoaded = scriptAlreadyInserted && window.Plaid;
+        if (scriptAlreadyLoaded) {
+            this.handleScriptLoad();
+            return;
+        }
+        if (scriptAlreadyInserted) {
+            scriptEl.addEventListener('load', this.handleScriptLoad);
+            return;
+        }
+        scriptEl = document.createElement('script');
+        scriptEl.type = 'text/javascript';
+        scriptEl.src = this.props.scriptUrl;
+        scriptEl.addEventListener('load', this.handleScriptLoad);
+        scriptEl.addEventListener('error', this.handleScriptError);
+        document.head.appendChild(scriptEl);
+    };
+    PlaidLinkButton.prototype.componentWillUnmount = function () {
+        var scriptEl = this.getScriptEl();
+        if (scriptEl) {
+            scriptEl.removeEventListener('load', this.handleScriptLoad);
+            scriptEl.removeEventListener('error', this.handleScriptError);
+        }
+    };
+    PlaidLinkButton.prototype.render = function () {
+        return (react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", __assign({}, this.props.buttonProps, { disabled: this.state.scriptErrored || !this.state.scriptLoaded, onClick: this.handleButtonClick }), this.props.children));
+    };
+    PlaidLinkButton.propTypes = {
+        // Any props set here will be spread onto the top-level button element
+        buttonProps: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.object,
+        // Used to set the button text
+        children: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.node,
+        scriptUrl: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string,
+        onScriptLoad: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.func,
+        onScriptError: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.func,
+        // See: https://plaid.com/docs/api/#integrating-with-link
+        plaidLinkProps: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.shape({
+            // Displayed once a user has successfully linked their account
+            clientName: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string.isRequired,
+            // A list of Plaid product(s) you wish to use. Valid products are : transactions, auth, and identity.
+            // Only institutions that support all requested products will be shown.
+            product: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.arrayOf(prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.oneOf(['auth', 'transactions', 'identity', 'balance', 'income', 'assets'])).isRequired,
+            // The public_key associated with your account; available from the Dashboard.
+            key: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string.isRequired,
+            // The Plaid API environment on which to create user accounts.
+            // For development and testing, use sandbox or development. For production use, use production.
+            // Note: all production requests are billed.
+            env: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.oneOf(['sandbox', 'development', 'production']).isRequired,
+            // A function that is called when a user has successfully onboarded an Item.
+            // The function should expect two arguments, the public_token and a metadata object.
+            onSuccess: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.func.isRequired,
+            // A function that is called when a user has specifically exited the Link flow.
+            // The function should expect two arguments, a nullable error object and a metadata object.
+            onExit: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.func,
+            // A function that is called when a user reaches certain points in the Link flow.
+            // The function should expect two arguments, an eventName string and a metadata object. See onEvent.
+            onEvent: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.func,
+            // A function that is called when the Link module has finished loading.
+            // Calls to plaidLinkHandler.open() prior to the onLoad callback will be delayed until the module is fully loaded.
+            onLoad: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.func,
+            // Specify a webhook to associate with an Item.
+            // Plaid fires a webhook when the Item requires updated credentials or when new data is available.
+            webhook: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string,
+            // Specify a public_token to launch Link in update mode for a particular Item.
+            // This will cause Link to open directly to the authentication step for that Item's institution.
+            // Use the POST /item/public_token/create endpoint to generate a public_token for an Item.
+            token: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string,
+            // Set to true if launching Link within a WebView.
+            isWebView: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.bool,
+        }).isRequired,
+    };
+    PlaidLinkButton.defaultProps = {
+        scriptUrl: 'https://cdn.plaid.com/link/v2/stable/link-initialize.js',
+        children: 'Link new account',
+    };
+    return PlaidLinkButton;
+}(react__WEBPACK_IMPORTED_MODULE_1___default.a.PureComponent));
+/* harmony default export */ __webpack_exports__["default"] = (PlaidLinkButton);
+
+
+/***/ }),
+
 /***/ "./node_modules/react-redux/es/components/Context.js":
 /*!***********************************************************!*\
   !*** ./node_modules/react-redux/es/components/Context.js ***!
@@ -37392,7 +37747,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

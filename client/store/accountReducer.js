@@ -13,11 +13,14 @@ const addAccount = accountData => {
 
 export const addingAccount = plaidData => async dispatch => {
   const accounts = plaidData.accounts;
-  const { data } = await axios.post('/api/plaid/accounts/add', plaidData);
+  const { data } = await axios.post(
+    '/api/plaid/accounts/add',
+    plaidData.metadata
+  );
   dispatch(addAccount(data));
 };
 
-const inititalState = [];
+const initialState = [];
 
 export default function(state = initialState, action) {
   switch (action.type) {
