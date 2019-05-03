@@ -5,6 +5,7 @@ const MongoClient = require('mongodb');
 const uri = 'mongodb://localhost:27017/Capstone';
 const passport = require('passport');
 const users = require('./routes/api/user');
+const path = require('path');
 
 const app = express();
 // Bodyparser middleware
@@ -15,6 +16,9 @@ app.use(
 );
 
 app.use(bodyParser.json());
+
+// static file-serving middleware
+app.use(express.static(path.join(__dirname, 'public')));
 
 // DB Config
 const db = require('./config/keys').mongoURI;
@@ -38,7 +42,21 @@ require('./config/passport');
 
 app.use('/api/users', users);
 
+// sends index.html
+app.use('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/index.html'));
+});
+
+// error handling endware
+app.use((err, req, res, next) => {
+  console.error(err);
+  console.error(err.stack);
+  res.status(err.status || 500).send(err.message || 'Internal server error.');
+});
+
 const port = process.env.PORT || 5000; // process.env.port is Heroku's port if you choose to deploy the app there
 app.listen(port, () =>
   console.log(`Getting spriggy with it on port ${port} !`)
 );
+
+module.exports = app;

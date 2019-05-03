@@ -1,42 +1,42 @@
-import axios from "axios";
-import jwt_decode from "jwt-decode";
+import axios from 'axios';
+const jwtDecode = require('jwt-decode');
 
 //Authorizing user:
 const setAuthToken = token => {
   if (token) {
     // Apply authorization token to every request if logged in
-    axios.defaults.headers.common["Authorization"] = token;
+    axios.defaults.headers.common['Authorization'] = token;
   } else {
     // Delete auth header
-    delete axios.defaults.headers.common["Authorization"];
+    delete axios.defaults.headers.common['Authorization'];
   }
 };
 //initialState
 const initialState = {
   user: {},
-  isLoggedIn: false
+  isLoggedIn: false,
 };
 
 //ACTION TYPES
-const CREATE_USER = "CREATE_USER"; // for user registration
-const GET_CURRENT_USER = "GET_CURRENT_USER"; // for getting current user from login
+const CREATE_USER = 'CREATE_USER'; // for user registration
+const GET_CURRENT_USER = 'GET_CURRENT_USER'; // for getting current user from login
 //ACTION CRETORS
 const createUser = user => ({
   type: CREATE_USER,
-  user
+  user,
 });
 
 const fetchUser = user => ({
   type: GET_CURRENT_USER,
-  user
+  user,
 });
 
 //Thunk - for user registration
 export const createdUser = (user, history) => async dispatch => {
   try {
-    const { data } = await axios.post("/api/users/register", user);
+    const { data } = await axios.post('/api/users/register', user);
     dispatch(createUser(data));
-    history.push("/login");
+    history.push('/login');
   } catch (err) {
     console.error(err);
   }
@@ -44,11 +44,11 @@ export const createdUser = (user, history) => async dispatch => {
 //Thunk - for user login
 export const loggedInUser = user => async dispatch => {
   try {
-    const res = await axios.post("/api/users/login", user);
+    const res = await axios.post('/api/users/login', user);
     const token = res.data.token;
-    localStorage.setItem("token", token);
+    localStorage.setItem('token', token);
     setAuthToken(token);
-    const data = jwt_decode(token);
+    const data = jwtDecode(token);
     dispatch(fetchUser(data));
   } catch (err) {
     console.error(err);
@@ -61,7 +61,7 @@ export default function(state = initialState, action) {
   switch (action.type) {
     case CREATE_USER:
       return { ...state, user: action.user, isLoggedIn: true };
-    case GET_CURRNET_USER:
+    case GET_CURRENT_USER:
       return { ...state, user: action.user, isLoggedIn: true };
     default:
       return state;
