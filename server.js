@@ -6,7 +6,7 @@ const uri = 'mongodb://localhost:27017/Capstone';
 const passport = require('passport');
 const users = require('./routes/api/user');
 const path = require('path');
-
+const plaid = require('./routes/api/plaid');
 const app = express();
 // Bodyparser middleware
 app.use(
@@ -23,14 +23,21 @@ app.use(express.static(path.join(__dirname, 'public')));
 // DB Config
 const db = require('./config/keys').mongoURI;
 
-MongoClient.connect(uri, { useNewUrlParser: true }, function(err, db) {
-  if (err) throw err;
-  console.log('Database created!');
-  db.close();
-});
+MongoClient.connect(
+  uri,
+  { useNewUrlParser: true },
+  function(err, db) {
+    if (err) throw err;
+    console.log('Database created!');
+    db.close();
+  }
+);
 // Connect to MongoDB
 mongoose
-  .connect(db, { useNewUrlParser: true })
+  .connect(
+    db,
+    { useNewUrlParser: true }
+  )
   .then(() => console.log('MongoDB successfully connected'))
   .catch(err => console.log(err));
 
@@ -41,6 +48,7 @@ app.use(passport.initialize());
 require('./config/passport');
 
 app.use('/api/users', users);
+app.use('/api/plaid', plaid);
 
 // sends index.html
 app.use('*', (req, res) => {

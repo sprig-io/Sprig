@@ -13,10 +13,12 @@ const addAccount = accountData => {
 
 export const addingAccount = plaidData => async dispatch => {
   const accounts = plaidData.accounts;
+  console.log('in the thunk');
   const { data } = await axios.post(
     '/api/plaid/accounts/add',
     plaidData.metadata
   );
+  console.log('the data', data);
   dispatch(addAccount(data));
 };
 

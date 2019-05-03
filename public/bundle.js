@@ -622,15 +622,17 @@ var addingAccount = function addingAccount(plaidData) {
             switch (_context.prev = _context.next) {
               case 0:
                 accounts = plaidData.accounts;
-                _context.next = 3;
+                console.log('in the thunk');
+                _context.next = 4;
                 return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/plaid/accounts/add', plaidData.metadata);
 
-              case 3:
+              case 4:
                 _ref2 = _context.sent;
                 data = _ref2.data;
+                console.log('the data', data);
                 dispatch(addAccount(data));
 
-              case 6:
+              case 8:
               case "end":
                 return _context.stop();
             }
@@ -37747,7 +37749,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
