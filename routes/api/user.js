@@ -36,7 +36,6 @@ router.post("/register", async (req, res, next) => {
     newUser.password = hashed;
     const savedUser = await newUser.save();
     res.json(savedUser);
-    //  req.login(savedUser, err => (err ? next(err) : res.json(savedUser)));
     console.log("SAVED USER", savedUser);
   } catch (error) {
     next(error);

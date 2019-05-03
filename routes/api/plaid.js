@@ -9,7 +9,6 @@ const {
   PLAID_SECRET,
   PLAID_PUBLIC_KEY
 } = require("../secret");
-//import { PLAID_CLIENT_ID, PLAID_SECRET, PLAID_PUBLIC_KEY } from "../secret";
 
 // Load Account and User models
 const Account = require("../../models/Account");
