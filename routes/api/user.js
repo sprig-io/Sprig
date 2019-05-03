@@ -35,8 +35,8 @@ router.post("/register", async (req, res, next) => {
     const hashed = await bcrypt.hash(newUser.password, salt);
     newUser.password = hashed;
     const savedUser = await newUser.save();
-    console.log("SAVED USER", savedUser);
     res.json(savedUser);
+    console.log("SAVED USER", savedUser);
   } catch (error) {
     next(error);
   }
