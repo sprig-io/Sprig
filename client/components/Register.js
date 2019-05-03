@@ -1,13 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
-import { loggedInUser } from "../store/userReducer";
+import { createdUser } from "../store/userReducer";
 
-class Login extends React.Component {
+class Register extends React.Component {
   constructor() {
     super();
     this.state = {
+      name: "",
       email: "",
-      password: ""
+      password: "",
+      password2: ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -19,13 +21,25 @@ class Login extends React.Component {
     //this is where we wanna map dispatch the thunk?
     event.preventDefault();
     console.log(this.state, "STATE");
-    this.props.loggedInUser(this.state);
+    this.props.createdUser(this.state);
+    return this.props.history.push({
+      pathname: "/login"
+    });
   }
   render() {
     return (
       <div>
-        <div>Login page</div>
+        <div> Registration page</div>
         <form onSubmit={this.handleSubmit}>
+          <label>
+            Name:
+            <input
+              type="text"
+              name="name"
+              value={this.state.name}
+              onChange={this.handleChange}
+            />
+          </label>
           <label>
             Email:
             <input
@@ -44,7 +58,16 @@ class Login extends React.Component {
               onChange={this.handleChange}
             />
           </label>
-          <input type="submit" value="Log In" />
+          <label>
+            Confirm Password:
+            <input
+              type="text"
+              name="password2"
+              value={this.state.password2}
+              onChange={this.handleChange}
+            />
+          </label>
+          <input type="submit" value="Register" />
         </form>
       </div>
     );
@@ -57,10 +80,10 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  loggedInUser: user => dispatch(loggedInUser(user))
+  createdUser: user => dispatch(createdUser(user))
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Login);
+)(Register);
