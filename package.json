@@ -30,6 +30,7 @@
     "express": "^4.16.4",
     "is-empty": "^1.2.0",
     "jsonwebtoken": "^8.5.1",
+    "jwt-decode": "^2.2.0",
     "mongodb": "^3.2.3",
     "mongoose": "^5.5.5",
     "passport": "^0.4.0",

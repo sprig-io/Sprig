@@ -1,5 +1,5 @@
 import axios from 'axios';
-import jwt_decode from 'jwt-decode';
+const jwtDecode = require('jwt-decode');
 
 //Authorizing user:
 const setAuthToken = token => {
@@ -48,7 +48,7 @@ export const loggedInUser = user => async dispatch => {
     const token = res.data.token;
     localStorage.setItem('token', token);
     setAuthToken(token);
-    const data = jwt_decode(token);
+    const data = jwtDecode(token);
     dispatch(fetchUser(data));
   } catch (err) {
     console.error(err);
