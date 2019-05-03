@@ -44,7 +44,9 @@ export const createdUser = (user, history) => async dispatch => {
 //Thunk - for user login
 export const loggedInUser = user => async dispatch => {
   try {
+    console.log(user, 'USER');
     const res = await axios.post('/api/users/login', user);
+    console.log(res, 'RES');
     const token = res.data.token;
     localStorage.setItem('token', token);
     setAuthToken(token);
