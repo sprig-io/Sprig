@@ -6,6 +6,7 @@ const uri = 'mongodb://localhost:27017/Capstone';
 const passport = require('passport');
 const users = require('./routes/api/user');
 const path = require('path');
+const plaid = require('./routes/api/plaid');
 
 const app = express();
 // Bodyparser middleware
@@ -41,6 +42,8 @@ app.use(passport.initialize());
 require('./config/passport');
 
 app.use('/api/users', users);
+
+app.use('/api/plaid', plaid);
 
 // sends index.html
 app.use('*', (req, res) => {
