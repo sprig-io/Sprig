@@ -4,7 +4,12 @@ const router = express.Router();
 const passport = require("passport");
 const moment = require("moment");
 const mongoose = require("mongoose");
-import { PLAID_CLIENT_ID, PLAID_SECRET, PLAID_PUBLIC_KEY } from "../secret";
+const {
+  PLAID_CLIENT_ID,
+  PLAID_SECRET,
+  PLAID_PUBLIC_KEY
+} = require("../secret");
+//import { PLAID_CLIENT_ID, PLAID_SECRET, PLAID_PUBLIC_KEY } from "../secret";
 
 // Load Account and User models
 const Account = require("../../models/Account");
