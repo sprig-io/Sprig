@@ -13,18 +13,22 @@ const addAccount = accountData => {
 
 export const addingAccount = plaidData => async dispatch => {
   const accounts = plaidData.accounts;
-  console.log('in the thunk');
   const { data } = await axios.post('/api/plaid/accounts/add', plaidData);
   console.log('the data', data);
   dispatch(addAccount(data));
 };
 
-const initialState = [];
+const initialState = {
+  accounts: [],
+};
 
 export default function(state = initialState, action) {
   switch (action.type) {
     case ADD_ACCOUNT:
-      return [...state, action.accountData];
+      return {
+        ...state,
+        accounts: [action.accountData, ...state.accounts],
+      };
     default:
       return state;
   }

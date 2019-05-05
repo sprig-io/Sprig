@@ -158,8 +158,9 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Login).call(this));
     _this.state = {
-      email: "",
-      password: ""
+      email: '',
+      password: '',
+      errors: {}
     };
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
@@ -167,6 +168,19 @@ function (_React$Component) {
   }
 
   _createClass(Login, [{
+    key: "componentWillReceiveProps",
+    value: function componentWillReceiveProps(nextProps) {
+      if (nextProps.isLoggedIn) {
+        this.props.history.push('/dashboard');
+      }
+
+      if (nextProps.errors) {
+        this.setState({
+          errors: nextProps.errors
+        });
+      }
+    }
+  }, {
     key: "handleChange",
     value: function handleChange(event) {
       this.setState(_defineProperty({}, event.target.name, event.target.value));
@@ -176,7 +190,6 @@ function (_React$Component) {
     value: function handleSubmit(event) {
       //this is where we wanna map dispatch the thunk?
       event.preventDefault();
-      console.log(this.state, "STATE");
       this.props.loggedInUser(this.state);
     }
   }, {
@@ -206,7 +219,7 @@ function (_React$Component) {
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    currentUser: state.userReducer.user,
+    currentUser: state.user,
     isLoggedIn: state.userReducer.isLoggedIn
   };
 };
@@ -279,16 +292,14 @@ function (_Component) {
   }
 
   _createClass(PlaidAccount, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {}
-  }, {
     key: "handleOnSuccess",
     value: function handleOnSuccess(token, metadata) {
+      var accounts = this.props.accounts;
       var plaidData = {
         public_token: token,
-        metadata: metadata
+        metadata: metadata,
+        accounts: accounts
       };
-      console.log('plaid data', plaidData);
       this.props.addingAccount(plaidData);
     }
   }, {
@@ -321,7 +332,7 @@ function (_Component) {
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    user: state.user
+    user: state.userReducer.user
   };
 };
 
@@ -560,7 +571,7 @@ function (_React$Component) {
         component: _components_Register_js__WEBPACK_IMPORTED_MODULE_3__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         exact: true,
-        path: "/addAccount",
+        path: "/dashboard",
         component: _components_PlaidAccount__WEBPACK_IMPORTED_MODULE_4__["default"]
       }));
     }
@@ -593,6 +604,10 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
@@ -622,17 +637,16 @@ var addingAccount = function addingAccount(plaidData) {
             switch (_context.prev = _context.next) {
               case 0:
                 accounts = plaidData.accounts;
-                console.log('in the thunk');
-                _context.next = 4;
+                _context.next = 3;
                 return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/plaid/accounts/add', plaidData);
 
-              case 4:
+              case 3:
                 _ref2 = _context.sent;
                 data = _ref2.data;
                 console.log('the data', data);
                 dispatch(addAccount(data));
 
-              case 8:
+              case 7:
               case "end":
                 return _context.stop();
             }
@@ -646,14 +660,18 @@ var addingAccount = function addingAccount(plaidData) {
     }()
   );
 };
-var initialState = [];
+var initialState = {
+  accounts: []
+};
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {
     case ADD_ACCOUNT:
-      return [].concat(_toConsumableArray(state), [action.accountData]);
+      return _objectSpread({}, state, {
+        accounts: [action.accountData].concat(_toConsumableArray(state.accounts))
+      });
 
     default:
       return state;
@@ -710,6 +728,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "loggedInUser", function() { return loggedInUser; });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _utils_setAuthToken__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/setAuthToken */ "./client/utils/setAuthToken.js");
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -720,28 +739,22 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
-var jwtDecode = __webpack_require__(/*! jwt-decode */ "./node_modules/jwt-decode/lib/index.js"); //Authorizing user:
+var jwtDecode = __webpack_require__(/*! jwt-decode */ "./node_modules/jwt-decode/lib/index.js");
 
-
-var setAuthToken = function setAuthToken(token) {
-  if (token) {
-    // Apply authorization token to every request if logged in
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common["Authorization"] = token;
-  } else {
-    // Delete auth header
-    delete axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common["Authorization"];
-  }
-}; //initialState
-
+ //initialState
 
 var initialState = {
+  isAuthenticated: false,
   user: {},
   isLoggedIn: false
-}; //ACTION TYPES
+};
 
-var CREATE_USER = "CREATE_USER"; // for user registration
+var isEmpty = __webpack_require__(/*! is-empty */ "./node_modules/is-empty/lib/index.js"); //ACTION TYPES
 
-var GET_CURRENT_USER = "GET_CURRENT_USER"; // for getting current user from login
+
+var CREATE_USER = 'CREATE_USER'; // for user registration
+
+var GET_CURRENT_USER = 'GET_CURRENT_USER'; // for getting current user from login
 //ACTION CRETORS
 
 var createUser = function createUser(user) {
@@ -774,7 +787,7 @@ var createdUser = function createdUser(user) {
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/users/register", user);
+                return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/users/register', user);
 
               case 3:
                 _ref2 = _context.sent;
@@ -816,17 +829,17 @@ var loggedInUser = function loggedInUser(user) {
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.prev = 0;
-                console.log(user, "USER");
-                _context2.next = 4;
-                return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/users/login", user);
+                _context2.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/users/login', user);
 
-              case 4:
+              case 3:
                 res = _context2.sent;
-                console.log(res, "RES");
+                console.log(res, 'RES');
                 token = res.data.token;
-                localStorage.setItem("token", token);
-                setAuthToken(token);
+                localStorage.setItem('token', token);
+                Object(_utils_setAuthToken__WEBPACK_IMPORTED_MODULE_1__["default"])(token);
                 data = jwtDecode(token);
+                console.log(data);
                 dispatch(fetchUser(data));
                 _context2.next = 16;
                 break;
@@ -865,13 +878,41 @@ var loggedInUser = function loggedInUser(user) {
     case GET_CURRENT_USER:
       return _objectSpread({}, state, {
         user: action.user,
-        isLoggedIn: true
+        isLoggedIn: true,
+        isAuthenticated: !isEmpty(action.payload)
       });
 
     default:
       return state;
   }
 });
+
+/***/ }),
+
+/***/ "./client/utils/setAuthToken.js":
+/*!**************************************!*\
+  !*** ./client/utils/setAuthToken.js ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var setAuthToken = function setAuthToken(token) {
+  if (token) {
+    // Apply authorization token to every request if logged in
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common['Authorization'] = token;
+  } else {
+    // Delete auth header
+    delete axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common['Authorization'];
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (setAuthToken);
 
 /***/ }),
 
@@ -13549,6 +13590,96 @@ function isBuffer (obj) {
 function isSlowBuffer (obj) {
   return typeof obj.readFloatLE === 'function' && typeof obj.slice === 'function' && isBuffer(obj.slice(0, 0))
 }
+
+
+/***/ }),
+
+/***/ "./node_modules/is-empty/lib/index.js":
+/*!********************************************!*\
+  !*** ./node_modules/is-empty/lib/index.js ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+/**
+ * Has own property.
+ *
+ * @type {Function}
+ */
+
+var has = Object.prototype.hasOwnProperty
+
+/**
+ * To string.
+ *
+ * @type {Function}
+ */
+
+var toString = Object.prototype.toString
+
+/**
+ * Test whether a value is "empty".
+ *
+ * @param {Mixed} val
+ * @return {Boolean}
+ */
+
+function isEmpty(val) {
+  // Null and Undefined...
+  if (val == null) return true
+
+  // Booleans...
+  if ('boolean' == typeof val) return false
+
+  // Numbers...
+  if ('number' == typeof val) return val === 0
+
+  // Strings...
+  if ('string' == typeof val) return val.length === 0
+
+  // Functions...
+  if ('function' == typeof val) return val.length === 0
+
+  // Arrays...
+  if (Array.isArray(val)) return val.length === 0
+
+  // Errors...
+  if (val instanceof Error) return val.message === ''
+
+  // Objects...
+  if (val.toString == toString) {
+    switch (val.toString()) {
+
+      // Maps, Sets, Files and Errors...
+      case '[object File]':
+      case '[object Map]':
+      case '[object Set]': {
+        return val.size === 0
+      }
+
+      // Plain objects...
+      case '[object Object]': {
+        for (var key in val) {
+          if (has.call(val, key)) return false
+        }
+
+        return true
+      }
+    }
+  }
+
+  // Anything else...
+  return false
+}
+
+/**
+ * Export `isEmpty`.
+ *
+ * @type {Function}
+ */
+
+module.exports = isEmpty
 
 
 /***/ }),

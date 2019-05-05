@@ -45,7 +45,7 @@ mongoose
 app.use(passport.initialize());
 
 //Passport config
-require('./config/passport');
+require('./config/passport')(passport);
 
 app.use('/api/users', users);
 app.use('/api/plaid', plaid);

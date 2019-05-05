@@ -13,14 +13,13 @@ class PlaidAccount extends Component {
     this.handleOnSuccess = this.handleOnSuccess.bind(this);
   }
 
-  componentDidMount() {}
-
   handleOnSuccess(token, metadata) {
+    const { accounts } = this.props;
     const plaidData = {
       public_token: token,
       metadata: metadata,
+      accounts: accounts,
     };
-    console.log('plaid data', plaidData);
     this.props.addingAccount(plaidData);
   }
 
@@ -49,7 +48,7 @@ class PlaidAccount extends Component {
 }
 
 const mapStateToProps = state => ({
-  user: state.user,
+  user: state.userReducer.user,
 });
 
 const mapDispatchToProps = dispatch => ({

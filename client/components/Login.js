@@ -1,24 +1,37 @@
-import React from "react";
-import { connect } from "react-redux";
-import { loggedInUser } from "../store/userReducer";
+import React from 'react';
+import { connect } from 'react-redux';
+import { loggedInUser } from '../store/userReducer';
 
 class Login extends React.Component {
   constructor() {
     super();
     this.state = {
-      email: "",
-      password: ""
+      email: '',
+      password: '',
+
+      errors: {},
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.isLoggedIn) {
+      this.props.history.push('/dashboard');
+    }
+    if (nextProps.errors) {
+      this.setState({
+        errors: nextProps.errors,
+      });
+    }
+  }
+
   handleChange(event) {
     this.setState({ [event.target.name]: event.target.value });
   }
   handleSubmit(event) {
     //this is where we wanna map dispatch the thunk?
     event.preventDefault();
-    console.log(this.state, "STATE");
     this.props.loggedInUser(this.state);
   }
   render() {
@@ -52,12 +65,12 @@ class Login extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  currentUser: state.userReducer.user,
-  isLoggedIn: state.userReducer.isLoggedIn
+  currentUser: state.user,
+  isLoggedIn: state.userReducer.isLoggedIn,
 });
 
 const mapDispatchToProps = dispatch => ({
-  loggedInUser: user => dispatch(loggedInUser(user))
+  loggedInUser: user => dispatch(loggedInUser(user)),
 });
 
 export default connect(
