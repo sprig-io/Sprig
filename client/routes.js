@@ -5,6 +5,7 @@ import { Route, Switch } from 'react-router-dom';
 import Login from './components/Login.js';
 import Register from './components/Register.js';
 import PlaidAccount from './components/PlaidAccount';
+import Home from './components/Home';
 
 export default class Routes extends React.Component {
   render() {
