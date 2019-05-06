@@ -46,54 +46,6 @@ router.get(
   }
 );
 
-// @route POST api/plaid/accounts/add
-// @desc Trades public token for access token and stores credentials in database
-// @access Private
-
-// router.post(
-//   '/accounts/add',
-//   passport.authenticate('jwt', { session: false }),
-//   async (req, res) => {
-//     PUBLIC_TOKEN = req.body.public_token;
-//     const userId = req.user.id;
-//
-//     const institution = req.body.metadata.institution;
-//     const { name, institution_id } = institution;
-//
-//     if (PUBLIC_TOKEN) {
-//       client
-//         .exchangePublicToken(PUBLIC_TOKEN)
-//         .then(exchangeResponse => {
-//           ACCESS_TOKEN = exchangeResponse.access_token;
-//           ITEM_ID = exchangeResponse.item_id;
-//
-//           // Check if account already exists for specific user
-//           Account.findOne({
-//             userId: req.user.id,
-//             institutionId: institution_id,
-//           })
-//             .then(account => {
-//               if (account) {
-//                 console.log('Account already exists');
-//               } else {
-//                 const newAccount = new Account({
-//                   userId: userId,
-//                   accessToken: ACCESS_TOKEN,
-//                   itemId: ITEM_ID,
-//                   institutionId: institution_id,
-//                   institutionName: name,
-//                 });
-//
-//                 newAccount.save().then(account => res.json(account));
-//               }
-//             })
-//             .catch(err => console.log(err)); // Mongo Error
-//         })
-//         .catch(err => console.log(err)); // Plaid Error
-//     }
-//   }
-// );
-
 router.post(
   '/accounts/add',
   passport.authenticate('jwt', { session: false }),
@@ -129,6 +81,26 @@ router.post(
 // @route DELETE api/plaid/accounts/:id
 // @desc Del ete account with given id
 // @access Private
+router.post('/get_access_token', function(request, response, next) {
+  PUBLIC_TOKEN = request.body.public_token;
+  client.exchangePublicToken(PUBLIC_TOKEN, function(error, tokenResponse) {
+    if (error !== null) {
+      var msg = 'Could not exchange public_token!';
+      console.log(msg + '\n' + JSON.stringify(error));
+      return response.json({
+        error: msg,
+      });
+    }
+    ACCESS_TOKEN = tokenResponse.access_token;
+    ITEM_ID = tokenResponse.item_id;
+    console.log(tokenResponse, 'TOKEN');
+    response.json({
+      access_token: ACCESS_TOKEN,
+      item_id: ITEM_ID,
+      error: false,
+    });
+  });
+});
 
 router.delete(
   '/accounts/:id',
@@ -181,32 +153,5 @@ router.post(
     }
   }
 );
-
-/*  router.post('/accounts/transactions',passport.authenticate("jwt", { session: false }),async (req,res,next)=>{
-  try{
-    const now = moment();
-    const today = now.format("YYYY-MM-DD");
-    const thirtyDaysAgo = now.subtract(30, "days").format("YYYY-MM-DD");
-    let transactions = [];
-    const accounts = req.body;
-    if (accounts) {
-      accounts.forEach(function(account) {
-      ACCESS_TOKEN = account.accessToken;
-      const institutionName = account.institutionName;
-      const trans = await client.getTransactions(ACCESS_TOKEN, thirtyDaysAgo, today)
-      transactions.push(
-        {accountName: institutionName,
-        transactions: trans.transactions
-      })
-        if (transactions.length === accounts.length){
-          return  res.json(transactions);
-        }
-      }
-    }
-  }
-catch(err){
-  next(err)
-}
-}); */
 
 module.exports = router;
