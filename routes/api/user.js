@@ -1,20 +1,20 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-const keys = require("../../config/keys");
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const keys = require('../../config/keys');
 
 // Load input validation
-const validateRegisterInput = require("../../validation/register");
-const validateLoginInput = require("../../validation/login");
+const validateRegisterInput = require('../../validation/register');
+const validateLoginInput = require('../../validation/login');
 // Load User model
-const User = require("../../models/User");
+const User = require('../../models/User');
 
 // @route POST api/users/register
 // @desc Register user
 // @access Public
 
-router.post("/register", async (req, res, next) => {
+router.post('/register', async (req, res, next) => {
   const { errors, isValid } = validateRegisterInput(req.body);
   try {
     if (!isValid) {
@@ -22,12 +22,12 @@ router.post("/register", async (req, res, next) => {
     }
     const user = await User.findOne({ email: req.body.email });
     if (user) {
-      return res.status(400).json({ email: "Email already exists" });
+      return res.status(400).json({ email: 'Email already exists' });
     }
     const newUser = new User({
       name: req.body.name,
       email: req.body.email,
-      password: req.body.password
+      password: req.body.password,
     });
 
     //Hash password before saving in database
@@ -36,13 +36,13 @@ router.post("/register", async (req, res, next) => {
     newUser.password = hashed;
     const savedUser = await newUser.save();
     res.json(savedUser);
-    console.log("SAVED USER", savedUser);
+    console.log('SAVED USER', savedUser);
   } catch (error) {
     next(error);
   }
 });
 
-router.post("/login", async (req, res, next) => {
+router.post('/login', async (req, res, next) => {
   const { errors, isValid } = validateLoginInput(req.body);
   try {
     if (!isValid) {
@@ -55,7 +55,7 @@ router.post("/login", async (req, res, next) => {
     //Find user by email
     const foundUser = await User.findOne({ email });
     if (!foundUser) {
-      return res.status(404).json({ emailnotfound: "Email not found" });
+      return res.status(404).json({ emailnotfound: 'Email not found' });
     }
 
     //Check password
@@ -65,19 +65,20 @@ router.post("/login", async (req, res, next) => {
       //Create JWT Payload
       const payload = {
         id: foundUser.id,
-        name: foundUser.name
+        name: foundUser.name,
       };
 
       //Sign token
       const token = await jwt.sign(payload, keys.secretOrKey, {
-        expiresIn: 31556926
+        expiresIn: 31556926,
       });
+      console.log('the req.user', req.user);
       res.json({
         success: true,
-        token: "Bearer " + token
+        token: 'Bearer ' + token,
       });
     } else {
-      return res.status(400).json({ passwordincorrect: "Password incorrect" });
+      return res.status(400).json({ passwordincorrect: 'Password incorrect' });
     }
   } catch (error) {
     next(error);
