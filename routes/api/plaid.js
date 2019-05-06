@@ -1,9 +1,13 @@
 const express = require('express');
 const plaid = require('plaid');
 const router = express.Router();
+<<<<<<< HEAD
 
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
+=======
+const passport = require('passport');
+>>>>>>> master
 const moment = require('moment');
 const mongoose = require('mongoose');
 const {
@@ -97,6 +101,7 @@ router.post(
   '/accounts/add',
   passport.authenticate('jwt', { session: false }),
   async (req, res, next) => {
+
     PUBLIC_TOKEN = req.body.public_token;
     const userId = req.user.id;
     const institution = req.body.metadata.institution;
@@ -121,6 +126,7 @@ router.post(
         });
         await newAccount.save();
         return res.json(newAccount);
+
       }
     }
   }

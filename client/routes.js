@@ -10,7 +10,9 @@ export default class Routes extends React.Component {
   render() {
     return (
       <Switch>
+        <Route exact path="/" component={Home} />
         <Route path="/login" component={Login} />
+
         <Route exact path="/register" component={Register} />
         <Route exact path="/dashboard" component={PlaidAccount} />
       </Switch>
