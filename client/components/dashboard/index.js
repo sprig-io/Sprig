@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import connectedPlaidAccount from "../PlaidAccount";
-import plaidAccountTransactions from "../dashboard/Transaction";
+import React, { Component } from 'react';
+import ConnectedPlaidAccount from '../PlaidAccount';
+import plaidAccountTransactions from '../dashboard/Transaction';
 
 export default class Dashboard extends Component {
   constructor(props) {
@@ -8,7 +8,6 @@ export default class Dashboard extends Component {
   }
 
   render() {
-    <connectedPlaidAccount />;
-    <plaidAccountTransactions />;
+    return <ConnectedPlaidAccount />;
   }
 }
