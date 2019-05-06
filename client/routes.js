@@ -6,6 +6,7 @@ import Login from './components/Login.js';
 import Register from './components/Register.js';
 import PlaidAccount from './components/PlaidAccount';
 import Home from './components/Home';
+import Test from './components/Test';
 
 export default class Routes extends React.Component {
   render() {
@@ -16,6 +17,7 @@ export default class Routes extends React.Component {
 
         <Route exact path="/register" component={Register} />
         <Route exact path="/dashboard" component={PlaidAccount} />
+        <Route exact path="/test" component={Test} />
       </Switch>
     );
   }

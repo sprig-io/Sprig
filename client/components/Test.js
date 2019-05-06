@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
-import connectedPlaidAccount from './PlaidAccount';
 
-class Dashboard extends Component {
+class Test extends Component {
   constructor(props) {
     super(props);
+    this.state = {};
   }
-
   render() {
     return (
       <div>
-        <connectedPlaidAccount />;
+        <h3>I'm logged in </h3>
       </div>
     );
   }
 }
+
+export default Test;

@@ -505,6 +505,66 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
+/***/ "./client/components/Test.js":
+/*!***********************************!*\
+  !*** ./client/components/Test.js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var Test =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Test, _Component);
+
+  function Test(props) {
+    var _this;
+
+    _classCallCheck(this, Test);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Test).call(this, props));
+    _this.state = {};
+    return _this;
+  }
+
+  _createClass(Test, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "I'm logged in "));
+    }
+  }]);
+
+  return Test;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (Test);
+
+/***/ }),
+
 /***/ "./client/index.js":
 /*!*************************!*\
   !*** ./client/index.js ***!
@@ -551,6 +611,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Register_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Register.js */ "./client/components/Register.js");
 /* harmony import */ var _components_PlaidAccount__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/PlaidAccount */ "./client/components/PlaidAccount.js");
 /* harmony import */ var _components_Home__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/Home */ "./client/components/Home.js");
+/* harmony import */ var _components_Test__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/Test */ "./client/components/Test.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -570,6 +631,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 //Here is where the routes are gonna be
+
 
 
 
@@ -606,6 +668,10 @@ function (_React$Component) {
         exact: true,
         path: "/dashboard",
         component: _components_PlaidAccount__WEBPACK_IMPORTED_MODULE_4__["default"]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+        exact: true,
+        path: "/test",
+        component: _components_Test__WEBPACK_IMPORTED_MODULE_6__["default"]
       }));
     }
   }]);
@@ -713,6 +779,33 @@ var initialState = {
 
 /***/ }),
 
+/***/ "./client/store/errorReducer.js":
+/*!**************************************!*\
+  !*** ./client/store/errorReducer.js ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _userReducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./userReducer */ "./client/store/userReducer.js");
+
+var initialState = {};
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _userReducer__WEBPACK_IMPORTED_MODULE_0__["GET_ERRORS"]:
+      return action.payload;
+
+    default:
+      return state;
+  }
+});
+
+/***/ }),
+
 /***/ "./client/store/index.js":
 /*!*******************************!*\
   !*** ./client/store/index.js ***!
@@ -730,6 +823,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux_devtools_extension__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(redux_devtools_extension__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _userReducer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./userReducer */ "./client/store/userReducer.js");
 /* harmony import */ var _accountReducer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./accountReducer */ "./client/store/accountReducer.js");
+/* harmony import */ var _errorReducer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./errorReducer */ "./client/store/errorReducer.js");
+
 
 
 
@@ -738,7 +833,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var reducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
   userReducer: _userReducer__WEBPACK_IMPORTED_MODULE_4__["default"],
-  accountReducer: _accountReducer__WEBPACK_IMPORTED_MODULE_5__["default"]
+  accountReducer: _accountReducer__WEBPACK_IMPORTED_MODULE_5__["default"],
+  errorReducer: _errorReducer__WEBPACK_IMPORTED_MODULE_6__["default"]
 });
 var middleware = Object(redux_devtools_extension__WEBPACK_IMPORTED_MODULE_3__["composeWithDevTools"])(Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_2__["default"], Object(redux_logger__WEBPACK_IMPORTED_MODULE_1__["createLogger"])({
   collapsed: true
@@ -752,11 +848,13 @@ var store = Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(reducer, m
 /*!*************************************!*\
   !*** ./client/store/userReducer.js ***!
   \*************************************/
-/*! exports provided: createdUser, loggedInUser, default */
+/*! exports provided: GET_ERRORS, getErrors, createdUser, loggedInUser, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_ERRORS", function() { return GET_ERRORS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getErrors", function() { return getErrors; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createdUser", function() { return createdUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "loggedInUser", function() { return loggedInUser; });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
@@ -788,7 +886,8 @@ var isEmpty = __webpack_require__(/*! is-empty */ "./node_modules/is-empty/lib/i
 var CREATE_USER = 'CREATE_USER'; // for user registration
 
 var GET_CURRENT_USER = 'GET_CURRENT_USER'; // for getting current user from login
-//ACTION CRETORS
+
+var GET_ERRORS = 'GET_ERRORS'; //ACTION CRETORS
 
 var createUser = function createUser(user) {
   return {
@@ -802,8 +901,14 @@ var fetchUser = function fetchUser(user) {
     type: GET_CURRENT_USER,
     user: user
   };
-}; //Thunk - for user registration
+};
 
+var getErrors = function getErrors(err) {
+  return {
+    type: GET_ERRORS,
+    err: err
+  };
+}; //Thunk - for user registration
 
 var createdUser = function createdUser(user) {
   return (
@@ -832,7 +937,7 @@ var createdUser = function createdUser(user) {
               case 8:
                 _context.prev = 8;
                 _context.t0 = _context["catch"](0);
-                console.error(_context.t0);
+                dispatch(getErrors(_context.t0.response.data));
 
               case 11:
               case "end":
@@ -905,7 +1010,8 @@ var loggedInUser = function loggedInUser(user) {
     case CREATE_USER:
       return _objectSpread({}, state, {
         user: action.user,
-        isLoggedIn: true
+        isLoggedIn: true,
+        isAuthenticated: !isEmpty(action.payload)
       });
 
     case GET_CURRENT_USER:

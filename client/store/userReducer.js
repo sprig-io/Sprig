@@ -13,6 +13,8 @@ const isEmpty = require('is-empty');
 //ACTION TYPES
 const CREATE_USER = 'CREATE_USER'; // for user registration
 const GET_CURRENT_USER = 'GET_CURRENT_USER'; // for getting current user from login
+export const GET_ERRORS = 'GET_ERRORS';
+
 //ACTION CRETORS
 const createUser = user => ({
   type: CREATE_USER,
@@ -24,13 +26,18 @@ const fetchUser = user => ({
   user,
 });
 
+export const getErrors = err => ({
+  type: GET_ERRORS,
+  err,
+});
+
 //Thunk - for user registration
 export const createdUser = user => async dispatch => {
   try {
     const { data } = await axios.post('/api/users/register', user);
     dispatch(createUser(data));
   } catch (err) {
-    console.error(err);
+    dispatch(getErrors(err.response.data));
   }
 };
 //Thunk - for user login
@@ -54,7 +61,12 @@ export const loggedInUser = user => async dispatch => {
 export default function(state = initialState, action) {
   switch (action.type) {
     case CREATE_USER:
-      return { ...state, user: action.user, isLoggedIn: true };
+      return {
+        ...state,
+        user: action.user,
+        isLoggedIn: true,
+        isAuthenticated: !isEmpty(action.payload),
+      };
     case GET_CURRENT_USER:
       return {
         ...state,
