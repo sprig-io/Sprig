@@ -195,9 +195,16 @@ function (_React$Component) {
   }
 
   _createClass(Login, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      if (this.props.isAuthenticated) {
+        this.props.history.push('/dashboard');
+      }
+    }
+  }, {
     key: "componentWillReceiveProps",
     value: function componentWillReceiveProps(nextProps) {
-      if (nextProps.isLoggedIn) {
+      if (nextProps.isAuthenticated) {
         this.props.history.push('/dashboard');
       }
 
@@ -247,7 +254,7 @@ function (_React$Component) {
 var mapStateToProps = function mapStateToProps(state) {
   return {
     currentUser: state.user,
-    isLoggedIn: state.userReducer.isLoggedIn
+    isAuthenticated: state.userReducer.isAuthenticated
   };
 };
 
@@ -371,8 +378,8 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   };
 };
 
-var connectedPlaidAccount = Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProps, mapDispatchToProps)(PlaidAccount);
-/* harmony default export */ __webpack_exports__["default"] = (connectedPlaidAccount);
+var ConnectedPlaidAccount = Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProps, mapDispatchToProps)(PlaidAccount);
+/* harmony default export */ __webpack_exports__["default"] = (ConnectedPlaidAccount);
 
 /***/ }),
 
@@ -505,6 +512,253 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
+/***/ "./client/components/Test.js":
+/*!***********************************!*\
+  !*** ./client/components/Test.js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var Test =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Test, _Component);
+
+  function Test(props) {
+    var _this;
+
+    _classCallCheck(this, Test);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Test).call(this, props));
+    _this.state = {};
+    return _this;
+  }
+
+  _createClass(Test, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "I'm logged in "));
+    }
+  }]);
+
+  return Test;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (Test);
+
+/***/ }),
+
+/***/ "./client/components/dashboard/Transaction.js":
+/*!****************************************************!*\
+  !*** ./client/components/dashboard/Transaction.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _store_accountReducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../store/accountReducer */ "./client/store/accountReducer.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+var Transactions =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Transactions, _Component);
+
+  function Transactions(props) {
+    var _this;
+
+    _classCallCheck(this, Transactions);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Transactions).call(this, props));
+    _this.state = {
+      loaded: false
+    };
+    return _this;
+  }
+
+  _createClass(Transactions, [{
+    key: "componentDidMount",
+    value: function () {
+      var _componentDidMount = _asyncToGenerator(
+      /*#__PURE__*/
+      regeneratorRuntime.mark(function _callee() {
+        var accounts;
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return this.props.gettingAccounts();
+
+              case 2:
+                console.log('hi', this.props.accounts);
+                this.props.gettingTransactions(this.props.accounts); // await this.props.gettingTransactions(currentAccounts);
+
+                accounts = this.props.accounts; // this.props.gettingTransactions(accounts);
+
+              case 5:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function componentDidMount() {
+        return _componentDidMount.apply(this, arguments);
+      }
+
+      return componentDidMount;
+    }()
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "'i am coming here'"), this.props.transactions.map(function (elem) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "elem.amount");
+      }));
+    }
+  }]);
+
+  return Transactions;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    user: state.userReducer.user,
+    accounts: state.accountReducer.accounts,
+    transactions: state.accountReducer.transactions
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    gettingTransactions: function gettingTransactions(plaidAccountData) {
+      return dispatch(Object(_store_accountReducer__WEBPACK_IMPORTED_MODULE_2__["gettingTransactions"])(plaidAccountData));
+    },
+    gettingAccounts: function gettingAccounts() {
+      return dispatch(Object(_store_accountReducer__WEBPACK_IMPORTED_MODULE_2__["gettingAccounts"])());
+    }
+  };
+};
+
+var PlaidAccountTransactions = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, mapDispatchToProps)(Transactions);
+/* harmony default export */ __webpack_exports__["default"] = (PlaidAccountTransactions);
+
+/***/ }),
+
+/***/ "./client/components/dashboard/index.js":
+/*!**********************************************!*\
+  !*** ./client/components/dashboard/index.js ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Dashboard; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _PlaidAccount__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../PlaidAccount */ "./client/components/PlaidAccount.js");
+/* harmony import */ var _dashboard_Transaction__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../dashboard/Transaction */ "./client/components/dashboard/Transaction.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+var Dashboard =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Dashboard, _Component);
+
+  function Dashboard(props) {
+    _classCallCheck(this, Dashboard);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Dashboard).call(this, props));
+  }
+
+  _createClass(Dashboard, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboard_Transaction__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PlaidAccount__WEBPACK_IMPORTED_MODULE_1__["default"], null), ";");
+    }
+  }]);
+
+  return Dashboard;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+/***/ }),
+
 /***/ "./client/index.js":
 /*!*************************!*\
   !*** ./client/index.js ***!
@@ -549,8 +803,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _components_Login_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Login.js */ "./client/components/Login.js");
 /* harmony import */ var _components_Register_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Register.js */ "./client/components/Register.js");
-/* harmony import */ var _components_PlaidAccount__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/PlaidAccount */ "./client/components/PlaidAccount.js");
+/* harmony import */ var _components_dashboard_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/dashboard/index.js */ "./client/components/dashboard/index.js");
 /* harmony import */ var _components_Home__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/Home */ "./client/components/Home.js");
+/* harmony import */ var _components_Test__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/Test */ "./client/components/Test.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -570,6 +825,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 //Here is where the routes are gonna be
+
 
 
 
@@ -605,7 +861,7 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         exact: true,
         path: "/dashboard",
-        component: _components_PlaidAccount__WEBPACK_IMPORTED_MODULE_4__["default"]
+        component: _components_dashboard_index_js__WEBPACK_IMPORTED_MODULE_4__["default"]
       }));
     }
   }]);
@@ -621,12 +877,15 @@ function (_React$Component) {
 /*!****************************************!*\
   !*** ./client/store/accountReducer.js ***!
   \****************************************/
-/*! exports provided: addingAccount, default */
+/*! exports provided: gettingAccounts, addingAccount, deletingAccount, gettingTransactions, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "gettingAccounts", function() { return gettingAccounts; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addingAccount", function() { return addingAccount; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deletingAccount", function() { return deletingAccount; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "gettingTransactions", function() { return gettingTransactions; });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
@@ -645,39 +904,69 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
- //ACTION TYPES
+ //initial state
 
-var ADD_ACCOUNT = 'ADD_ACCOUNT'; //ACTION CREATOR
+var initialState = {
+  accounts: [],
+  transactions: []
+}; //ACTION TYPES
 
-var addAccount = function addAccount(accountData) {
+var ADD_ACCOUNT = 'ADD_ACCOUNT';
+var GET_TRANSACTIONS = 'GET_TRANSACTIONS';
+var DELETE_ACCOUNT = 'DELETE_ACCOUNT';
+var GET_ACCOUNTS = 'GET_ACCOUNTS'; //ACTION CREATOR
+
+var addAccount = function addAccount(plaidAccountData) {
   return {
     type: ADD_ACCOUNT,
-    accountData: accountData
+    plaidAccountData: plaidAccountData
   };
 };
 
-var addingAccount = function addingAccount(plaidData) {
+var getAccounts = function getAccounts(plaidAccountData) {
+  return {
+    type: GET_ACCOUNTS,
+    plaidAccountData: plaidAccountData
+  };
+};
+
+var deleteAccount = function deleteAccount(accountId) {
+  return {
+    type: DELETE_ACCOUNT,
+    accountId: accountId
+  };
+};
+
+var getTransactions = function getTransactions(plaidAccountData) {
+  return {
+    type: GET_TRANSACTIONS,
+    plaidAccountData: plaidAccountData
+  };
+}; //Thunk
+
+
+var gettingAccounts = function gettingAccounts() {
   return (
     /*#__PURE__*/
     function () {
       var _ref = _asyncToGenerator(
       /*#__PURE__*/
       regeneratorRuntime.mark(function _callee(dispatch) {
-        var accounts, _ref2, data;
+        var _ref2, data;
 
         return regeneratorRuntime.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                accounts = plaidData.accounts;
+                console.log('in the thunk');
                 _context.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/plaid/accounts/add', plaidData);
+                return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/plaid/accounts');
 
               case 3:
                 _ref2 = _context.sent;
                 data = _ref2.data;
-                console.log('the data', data);
-                dispatch(addAccount(data));
+                console.log('the accounts', data);
+                dispatch(getAccounts(data));
 
               case 7:
               case "end":
@@ -693,9 +982,112 @@ var addingAccount = function addingAccount(plaidData) {
     }()
   );
 };
-var initialState = {
-  accounts: []
+var addingAccount = function addingAccount(plaidAccountData) {
+  return (
+    /*#__PURE__*/
+    function () {
+      var _ref3 = _asyncToGenerator(
+      /*#__PURE__*/
+      regeneratorRuntime.mark(function _callee2(dispatch) {
+        var accounts, _ref4, data;
+
+        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                accounts = plaidAccountData.accounts;
+                console.log('PLAID ACCOUNT DATA', plaidAccountData);
+                _context2.next = 4;
+                return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/plaid/accounts/add', plaidAccountData);
+
+              case 4:
+                _ref4 = _context2.sent;
+                data = _ref4.data;
+                console.log('the data', data);
+                dispatch(addAccount(data));
+
+              case 8:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }));
+
+      return function (_x2) {
+        return _ref3.apply(this, arguments);
+      };
+    }()
+  );
 };
+var deletingAccount = function deletingAccount(accountId) {
+  return (
+    /*#__PURE__*/
+    function () {
+      var _ref5 = _asyncToGenerator(
+      /*#__PURE__*/
+      regeneratorRuntime.mark(function _callee3(dispatch) {
+        return regeneratorRuntime.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.next = 2;
+                return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/plaid/accounts/".concat(accountId));
+
+              case 2:
+                dispatch(deleteAccount(accountId));
+
+              case 3:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
+      }));
+
+      return function (_x3) {
+        return _ref5.apply(this, arguments);
+      };
+    }()
+  );
+};
+var gettingTransactions = function gettingTransactions(plaidAccountData) {
+  return (
+    /*#__PURE__*/
+    function () {
+      var _ref6 = _asyncToGenerator(
+      /*#__PURE__*/
+      regeneratorRuntime.mark(function _callee4(dispatch) {
+        var _ref7, data;
+
+        return regeneratorRuntime.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.next = 2;
+                return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/plaid/accounts/transactions', plaidAccountData);
+
+              case 2:
+                _ref7 = _context4.sent;
+                data = _ref7.data;
+                console.log('the data', data);
+                dispatch(getTransactions(data));
+
+              case 6:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4);
+      }));
+
+      return function (_x4) {
+        return _ref6.apply(this, arguments);
+      };
+    }()
+  );
+}; //REDUCER
+
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
   var action = arguments.length > 1 ? arguments[1] : undefined;
@@ -703,8 +1095,52 @@ var initialState = {
   switch (action.type) {
     case ADD_ACCOUNT:
       return _objectSpread({}, state, {
-        accounts: [action.accountData].concat(_toConsumableArray(state.accounts))
+        accounts: [action.plaidAccountData].concat(_toConsumableArray(state.accounts))
       });
+
+    case DELETE_ACCOUNT:
+      return _objectSpread({}, state, {
+        accounts: _toConsumableArray(state.accounts.filter(function (account) {
+          return account.accountId !== action.accountId;
+        }))
+      });
+
+    case GET_TRANSACTIONS:
+      return _objectSpread({}, state, {
+        transactions: _toConsumableArray(action.plaidAccountData)
+      });
+
+    case GET_ACCOUNTS:
+      return _objectSpread({}, state, {
+        accounts: _toConsumableArray(action.plaidAccountData)
+      });
+
+    default:
+      return state;
+  }
+});
+
+/***/ }),
+
+/***/ "./client/store/errorReducer.js":
+/*!**************************************!*\
+  !*** ./client/store/errorReducer.js ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _userReducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./userReducer */ "./client/store/userReducer.js");
+
+var initialState = {};
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _userReducer__WEBPACK_IMPORTED_MODULE_0__["GET_ERRORS"]:
+      return action.payload;
 
     default:
       return state;
@@ -717,11 +1153,13 @@ var initialState = {
 /*!*******************************!*\
   !*** ./client/store/index.js ***!
   \*******************************/
-/*! exports provided: default */
+/*! exports provided: saveState, loadState, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "saveState", function() { return saveState; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "loadState", function() { return loadState; });
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var redux_logger__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! redux-logger */ "./node_modules/redux-logger/dist/redux-logger.js");
 /* harmony import */ var redux_logger__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(redux_logger__WEBPACK_IMPORTED_MODULE_1__);
@@ -730,20 +1168,47 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux_devtools_extension__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(redux_devtools_extension__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _userReducer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./userReducer */ "./client/store/userReducer.js");
 /* harmony import */ var _accountReducer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./accountReducer */ "./client/store/accountReducer.js");
+/* harmony import */ var _errorReducer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./errorReducer */ "./client/store/errorReducer.js");
 
 
 
 
 
 
+
+var saveState = function saveState(state) {
+  try {
+    var serializedState = JSON.stringify(state);
+    localStorage.setItem('state', serializedState);
+  } catch (_unused) {// ignore write errors
+  }
+};
+var loadState = function loadState() {
+  try {
+    var serializedState = localStorage.getItem('state');
+
+    if (serializedState === null) {
+      return undefined;
+    }
+
+    return JSON.parse(serializedState);
+  } catch (err) {
+    return undefined;
+  }
+};
 var reducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
   userReducer: _userReducer__WEBPACK_IMPORTED_MODULE_4__["default"],
-  accountReducer: _accountReducer__WEBPACK_IMPORTED_MODULE_5__["default"]
+  accountReducer: _accountReducer__WEBPACK_IMPORTED_MODULE_5__["default"],
+  errorReducer: _errorReducer__WEBPACK_IMPORTED_MODULE_6__["default"]
 });
 var middleware = Object(redux_devtools_extension__WEBPACK_IMPORTED_MODULE_3__["composeWithDevTools"])(Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_2__["default"], Object(redux_logger__WEBPACK_IMPORTED_MODULE_1__["createLogger"])({
   collapsed: true
 })));
-var store = Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(reducer, middleware);
+var persistedState = loadState();
+var store = Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(reducer, persistedState, middleware);
+store.subscribe(function () {
+  saveState(store.getState());
+});
 /* harmony default export */ __webpack_exports__["default"] = (store);
 
 /***/ }),
@@ -752,11 +1217,13 @@ var store = Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(reducer, m
 /*!*************************************!*\
   !*** ./client/store/userReducer.js ***!
   \*************************************/
-/*! exports provided: createdUser, loggedInUser, default */
+/*! exports provided: GET_ERRORS, getErrors, createdUser, loggedInUser, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_ERRORS", function() { return GET_ERRORS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getErrors", function() { return getErrors; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createdUser", function() { return createdUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "loggedInUser", function() { return loggedInUser; });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
@@ -778,8 +1245,7 @@ var jwtDecode = __webpack_require__(/*! jwt-decode */ "./node_modules/jwt-decode
 
 var initialState = {
   isAuthenticated: false,
-  user: {},
-  isLoggedIn: false
+  user: {}
 };
 
 var isEmpty = __webpack_require__(/*! is-empty */ "./node_modules/is-empty/lib/index.js"); //ACTION TYPES
@@ -788,7 +1254,8 @@ var isEmpty = __webpack_require__(/*! is-empty */ "./node_modules/is-empty/lib/i
 var CREATE_USER = 'CREATE_USER'; // for user registration
 
 var GET_CURRENT_USER = 'GET_CURRENT_USER'; // for getting current user from login
-//ACTION CRETORS
+
+var GET_ERRORS = 'GET_ERRORS'; //ACTION CRETORS
 
 var createUser = function createUser(user) {
   return {
@@ -802,8 +1269,14 @@ var fetchUser = function fetchUser(user) {
     type: GET_CURRENT_USER,
     user: user
   };
-}; //Thunk - for user registration
+};
 
+var getErrors = function getErrors(err) {
+  return {
+    type: GET_ERRORS,
+    err: err
+  };
+}; //Thunk - for user registration
 
 var createdUser = function createdUser(user) {
   return (
@@ -832,7 +1305,7 @@ var createdUser = function createdUser(user) {
               case 8:
                 _context.prev = 8;
                 _context.t0 = _context["catch"](0);
-                console.error(_context.t0);
+                dispatch(getErrors(_context.t0.response.data));
 
               case 11:
               case "end":
@@ -869,10 +1342,10 @@ var loggedInUser = function loggedInUser(user) {
                 res = _context2.sent;
                 console.log(res, 'RES');
                 token = res.data.token;
-                localStorage.setItem('token', token);
+                localStorage.setItem('jwt', token);
                 Object(_utils_setAuthToken__WEBPACK_IMPORTED_MODULE_1__["default"])(token);
                 data = jwtDecode(token);
-                console.log(data);
+                console.log('the payload', data);
                 dispatch(fetchUser(data));
                 _context2.next = 16;
                 break;
@@ -905,14 +1378,13 @@ var loggedInUser = function loggedInUser(user) {
     case CREATE_USER:
       return _objectSpread({}, state, {
         user: action.user,
-        isLoggedIn: true
+        isAuthenticated: !isEmpty(action.user)
       });
 
     case GET_CURRENT_USER:
       return _objectSpread({}, state, {
         user: action.user,
-        isLoggedIn: true,
-        isAuthenticated: !isEmpty(action.payload)
+        isAuthenticated: !isEmpty(action.user)
       });
 
     default:

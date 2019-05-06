@@ -39,6 +39,7 @@ router.get(
   async (req, res, next) => {
     try {
       const accounts = await Account.find({ userId: req.user.id });
+      console.log('the accounts', accounts);
       return res.json(accounts);
     } catch (err) {
       next(err);
@@ -54,6 +55,7 @@ router.post(
     const userId = req.user.id;
     const institution = req.body.metadata.institution;
     const { name, institution_id } = institution;
+
     if (PUBLIC_TOKEN) {
       const exchangeResponse = await client.exchangePublicToken(PUBLIC_TOKEN);
       ACCESS_TOKEN = exchangeResponse.access_token;
