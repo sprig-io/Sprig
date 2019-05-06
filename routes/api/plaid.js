@@ -93,7 +93,6 @@ router.post('/get_access_token', function(request, response, next) {
     }
     ACCESS_TOKEN = tokenResponse.access_token;
     ITEM_ID = tokenResponse.item_id;
-    console.log(tokenResponse, 'TOKEN');
     response.json({
       access_token: ACCESS_TOKEN,
       item_id: ITEM_ID,
