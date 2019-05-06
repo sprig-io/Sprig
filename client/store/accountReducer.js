@@ -9,6 +9,7 @@ const initialState = {
 const ADD_ACCOUNT = 'ADD_ACCOUNT';
 const GET_TRANSACTIONS = 'GET_TRANSACTIONS';
 const DELETE_ACCOUNT = 'DELETE_ACCOUNT';
+const GET_ACCOUNTS = 'GET_ACCOUNTS';
 
 //ACTION CREATOR
 
@@ -17,6 +18,10 @@ const addAccount = plaidAccountData => {
     type: ADD_ACCOUNT,
     plaidAccountData,
   };
+};
+
+const getAccounts = plaidAccountData => {
+  return { type: GET_ACCOUNTS, plaidAccountData };
 };
 
 const deleteAccount = accountId => {
@@ -34,8 +39,16 @@ const getTransactions = plaidAccountData => {
 };
 
 //Thunk
+
+export const gettingAccounts = () => async dispatch => {
+  console.log('in the thunk');
+  const { data } = await axios.get('/api/plaid/accounts');
+  console.log('the accounts', data);
+  dispatch(getAccounts(data));
+};
 export const addingAccount = plaidAccountData => async dispatch => {
   const accounts = plaidAccountData.accounts;
+  console.log('PLAID ACCOUNT DATA', plaidAccountData);
   const { data } = await axios.post(
     '/api/plaid/accounts/add',
     plaidAccountData
@@ -65,7 +78,7 @@ export default function(state = initialState, action) {
     case ADD_ACCOUNT:
       return {
         ...state,
-        accounts: [action.accountData, ...state.accounts],
+        accounts: [action.plaidAccountData, ...state.accounts],
       };
     case DELETE_ACCOUNT:
       return {
@@ -77,7 +90,9 @@ export default function(state = initialState, action) {
         ],
       };
     case GET_TRANSACTIONS:
-      return { ...state, transaction: [...action.transactions] };
+      return { ...state, transactions: [...action.plaidAccountData] };
+    case GET_ACCOUNTS:
+      return { ...state, accounts: [...action.plaidAccountData] };
     default:
       return state;
   }

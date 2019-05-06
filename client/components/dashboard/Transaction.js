@@ -1,23 +1,35 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { gettingTransactions } from "../../store/accountReducer";
-import { addingAccount } from "../../store/accountReducer";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import {
+  gettingAccounts,
+  gettingTransactions,
+} from '../../store/accountReducer';
 
 class Transactions extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loaded: false
+      loaded: false,
     };
   }
-  /* componentDidMount() {
+  async componentDidMount() {
+    await this.props.gettingAccounts();
+    console.log('hi', this.props.accounts);
+    this.props.gettingTransactions(this.props.accounts);
+    // await this.props.gettingTransactions(currentAccounts);
+
     const { accounts } = this.props;
-    this.props.gettingTransactions(accounts);
-  } */
+
+    // this.props.gettingTransactions(accounts);
+  }
   render() {
     return (
       <div>
         <h1>'i am coming here'</h1>
+        {this.props.transactions.map(elem => (
+          <h1>elem.amount</h1>
+        ))}
       </div>
     );
   }
@@ -26,17 +38,18 @@ class Transactions extends Component {
 const mapStateToProps = state => ({
   user: state.userReducer.user,
   accounts: state.accountReducer.accounts,
-  transactions: state.accountReducer.transactions
+  transactions: state.accountReducer.transactions,
 });
 
 const mapDispatchToProps = dispatch => ({
   gettingTransactions: plaidAccountData =>
-    dispatch(gettingTransactions(plaidAccountData))
+    dispatch(gettingTransactions(plaidAccountData)),
+  gettingAccounts: () => dispatch(gettingAccounts()),
 });
 
-const plaidAccountTransactions = connect(
+const PlaidAccountTransactions = connect(
   mapStateToProps,
   mapDispatchToProps
 )(Transactions);
 
-export default plaidAccountTransactions;
+export default PlaidAccountTransactions;

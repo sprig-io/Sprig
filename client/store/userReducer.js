@@ -6,7 +6,6 @@ import setAuthToken from '../utils/setAuthToken';
 const initialState = {
   isAuthenticated: false,
   user: {},
-  isLoggedIn: false,
 };
 
 const isEmpty = require('is-empty');
@@ -46,10 +45,10 @@ export const loggedInUser = user => async dispatch => {
     const res = await axios.post('/api/users/login', user);
     console.log(res, 'RES');
     const token = res.data.token;
-    localStorage.setItem('token', token);
+    localStorage.setItem('jwt', token);
     setAuthToken(token);
     const data = jwtDecode(token);
-    console.log(data);
+    console.log('the payload', data);
     dispatch(fetchUser(data));
   } catch (err) {
     console.error(err);
@@ -64,15 +63,13 @@ export default function(state = initialState, action) {
       return {
         ...state,
         user: action.user,
-        isLoggedIn: true,
-        isAuthenticated: !isEmpty(action.payload),
+        isAuthenticated: !isEmpty(action.user),
       };
     case GET_CURRENT_USER:
       return {
         ...state,
         user: action.user,
-        isLoggedIn: true,
-        isAuthenticated: !isEmpty(action.payload),
+        isAuthenticated: !isEmpty(action.user),
       };
     default:
       return state;
