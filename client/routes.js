@@ -1,11 +1,11 @@
 //Here is where the routes are gonna be
 
-import React from 'react';
-import { Route, Switch } from 'react-router-dom';
-import Login from './components/Login.js';
-import Register from './components/Register.js';
-import PlaidAccount from './components/PlaidAccount';
-import Home from './components/Home';
+import React from "react";
+import { Route, Switch } from "react-router-dom";
+import Login from "./components/Login.js";
+import Register from "./components/Register.js";
+import Dashboard from "./components/dashboard/index.js";
+import Home from "./components/Home";
 
 export default class Routes extends React.Component {
   render() {
@@ -15,7 +15,7 @@ export default class Routes extends React.Component {
         <Route path="/login" component={Login} />
 
         <Route exact path="/register" component={Register} />
-        <Route exact path="/dashboard" component={PlaidAccount} />
+        <Route exact path="/dashboard" component={Dashboard} />
       </Switch>
     );
   }

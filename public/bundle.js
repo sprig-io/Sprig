@@ -505,6 +505,157 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
+/***/ "./client/components/dashboard/Transaction.js":
+/*!****************************************************!*\
+  !*** ./client/components/dashboard/Transaction.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _store_accountReducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../store/accountReducer */ "./client/store/accountReducer.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+var Transactions =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Transactions, _Component);
+
+  function Transactions(props) {
+    var _this;
+
+    _classCallCheck(this, Transactions);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Transactions).call(this, props));
+    _this.state = {
+      loaded: false
+    };
+    return _this;
+  }
+  /* componentDidMount() {
+    const { accounts } = this.props;
+    this.props.gettingTransactions(accounts);
+  } */
+
+
+  _createClass(Transactions, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "'i am coming here'"));
+    }
+  }]);
+
+  return Transactions;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    user: state.userReducer.user,
+    accounts: state.accountReducer.accounts,
+    transactions: state.accountReducer.transactions
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    gettingTransactions: function gettingTransactions(plaidAccountData) {
+      return dispatch(Object(_store_accountReducer__WEBPACK_IMPORTED_MODULE_2__["gettingTransactions"])(plaidAccountData));
+    }
+  };
+};
+
+var plaidAccountTransactions = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, mapDispatchToProps)(Transactions);
+/* harmony default export */ __webpack_exports__["default"] = (plaidAccountTransactions);
+
+/***/ }),
+
+/***/ "./client/components/dashboard/index.js":
+/*!**********************************************!*\
+  !*** ./client/components/dashboard/index.js ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Dashboard; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _PlaidAccount__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../PlaidAccount */ "./client/components/PlaidAccount.js");
+/* harmony import */ var _dashboard_Transaction__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../dashboard/Transaction */ "./client/components/dashboard/Transaction.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+var Dashboard =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Dashboard, _Component);
+
+  function Dashboard(props) {
+    _classCallCheck(this, Dashboard);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Dashboard).call(this, props));
+  }
+
+  _createClass(Dashboard, [{
+    key: "render",
+    value: function render() {
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("connectedPlaidAccount", null);
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("plaidAccountTransactions", null);
+    }
+  }]);
+
+  return Dashboard;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+/***/ }),
+
 /***/ "./client/index.js":
 /*!*************************!*\
   !*** ./client/index.js ***!
@@ -549,7 +700,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _components_Login_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Login.js */ "./client/components/Login.js");
 /* harmony import */ var _components_Register_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Register.js */ "./client/components/Register.js");
-/* harmony import */ var _components_PlaidAccount__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/PlaidAccount */ "./client/components/PlaidAccount.js");
+/* harmony import */ var _components_dashboard_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/dashboard/index.js */ "./client/components/dashboard/index.js");
 /* harmony import */ var _components_Home__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/Home */ "./client/components/Home.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -605,7 +756,7 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         exact: true,
         path: "/dashboard",
-        component: _components_PlaidAccount__WEBPACK_IMPORTED_MODULE_4__["default"]
+        component: _components_dashboard_index_js__WEBPACK_IMPORTED_MODULE_4__["default"]
       }));
     }
   }]);
@@ -621,12 +772,14 @@ function (_React$Component) {
 /*!****************************************!*\
   !*** ./client/store/accountReducer.js ***!
   \****************************************/
-/*! exports provided: addingAccount, default */
+/*! exports provided: addingAccount, deletingAccount, gettingTransactions, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addingAccount", function() { return addingAccount; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deletingAccount", function() { return deletingAccount; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "gettingTransactions", function() { return gettingTransactions; });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
@@ -645,18 +798,40 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
- //ACTION TYPES
+ //initial state
 
-var ADD_ACCOUNT = 'ADD_ACCOUNT'; //ACTION CREATOR
+var initialState = {
+  accounts: [],
+  transactions: []
+}; //ACTION TYPES
 
-var addAccount = function addAccount(accountData) {
+var ADD_ACCOUNT = "ADD_ACCOUNT";
+var GET_TRANSACTIONS = "GET_TRANSACTIONS";
+var DELETE_ACCOUNT = "DELETE_ACCOUNT"; //ACTION CREATOR
+
+var addAccount = function addAccount(plaidAccountData) {
   return {
     type: ADD_ACCOUNT,
-    accountData: accountData
+    plaidAccountData: plaidAccountData
   };
 };
 
-var addingAccount = function addingAccount(plaidData) {
+var deleteAccount = function deleteAccount(accountId) {
+  return {
+    type: DELETE_ACCOUNT,
+    accountId: accountId
+  };
+};
+
+var getTransactions = function getTransactions(plaidAccountData) {
+  return {
+    type: GET_TRANSACTIONS,
+    plaidAccountData: plaidAccountData
+  };
+}; //Thunk
+
+
+var addingAccount = function addingAccount(plaidAccountData) {
   return (
     /*#__PURE__*/
     function () {
@@ -669,14 +844,14 @@ var addingAccount = function addingAccount(plaidData) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                accounts = plaidData.accounts;
+                accounts = plaidAccountData.accounts;
                 _context.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/plaid/accounts/add', plaidData);
+                return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/plaid/accounts/add", plaidData);
 
               case 3:
                 _ref2 = _context.sent;
                 data = _ref2.data;
-                console.log('the data', data);
+                console.log("the data", data);
                 dispatch(addAccount(data));
 
               case 7:
@@ -693,9 +868,74 @@ var addingAccount = function addingAccount(plaidData) {
     }()
   );
 };
-var initialState = {
-  accounts: []
+var deletingAccount = function deletingAccount(accountId) {
+  return (
+    /*#__PURE__*/
+    function () {
+      var _ref3 = _asyncToGenerator(
+      /*#__PURE__*/
+      regeneratorRuntime.mark(function _callee2(dispatch) {
+        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/plaid/accounts/".concat(accountId));
+
+              case 2:
+                dispatch(deleteAccount(accountId));
+
+              case 3:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }));
+
+      return function (_x2) {
+        return _ref3.apply(this, arguments);
+      };
+    }()
+  );
 };
+var gettingTransactions = function gettingTransactions(plaidAccountData) {
+  return (
+    /*#__PURE__*/
+    function () {
+      var _ref4 = _asyncToGenerator(
+      /*#__PURE__*/
+      regeneratorRuntime.mark(function _callee3(dispatch) {
+        var _ref5, data;
+
+        return regeneratorRuntime.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.next = 2;
+                return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/plaid/accounts/transactions", plaidAccountData);
+
+              case 2:
+                _ref5 = _context3.sent;
+                data = _ref5.data;
+                console.log("the data", data);
+                dispatch(getTransactions(data));
+
+              case 6:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
+      }));
+
+      return function (_x3) {
+        return _ref4.apply(this, arguments);
+      };
+    }()
+  );
+}; //REDUCER
+
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
   var action = arguments.length > 1 ? arguments[1] : undefined;
@@ -704,6 +944,18 @@ var initialState = {
     case ADD_ACCOUNT:
       return _objectSpread({}, state, {
         accounts: [action.accountData].concat(_toConsumableArray(state.accounts))
+      });
+
+    case DELETE_ACCOUNT:
+      return _objectSpread({}, state, {
+        accounts: _toConsumableArray(state.accounts.filter(function (account) {
+          return account.accountId !== action.accountId;
+        }))
+      });
+
+    case GET_TRANSACTIONS:
+      return _objectSpread({}, state, {
+        transaction: _toConsumableArray(action.transactions)
       });
 
     default:
