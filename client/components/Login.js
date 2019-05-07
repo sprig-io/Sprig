@@ -20,7 +20,10 @@ class Login extends React.Component {
   }
   componentWillReceiveProps(nextProps) {
     if (nextProps.isAuthenticated) {
-      this.props.history.push('/dashboard');
+      this.props.history.push({
+        pathname: '/dashboard',
+        isAuthenticated: this.props.isAuthenticated,
+      });
     }
     if (nextProps.errors) {
       this.setState({

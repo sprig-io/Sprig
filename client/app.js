@@ -4,7 +4,7 @@ import React from 'react';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import Login from './components/Login.js';
 import Register from './components/Register.js';
-import Dashboard from './components/PlaidAccount';
+import Dashboard from './components/dashboard/index.js';
 import Home from './components/Home';
 import PrivateRoute from './components/private-route/PrivateRoute';
 import jwt_decode from 'jwt-decode';
@@ -12,6 +12,7 @@ import setAuthToken from './utils/setAuthToken';
 import { fetchUser, logoutUser } from './store/userReducer';
 import store from './store';
 import { Provider } from 'react-redux';
+import Navbar from './components/Navbar';
 
 if (localStorage.jwt) {
   // Set auth token header auth
@@ -36,12 +37,13 @@ export default class App extends React.Component {
     return (
       <Provider store={store}>
         <BrowserRouter>
+          <Navbar />
           <Route exact path="/" component={Home} />
           <Route path="/login" component={Login} />
 
           <Route exact path="/register" component={Register} />
           <Switch>
-            <PrivateRoute path="/dashboard" component={Dashboard} />
+            <PrivateRoute exact path="/dashboard" component={Dashboard} />
           </Switch>
         </BrowserRouter>
       </Provider>
