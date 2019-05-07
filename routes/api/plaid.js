@@ -1,12 +1,8 @@
 const express = require('express');
 const plaid = require('plaid');
 const router = express.Router();
-
 const passport = require('passport');
-const jwt = require('jsonwebtoken');
-
 const moment = require('moment');
-const mongoose = require('mongoose');
 const {
   PLAID_CLIENT_ID,
   PLAID_SECRET,
