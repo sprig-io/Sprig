@@ -293,8 +293,6 @@ function (_React$Component) {
   _createClass(Login, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      console.log("this is from login page", this.props.isAuthenticated);
-
       if (this.props.isAuthenticated) {
         this.props.history.push({
           pathname: "/dashboard"
@@ -304,8 +302,6 @@ function (_React$Component) {
   }, {
     key: "componentWillReceiveProps",
     value: function componentWillReceiveProps(nextProps) {
-      console.log("this is from login page component will receive priops,nextpriops", nextProps);
-
       if (nextProps.isAuthenticated) {
         this.props.history.push({
           pathname: "/dashboard",
@@ -889,21 +885,12 @@ function (_Component) {
   _createClass(Dashboard, [{
     key: "render",
     value: function render() {
-      console.log("this is this.props", this.props);
-      console.log(this.props.location.isAuthenticated);
       return this.props.location.isAuthenticated ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboard_Transaction__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PlaidAccount__WEBPACK_IMPORTED_MODULE_1__["default"], null)) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PlaidAccount__WEBPACK_IMPORTED_MODULE_1__["default"], null);
     }
   }]);
 
   return Dashboard;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
-/* return (
-  <div>
-    <PlaidAccountTransactions />
-    <ConnectedPlaidAccount />
-  </div>
-); */
-
 
 
 
@@ -38483,7 +38470,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

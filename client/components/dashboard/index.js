@@ -7,8 +7,6 @@ export default class Dashboard extends Component {
     super(props);
   }
   render() {
-    console.log("this is this.props", this.props);
-    console.log(this.props.location.isAuthenticated);
     return this.props.location.isAuthenticated ? (
       <div>
         <PlaidAccountTransactions />
@@ -19,10 +17,3 @@ export default class Dashboard extends Component {
     );
   }
 }
-
-/* return (
-  <div>
-    <PlaidAccountTransactions />
-    <ConnectedPlaidAccount />
-  </div>
-); */

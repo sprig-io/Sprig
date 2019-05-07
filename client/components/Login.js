@@ -14,7 +14,6 @@ class Login extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   componentDidMount() {
-    console.log("this is from login page", this.props.isAuthenticated);
     if (this.props.isAuthenticated) {
       this.props.history.push({
         pathname: "/dashboard"
@@ -22,10 +21,6 @@ class Login extends React.Component {
     }
   }
   componentWillReceiveProps(nextProps) {
-    console.log(
-      "this is from login page component will receive priops,nextpriops",
-      nextProps
-    );
     if (nextProps.isAuthenticated) {
       this.props.history.push({
         pathname: "/dashboard",
@@ -48,7 +43,6 @@ class Login extends React.Component {
     this.props.loggedInUser(this.state);
   }
   render() {
-    console.log("this is from render in login", this.props.isAuthenticated);
     return (
       <div>
         <div>Login page</div>
