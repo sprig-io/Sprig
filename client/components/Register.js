@@ -1,15 +1,15 @@
-import React from "react";
-import { connect } from "react-redux";
-import { createdUser } from "../store/userReducer";
+import React from 'react';
+import { connect } from 'react-redux';
+import { createdUser } from '../store/userReducer';
 
 class Register extends React.Component {
   constructor() {
     super();
     this.state = {
-      name: "",
-      email: "",
-      password: "",
-      password2: ""
+      name: '',
+      email: '',
+      password: '',
+      password2: '',
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -20,10 +20,10 @@ class Register extends React.Component {
   handleSubmit(event) {
     //this is where we wanna map dispatch the thunk?
     event.preventDefault();
-    console.log(this.state, "STATE");
+    console.log(this.state, 'STATE');
     this.props.createdUser(this.state);
     return this.props.history.push({
-      pathname: "/login"
+      pathname: '/login',
     });
   }
   render() {
@@ -76,11 +76,11 @@ class Register extends React.Component {
 
 const mapStateToProps = state => ({
   currentUser: state.userReducer.user,
-  isLoggedIn: state.userReducer.isLoggedIn
+  isLoggedIn: state.userReducer.isLoggedIn,
 });
 
 const mapDispatchToProps = dispatch => ({
-  createdUser: user => dispatch(createdUser(user))
+  createdUser: user => dispatch(createdUser(user)),
 });
 
 export default connect(

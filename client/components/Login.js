@@ -8,16 +8,22 @@ class Login extends React.Component {
     this.state = {
       email: '',
       password: '',
-
       errors: {},
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.isLoggedIn) {
+  componentDidMount() {
+    if (this.props.isAuthenticated) {
       this.props.history.push('/dashboard');
+    }
+  }
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.isAuthenticated) {
+      this.props.history.push({
+        pathname: '/dashboard',
+        isAuthenticated: this.props.isAuthenticated,
+      });
     }
     if (nextProps.errors) {
       this.setState({
@@ -66,7 +72,7 @@ class Login extends React.Component {
 
 const mapStateToProps = state => ({
   currentUser: state.user,
-  isLoggedIn: state.userReducer.isLoggedIn,
+  isAuthenticated: state.userReducer.isAuthenticated,
 });
 
 const mapDispatchToProps = dispatch => ({

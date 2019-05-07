@@ -18,7 +18,7 @@ const AccountSchema = new Schema({
     type: String,
     required: true,
   },
-  accountName: {
+  institutionName: {
     type: String,
   },
   accountSubtype: {

@@ -55,9 +55,9 @@ const mapDispatchToProps = dispatch => ({
   addingAccount: plaidData => dispatch(addingAccount(plaidData)),
 });
 
-const connectedPlaidAccount = connect(
+const ConnectedPlaidAccount = connect(
   mapStateToProps,
   mapDispatchToProps
 )(PlaidAccount);
 
-export default connectedPlaidAccount;
+export default ConnectedPlaidAccount;

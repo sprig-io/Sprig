@@ -6,22 +6,28 @@ import setAuthToken from '../utils/setAuthToken';
 const initialState = {
   isAuthenticated: false,
   user: {},
-  isLoggedIn: false,
 };
 
 const isEmpty = require('is-empty');
 //ACTION TYPES
 const CREATE_USER = 'CREATE_USER'; // for user registration
 const GET_CURRENT_USER = 'GET_CURRENT_USER'; // for getting current user from login
+export const GET_ERRORS = 'GET_ERRORS';
+
 //ACTION CRETORS
-const createUser = user => ({
+export const createUser = user => ({
   type: CREATE_USER,
   user,
 });
 
-const fetchUser = user => ({
+export const fetchUser = user => ({
   type: GET_CURRENT_USER,
   user,
+});
+
+export const getErrors = err => ({
+  type: GET_ERRORS,
+  err,
 });
 
 //Thunk - for user registration
@@ -30,7 +36,7 @@ export const createdUser = user => async dispatch => {
     const { data } = await axios.post('/api/users/register', user);
     dispatch(createUser(data));
   } catch (err) {
-    console.error(err);
+    dispatch(getErrors(err.response.data));
   }
 };
 //Thunk - for user login
@@ -39,14 +45,23 @@ export const loggedInUser = user => async dispatch => {
     const res = await axios.post('/api/users/login', user);
     console.log(res, 'RES');
     const token = res.data.token;
-    localStorage.setItem('token', token);
+    localStorage.setItem('jwt', token);
     setAuthToken(token);
     const data = jwtDecode(token);
-    console.log(data);
+    console.log('the payload', data);
     dispatch(fetchUser(data));
   } catch (err) {
     console.error(err);
   }
+};
+
+export const logoutUser = () => dispatch => {
+  // Remove token from local storage
+  localStorage.removeItem('jwt');
+  // Remove auth header for future requests
+  setAuthToken(false);
+  // Set current user to empty object {} which will set isAuthenticated to false
+  dispatch(fetchUser({}));
 };
 
 //reducer
@@ -54,13 +69,16 @@ export const loggedInUser = user => async dispatch => {
 export default function(state = initialState, action) {
   switch (action.type) {
     case CREATE_USER:
-      return { ...state, user: action.user, isLoggedIn: true };
+      return {
+        ...state,
+        user: action.user,
+        isAuthenticated: !isEmpty(action.user),
+      };
     case GET_CURRENT_USER:
       return {
         ...state,
         user: action.user,
-        isLoggedIn: true,
-        isAuthenticated: !isEmpty(action.payload),
+        isAuthenticated: !isEmpty(action.user),
       };
     default:
       return state;
