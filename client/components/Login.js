@@ -17,10 +17,6 @@ class Login extends React.Component {
     if (this.props.isAuthenticated) {
       this.props.history.push({
         pathname: '/dashboard',
-<<<<<<< HEAD
-        isAuthenticated: this.props.isAuthenticated,
-=======
->>>>>>> master
       });
     }
   }
@@ -28,10 +24,6 @@ class Login extends React.Component {
     if (nextProps.isAuthenticated) {
       this.props.history.push({
         pathname: '/dashboard',
-<<<<<<< HEAD
-        isAuthenticated: nextProps.isAuthenticated,
-=======
->>>>>>> master
       });
     }
     if (nextProps.errors) {

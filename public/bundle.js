@@ -237,9 +237,136 @@ var Home = function Home() {
   !*** ./client/components/Login.js ***!
   \************************************/
 /*! exports provided: default */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/client/components/Login.js: Unexpected token (20:0)\n\n\u001b[0m \u001b[90m 18 | \u001b[39m      \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mprops\u001b[33m.\u001b[39mhistory\u001b[33m.\u001b[39mpush({\u001b[0m\n\u001b[0m \u001b[90m 19 | \u001b[39m        pathname\u001b[33m:\u001b[39m \u001b[32m'/dashboard'\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 20 | \u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<\u001b[39m \u001b[33mHEAD\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    | \u001b[39m\u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 21 | \u001b[39m        isAuthenticated\u001b[33m:\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mprops\u001b[33m.\u001b[39misAuthenticated\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 22 | \u001b[39m\u001b[33m===\u001b[39m\u001b[33m===\u001b[39m\u001b[33m=\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 23 | \u001b[39m\u001b[33m>>>\u001b[39m\u001b[33m>>>\u001b[39m\u001b[33m>\u001b[39m master\u001b[0m\n    at Object.raise (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/parser/lib/index.js:6322:17)\n    at Object.unexpected (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/parser/lib/index.js:7638:16)\n    at Object.parseIdentifierName (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/parser/lib/index.js:9479:18)\n    at Object.parseIdentifier (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/parser/lib/index.js:9457:23)\n    at Object.parseMaybePrivateName (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/parser/lib/index.js:8821:19)\n    at Object.parsePropertyName (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/parser/lib/index.js:9277:98)\n    at Object.parseObjectMember (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/parser/lib/index.js:9178:10)\n    at Object.parseObj (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/parser/lib/index.js:9112:25)\n    at Object.parseExprAtom (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/parser/lib/index.js:8745:21)\n    at Object.parseExprAtom (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/parser/lib/index.js:3596:20)\n    at Object.parseExprSubscripts (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/parser/lib/index.js:8385:23)\n    at Object.parseMaybeUnary (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/parser/lib/index.js:8365:21)\n    at Object.parseExprOps (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/parser/lib/index.js:8252:23)\n    at Object.parseMaybeConditional (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/parser/lib/index.js:8225:23)\n    at Object.parseMaybeAssign (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/parser/lib/index.js:8172:21)\n    at Object.parseExprListItem (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/parser/lib/index.js:9449:18)\n    at Object.parseCallExpressionArguments (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/parser/lib/index.js:8592:22)\n    at Object.parseSubscript (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/parser/lib/index.js:8487:29)\n    at Object.parseSubscripts (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/parser/lib/index.js:8406:19)\n    at Object.parseExprSubscripts (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/parser/lib/index.js:8395:17)\n    at Object.parseMaybeUnary (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/parser/lib/index.js:8365:21)\n    at Object.parseExprOps (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/parser/lib/index.js:8252:23)\n    at Object.parseMaybeConditional (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/parser/lib/index.js:8225:23)\n    at Object.parseMaybeAssign (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/parser/lib/index.js:8172:21)\n    at Object.parseExpression (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/parser/lib/index.js:8120:23)\n    at Object.parseStatementContent (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/parser/lib/index.js:9892:23)\n    at Object.parseStatement (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/parser/lib/index.js:9763:17)\n    at Object.parseBlockOrModuleBlockBody (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/parser/lib/index.js:10340:25)\n    at Object.parseBlockBody (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/parser/lib/index.js:10327:10)\n    at Object.parseBlock (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/parser/lib/index.js:10311:10)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _store_userReducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../store/userReducer */ "./client/store/userReducer.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+var Login =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Login, _React$Component);
+
+  function Login() {
+    var _this;
+
+    _classCallCheck(this, Login);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Login).call(this));
+    _this.state = {
+      email: '',
+      password: '',
+      errors: {}
+    };
+    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(Login, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      if (this.props.isAuthenticated) {
+        this.props.history.push({
+          pathname: '/dashboard'
+        });
+      }
+    }
+  }, {
+    key: "componentWillReceiveProps",
+    value: function componentWillReceiveProps(nextProps) {
+      if (nextProps.isAuthenticated) {
+        this.props.history.push({
+          pathname: '/dashboard'
+        });
+      }
+
+      if (nextProps.errors) {
+        this.setState({
+          errors: nextProps.errors
+        });
+      }
+    }
+  }, {
+    key: "handleChange",
+    value: function handleChange(event) {
+      this.setState(_defineProperty({}, event.target.name, event.target.value));
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(event) {
+      //this is where we wanna map dispatch the thunk?
+      event.preventDefault();
+      this.props.loggedInUser(this.state);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Login page"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        onSubmit: this.handleSubmit
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Email:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        name: "email",
+        value: this.state.email,
+        onChange: this.handleChange
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Password:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        name: "password",
+        value: this.state.password,
+        onChange: this.handleChange
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "submit",
+        value: "Log In"
+      })));
+    }
+  }]);
+
+  return Login;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    currentUser: state.user,
+    isAuthenticated: state.userReducer.isAuthenticated
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    loggedInUser: function loggedInUser(user) {
+      return dispatch(Object(_store_userReducer__WEBPACK_IMPORTED_MODULE_2__["loggedInUser"])(user));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, mapDispatchToProps)(Login));
 
 /***/ }),
 
@@ -320,6 +447,119 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(null, mapDispatchToProps)(Navbar));
+
+/***/ }),
+
+/***/ "./client/components/PlaidAccount.js":
+/*!*******************************************!*\
+  !*** ./client/components/PlaidAccount.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _store_accountReducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../store/accountReducer */ "./client/store/accountReducer.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react_plaid_link_button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-plaid-link-button */ "./node_modules/react-plaid-link-button/dist/react-plaid-link-button/react-plaid-link-button.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+var PlaidAccount =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(PlaidAccount, _Component);
+
+  function PlaidAccount(props) {
+    var _this;
+
+    _classCallCheck(this, PlaidAccount);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(PlaidAccount).call(this, props));
+    _this.state = {
+      loaded: false
+    };
+    _this.handleOnSuccess = _this.handleOnSuccess.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(PlaidAccount, [{
+    key: "handleOnSuccess",
+    value: function handleOnSuccess(token, metadata) {
+      var accounts = this.props.accounts;
+      var plaidData = {
+        public_token: token,
+        metadata: metadata,
+        accounts: accounts
+      };
+      this.props.addingAccount(plaidData);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_plaid_link_button__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        buttonProps: {
+          className: 'btn btn-large waves-effect waves-light hoverable blue accent-3 main-btn'
+        },
+        plaidLinkProps: {
+          clientName: 'Sprig',
+          key: '371579f573cc098b5fbbee72dcc928',
+          env: 'sandbox',
+          product: ['transactions'],
+          onSuccess: this.handleOnSuccess
+        },
+        onScriptLoad: function onScriptLoad() {
+          return _this2.setState({
+            loaded: true
+          });
+        }
+      }, "Link Account"));
+    }
+  }]);
+
+  return PlaidAccount;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    user: state.userReducer.user
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    addingAccount: function addingAccount(plaidData) {
+      return dispatch(Object(_store_accountReducer__WEBPACK_IMPORTED_MODULE_1__["addingAccount"])(plaidData));
+    }
+  };
+};
+
+var ConnectedPlaidAccount = Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProps, mapDispatchToProps)(PlaidAccount);
+/* harmony default export */ __webpack_exports__["default"] = (ConnectedPlaidAccount);
 
 /***/ }),
 
@@ -452,14 +692,271 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
+/***/ "./client/components/dashboard/Summary.js":
+/*!************************************************!*\
+  !*** ./client/components/dashboard/Summary.js ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Summary; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var Summary =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Summary, _React$Component);
+
+  function Summary(props) {
+    _classCallCheck(this, Summary);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Summary).call(this, props));
+  }
+
+  _createClass(Summary, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Account name goes here..."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "$ in cash "));
+    }
+  }]);
+
+  return Summary;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+
+
+/***/ }),
+
+/***/ "./client/components/dashboard/Transaction.js":
+/*!****************************************************!*\
+  !*** ./client/components/dashboard/Transaction.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _store_accountReducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../store/accountReducer */ "./client/store/accountReducer.js");
+/* harmony import */ var _store_userReducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../store/userReducer */ "./client/store/userReducer.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+var Transactions =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Transactions, _Component);
+
+  function Transactions(props) {
+    var _this;
+
+    _classCallCheck(this, Transactions);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Transactions).call(this, props));
+    _this.state = {
+      loaded: false
+    };
+    _this.onLogoutClick = _this.onLogoutClick.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(Transactions, [{
+    key: "componentDidMount",
+    value: function () {
+      var _componentDidMount = _asyncToGenerator(
+      /*#__PURE__*/
+      regeneratorRuntime.mark(function _callee() {
+        var accounts;
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return this.props.gettingAccounts();
+
+              case 2:
+                accounts = this.props.accounts;
+                console.log("hi", this.props.accounts);
+                this.props.gettingTransactions(accounts);
+                console.log("i am coming to the transaction component did mount"); // await this.props.gettingTransactions(currentAccounts);
+                // this.props.gettingTransactions(accounts);
+
+              case 6:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function componentDidMount() {
+        return _componentDidMount.apply(this, arguments);
+      }
+
+      return componentDidMount;
+    }()
+  }, {
+    key: "onLogoutClick",
+    value: function onLogoutClick(e) {
+      e.preventDefault();
+      this.props.logoutUser();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "'i am coming here'"), this.props.transactions.map(function (elem) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "elem.amount");
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.onLogoutClick
+      }, "Log Out"));
+    }
+  }]);
+
+  return Transactions;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    user: state.userReducer.user,
+    accounts: state.accountReducer.accounts,
+    transactions: state.accountReducer.transactions
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    gettingTransactions: function gettingTransactions(plaidAccountData) {
+      return dispatch(Object(_store_accountReducer__WEBPACK_IMPORTED_MODULE_2__["gettingTransactions"])(plaidAccountData));
+    },
+    gettingAccounts: function gettingAccounts() {
+      return dispatch(Object(_store_accountReducer__WEBPACK_IMPORTED_MODULE_2__["gettingAccounts"])());
+    },
+    logoutUser: function logoutUser() {
+      return dispatch(Object(_store_userReducer__WEBPACK_IMPORTED_MODULE_3__["logoutUser"])());
+    }
+  };
+};
+
+var PlaidAccountTransactions = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, mapDispatchToProps)(Transactions);
+/* harmony default export */ __webpack_exports__["default"] = (PlaidAccountTransactions);
+
+/***/ }),
+
 /***/ "./client/components/dashboard/index.js":
 /*!**********************************************!*\
   !*** ./client/components/dashboard/index.js ***!
   \**********************************************/
 /*! exports provided: default */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/client/components/dashboard/index.js: Unexpected token (3:1)\n\n\u001b[0m \u001b[90m 1 | \u001b[39m\u001b[36mimport\u001b[39m \u001b[33mReact\u001b[39m\u001b[33m,\u001b[39m { \u001b[33mComponent\u001b[39m } from \u001b[32m'react'\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 2 | \u001b[39m\u001b[36mimport\u001b[39m \u001b[33mConnectedPlaidAccount\u001b[39m from \u001b[32m'../PlaidAccount'\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 3 | \u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<\u001b[39m \u001b[33mHEAD\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m   | \u001b[39m \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 4 | \u001b[39m\u001b[36mimport\u001b[39m \u001b[33mPlaidAccountTransactions\u001b[39m from \u001b[32m'./Transaction'\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 5 | \u001b[39m\u001b[36mimport\u001b[39m \u001b[33mSummary\u001b[39m from \u001b[32m'./Summary'\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 6 | \u001b[39m\u001b[0m\n    at Object.raise (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/parser/lib/index.js:6322:17)\n    at Object.unexpected (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/parser/lib/index.js:7638:16)\n    at Object.jsxParseIdentifier (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/parser/lib/index.js:3376:12)\n    at Object.jsxParseNamespacedName (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/parser/lib/index.js:3386:23)\n    at Object.jsxParseElementName (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/parser/lib/index.js:3397:21)\n    at Object.jsxParseOpeningElementAt (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/parser/lib/index.js:3482:22)\n    at Object.jsxParseElementAt (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/parser/lib/index.js:3515:33)\n    at Object.jsxParseElement (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/parser/lib/index.js:3584:17)\n    at Object.parseExprAtom (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/parser/lib/index.js:3591:19)\n    at Object.parseExprSubscripts (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/parser/lib/index.js:8385:23)\n    at Object.parseMaybeUnary (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/parser/lib/index.js:8365:21)\n    at Object.parseExprOps (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/parser/lib/index.js:8252:23)\n    at Object.parseMaybeConditional (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/parser/lib/index.js:8225:23)\n    at Object.parseMaybeAssign (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/parser/lib/index.js:8172:21)\n    at Object.parseExpression (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/parser/lib/index.js:8120:23)\n    at Object.parseStatementContent (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/parser/lib/index.js:9892:23)\n    at Object.parseStatement (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/parser/lib/index.js:9763:17)\n    at Object.parseBlockOrModuleBlockBody (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/parser/lib/index.js:10340:25)\n    at Object.parseBlockBody (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/parser/lib/index.js:10327:10)\n    at Object.parseTopLevel (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/parser/lib/index.js:9692:10)\n    at Object.parse (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/parser/lib/index.js:11209:17)\n    at parse (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/parser/lib/index.js:11245:38)\n    at parser (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/core/lib/transformation/normalize-file.js:170:34)\n    at normalizeFile (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/core/lib/transformation/normalize-file.js:138:11)\n    at runSync (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/core/lib/transformation/index.js:44:43)\n    at runAsync (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/core/lib/transformation/index.js:35:14)\n    at process.nextTick (/Users/charlynmanuyag/Desktop/GraceHopper/seniorPhase/Capstone/Sprig/node_modules/@babel/core/lib/transform.js:34:34)\n    at process._tickCallback (internal/process/next_tick.js:61:11)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _PlaidAccount__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../PlaidAccount */ "./client/components/PlaidAccount.js");
+/* harmony import */ var _Summary__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Summary */ "./client/components/dashboard/Summary.js");
+/* harmony import */ var _dashboard_Transaction__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../dashboard/Transaction */ "./client/components/dashboard/Transaction.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+
+var Dashboard =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Dashboard, _Component);
+
+  function Dashboard(props) {
+    _classCallCheck(this, Dashboard);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Dashboard).call(this, props));
+  }
+
+  _createClass(Dashboard, [{
+    key: "render",
+    value: function render() {
+      return this.props.user.isAuthenticated ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Summary__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboard_Transaction__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PlaidAccount__WEBPACK_IMPORTED_MODULE_1__["default"], null)) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PlaidAccount__WEBPACK_IMPORTED_MODULE_1__["default"], null);
+    }
+  }]);
+
+  return Dashboard;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    user: state.userReducer
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_4__["connect"])(mapStateToProps, null)(Dashboard));
 
 /***/ }),
 
@@ -36623,6 +37120,150 @@ exports.isSuspense = isSuspense;
 if (false) {} else {
   module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ "./node_modules/react-is/cjs/react-is.development.js");
 }
+
+
+/***/ }),
+
+/***/ "./node_modules/react-plaid-link-button/dist/react-plaid-link-button/react-plaid-link-button.js":
+/*!******************************************************************************************************!*\
+  !*** ./node_modules/react-plaid-link-button/dist/react-plaid-link-button/react-plaid-link-button.js ***!
+  \******************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __assign = (undefined && undefined.__assign) || Object.assign || function(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+    }
+    return t;
+};
+
+
+var PlaidLinkButton = /** @class */ (function (_super) {
+    __extends(PlaidLinkButton, _super);
+    function PlaidLinkButton(props) {
+        var _this = _super.call(this, props) || this;
+        _this.handleButtonClick = function () {
+            _this.plaidLinkHandler.open();
+        };
+        _this.handleScriptLoad = function () {
+            _this.setState({ scriptLoaded: true });
+            _this.plaidLinkHandler = window.Plaid.create(__assign({}, _this.props.plaidLinkProps));
+            if (_this.props.onScriptLoad)
+                _this.props.onScriptLoad();
+        };
+        _this.handleScriptError = function () {
+            _this.setState({ scriptErrored: true });
+            if (_this.props.onScriptError)
+                _this.props.onScriptError();
+        };
+        _this.getScriptEl = function () {
+            return document.querySelector("script[src=\"" + _this.props.scriptUrl + "\"]");
+        };
+        _this.state = {
+            scriptErrored: false,
+            scriptLoaded: false,
+        };
+        return _this;
+    }
+    PlaidLinkButton.prototype.componentDidMount = function () {
+        var scriptEl = this.getScriptEl();
+        var scriptAlreadyInserted = scriptEl != null;
+        var scriptAlreadyLoaded = scriptAlreadyInserted && window.Plaid;
+        if (scriptAlreadyLoaded) {
+            this.handleScriptLoad();
+            return;
+        }
+        if (scriptAlreadyInserted) {
+            scriptEl.addEventListener('load', this.handleScriptLoad);
+            return;
+        }
+        scriptEl = document.createElement('script');
+        scriptEl.type = 'text/javascript';
+        scriptEl.src = this.props.scriptUrl;
+        scriptEl.addEventListener('load', this.handleScriptLoad);
+        scriptEl.addEventListener('error', this.handleScriptError);
+        document.head.appendChild(scriptEl);
+    };
+    PlaidLinkButton.prototype.componentWillUnmount = function () {
+        var scriptEl = this.getScriptEl();
+        if (scriptEl) {
+            scriptEl.removeEventListener('load', this.handleScriptLoad);
+            scriptEl.removeEventListener('error', this.handleScriptError);
+        }
+    };
+    PlaidLinkButton.prototype.render = function () {
+        return (react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", __assign({}, this.props.buttonProps, { disabled: this.state.scriptErrored || !this.state.scriptLoaded, onClick: this.handleButtonClick }), this.props.children));
+    };
+    PlaidLinkButton.propTypes = {
+        // Any props set here will be spread onto the top-level button element
+        buttonProps: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.object,
+        // Used to set the button text
+        children: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.node,
+        scriptUrl: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string,
+        onScriptLoad: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.func,
+        onScriptError: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.func,
+        // See: https://plaid.com/docs/api/#integrating-with-link
+        plaidLinkProps: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.shape({
+            // Displayed once a user has successfully linked their account
+            clientName: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string.isRequired,
+            // A list of Plaid product(s) you wish to use. Valid products are : transactions, auth, and identity.
+            // Only institutions that support all requested products will be shown.
+            product: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.arrayOf(prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.oneOf(['auth', 'transactions', 'identity', 'balance', 'income', 'assets'])).isRequired,
+            // The public_key associated with your account; available from the Dashboard.
+            key: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string.isRequired,
+            // The Plaid API environment on which to create user accounts.
+            // For development and testing, use sandbox or development. For production use, use production.
+            // Note: all production requests are billed.
+            env: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.oneOf(['sandbox', 'development', 'production']).isRequired,
+            // A function that is called when a user has successfully onboarded an Item.
+            // The function should expect two arguments, the public_token and a metadata object.
+            onSuccess: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.func.isRequired,
+            // A function that is called when a user has specifically exited the Link flow.
+            // The function should expect two arguments, a nullable error object and a metadata object.
+            onExit: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.func,
+            // A function that is called when a user reaches certain points in the Link flow.
+            // The function should expect two arguments, an eventName string and a metadata object. See onEvent.
+            onEvent: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.func,
+            // A function that is called when the Link module has finished loading.
+            // Calls to plaidLinkHandler.open() prior to the onLoad callback will be delayed until the module is fully loaded.
+            onLoad: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.func,
+            // Specify a webhook to associate with an Item.
+            // Plaid fires a webhook when the Item requires updated credentials or when new data is available.
+            webhook: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string,
+            // Specify a public_token to launch Link in update mode for a particular Item.
+            // This will cause Link to open directly to the authentication step for that Item's institution.
+            // Use the POST /item/public_token/create endpoint to generate a public_token for an Item.
+            token: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string,
+            // Set to true if launching Link within a WebView.
+            isWebView: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.bool,
+        }).isRequired,
+    };
+    PlaidLinkButton.defaultProps = {
+        scriptUrl: 'https://cdn.plaid.com/link/v2/stable/link-initialize.js',
+        children: 'Link new account',
+    };
+    return PlaidLinkButton;
+}(react__WEBPACK_IMPORTED_MODULE_1___default.a.PureComponent));
+/* harmony default export */ __webpack_exports__["default"] = (PlaidLinkButton);
 
 
 /***/ }),
