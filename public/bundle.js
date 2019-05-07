@@ -281,8 +281,8 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Login).call(this));
     _this.state = {
-      email: '',
-      password: '',
+      email: "",
+      password: "",
       errors: {}
     };
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
@@ -293,17 +293,23 @@ function (_React$Component) {
   _createClass(Login, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      console.log("this is from login page", this.props.isAuthenticated);
+
       if (this.props.isAuthenticated) {
-        this.props.history.push('/dashboard');
+        this.props.history.push({
+          pathname: "/dashboard"
+        });
       }
     }
   }, {
     key: "componentWillReceiveProps",
     value: function componentWillReceiveProps(nextProps) {
+      console.log("this is from login page component will receive priops,nextpriops", nextProps);
+
       if (nextProps.isAuthenticated) {
         this.props.history.push({
-          pathname: '/dashboard',
-          isAuthenticated: this.props.isAuthenticated
+          pathname: "/dashboard",
+          isAuthenticated: nextProps.isAuthenticated
         });
       }
 
@@ -328,6 +334,7 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      console.log("this is from render in login", this.props.isAuthenticated);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Login page"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Email:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -766,11 +773,12 @@ function (_Component) {
 
               case 2:
                 accounts = this.props.accounts;
-                console.log('hi', this.props.accounts);
-                this.props.gettingTransactions(accounts); // await this.props.gettingTransactions(currentAccounts);
+                console.log("hi", this.props.accounts);
+                this.props.gettingTransactions(accounts);
+                console.log("i am coming to the transaction component did mount"); // await this.props.gettingTransactions(currentAccounts);
                 // this.props.gettingTransactions(accounts);
 
-              case 5:
+              case 6:
               case "end":
                 return _context.stop();
             }
@@ -881,12 +889,21 @@ function (_Component) {
   _createClass(Dashboard, [{
     key: "render",
     value: function render() {
-      return this.props.isAuthenticated ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboard_Transaction__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PlaidAccount__WEBPACK_IMPORTED_MODULE_1__["default"], null)) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PlaidAccount__WEBPACK_IMPORTED_MODULE_1__["default"], null);
+      console.log("this is this.props", this.props);
+      console.log(this.props.location.isAuthenticated);
+      return this.props.location.isAuthenticated ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboard_Transaction__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PlaidAccount__WEBPACK_IMPORTED_MODULE_1__["default"], null)) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PlaidAccount__WEBPACK_IMPORTED_MODULE_1__["default"], null);
     }
   }]);
 
   return Dashboard;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+/* return (
+  <div>
+    <PlaidAccountTransactions />
+    <ConnectedPlaidAccount />
+  </div>
+); */
+
 
 
 
