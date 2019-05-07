@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import ConnectedPlaidAccount from '../PlaidAccount';
 import PlaidAccountTransactions from '../dashboard/Transaction';
+import InsightCard from './insights/InsightCards';
 import { connect } from 'react-redux';
+
 class Dashboard extends Component {
   constructor(props) {
     super(props);
@@ -9,7 +11,8 @@ class Dashboard extends Component {
   render() {
     return this.props.user.isAuthenticated ? (
       <div>
-        <PlaidAccountTransactions />
+        <InsightCard />
+
         <ConnectedPlaidAccount />
       </div>
     ) : (
