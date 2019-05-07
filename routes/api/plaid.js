@@ -38,6 +38,7 @@ router.get(
   passport.authenticate('jwt', { session: false }),
   async (req, res, next) => {
     try {
+      console.log(req, 'REQ');
       const accounts = await Account.find({ userId: req.user.id });
       console.log('the accounts', accounts);
       return res.json(accounts);

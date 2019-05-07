@@ -15,12 +15,12 @@ const GET_CURRENT_USER = 'GET_CURRENT_USER'; // for getting current user from lo
 export const GET_ERRORS = 'GET_ERRORS';
 
 //ACTION CRETORS
-const createUser = user => ({
+export const createUser = user => ({
   type: CREATE_USER,
   user,
 });
 
-const fetchUser = user => ({
+export const fetchUser = user => ({
   type: GET_CURRENT_USER,
   user,
 });
@@ -53,6 +53,15 @@ export const loggedInUser = user => async dispatch => {
   } catch (err) {
     console.error(err);
   }
+};
+
+export const logoutUser = () => dispatch => {
+  // Remove token from local storage
+  localStorage.removeItem('jwt');
+  // Remove auth header for future requests
+  setAuthToken(false);
+  // Set current user to empty object {} which will set isAuthenticated to false
+  dispatch(fetchUser({}));
 };
 
 //reducer
