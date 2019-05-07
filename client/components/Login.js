@@ -1,33 +1,35 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { loggedInUser } from '../store/userReducer';
+import React from "react";
+import { connect } from "react-redux";
+import { loggedInUser } from "../store/userReducer";
 
 class Login extends React.Component {
   constructor() {
     super();
     this.state = {
-      email: '',
-      password: '',
-      errors: {},
+      email: "",
+      password: "",
+      errors: {}
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   componentDidMount() {
     if (this.props.isAuthenticated) {
-      this.props.history.push('/dashboard');
+      this.props.history.push({
+        pathname: "/dashboard"
+      });
     }
   }
   componentWillReceiveProps(nextProps) {
     if (nextProps.isAuthenticated) {
       this.props.history.push({
-        pathname: '/dashboard',
-        isAuthenticated: this.props.isAuthenticated,
+        pathname: "/dashboard",
+        isAuthenticated: nextProps.isAuthenticated
       });
     }
     if (nextProps.errors) {
       this.setState({
-        errors: nextProps.errors,
+        errors: nextProps.errors
       });
     }
   }
@@ -72,11 +74,11 @@ class Login extends React.Component {
 
 const mapStateToProps = state => ({
   currentUser: state.user,
-  isAuthenticated: state.userReducer.isAuthenticated,
+  isAuthenticated: state.userReducer.isAuthenticated
 });
 
 const mapDispatchToProps = dispatch => ({
-  loggedInUser: user => dispatch(loggedInUser(user)),
+  loggedInUser: user => dispatch(loggedInUser(user))
 });
 
 export default connect(
