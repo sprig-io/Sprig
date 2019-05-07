@@ -281,8 +281,8 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Login).call(this));
     _this.state = {
-      email: "",
-      password: "",
+      email: '',
+      password: '',
       errors: {}
     };
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
@@ -295,7 +295,7 @@ function (_React$Component) {
     value: function componentDidMount() {
       if (this.props.isAuthenticated) {
         this.props.history.push({
-          pathname: "/dashboard"
+          pathname: '/dashboard'
         });
       }
     }
@@ -304,8 +304,7 @@ function (_React$Component) {
     value: function componentWillReceiveProps(nextProps) {
       if (nextProps.isAuthenticated) {
         this.props.history.push({
-          pathname: "/dashboard",
-          isAuthenticated: nextProps.isAuthenticated
+          pathname: '/dashboard'
         });
       }
 
@@ -843,11 +842,11 @@ var PlaidAccountTransactions = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Dashboard; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _PlaidAccount__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../PlaidAccount */ "./client/components/PlaidAccount.js");
 /* harmony import */ var _dashboard_Transaction__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../dashboard/Transaction */ "./client/components/dashboard/Transaction.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -870,6 +869,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var Dashboard =
 /*#__PURE__*/
 function (_Component) {
@@ -884,14 +884,20 @@ function (_Component) {
   _createClass(Dashboard, [{
     key: "render",
     value: function render() {
-      return this.props.location.isAuthenticated ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboard_Transaction__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PlaidAccount__WEBPACK_IMPORTED_MODULE_1__["default"], null)) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PlaidAccount__WEBPACK_IMPORTED_MODULE_1__["default"], null);
+      return this.props.user.isAuthenticated ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboard_Transaction__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PlaidAccount__WEBPACK_IMPORTED_MODULE_1__["default"], null)) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PlaidAccount__WEBPACK_IMPORTED_MODULE_1__["default"], null);
     }
   }]);
 
   return Dashboard;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    user: state.userReducer
+  };
+};
 
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["connect"])(mapStateToProps, null)(Dashboard));
 
 /***/ }),
 
