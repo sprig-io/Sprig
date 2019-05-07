@@ -12,7 +12,7 @@ class Dashboard extends Component {
     return this.props.user.isAuthenticated ? (
       <div>
         <InsightCard />
-
+        <PlaidAccountTransactions />
         <ConnectedPlaidAccount />
       </div>
     ) : (
