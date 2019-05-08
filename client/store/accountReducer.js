@@ -3,6 +3,7 @@ import axios from 'axios';
 const initialState = {
   accounts: [],
   transactions: [],
+  balance: [],
 };
 
 //ACTION TYPES
@@ -10,6 +11,7 @@ const ADD_ACCOUNT = 'ADD_ACCOUNT';
 const GET_TRANSACTIONS = 'GET_TRANSACTIONS';
 const DELETE_ACCOUNT = 'DELETE_ACCOUNT';
 const GET_ACCOUNTS = 'GET_ACCOUNTS';
+const GET_BALANCE = 'GET_BALANCE';
 
 //ACTION CREATOR
 
@@ -38,22 +40,24 @@ const getTransactions = plaidAccountData => {
   };
 };
 
+const getBalance = plaidAccountData => {
+  return {
+    type: GET_BALANCE,
+    plaidAccountData,
+  };
+};
+
 //Thunk
 
 export const gettingAccounts = () => async dispatch => {
-  console.log('in the thunk');
   const { data } = await axios.get('/api/plaid/accounts');
-  console.log('the accounts', data);
   dispatch(getAccounts(data));
 };
 export const addingAccount = plaidAccountData => async dispatch => {
-  const accounts = plaidAccountData.accounts;
-  console.log('PLAID ACCOUNT DATA', plaidAccountData);
   const { data } = await axios.post(
     '/api/plaid/accounts/add',
     plaidAccountData
   );
-  console.log('the data', data);
   dispatch(addAccount(data));
 };
 
@@ -68,8 +72,16 @@ export const gettingTransactions = plaidAccountData => async dispatch => {
     '/api/plaid/accounts/transactions',
     plaidAccountData
   );
-  console.log('the data', data);
   dispatch(getTransactions(data));
+};
+
+export const gettingBalance = plaidAccountData => async dispatch => {
+  const { data } = await axios.post(
+    '/api/plaid/accounts/balance',
+    plaidAccountData
+  );
+  console.log('BALANCE DATA', data);
+  dispatch(getBalance(data));
 };
 
 //REDUCER
@@ -93,6 +105,8 @@ export default function(state = initialState, action) {
       return { ...state, transactions: [...action.plaidAccountData] };
     case GET_ACCOUNTS:
       return { ...state, accounts: [...action.plaidAccountData] };
+    case GET_BALANCE:
+      return { ...state, balance: [...action.plaidAccountData] };
     default:
       return state;
   }
