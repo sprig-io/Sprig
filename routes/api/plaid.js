@@ -1,12 +1,8 @@
 const express = require('express');
 const plaid = require('plaid');
 const router = express.Router();
-
 const passport = require('passport');
-const jwt = require('jsonwebtoken');
-
 const moment = require('moment');
-const mongoose = require('mongoose');
 const {
   PLAID_CLIENT_ID,
   PLAID_SECRET,
@@ -190,7 +186,7 @@ router.post(
       accounts.forEach(function(account) {
         ACCESS_TOKEN = account.accessToken;
         const institutionName = account.institutionName;
-
+        console.log(ACCESS_TOKEN, 'ACCESS_TOKEN');
         client
           .getTransactions(ACCESS_TOKEN, thirtyDaysAgo, today)
           .then(response => {
@@ -205,6 +201,38 @@ router.post(
           })
           .catch(err => console.log(err));
       });
+    }
+  }
+);
+
+router.post(
+  '/accounts/balance',
+  passport.authenticate('jwt', { session: false }),
+  async (req, res, next) => {
+    try {
+      const now = moment();
+      const today = now.format('YYYY-MM-DD');
+      const thirtyDaysAgo = now.subtract(30, 'days').format('YYYY-MM-DD');
+
+      let accountBalance = [];
+      const accounts = req.body;
+      if (accounts) {
+        accounts.forEach(async function(account) {
+          ACCESS_TOKEN = account.accessToken;
+          const institutionName = account.institutionName;
+          const result = await client.getBalance(ACCESS_TOKEN);
+          accountBalance.push({
+            accountName: institutionName,
+            balance: result.accounts,
+          });
+
+          if (accountBalance.length === accounts.length) {
+            res.json(accountBalance);
+          }
+        });
+      }
+    } catch (error) {
+      next(error);
     }
   }
 );

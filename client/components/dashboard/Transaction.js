@@ -19,6 +19,7 @@ class Transactions extends Component {
   async componentDidMount() {
     await this.props.gettingAccounts();
     const { accounts } = this.props;
+    console.log('hi', this.props.accounts);
     await this.props.gettingTransactions(accounts);
     const { transactions } = this.props;
     this.props.gettingTransactions(accounts);
@@ -42,6 +43,7 @@ class Transactions extends Component {
         });
       });
     });
+
     let columnNames = [
       { title: 'Bank Name', field: 'Name' },
       { title: 'Vendor', field: 'companyName' },
