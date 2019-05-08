@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import ReactTable from "material-table";
+
 import {
   gettingAccounts,
   gettingTransactions
@@ -21,6 +22,7 @@ class Transactions extends Component {
     console.log("hi", this.props.accounts);
     await this.props.gettingTransactions(accounts);
     const { transactions } = this.props;
+    this.props.gettingTransactions(accounts);
   }
 
   onLogoutClick(e) {
