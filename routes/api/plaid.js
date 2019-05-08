@@ -152,4 +152,14 @@ router.post(
   }
 );
 
+router.post(
+  '/accounts/balance',
+  passport.authenticate('jwt', { session: false }),
+  async (req, res, next) => {
+    const now = moment();
+    const today = now.format('YYYY-MM-DD');
+    const thirtyDaysAgo = now.subtract(30, 'days').format('YYYY-MM-DD');
+  }
+);
+
 module.exports = router;
