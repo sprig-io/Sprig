@@ -4,7 +4,7 @@ import {
   gettingAccounts,
   gettingTransactions,
 } from '../../../store/accountReducer';
-import { getCategorySpend } from '../utils';
+import { getCategorySpend, getLargestTransaction } from '../utils';
 
 class InsightCard extends Component {
   async componentDidMount() {
@@ -14,7 +14,14 @@ class InsightCard extends Component {
   }
   render() {
     if (this.props.transactions.length) {
-      console.log(getCategorySpend(this.props.transactions, 'Food and Drink'));
+      console.log(
+        'amount spent on food and drink:',
+        getCategorySpend(this.props.transactions, 'Food and Drink')
+      );
+      console.log(
+        'largest transaction',
+        getLargestTransaction(this.props.transactions)
+      );
     }
 
     return (

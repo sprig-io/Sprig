@@ -18,3 +18,27 @@ export const getCategorySpend = (transactionProps, category) => {
       return (accum += elem.amount);
     }, 0);
 };
+
+// returns the largest transaction in the last 30 days - does not include credit card payments or account transfers
+
+export const getLargestTransaction = transactionProps => {
+  let simplified = simplifyTransactions(transactionProps);
+  return simplified.reduce(
+    (accum, elem) => {
+      if (
+        accum.amount < elem.amount &&
+        !elem.category.includes('Payment') &&
+        !elem.category.includes('Transfer')
+      ) {
+        accum.amount = elem.amount;
+        accum.merchant = elem.name;
+        accum.date = new Date(elem.date);
+      }
+      return accum;
+    },
+    {
+      amount: 0,
+      merchant: '',
+    }
+  );
+};

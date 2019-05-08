@@ -991,7 +991,8 @@ function (_Component) {
     key: "render",
     value: function render() {
       if (this.props.transactions.length) {
-        console.log(Object(_utils__WEBPACK_IMPORTED_MODULE_3__["getCategorySpend"])(this.props.transactions, 'Food and Drink'));
+        console.log('amount spent on food and drink:', Object(_utils__WEBPACK_IMPORTED_MODULE_3__["getCategorySpend"])(this.props.transactions, 'Food and Drink'));
+        console.log('largest transaction', Object(_utils__WEBPACK_IMPORTED_MODULE_3__["getLargestTransaction"])(this.props.transactions));
       }
 
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h1", null, "Hello World"));
@@ -1028,13 +1029,14 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 /*!**********************************************!*\
   !*** ./client/components/dashboard/utils.js ***!
   \**********************************************/
-/*! exports provided: simplifyTransactions, getCategorySpend */
+/*! exports provided: simplifyTransactions, getCategorySpend, getLargestTransaction */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "simplifyTransactions", function() { return simplifyTransactions; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCategorySpend", function() { return getCategorySpend; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getLargestTransaction", function() { return getLargestTransaction; });
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
@@ -1063,6 +1065,22 @@ var getCategorySpend = function getCategorySpend(transactionProps, category) {
   }).reduce(function (accum, elem) {
     return accum += elem.amount;
   }, 0);
+}; // returns the largest transaction in the last 30 days - does not include credit card payments or account transfers
+
+var getLargestTransaction = function getLargestTransaction(transactionProps) {
+  var simplified = simplifyTransactions(transactionProps);
+  return simplified.reduce(function (accum, elem) {
+    if (accum.amount < elem.amount && !elem.category.includes('Payment') && !elem.category.includes('Transfer')) {
+      accum.amount = elem.amount;
+      accum.merchant = elem.name;
+      accum.date = new Date(elem.date);
+    }
+
+    return accum;
+  }, {
+    amount: 0,
+    merchant: ''
+  });
 };
 
 /***/ }),
