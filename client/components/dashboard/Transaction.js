@@ -49,7 +49,7 @@ class Transactions extends Component {
       { title: "Date", field: "date" }
     ];
     return (
-      <div>
+      <div style={{ maxWidth: "90%" }}>
         <ReactTable
           title="Transactions"
           data={transData}
