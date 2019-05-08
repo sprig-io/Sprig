@@ -59,3 +59,36 @@ export const allCategorySpend = transactions => {
   });
   return { labels, spend };
 };
+
+//returns an object with merchant name and cumulative total spent at each merchant in last 30 days
+export const merchantSpend = transactionProps => {
+  let simplified = simplifyTransactions(transactionProps);
+  let newObj = {};
+  simplified.map(elem => {
+    if (
+      !elem.category.includes('Payment') &&
+      !elem.category.includes('Transfer')
+    ) {
+      if (newObj[elem.name] === undefined) {
+        newObj[elem.name] = elem.amount;
+      } else {
+        newObj[elem.name] += elem.amount;
+      }
+    }
+  });
+
+  return newObj;
+};
+
+//returns merchant with highest amount spent in the last 30 days cumulatively
+export const largestByMerchant = transactionProps => {
+  const newObj = merchantSpend(transactionProps);
+  let largest = { name: '', amount: 0 };
+  for (let key in newObj) {
+    if (newObj[key] > largest.amount) {
+      largest.name = key;
+      largest.amount = newObj[key];
+    }
+  }
+  return largest;
+};
