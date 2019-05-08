@@ -41,19 +41,18 @@ const getTransactions = plaidAccountData => {
 //Thunk
 
 export const gettingAccounts = () => async dispatch => {
-  console.log('in the thunk');
   const { data } = await axios.get('/api/plaid/accounts');
-  console.log('the accounts', data);
+
   dispatch(getAccounts(data));
 };
 export const addingAccount = plaidAccountData => async dispatch => {
   const accounts = plaidAccountData.accounts;
-  console.log('PLAID ACCOUNT DATA', plaidAccountData);
+
   const { data } = await axios.post(
     '/api/plaid/accounts/add',
     plaidAccountData
   );
-  console.log('the data', data);
+
   dispatch(addAccount(data));
 };
 
@@ -68,7 +67,7 @@ export const gettingTransactions = plaidAccountData => async dispatch => {
     '/api/plaid/accounts/transactions',
     plaidAccountData
   );
-  console.log('the data', data);
+
   dispatch(getTransactions(data));
 };
 
