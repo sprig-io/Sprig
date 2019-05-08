@@ -1,29 +1,28 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import ReactTable from "material-table";
 
 import {
   gettingAccounts,
-  gettingTransactions,
-} from '../../store/accountReducer';
+  gettingTransactions
+} from "../../store/accountReducer";
 
-import { logoutUser } from '../../store/userReducer';
+import { logoutUser } from "../../store/userReducer";
 class Transactions extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loaded: false,
+      loaded: false
     };
     this.onLogoutClick = this.onLogoutClick.bind(this);
   }
   async componentDidMount() {
     await this.props.gettingAccounts();
     const { accounts } = this.props;
-    console.log('hi', this.props.accounts);
+    console.log("hi", this.props.accounts);
+    await this.props.gettingTransactions(accounts);
+    const { transactions } = this.props;
     this.props.gettingTransactions(accounts);
-    console.log('i am coming to the transaction component did mount');
-    // await this.props.gettingTransactions(currentAccounts);
-
-    // this.props.gettingTransactions(accounts);
   }
 
   onLogoutClick(e) {
@@ -32,13 +31,32 @@ class Transactions extends Component {
   }
 
   render() {
+    let transData = [];
+    this.props.transactions.forEach(function(element) {
+      element.transactions.forEach(function(ele) {
+        transData.push({
+          Name: element.accountName,
+          Amount: ele.amount,
+          category: ele.category[0],
+          companyName: ele.name,
+          date: ele.date
+        });
+      });
+    });
+    let columnNames = [
+      { title: "Bank Name", field: "Name" },
+      { title: "Vendor", field: "companyName" },
+      { title: "Category", field: "category" },
+      { title: "Amount", field: "Amount" },
+      { title: "Date", field: "date" }
+    ];
     return (
-      <div>
-        <h1>'i am coming here'</h1>
-        {this.props.transactions.map(elem => (
-          <h1>elem.amount</h1>
-        ))}
-        <button onClick={this.onLogoutClick}>Log Out</button>
+      <div style={{ maxWidth: "90%" }}>
+        <ReactTable
+          title="Transactions"
+          data={transData}
+          columns={columnNames}
+        />
       </div>
     );
   }
@@ -47,14 +65,14 @@ class Transactions extends Component {
 const mapStateToProps = state => ({
   user: state.userReducer.user,
   accounts: state.accountReducer.accounts,
-  transactions: state.accountReducer.transactions,
+  transactions: state.accountReducer.transactions
 });
 
 const mapDispatchToProps = dispatch => ({
   gettingTransactions: plaidAccountData =>
     dispatch(gettingTransactions(plaidAccountData)),
   gettingAccounts: () => dispatch(gettingAccounts()),
-  logoutUser: () => dispatch(logoutUser()),
+  logoutUser: () => dispatch(logoutUser())
 });
 
 const PlaidAccountTransactions = connect(

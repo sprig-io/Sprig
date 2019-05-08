@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import ConnectedPlaidAccount from '../PlaidAccount';
-import PlaidAccountTransactions from '../dashboard/Transaction';
-import InsightCard from './insights/InsightCards';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import ConnectedPlaidAccount from "../PlaidAccount";
+import PlaidAccountTransactions from "../dashboard/Transaction";
+import InsightCard from "./insights/InsightCards";
+import { connect } from "react-redux";
 
 class Dashboard extends Component {
   constructor(props) {
@@ -22,7 +22,7 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = state => ({
-  user: state.userReducer,
+  user: state.userReducer
 });
 
 export default connect(
