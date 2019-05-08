@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
+import ReactTable from "material-table";
 import {
   gettingAccounts,
   gettingTransactions
@@ -19,11 +19,8 @@ class Transactions extends Component {
     await this.props.gettingAccounts();
     const { accounts } = this.props;
     console.log("hi", this.props.accounts);
-    this.props.gettingTransactions(accounts);
-    console.log("i am coming to the transaction component did mount");
-    // await this.props.gettingTransactions(currentAccounts);
-
-    // this.props.gettingTransactions(accounts);
+    await this.props.gettingTransactions(accounts);
+    const { transactions } = this.props;
   }
 
   onLogoutClick(e) {
@@ -32,13 +29,32 @@ class Transactions extends Component {
   }
 
   render() {
+    let transData = [];
+    this.props.transactions.forEach(function(element) {
+      element.transactions.forEach(function(ele) {
+        transData.push({
+          Name: element.accountName,
+          Amount: ele.amount,
+          category: ele.category[0],
+          companyName: ele.name,
+          date: ele.date
+        });
+      });
+    });
+    let columnNames = [
+      { title: "Bank Name", field: "Name" },
+      { title: "Vendor", field: "companyName" },
+      { title: "Category", field: "category" },
+      { title: "Amount", field: "Amount" },
+      { title: "Date", field: "date" }
+    ];
     return (
       <div>
-        <h1>'i am coming here'</h1>
-        {this.props.transactions.map(elem => (
-          <h1>elem.amount</h1>
-        ))}
-        <button onClick={this.onLogoutClick}>Log Out</button>
+        <ReactTable
+          title="Transactions"
+          data={transData}
+          columns={columnNames}
+        />
       </div>
     );
   }
