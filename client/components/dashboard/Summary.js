@@ -1,6 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { gettingAccounts, gettingBalance } from '../../store/accountReducer';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+import './Summary.css';
 
 class Summary extends React.Component {
   constructor(props) {
@@ -40,7 +43,15 @@ class Summary extends React.Component {
     return (
       <div>
         {this.state.loading && this.state.accountsExist ? (
-          <div />
+          balanceData.map(element => (
+            // eslint-disable-next-line react/jsx-key
+            <div>
+              <h4>Account Name: {element.AccountName}</h4>
+              <h4>Account Type: {element.Type}</h4>
+              <h4>Available Balance: $ {element.AvailableBalance}</h4>
+              <h4>Current Balance: $ {element.CurrentBalance}</h4>
+            </div>
+          ))
         ) : !this.loading ? (
           <h1>Loading</h1>
         ) : (

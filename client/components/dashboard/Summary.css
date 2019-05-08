@@ -1,0 +1,9 @@
+.root {
+  flex-grow: 1;
+}
+.paper {
+  text-align: center;
+  margin: 10px;
+  padding: 10px;
+  color: grey;
+}
