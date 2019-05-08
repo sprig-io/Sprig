@@ -1,4 +1,4 @@
-//reformats this.props.transactions so that it is all transactions in a flat array across accounts. NOTE: account name is not included.
+//reformats this.props.transactions to include transactions across accounts in a flat array. NOTE: account name is not included.
 export const simplifyTransactions = transactionProps => {
   const newArray = transactionProps.map(elem => {
     return elem.transactions;
