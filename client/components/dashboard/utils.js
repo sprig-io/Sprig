@@ -103,11 +103,13 @@ export const subscriptionFinder = transactions => {
         num: 1,
         charge: current.amount,
         date: current.date.slice(8),
+        accountName: current.accountName,
       };
     } else {
       if (
         shortList[current.name].charge === current.amount &&
-        shortList[current.name].date === current.date.slice(8)
+        shortList[current.name].date === current.date.slice(8) &&
+        shortList[current.name].accountName === current.accountName
       ) {
         shortList[current.name].num++;
       }
