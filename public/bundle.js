@@ -886,7 +886,7 @@ function (_Component) {
   _createClass(Dashboard, [{
     key: "render",
     value: function render() {
-      return this.props.user.isAuthenticated ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_insights_InsightCards__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PlaidAccount__WEBPACK_IMPORTED_MODULE_1__["default"], null)) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PlaidAccount__WEBPACK_IMPORTED_MODULE_1__["default"], null);
+      return this.props.user.isAuthenticated ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_insights_InsightCards__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboard_Transaction__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PlaidAccount__WEBPACK_IMPORTED_MODULE_1__["default"], null)) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PlaidAccount__WEBPACK_IMPORTED_MODULE_1__["default"], null);
     }
   }]);
 
@@ -1028,11 +1028,12 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 /*!**********************************************!*\
   !*** ./client/components/dashboard/utils.js ***!
   \**********************************************/
-/*! exports provided: getCategorySpend */
+/*! exports provided: simplifyTransactions, getCategorySpend */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "simplifyTransactions", function() { return simplifyTransactions; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCategorySpend", function() { return getCategorySpend; });
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
@@ -1042,20 +1043,27 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
-// returns amount spent on a given category ACROSS accounts - takes this.props.transactions and a category string
-function getCategorySpend(transactionProps, category) {
+//reformats this.props.transactions so that it is all transactions in a flat array across accounts. NOTE: account name is not included.
+var simplifyTransactions = function simplifyTransactions(transactionProps) {
   var _ref;
 
   var newArray = transactionProps.map(function (elem) {
     return elem.transactions;
   });
-  newArray = (_ref = []).concat.apply(_ref, _toConsumableArray(newArray));
-  return newArray.filter(function (elem) {
+
+  var simplified = (_ref = []).concat.apply(_ref, _toConsumableArray(newArray));
+
+  return simplified;
+}; // returns amount spent on a given category ACROSS accounts - takes this.props.transactions and a category string
+
+var getCategorySpend = function getCategorySpend(transactionProps, category) {
+  var simplified = simplifyTransactions(transactionProps);
+  return simplified.filter(function (elem) {
     return elem.category.includes(category);
   }).reduce(function (accum, elem) {
     return accum += elem.amount;
   }, 0);
-}
+};
 
 /***/ }),
 
@@ -38633,7 +38641,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
