@@ -10,6 +10,7 @@ import {
   getLargestTransaction,
   simplifyTransactions,
   largestByMerchant,
+  subscriptionFinder,
 } from '../utils';
 
 class InsightCard extends Component {
@@ -21,7 +22,10 @@ class InsightCard extends Component {
   }
   render() {
     if (this.props.monthly.length) {
-      return <div>insight card </div>;
+      console.log(
+        'POSSIBLE IF NOT PROBABLE SUBSCRIPTIONS',
+        subscriptionFinder(this.props.monthly)
+      );
     }
 
     return (
