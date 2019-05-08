@@ -21,6 +21,7 @@ class InsightCard extends Component {
   }
   render() {
     if (this.props.monthly.length) {
+      return <div>insight card </div>;
     }
 
     return (
