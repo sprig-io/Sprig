@@ -21,7 +21,7 @@ class Summary extends React.Component {
   }
   render() {
     const accounts = this.props.accounts;
-    // console.log(this.props.balance, 'BALANCE IN SUMMARY');
+    console.log(this.props.balance, 'BALANCE IN SUMMARY');
     let temp = [];
     let types = ['Plaid Checking', 'Plaid Saving'];
     this.props.balance.forEach(function(element) {
@@ -36,6 +36,7 @@ class Summary extends React.Component {
     });
     // balanceData array includes only Savings and Checkings
     const balanceData = temp.filter(data => types.includes(data.Type));
+    console.log(balanceData, 'Balance Data');
     return (
       <div>
         {this.state.loading && this.state.accountsExist ? (
