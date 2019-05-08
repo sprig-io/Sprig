@@ -43,12 +43,12 @@ export const createdUser = user => async dispatch => {
 export const loggedInUser = user => async dispatch => {
   try {
     const res = await axios.post('/api/users/login', user);
-    console.log(res, 'RES');
+
     const token = res.data.token;
     localStorage.setItem('jwt', token);
     setAuthToken(token);
     const data = jwtDecode(token);
-    console.log('the payload', data);
+
     dispatch(fetchUser(data));
   } catch (err) {
     console.error(err);

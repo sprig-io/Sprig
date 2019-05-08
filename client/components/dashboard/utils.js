@@ -59,3 +59,70 @@ export const allCategorySpend = transactions => {
   });
   return { labels, spend };
 };
+
+//returns an object with merchant name and cumulative total spent at each merchant in last 30 days
+export const merchantSpend = transactionProps => {
+  let simplified = simplifyTransactions(transactionProps);
+  let newObj = {};
+  simplified.map(elem => {
+    if (
+      !elem.category.includes('Payment') &&
+      !elem.category.includes('Transfer')
+    ) {
+      if (newObj[elem.name] === undefined) {
+        newObj[elem.name] = elem.amount;
+      } else {
+        newObj[elem.name] += elem.amount;
+      }
+    }
+  });
+
+  return newObj;
+};
+
+//returns merchant with highest amount spent in the last 30 days cumulatively
+export const largestByMerchant = transactionProps => {
+  const newObj = merchantSpend(transactionProps);
+  let largest = { name: '', amount: 0 };
+  for (let key in newObj) {
+    if (newObj[key] > largest.amount) {
+      largest.name = key;
+      largest.amount = newObj[key];
+    }
+  }
+  return largest;
+};
+
+export const subscriptionFinder = transactions => {
+  const shortList = {};
+
+  for (let i = 0; i < transactions.length; i++) {
+    let current = transactions[i];
+    if (!shortList[current.name]) {
+      shortList[current.name] = {
+        num: 1,
+        charge: current.amount,
+        date: current.date.slice(8),
+        accountName: current.accountName,
+      };
+    } else {
+      if (
+        shortList[current.name].charge === current.amount &&
+        shortList[current.name].date === current.date.slice(8) &&
+        shortList[current.name].accountName === current.accountName
+      ) {
+        shortList[current.name].num++;
+      }
+    }
+  }
+  let finalList = [];
+  for (let key in shortList) {
+    if (shortList[key].num === 3) {
+      finalList.push({
+        name: shortList[key].name,
+        amount: shortList[key].amount,
+      });
+    }
+  }
+  return finalList;
+};
