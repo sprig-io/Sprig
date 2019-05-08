@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Summary from './Summary';
 import ConnectedPlaidAccount from '../PlaidAccount';
 import PlaidAccountTransactions from '../dashboard/Transaction';
 import InsightCard from './insights/InsightCards';
@@ -12,6 +13,7 @@ class Dashboard extends Component {
   render() {
     return this.props.user.isAuthenticated ? (
       <div>
+        <Summary />
         <CategoriesDonut />
 
         <PlaidAccountTransactions />
