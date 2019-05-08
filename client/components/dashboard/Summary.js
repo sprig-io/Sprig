@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { gettingAccounts } from '../../store/accountReducer';
 import SummaryContainer from './SummaryContainer';
+import axios from 'axios';
 
 class Summary extends React.Component {
   constructor(props) {
