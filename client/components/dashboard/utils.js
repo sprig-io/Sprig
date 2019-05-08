@@ -9,7 +9,8 @@ export const simplifyTransactions = transactionProps => {
 
 // returns amount spent on a given category ACROSS accounts - takes this.props.transactions and a category string
 export const getCategorySpend = (transactionProps, category) => {
-  return transactionProps
+  const simplified = simplifyTransactions(transactionProps);
+  return simplified
     .filter(elem => {
       return elem.category.includes(category);
     })
@@ -26,8 +27,8 @@ export const getLargestTransaction = transactionProps => {
     (accum, elem) => {
       if (
         accum.amount < elem.amount &&
-        !elem.category.includes('Payment') &&
-        !elem.category.includes('Transfer')
+        !elem.category.includes("Payment") &&
+        !elem.category.includes("Transfer")
       ) {
         accum.amount = elem.amount;
         accum.merchant = elem.name;
@@ -37,25 +38,7 @@ export const getLargestTransaction = transactionProps => {
     },
     {
       amount: 0,
-      merchant: '',
+      merchant: ""
     }
   );
-};
-
-// this returns an object of arrays with spending categories and corresponding ammounts spent
-export const allCategorySpend = transactions => {
-  let simplified = simplifyTransactions(transactions);
-  let labels = [];
-  let spend = [];
-  simplified.map(elem => {
-    if (
-      !labels.includes(elem.category[0]) &&
-      !elem.category.includes('Payment') &&
-      !elem.category.includes('Transfer')
-    ) {
-      labels.push(elem.category[0]);
-      spend.push(getCategorySpend(simplified, elem.category[0]));
-    }
-  });
-  return { labels, spend };
 };
