@@ -48,7 +48,11 @@ export const allCategorySpend = transactions => {
   let labels = [];
   let spend = [];
   simplified.map(elem => {
-    if (!labels.includes(elem.category[0])) {
+    if (
+      !labels.includes(elem.category[0]) &&
+      !elem.category.includes('Payment') &&
+      !elem.category.includes('Transfer')
+    ) {
       labels.push(elem.category[0]);
       spend.push(getCategorySpend(simplified, elem.category[0]));
     }

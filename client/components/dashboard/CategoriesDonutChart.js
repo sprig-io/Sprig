@@ -12,48 +12,46 @@ import {
 import Chart from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 
-// const transactionChart = document.getElementById('transactionChart');
-// console.log(transactionChart);
-
-// const CategoriesDonut = new Chart(transactionChart, {
-//   type: 'doughnut',
-//   data: {
-//     datasets: [
-//       {
-//         data: [10, 20, 30, 100],
-//       },
-//     ],
-//   },
-//   labels: ['Food', 'Transportation', 'Cheese', 'Non-alcoholic Beer'],
-// });
 const data = {
   labels: [],
   datasets: [
     {
       data: [],
+      backgroundColor: [
+        '#f95d6a',
+        '#003f5c',
+        '#ff7c43',
+        '#665191',
+        '#d45087',
+        '#2f4b7c',
+        '#ffa600',
+        '#a05195',
+      ],
+      hoverBackgroundColor: [
+        '#f95d6a',
+        '#003f5c',
+        '#ff7c43',
+        '#665191',
+        '#d45087',
+        '#2f4b7c',
+        '#ffa600',
+        '#a05195',
+      ],
     },
   ],
 };
-
 class CategoriesDonut extends Component {
-  componentDidMount() {}
-
   render() {
     if (this.props.transactions.length) {
-      console.log('transactions', this.props.transactions);
       const donutInfo = allCategorySpend(this.props.transactions);
-      data.datasets.data = donutInfo.spend;
+      data.datasets[0].data = donutInfo.spend;
       data.labels = donutInfo.labels;
-      console.log('DOOONUTTTT', donutInfo);
-      console.log('dattaaaaa', data);
     }
     return (
       <div>
-        <h1>SPRIG</h1>
-        <Doughnut
-          data={data}
-          //   labels={['Food', 'Transportation', 'Cheese', 'Non-alcoholic Beer']}
-        />
+        <div>
+          <Doughnut data={data} />
+        </div>
       </div>
     );
   }
