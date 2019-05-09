@@ -1,3 +1,40 @@
+.root {
+  flex-grow: 1;
+  overflow-x: auto;
+  margin: 100px 300px 100px 300px;
+}
+.header {
+  text-align: center !important;
+  color: rgb(113, 113, 113) !important;
+  font-size: 23px !important;
+  font-family: 'Raleway', sans-serif !important;
+}
+.headerLeft {
+  color: rgb(113, 113, 113) !important;
+  font-size: 23px !important;
+  font-family: 'Raleway', sans-serif !important;
+}
+.cell {
+  color: rgb(92, 92, 92) !important;
+  font-size: 18px !important;
+  text-align: center !important;
+  font-family: 'Raleway', sans-serif !important;
+}
+.cellLeft {
+  color: rgb(92, 92, 92) !important;
+  font-size: 18px !important;
+  font-family: 'Raleway', sans-serif !important;
+}
+
+.table {
+  min-width: 700;
+  background-color: rgb(240, 238, 238);
+}
+.paper {
+  text-align: center;
+  margin: 100px;
+  padding: 10px;
+}
 .tabletrans {
   margin-left: 50px;
 }

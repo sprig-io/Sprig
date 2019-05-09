@@ -7,3 +7,7 @@
 .btn:hover {
   opacity: 0.8;
 }
+
+body {
+  background-color: rgb(240, 238, 238);
+}
