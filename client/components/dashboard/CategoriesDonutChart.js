@@ -18,24 +18,20 @@ const data = {
     {
       data: [],
       backgroundColor: [
-        '#FC9F5B',
-        '#2DC7FF',
-        '#0A2342',
-        '#048A81',
-        '#FFBC42',
-        '#ED6A5E',
-        '#3423A6',
-        '#FF70A6',
+        '#A0ECD0',
+        '#A8DADC',
+        '#1D3557',
+        '#E63946',
+        '#FFE066',
+        '#dd9cd8',
       ],
       hoverBackgroundColor: [
-        '#f9c49c',
-        '#8fd6f0',
-        '#0c4183',
-        '#0ac3b7',
-        '#f0c981',
-        '#f49087',
-        '#574aab',
-        '#f2a2c0',
+        '#10b075',
+        '#40bcc1',
+        '#04142b',
+        '#8e3339',
+        '#f4e199',
+        'AA78A6',
       ],
     },
   ],
@@ -53,6 +49,7 @@ const options = {
       top: 50,
       bottom: 40,
     },
+    maintainAspectRatio: false,
   },
 };
 class CategoriesDonut extends Component {
@@ -70,7 +67,7 @@ class CategoriesDonut extends Component {
     return (
       <div>
         <div>
-          <Doughnut data={data} options={options} />
+          <Doughnut data={data} options={options} width={50} height={50} />
         </div>
       </div>
     );

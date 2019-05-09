@@ -3,6 +3,11 @@
   letter-spacing: 1.5px;
   border-radius: 3px;
   margin-top: 1rem;
+  padding: 15px;
+  background-color: #4c9f70;
+  color: white;
+  font-size: 14px;
+  position: center;
 }
 .btn:hover {
   opacity: 0.8;
@@ -12,8 +17,21 @@ body {
   background-color: rgb(240, 238, 238);
 }
 
+.main-button {
+  padding: 30px;
+}
+
 #plaid-button {
-  position: center;
   text-align: center;
-  border: 2px solid #4caf50; /* Green */
+  padding: 30px;
+}
+
+.description {
+  font-size: 12px;
+}
+
+.donut {
+  display: block;
+  height: 360px;
+  width: 720px;
 }
