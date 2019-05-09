@@ -37,7 +37,7 @@ export default class App extends React.Component {
     return (
       <Provider store={store}>
         <BrowserRouter>
-          <Navbar />
+          {/* <Navbar /> */}
           <Route exact path="/" component={Home} />
           <Route path="/login" component={Login} />
 
