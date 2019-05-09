@@ -5,6 +5,7 @@ import PlaidAccountTransactions from '../dashboard/Transaction';
 import InsightCard from './insights/InsightCards';
 import { connect } from 'react-redux';
 import CategoriesDonut from './CategoriesDonutChart';
+import Navbar from '../Navbar';
 import {
   gettingAccounts,
   gettingTransactions,
@@ -41,6 +42,7 @@ class Dashboard extends Component {
         this.props.user.isAuthenticated &&
         this.state.accountsExist ? (
           <div>
+            <Navbar />
             <Summary />
             <CategoriesDonut />
             <InsightCard />

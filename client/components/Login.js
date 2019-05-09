@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { loggedInUser } from '../store/userReducer';
+import './dashboard/Summary.css';
 
 class Login extends React.Component {
   constructor() {
@@ -43,7 +44,7 @@ class Login extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className="logInPage">
         <div>Login page</div>
         <form onSubmit={this.handleSubmit}>
           <label>
