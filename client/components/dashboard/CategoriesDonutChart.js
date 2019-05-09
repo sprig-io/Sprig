@@ -18,39 +18,59 @@ const data = {
     {
       data: [],
       backgroundColor: [
-        '#f95d6a',
-        '#003f5c',
-        '#ff7c43',
-        '#665191',
-        '#d45087',
-        '#2f4b7c',
-        '#ffa600',
-        '#a05195',
+        '#FC9F5B',
+        '#2DC7FF',
+        '#0A2342',
+        '#048A81',
+        '#FFBC42',
+        '#ED6A5E',
+        '#3423A6',
+        '#FF70A6',
       ],
       hoverBackgroundColor: [
-        '#f95d6a',
-        '#003f5c',
-        '#ff7c43',
-        '#665191',
-        '#d45087',
-        '#2f4b7c',
-        '#ffa600',
-        '#a05195',
+        '#f9c49c',
+        '#8fd6f0',
+        '#0c4183',
+        '#0ac3b7',
+        '#f0c981',
+        '#f49087',
+        '#574aab',
+        '#f2a2c0',
       ],
     },
   ],
+};
+const options = {
+  legend: {
+    display: true,
+    position: 'right',
+    labels: {},
+  },
+  layout: {
+    padding: {
+      left: 50,
+      right: 50,
+      top: 50,
+      bottom: 40,
+    },
+  },
 };
 class CategoriesDonut extends Component {
   render() {
     if (this.props.transactions.length) {
       const donutInfo = allCategorySpend(this.props.transactions);
+      donutInfo.spend = donutInfo.spend.map(
+        elem => Math.round(elem * 100) / 100
+      );
+      console.log('donut infooooo', donutInfo.spend);
+
       data.datasets[0].data = donutInfo.spend;
       data.labels = donutInfo.labels;
     }
     return (
       <div>
         <div>
-          <Doughnut data={data} />
+          <Doughnut data={data} options={options} />
         </div>
       </div>
     );
