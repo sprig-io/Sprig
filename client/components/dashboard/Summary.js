@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { gettingAccounts, gettingBalance } from '../../store/accountReducer';
 import './Summary.css';
 import { balancesCondensed } from './utils';
 import Table from '@material-ui/core/Table';
@@ -13,24 +12,10 @@ import Paper from '@material-ui/core/Paper';
 class Summary extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      loading: false,
-      accountsExist: false,
-    };
   }
-  async componentDidMount() {
-    await this.props.gettingAccounts();
-    if (this.props.accounts.length) {
-      await this.props.gettingBalance(this.props.accounts);
-      this.setState({ loading: true, accountsExist: true });
-    } else {
-      this.setState({ loading: true });
-    }
-  }
+  async componentDidMount() {}
   render() {
     const balanceData = balancesCondensed(this.props.balance);
-    console.log(balanceData, 'BALANCEDATA');
-
     return (
       <Paper className="root">
         <Table className="table">
@@ -69,13 +54,4 @@ const mapState = state => ({
   balance: state.accountReducer.balance,
 });
 
-const mapDispatch = dispatch => ({
-  gettingAccounts: () => dispatch(gettingAccounts()),
-  gettingBalance: plaidAccountData =>
-    dispatch(gettingBalance(plaidAccountData)),
-});
-
-export default connect(
-  mapState,
-  mapDispatch
-)(Summary);
+export default connect(mapState)(Summary);

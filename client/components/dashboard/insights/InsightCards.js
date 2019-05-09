@@ -5,53 +5,23 @@ import {
   gettingTransactions,
 } from '../../../store/accountReducer';
 import { gettingMonthlyTransactions } from '../../../store/monthlyReducer';
-import {
-  getCategorySpend,
-  getLargestTransaction,
-  simplifyTransactions,
-  largestByMerchant,
-  subscriptionFinder,
-} from '../utils';
+import { getLargest } from '../../../store/insightReducer';
+import Cards from './cards';
 
 class InsightCard extends Component {
-  async componentDidMount() {
-    await this.props.gettingAccounts();
-    const { accounts } = this.props;
-    this.props.gettingTransactions(accounts);
-    this.props.gettingMonthlyTransactions(accounts);
-  }
   render() {
-    if (this.props.monthly.length) {
-      console.log(
-        'POSSIBLE IF NOT PROBABLE SUBSCRIPTIONS',
-        subscriptionFinder(this.props.monthly)
-      );
-    }
-
     return (
       <div>
-        <h1 />
+        <Cards />
+        <h1>{this.props.largest.merchant}</h1>
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  user: state.userReducer.user,
-  accounts: state.accountReducer.accounts,
   transactions: state.accountReducer.transactions,
-  monthly: state.monthlyReducer.monthly,
+  largest: state.insightReducer.largest,
 });
 
-const mapDispatchToProps = dispatch => ({
-  gettingTransactions: plaidAccountData =>
-    dispatch(gettingTransactions(plaidAccountData)),
-  gettingAccounts: () => dispatch(gettingAccounts()),
-  gettingMonthlyTransactions: plaidAccountData =>
-    dispatch(gettingMonthlyTransactions(plaidAccountData)),
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(InsightCard);
+export default connect(mapStateToProps)(InsightCard);
