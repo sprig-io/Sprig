@@ -23,6 +23,7 @@ class Summary extends React.Component {
   }
   render() {
     const balanceData = balancesCondensed(this.props.balance);
+    console.log(balanceData, 'BALANCEDATA');
 
     return (
       <div>
