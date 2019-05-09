@@ -11,3 +11,9 @@
 body {
   background-color: rgb(240, 238, 238);
 }
+
+#plaid-button {
+  position: center;
+  text-align: center;
+  border: 2px solid #4caf50; /* Green */
+}
