@@ -70,7 +70,7 @@ export const fetchBalanceSummary = balances => {
 };
 
 //this uses fetchBalanceSummary to condense everything so make sure
-//we are sending in the original data from plaid
+//when we call this function we are sending in the ORIGINAL DATA FROM PLAID
 export const balancesCondensed = arr => {
   const newArray = fetchBalanceSummary(arr);
   let result = [];
