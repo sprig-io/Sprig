@@ -35,6 +35,7 @@ router.get(
   async (req, res, next) => {
     try {
       const accounts = await Account.find({ userId: req.user.id });
+
       return res.json(accounts);
     } catch (err) {
       next(err);
@@ -114,6 +115,60 @@ router.delete(
 // @route POST api/plaid/accounts/transactions
 // @desc Fetch transactions from past 30 days from all linked accounts
 // @access Private
+router.post(
+  '/accounts/transactions/monthly',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    let today = new Date();
+    currentMonth = today.getMonth() + 1;
+    let startingMonth;
+    let currentYear = today.getFullYear();
+    if (currentMonth === 2) {
+      startingMonth = 12;
+      currentYear -= currentYear;
+    } else if (currentMonth === 1) {
+      startingMonth = 11;
+      currentYear -= currentYear;
+    } else {
+      startingMonth = currentMonth - 2;
+    }
+    if (currentMonth < 10) {
+      currentMonth = `0${currentMonth}`;
+    }
+    if (startingMonth < 10) {
+      startingMonth = `0${startingMonth}`;
+    }
+    const starting = `${currentYear}-${startingMonth}-01`;
+    const ending = `${currentYear}-${currentMonth}-01`;
+    console.log('starting', 'ending');
+
+    let transactions = [];
+
+    const accounts = req.body;
+
+    if (accounts) {
+      accounts.forEach(function(account) {
+        ACCESS_TOKEN = account.accessToken;
+        const institutionName = account.institutionName;
+
+        client
+          .getTransactions(ACCESS_TOKEN, starting, ending)
+          .then(response => {
+            transactions.push({
+              accountName: institutionName,
+              transactions: response.transactions,
+            });
+
+            if (transactions.length === accounts.length) {
+              res.json(transactions);
+            }
+          })
+          .catch(err => console.log(err));
+      });
+    }
+  }
+);
+
 router.post(
   '/accounts/transactions',
   passport.authenticate('jwt', { session: false }),
