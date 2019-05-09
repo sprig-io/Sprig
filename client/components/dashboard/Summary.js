@@ -21,7 +21,7 @@ class Summary extends React.Component {
         <Table className="table">
           <TableHead>
             <TableRow className="row">
-              <TableCell className="headerLeft">Bank Name</TableCell>
+              <TableCell className="headerLeft" />
               <TableCell className="header">Checking</TableCell>
               <TableCell className="header">Savings</TableCell>
             </TableRow>

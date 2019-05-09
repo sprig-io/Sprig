@@ -1,7 +1,10 @@
 .root {
   flex-grow: 1;
   overflow-x: auto;
-  margin: 100px 300px 100px 300px;
+  margin-top: 150px;
+  margin-left: 75px;
+  margin-right: 75px;
+  margin-bottom: 150px;
 }
 .header {
   text-align: center !important;
@@ -19,11 +22,13 @@
   font-size: 18px !important;
   text-align: center !important;
   font-family: 'Raleway', sans-serif !important;
+  width: 10px;
 }
 .cellLeft {
   color: rgb(92, 92, 92) !important;
   font-size: 18px !important;
   font-family: 'Raleway', sans-serif !important;
+  width: 10%;
 }
 
 .table {
