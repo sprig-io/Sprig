@@ -5,8 +5,14 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import userReducer from './userReducer';
 import accountReducer from './accountReducer';
 import errorReducer from './errorReducer';
+import monthlyReducer from './monthlyReducer';
 
-const reducer = combineReducers({ userReducer, accountReducer, errorReducer });
+const reducer = combineReducers({
+  userReducer,
+  accountReducer,
+  monthlyReducer,
+  errorReducer,
+});
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({ collapsed: true }))
 );
