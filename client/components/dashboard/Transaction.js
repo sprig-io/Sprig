@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import ReactTable from "material-table";
-
 import {
   gettingAccounts,
   gettingTransactions
 } from "../../store/accountReducer";
-
 import { logoutUser } from "../../store/userReducer";
+import css from "./Summary.css";
+
 class Transactions extends Component {
   constructor(props) {
     super(props);
@@ -52,7 +52,7 @@ class Transactions extends Component {
       { title: "Bank Name", field: "Name" }
     ];
     return (
-      <div style={{ maxWidth: "90%" }}>
+      <div style={{ maxWidth: "90%" }} className="tabletrans">
         <ReactTable
           title="Transactions"
           data={transData}
