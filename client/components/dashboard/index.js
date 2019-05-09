@@ -15,9 +15,9 @@ class Dashboard extends Component {
       <div>
         <Summary />
         <CategoriesDonut />
-
-        <PlaidAccountTransactions />
         <InsightCard />
+        <PlaidAccountTransactions />
+
         <ConnectedPlaidAccount />
       </div>
     ) : (

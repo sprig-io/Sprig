@@ -13,24 +13,20 @@ import {
   subscriptionFinder,
 } from '../utils';
 
+import Cards from './cards';
+
 class InsightCard extends Component {
   async componentDidMount() {
-    await this.props.gettingAccounts();
     const { accounts } = this.props;
-    this.props.gettingTransactions(accounts);
     this.props.gettingMonthlyTransactions(accounts);
   }
   render() {
     if (this.props.monthly.length) {
-      console.log(
-        'POSSIBLE IF NOT PROBABLE SUBSCRIPTIONS',
-        subscriptionFinder(this.props.monthly)
-      );
     }
 
     return (
       <div>
-        <h1 />
+        <Cards />
       </div>
     );
   }
@@ -38,15 +34,11 @@ class InsightCard extends Component {
 
 const mapStateToProps = state => ({
   user: state.userReducer.user,
-  accounts: state.accountReducer.accounts,
-  transactions: state.accountReducer.transactions,
   monthly: state.monthlyReducer.monthly,
+  accounts: state.accountReducer.accounts,
 });
 
 const mapDispatchToProps = dispatch => ({
-  gettingTransactions: plaidAccountData =>
-    dispatch(gettingTransactions(plaidAccountData)),
-  gettingAccounts: () => dispatch(gettingAccounts()),
   gettingMonthlyTransactions: plaidAccountData =>
     dispatch(gettingMonthlyTransactions(plaidAccountData)),
 });
