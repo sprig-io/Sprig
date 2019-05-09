@@ -4,6 +4,7 @@ import { gettingAccounts, gettingBalance } from '../../store/accountReducer';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import './Summary.css';
+import { balancesCondensed } from './utils';
 
 class Summary extends React.Component {
   constructor(props) {
@@ -23,35 +24,24 @@ class Summary extends React.Component {
     }
   }
   render() {
-    const accounts = this.props.accounts;
-    console.log(this.props.balance, 'BALANCE IN SUMMARY');
-    let temp = [];
-    let types = ['Plaid Checking', 'Plaid Saving'];
-    this.props.balance.forEach(function(element) {
-      element.balance.forEach(function(ele) {
-        temp.push({
-          AccountName: element.accountName,
-          AvailableBalance: ele.balances.available,
-          CurrentBalance: ele.balances.current,
-          Type: ele.name,
-        });
-      });
-    });
-    // balanceData array includes only Savings and Checkings
-    const balanceData = temp.filter(data => types.includes(data.Type));
-    console.log(balanceData, 'Balance Data');
+    const balanceData = balancesCondensed(this.props.balance);
+    console.log('Balance data', balanceData);
+
     return (
       <div>
         {this.state.loading && this.state.accountsExist ? (
-          balanceData.map(element => (
+          balanceData.map(
+            (element, ind) => (
+              // eslint-disable-next-line react/jsx-key
+              <div key={ind}>
+                <h4>Account Name: {element.accountName}</h4>
+                <h4>Checking Balance: $ {element.Checking}</h4>
+                <h4>Savings Balance: $ {element.Savings}</h4>
+              </div>
+            )
+
             // eslint-disable-next-line react/jsx-key
-            <div>
-              <h4>Account Name: {element.AccountName}</h4>
-              <h4>Account Type: {element.Type}</h4>
-              <h4>Available Balance: $ {element.AvailableBalance}</h4>
-              <h4>Current Balance: $ {element.CurrentBalance}</h4>
-            </div>
-          ))
+          )
         ) : !this.loading ? (
           <h1>Loading</h1>
         ) : (
