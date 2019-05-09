@@ -35,6 +35,13 @@
   margin: 100px;
   padding: 10px;
 }
+
+/* TRANSACTION TABLE  */
 .tabletrans {
   margin-left: 50px;
+}
+
+/* LOGIN */
+.logInPage {
+  margin: 200px;
 }
