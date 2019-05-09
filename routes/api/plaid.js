@@ -84,7 +84,6 @@ router.post('/get_access_token', function(request, response, next) {
   client.exchangePublicToken(PUBLIC_TOKEN, function(error, tokenResponse) {
     if (error !== null) {
       var msg = 'Could not exchange public_token!';
-      console.log(msg + '\n' + JSON.stringify(error));
       return response.json({
         error: msg,
       });
@@ -186,7 +185,6 @@ router.post(
       accounts.forEach(function(account) {
         ACCESS_TOKEN = account.accessToken;
         const institutionName = account.institutionName;
-        console.log(ACCESS_TOKEN, 'ACCESS_TOKEN');
         client
           .getTransactions(ACCESS_TOKEN, thirtyDaysAgo, today)
           .then(response => {
