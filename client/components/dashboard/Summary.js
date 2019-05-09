@@ -32,33 +32,6 @@ class Summary extends React.Component {
     console.log(balanceData, 'BALANCEDATA');
 
     return (
-      // <div className="summaryContainer">
-      //   <div className="headers">
-      //     <div>Bank Name</div>
-      //     <div>Checking</div>
-      //     <div>Savings</div>
-      //   </div>
-      //   <div>
-      //     {this.state.loading && this.state.accountsExist ? (
-      //       balanceData.map(
-      //         (element, ind) => (
-      //           // eslint-disable-next-line react/jsx-key
-      //           <div key={ind} className="accountContainer">
-      //             <div>{element.accountName}</div>
-      //             <div> ${element.Checking}</div>
-      //             <div> ${element.Savings}</div>
-      //           </div>
-      //         )
-
-      //         // eslint-disable-next-line react/jsx-key
-      //       )
-      //     ) : !this.loading ? (
-      //       <h1>Loading</h1>
-      //     ) : (
-      //       <h2>No accounts yet</h2>
-      //     )}
-      //   </div>
-      // </div>
       <Paper className="root">
         <Table className="table">
           <TableHead>
