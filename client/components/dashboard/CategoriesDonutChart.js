@@ -40,17 +40,37 @@ const data = {
     },
   ],
 };
+const options = {
+  legend: {
+    display: true,
+    position: 'right',
+    labels: {},
+  },
+  layout: {
+    padding: {
+      left: 50,
+      right: 50,
+      top: 50,
+      bottom: 40,
+    },
+  },
+};
 class CategoriesDonut extends Component {
   render() {
     if (this.props.transactions.length) {
       const donutInfo = allCategorySpend(this.props.transactions);
+      donutInfo.spend = donutInfo.spend.map(
+        elem => Math.round(elem * 100) / 100
+      );
+      console.log('donut infooooo', donutInfo.spend);
+
       data.datasets[0].data = donutInfo.spend;
       data.labels = donutInfo.labels;
     }
     return (
       <div>
         <div>
-          <Doughnut data={data} />
+          <Doughnut data={data} options={options} />
         </div>
       </div>
     );
