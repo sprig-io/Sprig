@@ -6,11 +6,12 @@ import userReducer from './userReducer';
 import accountReducer from './accountReducer';
 import errorReducer from './errorReducer';
 import monthlyReducer from './monthlyReducer';
-
+import insightReducer from './insightReducer';
 const reducer = combineReducers({
   userReducer,
   accountReducer,
   monthlyReducer,
+  insightReducer,
   errorReducer,
 });
 const middleware = composeWithDevTools(

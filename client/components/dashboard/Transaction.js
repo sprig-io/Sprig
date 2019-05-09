@@ -2,12 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ReactTable from 'material-table';
 
-import {
-  gettingAccounts,
-  gettingTransactions,
-} from '../../store/accountReducer';
-
-import { logoutUser } from '../../store/userReducer';
 class Transactions extends Component {
   constructor(props) {
     super(props);
@@ -15,14 +9,6 @@ class Transactions extends Component {
       loaded: false,
     };
     this.onLogoutClick = this.onLogoutClick.bind(this);
-  }
-  async componentDidMount() {
-    await this.props.gettingAccounts();
-    const { accounts } = this.props;
-    console.log('hi', this.props.accounts);
-    await this.props.gettingTransactions(accounts);
-    const { transactions } = this.props;
-    this.props.gettingTransactions(accounts);
   }
 
   onLogoutClick(e) {
@@ -69,16 +55,6 @@ const mapStateToProps = state => ({
   transactions: state.accountReducer.transactions,
 });
 
-const mapDispatchToProps = dispatch => ({
-  gettingTransactions: plaidAccountData =>
-    dispatch(gettingTransactions(plaidAccountData)),
-  gettingAccounts: () => dispatch(gettingAccounts()),
-  logoutUser: () => dispatch(logoutUser()),
-});
-
-const PlaidAccountTransactions = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Transactions);
+const PlaidAccountTransactions = connect(mapStateToProps)(Transactions);
 
 export default PlaidAccountTransactions;

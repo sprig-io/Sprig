@@ -14,7 +14,7 @@ const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const tutorialSteps = [
   {
-    label: 'San Francisco – Oakland Bay Bridge, United States',
+    label: `You spent`,
     imgPath:
       'https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60',
   },
@@ -44,20 +44,16 @@ const styles = theme => ({
   root: {
     maxWidth: 400,
     flexGrow: 1,
+    padding: '25px',
+    marginLeft: 'auto',
+    marginRight: 'auto',
   },
   header: {
     display: 'flex',
     alignItems: 'center',
-    height: 50,
+    height: 150,
     paddingLeft: theme.spacing.unit * 4,
     backgroundColor: theme.palette.background.default,
-  },
-  img: {
-    height: 255,
-    display: 'block',
-    maxWidth: 400,
-    overflow: 'hidden',
-    width: '100%',
   },
 });
 
