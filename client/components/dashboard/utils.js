@@ -60,6 +60,30 @@ export const allCategorySpend = transactions => {
   return { labels, spend };
 };
 
+export const fetchBalanceSummary = balances => {
+  return balances.map(elem => {
+    elem.balance = elem.balance.filter(ele => {
+      return ele.name === 'Plaid Checking' || ele.name === 'Plaid Saving';
+    });
+    return elem;
+  });
+};
+
+//this uses fetchBalanceSummary to condense everything so make sure
+//when we call this function we are sending in the ORIGINAL DATA FROM PLAID
+export const balancesCondensed = arr => {
+  const newArray = fetchBalanceSummary(arr);
+  let result = [];
+  for (let i = 0; i < newArray.length; i++) {
+    let obj = {};
+    obj.accountName = newArray[i].accountName;
+    let balanceArray = newArray[i].balance;
+    obj.Checking = balanceArray[0].balances.available;
+    obj.Savings = balanceArray[1].balances.available;
+    result.push(obj);
+  }
+  return result;
+};
 //returns an object with merchant name and cumulative total spent at each merchant in last 30 days
 export const merchantSpend = transactionProps => {
   let simplified = simplifyTransactions(transactionProps);
