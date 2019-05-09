@@ -21,27 +21,21 @@ class Summary extends React.Component {
         <Table className="table">
           <TableHead>
             <TableRow className="row">
-              <TableCell className="header">Bank Name</TableCell>
+              <TableCell className="headerLeft">Bank Name</TableCell>
               <TableCell className="header">Checking</TableCell>
               <TableCell className="header">Savings</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {this.state.loading && this.state.accountsExist ? (
-              balanceData.map((row, ind) => (
-                <TableRow key={ind}>
-                  <TableCell className="cell" component="th" scope="row">
-                    {row.accountName}
-                  </TableCell>
-                  <TableCell className="cell">${row.Checking}</TableCell>
-                  <TableCell className="cell">${row.Savings}</TableCell>
-                </TableRow>
-              ))
-            ) : !this.loading ? (
-              <h6>Loading</h6>
-            ) : (
-              <h6>No linked accounts</h6>
-            )}
+            {balanceData.map((row, ind) => (
+              <TableRow key={ind}>
+                <TableCell className="cellLeft" component="th" scope="row">
+                  {row.accountName}
+                </TableCell>
+                <TableCell className="cell">${row.Checking}</TableCell>
+                <TableCell className="cell">${row.Savings}</TableCell>
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
       </Paper>
