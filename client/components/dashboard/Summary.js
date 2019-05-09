@@ -3,6 +3,12 @@ import { connect } from 'react-redux';
 import { gettingAccounts, gettingBalance } from '../../store/accountReducer';
 import './Summary.css';
 import { balancesCondensed } from './utils';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
 
 class Summary extends React.Component {
   constructor(props) {
@@ -26,26 +32,61 @@ class Summary extends React.Component {
     console.log(balanceData, 'BALANCEDATA');
 
     return (
-      <div>
-        {this.state.loading && this.state.accountsExist ? (
-          balanceData.map(
-            (element, ind) => (
-              // eslint-disable-next-line react/jsx-key
-              <div key={ind}>
-                <h4>Account Name: {element.accountName}</h4>
-                <h4>Checking Balance: $ {element.Checking}</h4>
-                <h4>Savings Balance: $ {element.Savings}</h4>
-              </div>
-            )
+      // <div className="summaryContainer">
+      //   <div className="headers">
+      //     <div>Bank Name</div>
+      //     <div>Checking</div>
+      //     <div>Savings</div>
+      //   </div>
+      //   <div>
+      //     {this.state.loading && this.state.accountsExist ? (
+      //       balanceData.map(
+      //         (element, ind) => (
+      //           // eslint-disable-next-line react/jsx-key
+      //           <div key={ind} className="accountContainer">
+      //             <div>{element.accountName}</div>
+      //             <div> ${element.Checking}</div>
+      //             <div> ${element.Savings}</div>
+      //           </div>
+      //         )
 
-            // eslint-disable-next-line react/jsx-key
-          )
-        ) : !this.loading ? (
-          <h1>Loading</h1>
-        ) : (
-          <h2>No accounts yet</h2>
-        )}
-      </div>
+      //         // eslint-disable-next-line react/jsx-key
+      //       )
+      //     ) : !this.loading ? (
+      //       <h1>Loading</h1>
+      //     ) : (
+      //       <h2>No accounts yet</h2>
+      //     )}
+      //   </div>
+      // </div>
+      <Paper className="root">
+        <Table className="table">
+          <TableHead>
+            <TableRow className="row">
+              <TableCell className="header">Bank Name</TableCell>
+              <TableCell className="header">Checking</TableCell>
+              <TableCell className="header">Savings</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {this.state.loading && this.state.accountsExist ? (
+              balanceData.map((row, ind) => (
+                <TableRow key={ind}>
+                  <TableCell className="cell" component="th" scope="row">
+                    {row.accountName}
+                  </TableCell>
+                  <TableCell className="cell">${row.Checking}</TableCell>
+                  <TableCell className="cell">${row.Savings}</TableCell>
+                </TableRow>
+              ))
+            ) : !this.loading ? (
+              <h6>Loading</h6>
+            ) : (
+              <h6>No linked accounts</h6>
+            )}
+          </TableBody>
+        </Table>
+      </Paper>
     );
   }
 }

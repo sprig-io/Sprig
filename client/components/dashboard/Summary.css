@@ -1,9 +1,22 @@
 .root {
   flex-grow: 1;
+  overflow-x: auto;
+  margin: 100px 240px 100px 240px;
+}
+.header {
+  text-align: center;
+  color: rgb(113, 113, 113) !important;
+}
+.cell {
+  color: rgb(113, 113, 113) !important;
+}
+
+.table {
+  min-width: 700;
+  background-color: rgb(240, 238, 238);
 }
 .paper {
   text-align: center;
-  margin: 10px;
+  margin: 100px;
   padding: 10px;
-  color: grey;
 }
