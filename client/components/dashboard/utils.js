@@ -11,7 +11,7 @@ export const simplifyTransactions = transactionProps => {
 export const getCategorySpend = (transactionProps, category) => {
   return transactionProps
     .filter(elem => {
-      return elem.category.includes(category);
+      return elem.category[0] === category;
     })
     .reduce((accum, elem) => {
       return (accum += elem.amount);

@@ -12,7 +12,13 @@ import {
   gettingBalance,
 } from '../../store/accountReducer';
 import { gettingMonthlyTransactions } from '../../store/monthlyReducer';
-import { getLargest } from '../../store/insightReducer';
+import {
+  getLargest,
+  getRestaurantSpend,
+  getMerchantSpend,
+  getTranspoSpend,
+  getFees,
+} from '../../store/insightReducer';
 
 import { logoutUser } from '../../store/userReducer';
 class Dashboard extends Component {
@@ -26,11 +32,16 @@ class Dashboard extends Component {
   async componentDidMount() {
     await this.props.gettingAccounts();
     const { accounts } = this.props;
-    await this.props.gettingTransactions(accounts);
-    await this.props.getLargest(this.props.transactions);
+    if (this.props.accounts.length) {
+      await this.props.gettingTransactions(accounts);
+      this.props.getLargest(this.props.transactions);
+      this.props.getRestaurantSpend(this.props.transactions);
+      this.props.getMerchantSpend(this.props.transactions);
+      this.props.getTranspoSpend(this.props.transactions);
+    }
     if (this.props.accounts.length) {
       await this.props.gettingBalance(this.props.accounts);
-      this.setState({ loading: true, accountsExist: true });
+      this.setState({ loading: true });
     } else {
       this.setState({ loading: true });
     }
@@ -38,9 +49,7 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
-        {this.state.loading &&
-        this.props.user.isAuthenticated &&
-        this.state.accountsExist ? (
+        {this.state.loading && this.props.accounts.length ? (
           <div>
             <Navbar />
             <Summary />
@@ -49,15 +58,13 @@ class Dashboard extends Component {
             <PlaidAccountTransactions />
             <ConnectedPlaidAccount />
           </div>
-        ) : !this.state.loading ? (
-          <h1>Loading</h1>
-        ) : !this.props.user.isAuthenticated ? (
-          <h1>try logging in again </h1>
-        ) : (
+        ) : !this.props.accounts.length ? (
           <div>
             <h2>No accounts yet</h2>
             <ConnectedPlaidAccount />
           </div>
+        ) : (
+          <h1>Loading</h1>
         )}
       </div>
     );
@@ -79,6 +86,10 @@ const mapDispatchToProps = dispatch => ({
   gettingMonthlyTransactions: plaidAccountData =>
     dispatch(gettingMonthlyTransactions(plaidAccountData)),
   getLargest: props => dispatch(getLargest(props)),
+  getRestaurantSpend: props => dispatch(getRestaurantSpend(props)),
+  getMerchantSpend: props => dispatch(getMerchantSpend(props)),
+  getTranspoSpend: props => dispatch(getTranspoSpend(props)),
+  getFees: props => dispatch(getFees(props)),
 });
 export default connect(
   mapStateToProps,
