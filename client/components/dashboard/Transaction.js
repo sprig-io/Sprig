@@ -1,25 +1,25 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import ReactTable from 'material-table';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import ReactTable from "material-table";
 
 import {
   gettingAccounts,
-  gettingTransactions,
-} from '../../store/accountReducer';
+  gettingTransactions
+} from "../../store/accountReducer";
 
-import { logoutUser } from '../../store/userReducer';
+import { logoutUser } from "../../store/userReducer";
 class Transactions extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loaded: false,
+      loaded: false
     };
     this.onLogoutClick = this.onLogoutClick.bind(this);
   }
   async componentDidMount() {
     await this.props.gettingAccounts();
     const { accounts } = this.props;
-    console.log('hi', this.props.accounts);
+    console.log("hi", this.props.accounts);
     await this.props.gettingTransactions(accounts);
     const { transactions } = this.props;
     this.props.gettingTransactions(accounts);
@@ -39,20 +39,20 @@ class Transactions extends Component {
           Amount: ele.amount,
           category: ele.category[0],
           companyName: ele.name,
-          date: ele.date,
+          date: ele.date
         });
       });
     });
 
     let columnNames = [
-      { title: 'Bank Name', field: 'Name' },
-      { title: 'Vendor', field: 'companyName' },
-      { title: 'Category', field: 'category' },
-      { title: 'Amount', field: 'Amount' },
-      { title: 'Date', field: 'date' },
+      { title: "Date", field: "date" },
+      { title: "Category", field: "category" },
+      { title: "Vendor", field: "companyName" },
+      { title: "Amount", field: "Amount" },
+      { title: "Bank Name", field: "Name" }
     ];
     return (
-      <div style={{ maxWidth: '90%' }}>
+      <div style={{ maxWidth: "90%" }}>
         <ReactTable
           title="Transactions"
           data={transData}
@@ -66,14 +66,14 @@ class Transactions extends Component {
 const mapStateToProps = state => ({
   user: state.userReducer.user,
   accounts: state.accountReducer.accounts,
-  transactions: state.accountReducer.transactions,
+  transactions: state.accountReducer.transactions
 });
 
 const mapDispatchToProps = dispatch => ({
   gettingTransactions: plaidAccountData =>
     dispatch(gettingTransactions(plaidAccountData)),
   gettingAccounts: () => dispatch(gettingAccounts()),
-  logoutUser: () => dispatch(logoutUser()),
+  logoutUser: () => dispatch(logoutUser())
 });
 
 const PlaidAccountTransactions = connect(
