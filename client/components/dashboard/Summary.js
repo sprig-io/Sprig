@@ -1,8 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { gettingAccounts, gettingBalance } from '../../store/accountReducer';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
 import './Summary.css';
 import { balancesCondensed } from './utils';
 
@@ -25,7 +23,6 @@ class Summary extends React.Component {
   }
   render() {
     const balanceData = balancesCondensed(this.props.balance);
-    console.log('Balance data', balanceData);
 
     return (
       <div>
