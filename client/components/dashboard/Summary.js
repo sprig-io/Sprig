@@ -1,61 +1,27 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { gettingAccounts, gettingBalance } from '../../store/accountReducer';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
 import './Summary.css';
+import { balancesCondensed } from './utils';
 
 class Summary extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      loading: false,
-      accountsExist: false,
-    };
   }
-  async componentDidMount() {
-    await this.props.gettingAccounts();
-    if (this.props.accounts.length) {
-      await this.props.gettingBalance(this.props.accounts);
-      this.setState({ loading: true, accountsExist: true });
-    } else {
-      this.setState({ loading: true });
-    }
-  }
+  async componentDidMount() {}
   render() {
-    const accounts = this.props.accounts;
-    console.log(this.props.balance, 'BALANCE IN SUMMARY');
-    let temp = [];
-    let types = ['Plaid Checking', 'Plaid Saving'];
-    this.props.balance.forEach(function(element) {
-      element.balance.forEach(function(ele) {
-        temp.push({
-          AccountName: element.accountName,
-          AvailableBalance: ele.balances.available,
-          CurrentBalance: ele.balances.current,
-          Type: ele.name,
-        });
-      });
-    });
-    // balanceData array includes only Savings and Checkings
-    const balanceData = temp.filter(data => types.includes(data.Type));
-    console.log(balanceData, 'Balance Data');
+    const balanceData = balancesCondensed(this.props.balance);
     return (
       <div>
-        {this.state.loading && this.state.accountsExist ? (
-          balanceData.map(element => (
+        {balanceData.map(
+          (element, ind) => (
             // eslint-disable-next-line react/jsx-key
-            <div>
-              <h4>Account Name: {element.AccountName}</h4>
-              <h4>Account Type: {element.Type}</h4>
-              <h4>Available Balance: $ {element.AvailableBalance}</h4>
-              <h4>Current Balance: $ {element.CurrentBalance}</h4>
+            <div key={ind}>
+              <h4>Account Name: {element.accountName}</h4>
+              <h4>Checking Balance: $ {element.Checking}</h4>
+              <h4>Savings Balance: $ {element.Savings}</h4>
             </div>
-          ))
-        ) : !this.loading ? (
-          <h1>Loading</h1>
-        ) : (
-          <h2>No accounts yet</h2>
+          )
+          // eslint-disable-next-line react/jsx-key
         )}
       </div>
     );
@@ -67,13 +33,4 @@ const mapState = state => ({
   balance: state.accountReducer.balance,
 });
 
-const mapDispatch = dispatch => ({
-  gettingAccounts: () => dispatch(gettingAccounts()),
-  gettingBalance: plaidAccountData =>
-    dispatch(gettingBalance(plaidAccountData)),
-});
-
-export default connect(
-  mapState,
-  mapDispatch
-)(Summary);
+export default connect(mapState)(Summary);
