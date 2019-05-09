@@ -31,14 +31,14 @@ class Transactions extends Component {
     });
 
     let columnNames = [
-      { title: 'Bank Name', field: 'Name' },
-      { title: 'Vendor', field: 'companyName' },
-      { title: 'Category', field: 'category' },
-      { title: 'Amount', field: 'Amount' },
       { title: 'Date', field: 'date' },
+      { title: 'Category', field: 'category' },
+      { title: 'Vendor', field: 'companyName' },
+      { title: 'Amount', field: 'Amount' },
+      { title: 'Bank Name', field: 'Name' },
     ];
     return (
-      <div style={{ maxWidth: '90%' }}>
+      <div style={{ maxWidth: '90%' }} className="tabletrans">
         <ReactTable
           title="Transactions"
           data={transData}
