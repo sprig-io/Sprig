@@ -3,6 +3,11 @@ import { addingAccount } from '../store/accountReducer';
 import { connect } from 'react-redux';
 import PlaidLinkButton from 'react-plaid-link-button';
 
+const rules = {
+  color: 'blue',
+  size: '30px',
+};
+
 class PlaidAccount extends Component {
   constructor(props) {
     super(props);
@@ -25,7 +30,7 @@ class PlaidAccount extends Component {
 
   render() {
     return (
-      <div>
+      <div id="plaid-button">
         <PlaidLinkButton
           buttonProps={{
             className:
@@ -39,9 +44,11 @@ class PlaidAccount extends Component {
             onSuccess: this.handleOnSuccess,
           }}
           onScriptLoad={() => this.setState({ loaded: true })}
+          id="plaid-button"
         >
-          Link Account
+          Add Accounts
         </PlaidLinkButton>
+        <p className="description">Powered by Plaid</p>
       </div>
     );
   }
