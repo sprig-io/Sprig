@@ -12,37 +12,9 @@ import { autoPlay } from 'react-swipeable-views-utils';
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
-const tutorialSteps = [
-  {
-    label: `You spent`,
-    imgPath:
-      'https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60',
-  },
-  {
-    label: 'Bird',
-    imgPath:
-      'https://images.unsplash.com/photo-1538032746644-0212e812a9e7?auto=format&fit=crop&w=400&h=250&q=60',
-  },
-  {
-    label: 'Bali, Indonesia',
-    imgPath:
-      'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=400&h=250&q=80',
-  },
-  {
-    label: 'NeONBRAND Digital Marketing, Las Vegas, United States',
-    imgPath:
-      'https://images.unsplash.com/photo-1518732714860-b62714ce0c59?auto=format&fit=crop&w=400&h=250&q=60',
-  },
-  {
-    label: 'Goč, Serbia',
-    imgPath:
-      'https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&w=400&h=250&q=60',
-  },
-];
-
 const styles = theme => ({
   root: {
-    maxWidth: 400,
+    maxWidth: 600,
     flexGrow: 1,
     padding: '25px',
     marginLeft: 'auto',
@@ -51,13 +23,28 @@ const styles = theme => ({
   header: {
     display: 'flex',
     alignItems: 'center',
-    height: 150,
+    height: 250,
     paddingLeft: theme.spacing.unit * 4,
-    backgroundColor: theme.palette.background.default,
+    backgroundColor: 'white',
+  },
+  textCard: {
+    fontSize: '1.5rem',
+    color: 'rgb(92, 92, 92)',
+  },
+  bottom: {
+    backgroundColor: ' #4c9f70',
+    color: 'white',
+  },
+  buttons: {
+    color: 'white',
+    fontWeight: 'bold',
   },
 });
 
 class SwipeableTextMobileStepper extends React.Component {
+  constructor(props) {
+    super(props);
+  }
   state = {
     activeStep: 0,
   };
@@ -81,20 +68,25 @@ class SwipeableTextMobileStepper extends React.Component {
   render() {
     const { classes, theme } = this.props;
     const { activeStep } = this.state;
-    const maxSteps = tutorialSteps.length;
+    const maxSteps = this.props.tutorialSteps.length;
 
     return (
       <div className={classes.root}>
+        <h1>In the last 30 days...</h1>
         <Paper square elevation={0} className={classes.header}>
-          <Typography>{tutorialSteps[activeStep].label}</Typography>
+          <Typography className={classes.textCard}>
+            {this.props.tutorialSteps[activeStep].label}
+          </Typography>
         </Paper>
         <MobileStepper
           steps={maxSteps}
           position="static"
           activeStep={activeStep}
           className={classes.mobileStepper}
+          className={classes.bottom}
           nextButton={
             <Button
+              className={classes.buttons}
               size="small"
               onClick={this.handleNext}
               disabled={activeStep === maxSteps - 1}
@@ -109,6 +101,7 @@ class SwipeableTextMobileStepper extends React.Component {
           }
           backButton={
             <Button
+              className={classes.buttons}
               size="small"
               onClick={this.handleBack}
               disabled={activeStep === 0}
