@@ -21,6 +21,7 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import classNames from 'classnames';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import AddBoxIcon from '@material-ui/icons/AddBox';
+import { Link } from 'react-router-dom';
 import './dashboard/Summary.css';
 
 const drawerWidth = 240;
@@ -91,6 +92,7 @@ class Navbar extends React.Component {
     this.onLogoutClick = this.onLogoutClick.bind(this);
     this.handleDrawerOpen = this.handleDrawerOpen.bind(this);
     this.handleDrawerClose = this.handleDrawerClose.bind(this);
+    this.handleLinkAccount = this.handleLinkAccount.bind(this);
   }
 
   handleDrawerOpen = () => {
@@ -103,6 +105,12 @@ class Navbar extends React.Component {
   onLogoutClick(e) {
     e.preventDefault();
     this.props.logoutUser();
+  }
+  handleLinkAccount() {
+    console.log(this.props.history, 'this.props');
+    return this.props.history.push({
+      pathname: '/addAccount',
+    });
   }
   render() {
     const { classes, theme } = this.props;
@@ -152,12 +160,14 @@ class Navbar extends React.Component {
           </div>
           <Divider />
           <List>
-            <ListItem button>
-              <ListItemIcon>
-                <AddBoxIcon />
-              </ListItemIcon>
-              <ListItemText primary="Link Account" />
-            </ListItem>
+            <Link to="/addAccount" style={{ color: 'black' }}>
+              <ListItem button>
+                <ListItemIcon>
+                  <AddBoxIcon />
+                </ListItemIcon>
+                <ListItemText primary="Add Account" />
+              </ListItem>
+            </Link>
             <ListItem button onClick={this.onLogoutClick}>
               <ListItemIcon>
                 <ExitToAppIcon />

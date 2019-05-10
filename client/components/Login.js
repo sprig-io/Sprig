@@ -12,6 +12,7 @@ class Login extends React.Component {
       email: '',
       password: '',
       errors: {},
+      errMessage: '',
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -43,6 +44,13 @@ class Login extends React.Component {
     //this is where we wanna map dispatch the thunk?
     event.preventDefault();
     this.props.loggedInUser(this.state);
+    if (!this.props.isAuthenticated) {
+      this.setState({
+        errMessage: 'The email and/or password you entered is incorrect',
+        email: '',
+        password: '',
+      });
+    }
   }
   render() {
     return (
@@ -55,6 +63,11 @@ class Login extends React.Component {
           <h3 style={{ textAlign: 'center', fontFamily: 'Raleway' }}>
             Welcome User!
           </h3>
+          <h6
+            style={{ textAlign: 'center', fontFamily: 'Raleway', color: 'red' }}
+          >
+            {this.state.errMessage}
+          </h6>
           <div
             style={{
               marginTop: '5rem',
@@ -72,6 +85,7 @@ class Login extends React.Component {
                     name="email"
                     value={this.state.email}
                     onChange={this.handleChange}
+                    required
                   />
                 </label>
                 <label>
@@ -81,6 +95,7 @@ class Login extends React.Component {
                     name="password"
                     value={this.state.password}
                     onChange={this.handleChange}
+                    required
                   />
                 </label>
                 <input

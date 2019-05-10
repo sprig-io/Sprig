@@ -13,6 +13,7 @@ import { fetchUser, logoutUser } from './store/userReducer';
 import store from './store';
 import { Provider } from 'react-redux';
 import Navbar from './components/Navbar';
+import PlaidAccount from './components/PlaidAccount';
 
 if (localStorage.jwt) {
   // Set auth token header auth
@@ -44,6 +45,7 @@ export default class App extends React.Component {
           <Route exact path="/register" component={Register} />
           <Switch>
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
+            <PrivateRoute exact path="/addAccount" component={PlaidAccount} />
           </Switch>
         </BrowserRouter>
       </Provider>

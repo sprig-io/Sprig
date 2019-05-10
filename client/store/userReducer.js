@@ -48,7 +48,6 @@ export const loggedInUser = user => async dispatch => {
     localStorage.setItem('jwt', token);
     setAuthToken(token);
     const data = jwtDecode(token);
-
     dispatch(fetchUser(data));
   } catch (err) {
     console.error(err);
