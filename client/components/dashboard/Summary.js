@@ -8,13 +8,28 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined';
+
+import { deletingAccount } from '../../store/accountReducer';
 
 class Summary extends React.Component {
   constructor(props) {
     super(props);
+
+    this.handleRemove = this.handleRemove.bind(this);
   }
+
+  handleRemove = accountName => {
+    const targetAccount = this.props.accounts.filter(
+      elem => elem.institutionName === accountName
+    );
+    let accountId = targetAccount[0]._id;
+    this.props.deletingAccount(accountId);
+    console.log('TARGET', targetAccount);
+  };
   async componentDidMount() {}
   render() {
+    console.log('ACCOUNTID', this.props);
     const balanceData = balancesCondensed(this.props.balance);
     return (
       <div>
@@ -25,6 +40,7 @@ class Summary extends React.Component {
                 <TableCell className="headerLeft">Bank Name </TableCell>
                 <TableCell className="header">Checking</TableCell>
                 <TableCell className="header">Savings</TableCell>
+                <TableCell className="header">Remove</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -35,6 +51,11 @@ class Summary extends React.Component {
                   </TableCell>
                   <TableCell className="cell">${row.Checking}</TableCell>
                   <TableCell className="cell">${row.Savings}</TableCell>
+                  <TableCell className="cell">
+                    <DeleteOutlinedIcon
+                      onClick={() => this.handleRemove(row.accountName)}
+                    />
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
@@ -50,4 +71,11 @@ const mapState = state => ({
   balance: state.accountReducer.balance,
 });
 
-export default connect(mapState)(Summary);
+const mapDispatchToProps = dispatch => ({
+  deletingAccount: accountId => dispatch(deletingAccount(accountId)),
+});
+
+export default connect(
+  mapState,
+  mapDispatchToProps
+)(Summary);
