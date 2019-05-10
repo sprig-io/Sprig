@@ -25,6 +25,7 @@ class Register extends React.Component {
     event.preventDefault();
     console.log(this.state, 'STATE');
     this.props.createdUser(this.state);
+
     return this.props.history.push({
       pathname: '/login',
     });
