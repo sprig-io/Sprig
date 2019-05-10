@@ -72,10 +72,15 @@ class Login extends React.Component {
                 />
               </label>
               <input
+<<<<<<< HEAD
                 className="btn btn-large waves-effect waves-light hoverable darkgreen accent-3"
+=======
+                className="btn btn-large waves-effect waves-light hoverable btnThings accent-3"
+>>>>>>> master
                 style={{ marginLeft: '120px' }}
                 type="submit"
                 value="Log In"
+                id="registerTwo"
               />
             </form>
           </div>
