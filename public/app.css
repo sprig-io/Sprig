@@ -1,5 +1,6 @@
 .main-btn {
   width: 185px;
+  height: 105px;
   letter-spacing: 1.5px;
   border-radius: 3px;
   margin-top: 1rem;
@@ -12,7 +13,30 @@
 .btn:hover {
   opacity: 0.8;
 }
+.insightCont {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 10px;
+  min-width: 300px;
+  max-width: 600px;
+  flex-grow: 1;
+  padding-right: 10px;
+}
 
+.lrg {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+  margin-right: 25px;
+  margin-left: 25px;
+
+  background-color: #798598;
+}
 .btnThings {
   background-color: #4c9f70;
 }
@@ -67,6 +91,4 @@ body {
 
 .chart-container {
   position: relative;
-  height: 90px;
-  width: 100%;
 }

@@ -19,14 +19,12 @@ class Transactions extends Component {
   render() {
     let transData = [];
     this.props.transactions.forEach(function(element) {
-      element.transactions.forEach(function(ele) {
-        transData.push({
-          Name: element.accountName,
-          Amount: ele.amount,
-          category: ele.category[0],
-          companyName: ele.name,
-          date: ele.date,
-        });
+      transData.push({
+        Name: element.accountName,
+        Amount: element.amount,
+        category: element.category[0],
+        companyName: element.name,
+        date: element.date,
       });
     });
 
