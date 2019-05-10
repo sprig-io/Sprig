@@ -65,7 +65,7 @@ class Register extends React.Component {
               <label>
                 Password:
                 <input
-                  type="text"
+                  type="password"
                   name="password"
                   value={this.state.password}
                   onChange={this.handleChange}
@@ -74,7 +74,7 @@ class Register extends React.Component {
               <label>
                 Confirm Password:
                 <input
-                  type="text"
+                  type="password"
                   name="password2"
                   value={this.state.password2}
                   onChange={this.handleChange}
@@ -83,8 +83,12 @@ class Register extends React.Component {
               <input
                 type="submit"
                 value="Register"
+<<<<<<< HEAD
+                className="btn btn-large waves-effect waves-light hoverable darkgreen accent-3"
+=======
                 className=" btnThings btn btn-large waves-effect waves-light hoverable accent-3"
                 id="registerTwo"
+>>>>>>> master
                 style={{ marginLeft: '200px' }}
               />
             </form>

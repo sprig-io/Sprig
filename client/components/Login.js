@@ -65,14 +65,18 @@ class Login extends React.Component {
               <label>
                 Password:
                 <input
-                  type="text"
+                  type="password"
                   name="password"
                   value={this.state.password}
                   onChange={this.handleChange}
                 />
               </label>
               <input
+<<<<<<< HEAD
+                className="btn btn-large waves-effect waves-light hoverable darkgreen accent-3"
+=======
                 className="btn btn-large waves-effect waves-light hoverable btnThings accent-3"
+>>>>>>> master
                 style={{ marginLeft: '120px' }}
                 type="submit"
                 value="Log In"
