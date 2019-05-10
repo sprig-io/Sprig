@@ -40,10 +40,10 @@ class Login extends React.Component {
   handleChange(event) {
     this.setState({ [event.target.name]: event.target.value });
   }
-  handleSubmit(event) {
+  async handleSubmit(event) {
     //this is where we wanna map dispatch the thunk?
     event.preventDefault();
-    this.props.loggedInUser(this.state);
+    await this.props.loggedInUser(this.state);
     if (!this.props.isAuthenticated) {
       this.setState({
         errMessage: 'The email and/or password you entered is incorrect',
