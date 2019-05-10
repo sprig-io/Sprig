@@ -41,9 +41,7 @@ const options = {
   legend: {
     display: true,
     position: 'right',
-    labels: {
-      fontSize: 16,
-    },
+    labels: {},
   },
   layout: {
     padding: {
@@ -71,7 +69,7 @@ class CategoriesDonut extends Component {
     return (
       <div>
         <div className="chartContainer">
-          <Doughnut data={data} options={options} height={110} />
+          <Doughnut data={data} options={options} height={220} />
         </div>
       </div>
     );

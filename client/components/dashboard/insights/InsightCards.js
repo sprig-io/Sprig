@@ -4,7 +4,7 @@ import {
   gettingAccounts,
   gettingTransactions,
 } from '../../../store/accountReducer';
-import { gettingMonthlyTransactions } from '../../../store/monthlyReducer';
+
 import Cards from './cards';
 
 class InsightCard extends Component {

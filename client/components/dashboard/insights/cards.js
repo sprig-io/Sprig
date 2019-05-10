@@ -90,11 +90,6 @@ class SwipeableTextMobileStepper extends React.Component {
 
     return (
       <div className={classes.root}>
-        <Paper square elevation={0} className={classes.top}>
-          <Typography className={classes.cardHead}>
-            Insights from the last 30 days
-          </Typography>
-        </Paper>
         <Paper square elevation={0} className={classes.header}>
           <Typography className={classes.textCard}>
             {this.props.tutorialSteps[activeStep].label}

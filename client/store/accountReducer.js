@@ -6,6 +6,7 @@ const initialState = {
   balance: [],
 };
 
+import { simplifyMonthly } from './utils';
 //ACTION TYPES
 const ADD_ACCOUNT = 'ADD_ACCOUNT';
 const GET_TRANSACTIONS = 'GET_TRANSACTIONS';
@@ -50,7 +51,7 @@ const getBalance = plaidAccountData => {
 //Thunk
 
 export const gettingAccounts = () => async dispatch => {
-  const { data } = await axios.get('/accounts/transactions/monthly');
+  const { data } = await axios.get('/api/plaid/accounts');
   dispatch(getAccounts(data));
 };
 export const addingAccount = plaidAccountData => async dispatch => {
@@ -69,9 +70,10 @@ export const deletingAccount = accountId => async dispatch => {
 export const gettingTransactions = plaidAccountData => async dispatch => {
   // const accountTransactions = plaidAccountData.accounts;
   const { data } = await axios.post(
-    '/api/plaid/accounts/transactions',
+    '/api/plaid/accounts/transactions/monthly',
     plaidAccountData
   );
+  console.log('the data');
   dispatch(getTransactions(data));
 };
 
@@ -102,7 +104,8 @@ export default function(state = initialState, action) {
         ],
       };
     case GET_TRANSACTIONS:
-      return { ...state, transactions: [...action.plaidAccountData] };
+      let simplified = simplifyMonthly([...action.plaidAccountData]);
+      return { ...state, transactions: simplified };
     case GET_ACCOUNTS:
       return { ...state, accounts: [...action.plaidAccountData] };
     case GET_BALANCE:

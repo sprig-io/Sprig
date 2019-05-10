@@ -12,7 +12,25 @@
 .btn:hover {
   opacity: 0.8;
 }
+.insightCont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 10px;
+  padding-left: 15%;
+  min-width: 700px;
+}
 
+.lrg {
+  display: flex;
+  justify-content: center;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  margin-right: 10%;
+  margin-left: 10%;
+  margin-top: 10px;
+  background-color: ;
+}
 .btnThings {
   background-color: #4c9f70;
 }
@@ -67,6 +85,4 @@ body {
 
 .chart-container {
   position: relative;
-  height: 90px;
-  width: 100%;
 }
