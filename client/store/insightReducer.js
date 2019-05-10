@@ -1,7 +1,6 @@
 import axios from 'axios';
 import {
   getLargestTransaction,
-  simplifyTransactions,
   getCategorySpend,
   largestByMerchant,
 } from '../components/dashboard/utils';
@@ -50,19 +49,16 @@ export default function(state = initialState, action) {
       let largest = getLargestTransaction(action.props);
       return { ...state, largest: largest };
     case GET_RESTAURANT:
-      let simplified = simplifyTransactions(action.props);
-      let rest = getCategorySpend(simplified, 'Food and Drink');
+      let rest = getCategorySpend(action.props, 'Food and Drink');
       return { ...state, restaurantSpend: rest };
     case GET_FEES:
-      let simplified3 = simplifyTransactions(action.props);
-      let fees = getCategorySpend(simplified3, 'Fees');
+      let fees = getCategorySpend(action.props, 'Fees');
       return { ...state, fees: fees };
     case GET_MERCHANT:
       let merchant = largestByMerchant(action.props);
       return { ...state, merchantSpend: merchant };
     case GET_TRANSPO:
-      let simplified2 = simplifyTransactions(action.props);
-      let transpo = getCategorySpend(simplified2, 'Travel');
+      let transpo = getCategorySpend(action.props, 'Travel');
       return { ...state, transpoSpend: transpo };
     default:
       return state;

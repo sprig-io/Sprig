@@ -33,6 +33,8 @@ export const getErrors = err => ({
 //Thunk - for user registration
 export const createdUser = user => async dispatch => {
   try {
+    console.log('in the thuhnk');
+    console.log('the user', user);
     const { data } = await axios.post('/api/users/register', user);
     dispatch(createUser(data));
   } catch (err) {
@@ -72,7 +74,6 @@ export default function(state = initialState, action) {
       return {
         ...state,
         user: action.user,
-        isAuthenticated: !isEmpty(action.user),
       };
     case GET_CURRENT_USER:
       return {

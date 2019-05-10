@@ -34,7 +34,7 @@ class PlaidAccount extends Component {
         <PlaidLinkButton
           buttonProps={{
             className:
-              'btn btn-large waves-effect waves-light hoverable accent-3 main-btn',
+              'btn waves-effect waves-light hoverable accent-3 main-btn',
             id: 'plaidButton',
           }}
           plaidLinkProps={{
