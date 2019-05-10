@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { loggedInUser } from '../store/userReducer';
 import { Link } from 'react-router-dom';
 import './dashboard/Summary.css';
+import HomeIcon from '@material-ui/icons/Home';
 
 class Login extends React.Component {
   constructor() {
@@ -45,40 +46,52 @@ class Login extends React.Component {
   }
   render() {
     return (
-      <div className="container">
-        <div style={{ marginTop: '4rem' }} className="row">
-          <div className="col s4 offset-s2">
-            <Link to="/" className="btn-flat waves-effect">
-              <i className="material-icons left" /> Back to home
-            </Link>
+      <div>
+        <Link to="/" className="btn-flat waves-effect">
+          <HomeIcon style={{ fontSize: 40, marginTop: '3px' }} />
+        </Link>
 
-            <form onSubmit={this.handleSubmit}>
-              <label>
-                Email:
+        <div className="container">
+          <h3 style={{ textAlign: 'center', fontFamily: 'Raleway' }}>
+            Welcome User!
+          </h3>
+          <div
+            style={{
+              marginTop: '5rem',
+              display: 'flex',
+              justifyContent: 'center',
+            }}
+            className="row"
+          >
+            <div className="col">
+              <form onSubmit={this.handleSubmit}>
+                <label>
+                  Email:
+                  <input
+                    type="text"
+                    name="email"
+                    value={this.state.email}
+                    onChange={this.handleChange}
+                  />
+                </label>
+                <label>
+                  Password:
+                  <input
+                    type="password"
+                    name="password"
+                    value={this.state.password}
+                    onChange={this.handleChange}
+                  />
+                </label>
                 <input
-                  type="text"
-                  name="email"
-                  value={this.state.email}
-                  onChange={this.handleChange}
+                  className="btn btn-large waves-effect waves-light hoverable btnThings accent-3"
+                  style={{ marginLeft: '40%', marginTop: '10px' }}
+                  type="submit"
+                  value="Log In"
+                  id="registerTwo"
                 />
-              </label>
-              <label>
-                Password:
-                <input
-                  type="password"
-                  name="password"
-                  value={this.state.password}
-                  onChange={this.handleChange}
-                />
-              </label>
-              <input
-                className="btn btn-large waves-effect waves-light hoverable btnThings accent-3"
-                style={{ marginLeft: '120px' }}
-                type="submit"
-                value="Log In"
-                id="registerTwo"
-              />
-            </form>
+              </form>
+            </div>
           </div>
         </div>
       </div>
