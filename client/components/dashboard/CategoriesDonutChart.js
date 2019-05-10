@@ -51,6 +51,7 @@ const options = {
       bottom: 40,
     },
     maintainAspectRatio: false,
+    responsive: true,
   },
 };
 class CategoriesDonut extends Component {

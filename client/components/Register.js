@@ -88,50 +88,6 @@ class Register extends React.Component {
                   id="registerTwo"
                   style={{ marginLeft: '200px', marginTop: '10px' }}
                 />
-<<<<<<< HEAD
-              </label>
-              <label>
-                Email:
-                <input
-                  type="text"
-                  name="email"
-                  value={this.state.email}
-                  onChange={this.handleChange}
-                />
-              </label>
-              <label>
-                Password:
-                <input
-                  type="password"
-                  name="password"
-                  value={this.state.password}
-                  onChange={this.handleChange}
-                />
-              </label>
-              <label>
-                Confirm Password:
-                <input
-                  type="password"
-                  name="password2"
-                  value={this.state.password2}
-                  onChange={this.handleChange}
-                />
-              </label>
-              <input
-                type="submit"
-                value="Register"
-                className=" btnThings btn btn-large waves-effect waves-light hoverable accent-3"
-                id="registerTwo"
-                style={{ marginLeft: '200px' }}
-              />
-            </form>
-            <p
-              className="grey-text text-darken-1"
-              style={{ marginLeft: '160px' }}
-            >
-              Already have an account? <Link to="/login">Log In</Link>
-            </p>
-=======
               </form>
               <p
                 className="grey-text text-darken-1"
@@ -140,7 +96,6 @@ class Register extends React.Component {
                 Already have an account? <Link to="/login">Log In</Link>
               </p>
             </div>
->>>>>>> master
           </div>
         </div>
       </div>
