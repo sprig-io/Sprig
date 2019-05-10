@@ -48,7 +48,7 @@ class Login extends React.Component {
     return (
       <div>
         <Link to="/" className="btn-flat waves-effect">
-          <HomeIcon style={{ fontSize: 40, marginTop: '5px' }} />
+          <HomeIcon style={{ fontSize: 40, marginTop: '3px' }} />
         </Link>
 
         <div className="container">
@@ -85,7 +85,7 @@ class Login extends React.Component {
                 </label>
                 <input
                   className="btn btn-large waves-effect waves-light hoverable btnThings accent-3"
-                  style={{ marginLeft: '0px', marginTop: '10px' }}
+                  style={{ marginLeft: '40%', marginTop: '10px' }}
                   type="submit"
                   value="Log In"
                   id="registerTwo"
