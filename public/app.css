@@ -92,3 +92,13 @@ body {
 .chart-container {
   position: relative;
 }
+
+.loading {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  color: #4c9f70;
+  margin-top: 100px;
+}

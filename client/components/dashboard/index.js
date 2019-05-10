@@ -19,6 +19,8 @@ import {
   getFees,
 } from '../../store/insightReducer';
 
+import Loading from './Loading';
+
 import { logoutUser } from '../../store/userReducer';
 class Dashboard extends Component {
   constructor(props) {
@@ -64,13 +66,16 @@ class Dashboard extends Component {
               <ConnectedPlaidAccount />
             </div>
           </div>
-        ) : !this.props.accounts.length ? (
+        ) : this.state.loading && !this.props.accounts.length ? (
           <div>
             <h2>No accounts yet</h2>
             <ConnectedPlaidAccount />
           </div>
         ) : (
-          <h1>Loading</h1>
+          <div className="loading">
+            <Loading />
+            <h2 className="loading">Crunching the numbers</h2>
+          </div>
         )}
       </div>
     );

@@ -74,6 +74,7 @@
     "mocha": "^6.1.4",
     "nodemon": "^1.19.0",
     "npm": "^6.9.0",
+    "react-loader-spinner": "^2.3.0",
     "react-swipeable-views": "^0.13.1",
     "react-swipeable-views-utils": "^0.13.1",
     "style-loader": "^0.23.1",
