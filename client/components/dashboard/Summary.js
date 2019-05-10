@@ -40,22 +40,20 @@ class Summary extends React.Component {
                 <TableCell className="headerLeft">Bank Name </TableCell>
                 <TableCell className="header">Checking</TableCell>
                 <TableCell className="header">Savings</TableCell>
-                <TableCell className="header">Remove</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {balanceData.map((row, ind) => (
                 <TableRow key={ind}>
                   <TableCell className="cellLeft" component="th" scope="row">
+                    <DeleteOutlinedIcon
+                      onClick={() => this.handleRemove(row.accountName)}
+                    />
+                    {''}
                     {row.accountName}
                   </TableCell>
                   <TableCell className="cell">${row.Checking}</TableCell>
                   <TableCell className="cell">${row.Savings}</TableCell>
-                  <TableCell className="cell">
-                    <DeleteOutlinedIcon
-                      onClick={() => this.handleRemove(row.accountName)}
-                    />
-                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
