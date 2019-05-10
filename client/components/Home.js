@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import Login from "./Login";
-import Register from "./Register";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import Login from './Login';
+import Register from './Register';
 
 class Home extends React.Component {
   constructor() {
@@ -10,14 +10,14 @@ class Home extends React.Component {
   }
   render() {
     return (
-      <div style={{ height: "75vh" }} className="container valign-wrapper">
+      <div style={{ height: '75vh' }} className="container valign-wrapper">
         <div className="row">
-          <h4 style={{ margin: "85px" }} className="flow-text">
+          <h4 style={{ margin: '85px' }} className="flow-text">
             <b>Welcome</b> to Sprig <br />
             <br />
-            <span style={{ fontFamily: "comic sans", margin: "5px" }}>
+            <span style={{ fontFamily: 'comic sans', margin: '5px' }}>
               SAVE $$$
-            </span>{" "}
+            </span>{' '}
             with Sprig
           </h4>
           <br />
@@ -25,11 +25,12 @@ class Home extends React.Component {
             <Link
               to="/register"
               style={{
-                width: "240px",
-                borderRadius: "3px",
-                letterSpacing: "1.5px"
+                width: '240px',
+                borderRadius: '3px',
+                letterSpacing: '1.5px',
               }}
-              className="btn btn-large waves-effect waves-light hoverable darkgreen accent-3"
+              className="btn btn-large waves-effect waves-light hoverable btnThings accent-3"
+              id="register"
             >
               Register
             </Link>
@@ -38,11 +39,12 @@ class Home extends React.Component {
             <Link
               to="/login"
               style={{
-                width: "240px",
-                borderRadius: "3px",
-                letterSpacing: "1.5px"
+                width: '240px',
+                borderRadius: '3px',
+                letterSpacing: '1.5px',
               }}
-              className="btn btn-large waves-effect waves-light hoverable darkgreen accent-3"
+              className="btn btn-large waves-effect waves-light hoverable btnThings accent-3"
+              id="login"
             >
               Log In
             </Link>
