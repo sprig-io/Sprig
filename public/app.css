@@ -13,12 +13,35 @@
   opacity: 0.8;
 }
 
+.btnThings {
+  background-color: #4c9f70;
+}
+#plaidButton {
+  background-color: #4c9f70;
+}
+
+#login {
+  background-color: #4c9f70;
+}
+
+#loginTwo {
+  background-color: #4c9f70;
+}
+
+#register {
+  background-color: #4c9f70;
+}
+
+#registerTwo {
+  background-color: #4c9f70;
+}
+
 .index {
   display: flex;
   justify-content: center;
   flex-direction: column;
   flex-shrink: 1;
-  background-color: rgb(240, 238, 238);
+  background-color: rgb(214, 214, 214);
 }
 body {
   background-color: rgb(214, 214, 214);
