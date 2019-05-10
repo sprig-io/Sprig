@@ -146,7 +146,7 @@ class Register extends React.Component {
 
 const mapStateToProps = state => ({
   currentUser: state.userReducer.user,
-  isLoggedIn: state.userReducer.isLoggedIn,
+  // isLoggedIn: state.userReducer.isLoggedIn
 });
 
 const mapDispatchToProps = dispatch => ({
