@@ -1,11 +1,4 @@
 //reformats this.props.transactions to include transactions across accounts in a flat array. NOTE: account name is not included.
-export const simplifyTransactions = transactionProps => {
-  const newArray = transactionProps.map(elem => {
-    return elem.transactions;
-  });
-  const simplified = [].concat(...newArray);
-  return simplified;
-};
 
 // returns amount spent on a given category ACROSS accounts - takes this.props.transactions and a category string
 export const getCategorySpend = (transactionProps, category) => {
@@ -21,8 +14,7 @@ export const getCategorySpend = (transactionProps, category) => {
 // returns the largest transaction in the last 30 days - does not include credit card payments or account transfers
 
 export const getLargestTransaction = transactionProps => {
-  let simplified = simplifyTransactions(transactionProps);
-  return simplified.reduce(
+  return transactionProps.reduce(
     (accum, elem) => {
       if (
         accum.amount < elem.amount &&
@@ -44,17 +36,16 @@ export const getLargestTransaction = transactionProps => {
 
 // this returns an object of arrays with spending categories and corresponding ammounts spent
 export const allCategorySpend = transactions => {
-  let simplified = simplifyTransactions(transactions);
   let labels = [];
   let spend = [];
-  simplified.map(elem => {
+  transactions.map(elem => {
     if (
       !labels.includes(elem.category[0]) &&
       !elem.category.includes('Payment') &&
       !elem.category.includes('Transfer')
     ) {
       labels.push(elem.category[0]);
-      spend.push(getCategorySpend(simplified, elem.category[0]));
+      spend.push(getCategorySpend(transactions, elem.category[0]));
     }
   });
   return { labels, spend };
@@ -86,9 +77,8 @@ export const balancesCondensed = arr => {
 };
 //returns an object with merchant name and cumulative total spent at each merchant in last 30 days
 export const merchantSpend = transactionProps => {
-  let simplified = simplifyTransactions(transactionProps);
   let newObj = {};
-  simplified.map(elem => {
+  transactionProps.map(elem => {
     if (
       !elem.category.includes('Payment') &&
       !elem.category.includes('Transfer')

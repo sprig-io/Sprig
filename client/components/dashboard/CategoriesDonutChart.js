@@ -18,16 +18,16 @@ const data = {
     {
       data: [],
       backgroundColor: [
-        '#A0ECD0',
         '#A8DADC',
+        '#f9bd49',
         '#1D3557',
         '#E63946',
         '#FFE066',
         '#dd9cd8',
       ],
       hoverBackgroundColor: [
-        '#10b075',
         '#40bcc1',
+        '#dda412',
         '#04142b',
         '#8e3339',
         '#f4e199',
@@ -42,9 +42,9 @@ const data = {
 const options = {
   legend: {
     display: true,
-    position: 'right',
+    position: 'bottom',
     labels: {
-      fontSize: 16,
+      fontColor: 'white',
     },
   },
   layout: {
@@ -55,6 +55,7 @@ const options = {
       bottom: 40,
     },
     maintainAspectRatio: false,
+    responsive: true,
   },
 };
 class CategoriesDonut extends Component {
@@ -73,7 +74,7 @@ class CategoriesDonut extends Component {
     return (
       <div>
         <div className="chartContainer">
-          <Doughnut data={data} options={options} height={110} />
+          <Doughnut data={data} options={options} height={220} />
         </div>
       </div>
     );

@@ -11,7 +11,6 @@ import {
   gettingTransactions,
   gettingBalance,
 } from '../../store/accountReducer';
-import { gettingMonthlyTransactions } from '../../store/monthlyReducer';
 import {
   getLargest,
   getRestaurantSpend,
@@ -54,8 +53,13 @@ class Dashboard extends Component {
             <Navbar />
             <div className="index">
               <Summary />
-              <CategoriesDonut />
-              <InsightCard />
+              <div className="lrg">
+                <div className="insightCont">
+                  <CategoriesDonut />
+                </div>
+                <InsightCard />
+              </div>
+
               <PlaidAccountTransactions />
               <ConnectedPlaidAccount />
             </div>
@@ -85,8 +89,6 @@ const mapDispatchToProps = dispatch => ({
   logoutUser: () => dispatch(logoutUser()),
   gettingBalance: plaidAccountData =>
     dispatch(gettingBalance(plaidAccountData)),
-  gettingMonthlyTransactions: plaidAccountData =>
-    dispatch(gettingMonthlyTransactions(plaidAccountData)),
   getLargest: props => dispatch(getLargest(props)),
   getRestaurantSpend: props => dispatch(getRestaurantSpend(props)),
   getMerchantSpend: props => dispatch(getMerchantSpend(props)),

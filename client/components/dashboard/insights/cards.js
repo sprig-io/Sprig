@@ -17,7 +17,6 @@ const styles = theme => ({
     marginRight: '25px',
     marginLeft: '25px',
     marginBottom: '25px',
-    flexGrow: 1,
     padding: '25px',
   },
   header: {
@@ -25,15 +24,17 @@ const styles = theme => ({
     alignItems: 'center',
     justifyContent: 'center',
     height: 100,
+    width: 350,
+    flexGrow: 1,
     paddingLeft: theme.spacing.unit * 4,
     paddingRight: theme.spacing.unit * 4,
-    backgroundColor: 'white',
+    backgroundColor: 'rgb(240, 240, 240)',
   },
   top: {
     display: 'flex',
     alignItems: 'center',
     height: 45,
-    backgroundColor: 'white',
+    backgroundColor: 'rgb(240, 240, 240)',
     paddingLeft: theme.spacing.unit * 4,
     paddingRight: theme.spacing.unit * 4,
     justifyContent: 'center',
@@ -45,10 +46,10 @@ const styles = theme => ({
   cardHead: {
     fontSize: '1.5rem',
     fontWeight: 'bold',
-    color: 'rgb(92, 92, 92)',
+    color: '#404b5b',
   },
   bottom: {
-    backgroundColor: 'rgb(214, 214, 214)',
+    backgroundColor: 'rgb(240, 240, 240)',
     color: 'white',
   },
   buttons: {
@@ -90,7 +91,7 @@ class SwipeableTextMobileStepper extends React.Component {
       <div className={classes.root}>
         <Paper square elevation={0} className={classes.top}>
           <Typography className={classes.cardHead}>
-            Insights from the last 30 days
+            3 Months at a Glance
           </Typography>
         </Paper>
         <Paper square elevation={0} className={classes.header}>
