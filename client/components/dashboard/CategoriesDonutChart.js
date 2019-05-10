@@ -33,6 +33,8 @@ const data = {
         '#f4e199',
         'AA78A6',
       ],
+      borderColor: 'rgb(214, 214, 214)',
+      hoverBorderColor: 'rgb(255,250,250)',
     },
   ],
 };
