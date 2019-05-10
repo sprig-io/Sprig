@@ -1,15 +1,16 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { loggedInUser } from '../store/userReducer';
-import './dashboard/Summary.css';
+import React from "react";
+import { connect } from "react-redux";
+import { loggedInUser } from "../store/userReducer";
+import { Link } from "react-router-dom";
+import "./dashboard/Summary.css";
 
 class Login extends React.Component {
   constructor() {
     super();
     this.state = {
-      email: '',
-      password: '',
-      errors: {},
+      email: "",
+      password: "",
+      errors: {}
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -17,19 +18,19 @@ class Login extends React.Component {
   componentDidMount() {
     if (this.props.isAuthenticated) {
       this.props.history.push({
-        pathname: '/dashboard',
+        pathname: "/dashboard"
       });
     }
   }
   componentWillReceiveProps(nextProps) {
     if (nextProps.isAuthenticated) {
       this.props.history.push({
-        pathname: '/dashboard',
+        pathname: "/dashboard"
       });
     }
     if (nextProps.errors) {
       this.setState({
-        errors: nextProps.errors,
+        errors: nextProps.errors
       });
     }
   }
@@ -44,29 +45,41 @@ class Login extends React.Component {
   }
   render() {
     return (
-      <div className="logInPage">
-        <div>Login page</div>
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Email:
-            <input
-              type="text"
-              name="email"
-              value={this.state.email}
-              onChange={this.handleChange}
-            />
-          </label>
-          <label>
-            Password:
-            <input
-              type="text"
-              name="password"
-              value={this.state.password}
-              onChange={this.handleChange}
-            />
-          </label>
-          <input type="submit" value="Log In" />
-        </form>
+      <div className="container">
+        <div style={{ marginTop: "4rem" }} className="row">
+          <div className="col s4 offset-s2">
+            <Link to="/" className="btn-flat waves-effect">
+              <i className="material-icons left" /> Back to home
+            </Link>
+
+            <form onSubmit={this.handleSubmit}>
+              <label>
+                Email:
+                <input
+                  type="text"
+                  name="email"
+                  value={this.state.email}
+                  onChange={this.handleChange}
+                />
+              </label>
+              <label>
+                Password:
+                <input
+                  type="text"
+                  name="password"
+                  value={this.state.password}
+                  onChange={this.handleChange}
+                />
+              </label>
+              <input
+                className="btn btn-large waves-effect waves-light hoverable darkgreen accent-3"
+                style={{ marginLeft: "120px" }}
+                type="submit"
+                value="Log In"
+              />
+            </form>
+          </div>
+        </div>
       </div>
     );
   }
@@ -74,11 +87,11 @@ class Login extends React.Component {
 
 const mapStateToProps = state => ({
   currentUser: state.user,
-  isAuthenticated: state.userReducer.isAuthenticated,
+  isAuthenticated: state.userReducer.isAuthenticated
 });
 
 const mapDispatchToProps = dispatch => ({
-  loggedInUser: user => dispatch(loggedInUser(user)),
+  loggedInUser: user => dispatch(loggedInUser(user))
 });
 
 export default connect(
