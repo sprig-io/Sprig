@@ -19,8 +19,6 @@ const styles = theme => ({
     marginBottom: '25px',
     flexGrow: 1,
     padding: '25px',
-    marginLeft: 'auto',
-    marginRight: 'auto',
   },
   header: {
     display: 'flex',
