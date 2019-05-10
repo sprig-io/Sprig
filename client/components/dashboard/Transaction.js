@@ -38,7 +38,13 @@ class Transactions extends Component {
       { title: 'Bank Name', field: 'Name' },
     ];
     return (
-      <div style={{ maxWidth: '90%' }} className="tabletrans">
+      <div
+        style={{
+          marginRight: '25px',
+          marginLeft: '25px',
+        }}
+        className="tabletrans"
+      >
         <ReactTable
           title="Transactions"
           data={transData}

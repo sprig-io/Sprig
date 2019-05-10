@@ -17,28 +17,30 @@ class Summary extends React.Component {
   render() {
     const balanceData = balancesCondensed(this.props.balance);
     return (
-      <Paper className="root">
-        <Table className="table">
-          <TableHead>
-            <TableRow className="row">
-              <TableCell className="headerLeft" />
-              <TableCell className="header">Checking</TableCell>
-              <TableCell className="header">Savings</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {balanceData.map((row, ind) => (
-              <TableRow key={ind}>
-                <TableCell className="cellLeft" component="th" scope="row">
-                  {row.accountName}
-                </TableCell>
-                <TableCell className="cell">${row.Checking}</TableCell>
-                <TableCell className="cell">${row.Savings}</TableCell>
+      <div>
+        <Paper className="root">
+          <Table className="table">
+            <TableHead>
+              <TableRow className="row">
+                <TableCell className="headerLeft">Bank Name </TableCell>
+                <TableCell className="header">Checking</TableCell>
+                <TableCell className="header">Savings</TableCell>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </Paper>
+            </TableHead>
+            <TableBody>
+              {balanceData.map((row, ind) => (
+                <TableRow key={ind}>
+                  <TableCell className="cellLeft" component="th" scope="row">
+                    {row.accountName}
+                  </TableCell>
+                  <TableCell className="cell">${row.Checking}</TableCell>
+                  <TableCell className="cell">${row.Savings}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </Paper>
+      </div>
     );
   }
 }

@@ -52,11 +52,13 @@ class Dashboard extends Component {
         {this.state.loading && this.props.accounts.length ? (
           <div>
             <Navbar />
-            <Summary />
-            <CategoriesDonut />
-            <InsightCard />
-            <PlaidAccountTransactions />
-            <ConnectedPlaidAccount />
+            <div className="index">
+              <Summary />
+              <CategoriesDonut />
+              <InsightCard />
+              <PlaidAccountTransactions />
+              <ConnectedPlaidAccount />
+            </div>
           </div>
         ) : !this.props.accounts.length ? (
           <div>

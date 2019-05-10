@@ -1,49 +1,52 @@
 .root {
-  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  background-color: rgb(240, 240, 240) !important;
   overflow-x: auto;
-  margin-top: 150px;
-  margin-left: 75px;
-  margin-right: 75px;
-  margin-bottom: 150px;
+  margin-top: 75px;
+  margin-right: 25px;
+  margin-left: 25px;
+  padding: 10px;
 }
+
 .header {
   text-align: center !important;
   color: rgb(113, 113, 113) !important;
-  font-size: 23px !important;
+  font-size: 16px !important;
   font-family: 'Raleway', sans-serif !important;
 }
 .headerLeft {
   color: rgb(113, 113, 113) !important;
-  font-size: 23px !important;
+  font-size: 16px !important;
   font-family: 'Raleway', sans-serif !important;
 }
 .cell {
   color: rgb(92, 92, 92) !important;
-  font-size: 18px !important;
+  font-size: 14px !important;
   text-align: center !important;
   font-family: 'Raleway', sans-serif !important;
-  width: 10px;
 }
 .cellLeft {
   color: rgb(92, 92, 92) !important;
-  font-size: 18px !important;
+  font-size: 14px !important;
   font-family: 'Raleway', sans-serif !important;
-  width: 10%;
 }
 
 .table {
-  min-width: 700;
-  background-color: rgb(240, 238, 238);
+  max-width: 600px;
+  background-color: rgb(240, 240, 240);
+  border-collapse: collapse;
 }
 .paper {
   text-align: center;
-  margin: 100px;
+
   padding: 10px;
 }
 
 /* TRANSACTION TABLE  */
 .tabletrans {
   margin-left: 50px;
+  background-color: rgb(214, 214, 214);
 }
 
 /* LOGIN */
