@@ -14,7 +14,9 @@ const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const styles = theme => ({
   root: {
-    maxWidth: 600,
+    marginRight: '25px',
+    marginLeft: '25px',
+    marginBottom: '25px',
     flexGrow: 1,
     padding: '25px',
     marginLeft: 'auto',
@@ -23,20 +25,36 @@ const styles = theme => ({
   header: {
     display: 'flex',
     alignItems: 'center',
-    height: 250,
+    justifyContent: 'center',
+    height: 100,
     paddingLeft: theme.spacing.unit * 4,
+    paddingRight: theme.spacing.unit * 4,
     backgroundColor: 'white',
+  },
+  top: {
+    display: 'flex',
+    alignItems: 'center',
+    height: 45,
+    backgroundColor: 'white',
+    paddingLeft: theme.spacing.unit * 4,
+    paddingRight: theme.spacing.unit * 4,
+    justifyContent: 'center',
   },
   textCard: {
     fontSize: '1.5rem',
     color: 'rgb(92, 92, 92)',
   },
+  cardHead: {
+    fontSize: '1.5rem',
+    fontWeight: 'bold',
+    color: 'rgb(92, 92, 92)',
+  },
   bottom: {
-    backgroundColor: ' #4c9f70',
+    backgroundColor: 'rgb(214, 214, 214)',
     color: 'white',
   },
   buttons: {
-    color: 'white',
+    color: 'black',
     fontWeight: 'bold',
   },
 });
@@ -72,7 +90,11 @@ class SwipeableTextMobileStepper extends React.Component {
 
     return (
       <div className={classes.root}>
-        <h1>In the last 30 days...</h1>
+        <Paper square elevation={0} className={classes.top}>
+          <Typography className={classes.cardHead}>
+            Insights from the last 30 days
+          </Typography>
+        </Paper>
         <Paper square elevation={0} className={classes.header}>
           <Typography className={classes.textCard}>
             {this.props.tutorialSteps[activeStep].label}

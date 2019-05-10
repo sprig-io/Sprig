@@ -30,7 +30,7 @@ class PlaidAccount extends Component {
 
   render() {
     return (
-      <div id="plaid-button">
+      <div id="plaid-button" className="boxes">
         <PlaidLinkButton
           buttonProps={{
             className:
