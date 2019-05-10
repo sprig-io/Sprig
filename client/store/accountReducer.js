@@ -50,7 +50,7 @@ const getBalance = plaidAccountData => {
 //Thunk
 
 export const gettingAccounts = () => async dispatch => {
-  const { data } = await axios.get('/api/plaid/accounts');
+  const { data } = await axios.get('/accounts/transactions/monthly');
   dispatch(getAccounts(data));
 };
 export const addingAccount = plaidAccountData => async dispatch => {
