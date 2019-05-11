@@ -34,6 +34,7 @@ class Dashboard extends Component {
 
   async componentWillReceiveProps(nextProps) {
     if (nextProps.accounts.length !== this.props.accounts.length) {
+      this.setState({ loading: false });
       await this.props.gettingAccounts();
       await this.props.gettingTransactions(this.props.accounts);
       await this.props.gettingBalance(this.props.accounts);
@@ -41,6 +42,9 @@ class Dashboard extends Component {
       this.props.getRestaurantSpend(this.props.transactions);
       this.props.getMerchantSpend(this.props.transactions);
       this.props.getTranspoSpend(this.props.transactions);
+      this.setState({ loading: true });
+    } else {
+      this.setState({ loading: true });
     }
   }
 

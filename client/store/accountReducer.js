@@ -28,6 +28,7 @@ const getAccounts = plaidAccountData => {
 };
 
 const deleteAccount = accountId => {
+  console.log('in the action creator');
   return {
     type: DELETE_ACCOUNT,
     accountId,
