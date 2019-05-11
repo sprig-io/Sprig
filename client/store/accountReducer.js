@@ -6,7 +6,7 @@ const initialState = {
   balance: [],
 };
 
-import { simplifyMonthly } from './utils';
+import { simplifyMonthly, balancesCondensed } from './utils';
 //ACTION TYPES
 const ADD_ACCOUNT = 'ADD_ACCOUNT';
 const GET_TRANSACTIONS = 'GET_TRANSACTIONS';
@@ -98,18 +98,19 @@ export default function(state = initialState, action) {
       return {
         ...state,
         accounts: [
-          ...state.accounts.filter(
-            account => account.accountId !== action.accountId
-          ),
+          ...state.accounts.filter(account => {
+            return account._id !== action.accountId;
+          }),
         ],
       };
     case GET_TRANSACTIONS:
       let simplified = simplifyMonthly([...action.plaidAccountData]);
       return { ...state, transactions: simplified };
     case GET_ACCOUNTS:
-      return { ...state, accounts: [...action.plaidAccountData] };
+      return { ...state, accounts: action.plaidAccountData };
     case GET_BALANCE:
-      return { ...state, balance: [...action.plaidAccountData] };
+      const balanceData = balancesCondensed(action.plaidAccountData);
+      return { ...state, balance: balanceData };
     default:
       return state;
   }
