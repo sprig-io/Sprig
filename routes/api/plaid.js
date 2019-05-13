@@ -192,32 +192,45 @@ router.post(
   '/accounts/transactions',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
-    const now = moment();
-    const today = now.format('YYYY-MM-DD');
-    const thirtyDaysAgo = now.subtract(30, 'days').format('YYYY-MM-DD');
+    try {
+      const now = moment();
+      const today = now.format('YYYY-MM-DD');
+      const thirtyDaysAgo = now.subtract(30, 'days').format('YYYY-MM-DD');
+      let transactions = [];
+      const accounts = req.body;
 
-    let transactions = [];
+      if (accounts) {
+        accounts.forEach(async function(account) {
+          ACCESS_TOKEN = account.accessToken;
+          const institutionName = account.institutionName;
+          const response = await client.getTransactions(
+            ACCESS_TOKEN,
+            thirtyDaysAgo,
+            today
+          );
+          // .then(response => {
+          //   transactions.push({
+          //     accountName: institutionName,
+          //     transactions: response.transactions,
+          //   });
 
-    const accounts = req.body;
+          //   if (transactions.length === accounts.length) {
+          //     res.json(transactions);
+          //   }
+          // })
+          // .catch(err => console.log(err));
+          transactions.push({
+            accountName: institutionName,
+            transactions: response.transactions,
+          });
 
-    if (accounts) {
-      accounts.forEach(function(account) {
-        ACCESS_TOKEN = account.accessToken;
-        const institutionName = account.institutionName;
-        client
-          .getTransactions(ACCESS_TOKEN, thirtyDaysAgo, today)
-          .then(response => {
-            transactions.push({
-              accountName: institutionName,
-              transactions: response.transactions,
-            });
-
-            if (transactions.length === accounts.length) {
-              res.json(transactions);
-            }
-          })
-          .catch(err => console.log(err));
-      });
+          if (transactions.length === accounts.length) {
+            res.json(transactions);
+          }
+        });
+      }
+    } catch (error) {
+      console.error(error);
     }
   }
 );
@@ -227,9 +240,9 @@ router.post(
   passport.authenticate('jwt', { session: false }),
   async (req, res, next) => {
     try {
-      const now = moment();
-      const today = now.format('YYYY-MM-DD');
-      const thirtyDaysAgo = now.subtract(30, 'days').format('YYYY-MM-DD');
+      // const now = moment();
+      // const today = now.format('YYYY-MM-DD');
+      // const thirtyDaysAgo = now.subtract(30, 'days').format('YYYY-MM-DD');
 
       let accountBalance = [];
       const accounts = req.body;

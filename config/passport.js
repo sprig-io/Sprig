@@ -7,26 +7,11 @@ const opts = {};
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 opts.secretOrKey = keys.secretOrKey;
 
-// module.exports = passport => {
-//   passport.use(
-//     new JwtStrategy(opts, (jwtpayload, done) => {
-//       User.findById(jwtpayload.id)
-//         .then(user => {
-//           if (user) {
-//             return done(null, user);
-//           }
-//           return done(null, false);
-//         })
-//         .catch(err => console.log(err));
-//     })
-//   );
-// };
-
 module.exports = passport => {
   passport.use(
     new JwtStrategy(opts, async (jwtpayload, done) => {
       try {
-        const user = await User.findById(jwtpayload);
+        const user = await User.findById(jwtpayload.id);
         if (user) {
           return done(null, user);
         }

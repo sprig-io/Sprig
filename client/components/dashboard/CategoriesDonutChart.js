@@ -57,7 +57,6 @@ class CategoriesDonut extends Component {
       donutInfo.spend = donutInfo.spend.map(
         elem => Math.round(elem * 100) / 100
       );
-      console.log('donut infooooo', donutInfo.spend);
 
       data.datasets[0].data = donutInfo.spend;
       data.labels = donutInfo.labels;
