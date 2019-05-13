@@ -50,7 +50,6 @@ class Dashboard extends Component {
       <div>
         {this.state.loading && this.props.accounts.length ? (
           <div>
-            <Navbar />
             <div className="index">
               <Summary />
               <div className="lrg">

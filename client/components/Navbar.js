@@ -18,6 +18,8 @@ import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import Assessment from '@material-ui/icons/Assessment';
+import Dashboard from '@material-ui/icons/Dashboard';
 import classNames from 'classnames';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import AddBoxIcon from '@material-ui/icons/AddBox';
@@ -159,6 +161,22 @@ class Navbar extends React.Component {
           </div>
           <Divider />
           <List>
+            <Link to="/dashboard" style={{ color: 'black' }}>
+              <ListItem button>
+                <ListItemIcon>
+                  <Dashboard />
+                </ListItemIcon>
+                <ListItemText primary="Dashboard" />
+              </ListItem>
+            </Link>
+            <Link to="/budget" style={{ color: 'black' }}>
+              <ListItem button>
+                <ListItemIcon>
+                  <Assessment />
+                </ListItemIcon>
+                <ListItemText primary="Budget" />
+              </ListItem>
+            </Link>
             <Link to="/addAccount" style={{ color: 'black' }}>
               <ListItem button>
                 <ListItemIcon>

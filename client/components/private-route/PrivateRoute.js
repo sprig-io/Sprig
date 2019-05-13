@@ -1,14 +1,18 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import Navbar from '../Navbar';
 
 const PrivateRoute = ({ component: Component, auth, ...rest }) => (
-  <Route
-    {...rest}
-    render={props =>
-      auth === true ? <Component {...props} /> : <Redirect to="/login" />
-    }
-  />
+  <div>
+    <Navbar />
+    <Route
+      {...rest}
+      render={props =>
+        auth === true ? <Component {...props} /> : <Redirect to="/login" />
+      }
+    />
+  </div>
 );
 
 const mapStateToProps = state => ({
