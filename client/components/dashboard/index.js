@@ -28,7 +28,6 @@ class Dashboard extends Component {
     super(props);
     this.state = {
       loading: false,
-      accountsExist: false,
     };
   }
   async componentDidMount() {
@@ -40,8 +39,6 @@ class Dashboard extends Component {
       this.props.getRestaurantSpend(this.props.transactions);
       this.props.getMerchantSpend(this.props.transactions);
       this.props.getTranspoSpend(this.props.transactions);
-    }
-    if (this.props.accounts.length) {
       await this.props.gettingBalance(this.props.accounts);
       this.setState({ loading: true });
     } else {

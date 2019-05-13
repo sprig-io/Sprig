@@ -51,6 +51,8 @@ export const allCategorySpend = transactions => {
   return { labels, spend };
 };
 
+//this function uses the fetched data from the balances and filters it to show only
+//Checking and Savings accounts only
 export const fetchBalanceSummary = balances => {
   return balances.map(elem => {
     elem.balance = elem.balance.filter(ele => {

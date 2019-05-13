@@ -1,15 +1,6 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
-import {
-  gettingAccounts,
-  gettingTransactions,
-} from '../../store/accountReducer';
-import {
-  getCategorySpend,
-  getLargestTransaction,
-  allCategorySpend,
-} from './utils';
-import Chart from 'chart.js';
+import { allCategorySpend } from './utils';
 import { Doughnut } from 'react-chartjs-2';
 
 const data = {
@@ -66,7 +57,6 @@ class CategoriesDonut extends Component {
       donutInfo.spend = donutInfo.spend.map(
         elem => Math.round(elem * 100) / 100
       );
-      console.log('donut infooooo', donutInfo.spend);
 
       data.datasets[0].data = donutInfo.spend;
       data.labels = donutInfo.labels;

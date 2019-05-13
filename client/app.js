@@ -12,7 +12,6 @@ import setAuthToken from './utils/setAuthToken';
 import { fetchUser, logoutUser } from './store/userReducer';
 import store from './store';
 import { Provider } from 'react-redux';
-import Navbar from './components/Navbar';
 import Budget from './components/Budget';
 import PlaidAccount from './components/PlaidAccount';
 
@@ -39,7 +38,6 @@ export default class App extends React.Component {
     return (
       <Provider store={store}>
         <BrowserRouter>
-          {/* <Navbar /> */}
           <Route exact path="/" component={Home} />
           <Route path="/login" component={Login} />
 

@@ -7,7 +7,7 @@ const User = require('../../models/User');
 describe('User routes', () => {
   describe('user', function() {
     it('should be invalid if name is empty', function(done) {
-      var newUser = new User();
+      let newUser = new User();
 
       newUser.validate(function(err) {
         expect(err.errors.name.name).to.equal('ValidatorError');
@@ -15,7 +15,7 @@ describe('User routes', () => {
       });
     });
     it('should be invalid if email is not an email', function(done) {
-      var newUser = new User({
+      const newUser = new User({
         name: 'TestName',
         email: null,
         password: '123456',
@@ -28,7 +28,7 @@ describe('User routes', () => {
       });
     });
     it('should be invalid if password is null', function(done) {
-      var newUser = new User({
+      const newUser = new User({
         name: 'TestName',
         email: 'test@test.com',
         password: null,

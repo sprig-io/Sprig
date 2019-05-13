@@ -47,57 +47,62 @@ router.post(
   '/accounts/add',
   passport.authenticate('jwt', { session: false }),
   async (req, res, next) => {
-    PUBLIC_TOKEN = req.body.public_token;
-    const userId = req.user.id;
-    const institution = req.body.metadata.institution;
-    const { name, institution_id } = institution;
+    try {
+      PUBLIC_TOKEN = req.body.public_token;
+      const userId = req.user.id;
+      const institution = req.body.metadata.institution;
+      const { name, institution_id } = institution;
 
-    if (PUBLIC_TOKEN) {
-      const exchangeResponse = await client.exchangePublicToken(PUBLIC_TOKEN);
-      ACCESS_TOKEN = exchangeResponse.access_token;
-      ITEM_ID = exchangeResponse.item_id;
-      const account = await Account.findOne({
-        userId: req.user.id,
-        institutionId: institution_id,
-      });
-      if (account) {
-        return res.send('Account already exists');
-      } else {
-        const newAccount = new Account({
-          userId: userId,
-          accessToken: ACCESS_TOKEN,
-          itemId: ITEM_ID,
+      if (PUBLIC_TOKEN) {
+        const exchangeResponse = await client.exchangePublicToken(PUBLIC_TOKEN);
+        ACCESS_TOKEN = exchangeResponse.access_token;
+        ITEM_ID = exchangeResponse.item_id;
+        const account = await Account.findOne({
+          userId: req.user.id,
           institutionId: institution_id,
-          institutionName: name,
         });
-        await newAccount.save();
-        return res.json(newAccount);
+        if (account) {
+          return res.send('Account already exists');
+        } else {
+          const newAccount = new Account({
+            userId: userId,
+            accessToken: ACCESS_TOKEN,
+            itemId: ITEM_ID,
+            institutionId: institution_id,
+            institutionName: name,
+          });
+          await newAccount.save();
+          return res.json(newAccount);
+        }
       }
+    } catch (error) {
+      next(error);
     }
   }
 );
+
+// router.post('/get_access_token', function(request, response, next) {
+//   PUBLIC_TOKEN = request.body.public_token;
+//   client.exchangePublicToken(PUBLIC_TOKEN, function(error, tokenResponse) {
+//     if (error !== null) {
+//       var msg = 'Could not exchange public_token!';
+//       return response.json({
+//         error: msg,
+//       });
+//     }
+//     ACCESS_TOKEN = tokenResponse.access_token;
+//     ITEM_ID = tokenResponse.item_id;
+//     response.json({
+//       access_token: ACCESS_TOKEN,
+//       item_id: ITEM_ID,
+//       error: false,
+//     });
+//   });
+// });
+
 // @route DELETE api/plaid/accounts/:id
 // @desc Del ete account with given id
 // @access Private
-router.post('/get_access_token', function(request, response, next) {
-  PUBLIC_TOKEN = request.body.public_token;
-  client.exchangePublicToken(PUBLIC_TOKEN, function(error, tokenResponse) {
-    if (error !== null) {
-      var msg = 'Could not exchange public_token!';
-      return response.json({
-        error: msg,
-      });
-    }
-    ACCESS_TOKEN = tokenResponse.access_token;
-    ITEM_ID = tokenResponse.item_id;
-    response.json({
-      access_token: ACCESS_TOKEN,
-      item_id: ITEM_ID,
-      error: false,
-    });
-  });
-});
-
 router.delete(
   '/accounts/:id',
   passport.authenticate('jwt', { session: false }),
@@ -119,52 +124,66 @@ router.post(
   '/accounts/transactions/monthly',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
-    let today = new Date();
-    currentMonth = today.getMonth() + 1;
-    let startingMonth;
-    let currentYear = today.getFullYear();
-    if (currentMonth === 2) {
-      startingMonth = 12;
-      currentYear -= currentYear;
-    } else if (currentMonth === 1) {
-      startingMonth = 11;
-      currentYear -= currentYear;
-    } else {
-      startingMonth = currentMonth - 2;
-    }
-    if (currentMonth < 10) {
-      currentMonth = `0${currentMonth}`;
-    }
-    if (startingMonth < 10) {
-      startingMonth = `0${startingMonth}`;
-    }
-    const starting = `${currentYear}-${startingMonth}-01`;
-    const ending = `${currentYear}-${currentMonth}-01`;
-    console.log('starting', 'ending');
+    try {
+      let today = new Date();
+      let currentMonth = today.getMonth() + 1;
+      let startingMonth;
+      let currentYear = today.getFullYear();
+      if (currentMonth === 2) {
+        startingMonth = 12;
+        currentYear -= currentYear;
+      } else if (currentMonth === 1) {
+        startingMonth = 11;
+        currentYear -= currentYear;
+      } else {
+        startingMonth = currentMonth - 2;
+      }
+      if (currentMonth < 10) {
+        currentMonth = `0${currentMonth}`;
+      }
+      if (startingMonth < 10) {
+        startingMonth = `0${startingMonth}`;
+      }
+      const starting = `${currentYear}-${startingMonth}-01`;
+      const ending = `${currentYear}-${currentMonth}-01`;
+      console.log('starting', 'ending');
 
-    let transactions = [];
+      let transactions = [];
 
-    const accounts = req.body;
+      const accounts = req.body;
 
-    if (accounts) {
-      accounts.forEach(function(account) {
-        ACCESS_TOKEN = account.accessToken;
-        const institutionName = account.institutionName;
+      if (accounts) {
+        accounts.forEach(async function(account) {
+          ACCESS_TOKEN = account.accessToken;
+          const institutionName = account.institutionName;
 
-        client
-          .getTransactions(ACCESS_TOKEN, starting, ending)
-          .then(response => {
-            transactions.push({
-              accountName: institutionName,
-              transactions: response.transactions,
-            });
+          const response = await client.getTransactions(
+            ACCESS_TOKEN,
+            starting,
+            ending
+          );
+          // .then(response => {
+          //   transactions.push({
+          //     accountName: institutionName,
+          //     transactions: response.transactions,
+          //   });
 
-            if (transactions.length === accounts.length) {
-              res.json(transactions);
-            }
-          })
-          .catch(err => console.log(err));
-      });
+          //   if (transactions.length === accounts.length) {
+          //     res.json(transactions);
+          //   }
+          // })
+          transactions.push({
+            accountName: institutionName,
+            transactions: response.transactions,
+          });
+
+          if (transactions.length === accounts.length) {
+            res.json(transactions);
+          }
+        });
+      }
+    } catch (error) {
+      console.error(error);
     }
   }
 );
@@ -173,32 +192,45 @@ router.post(
   '/accounts/transactions',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
-    const now = moment();
-    const today = now.format('YYYY-MM-DD');
-    const thirtyDaysAgo = now.subtract(30, 'days').format('YYYY-MM-DD');
+    try {
+      const now = moment();
+      const today = now.format('YYYY-MM-DD');
+      const thirtyDaysAgo = now.subtract(30, 'days').format('YYYY-MM-DD');
+      let transactions = [];
+      const accounts = req.body;
 
-    let transactions = [];
+      if (accounts) {
+        accounts.forEach(async function(account) {
+          ACCESS_TOKEN = account.accessToken;
+          const institutionName = account.institutionName;
+          const response = await client.getTransactions(
+            ACCESS_TOKEN,
+            thirtyDaysAgo,
+            today
+          );
+          // .then(response => {
+          //   transactions.push({
+          //     accountName: institutionName,
+          //     transactions: response.transactions,
+          //   });
 
-    const accounts = req.body;
+          //   if (transactions.length === accounts.length) {
+          //     res.json(transactions);
+          //   }
+          // })
+          // .catch(err => console.log(err));
+          transactions.push({
+            accountName: institutionName,
+            transactions: response.transactions,
+          });
 
-    if (accounts) {
-      accounts.forEach(function(account) {
-        ACCESS_TOKEN = account.accessToken;
-        const institutionName = account.institutionName;
-        client
-          .getTransactions(ACCESS_TOKEN, thirtyDaysAgo, today)
-          .then(response => {
-            transactions.push({
-              accountName: institutionName,
-              transactions: response.transactions,
-            });
-
-            if (transactions.length === accounts.length) {
-              res.json(transactions);
-            }
-          })
-          .catch(err => console.log(err));
-      });
+          if (transactions.length === accounts.length) {
+            res.json(transactions);
+          }
+        });
+      }
+    } catch (error) {
+      console.error(error);
     }
   }
 );
@@ -208,9 +240,9 @@ router.post(
   passport.authenticate('jwt', { session: false }),
   async (req, res, next) => {
     try {
-      const now = moment();
-      const today = now.format('YYYY-MM-DD');
-      const thirtyDaysAgo = now.subtract(30, 'days').format('YYYY-MM-DD');
+      // const now = moment();
+      // const today = now.format('YYYY-MM-DD');
+      // const thirtyDaysAgo = now.subtract(30, 'days').format('YYYY-MM-DD');
 
       let accountBalance = [];
       const accounts = req.body;
