@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import InsightCards from './InsightCards';
+import BarGraph from './BarGraph';
 
 class InsightsPage extends Component {
   constructor(props) {
@@ -9,7 +10,9 @@ class InsightsPage extends Component {
   render() {
     return (
       <div id="insights-container">
-        <div className="insight-graph">First Graph</div>
+        <div className="insight-graph">
+          <BarGraph />
+        </div>
         <div className="insight-card">
           <InsightCards />
         </div>
