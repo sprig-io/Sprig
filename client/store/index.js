@@ -4,7 +4,6 @@ import thunkMiddleware from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import userReducer from './userReducer';
 import accountReducer from './accountReducer';
-import errorReducer from './errorReducer';
 import insightReducer from './insightReducer';
 import budgetReducer from './budgetReducer';
 const reducer = combineReducers({
