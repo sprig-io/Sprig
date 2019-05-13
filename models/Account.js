@@ -8,7 +8,7 @@ const AccountSchema = new Schema({
   },
   accessToken: {
     type: String,
-    requried: true,
+    required: true,
   },
   itemId: {
     type: String,

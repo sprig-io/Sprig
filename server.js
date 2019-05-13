@@ -5,6 +5,7 @@ const MongoClient = require('mongodb');
 const uri = 'mongodb://localhost:27017/Capstone';
 const passport = require('passport');
 const users = require('./routes/api/user');
+const budget = require('./routes/api/budget');
 const path = require('path');
 const plaid = require('./routes/api/plaid');
 const app = express();
@@ -49,6 +50,7 @@ require('./config/passport')(passport);
 
 app.use('/api/users', users);
 app.use('/api/plaid', plaid);
+app.use('/api/budget', budget);
 
 // sends index.html
 app.use('*', (req, res) => {

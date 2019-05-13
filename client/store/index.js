@@ -6,10 +6,12 @@ import userReducer from './userReducer';
 import accountReducer from './accountReducer';
 import errorReducer from './errorReducer';
 import insightReducer from './insightReducer';
+import budgetReducer from './budgetReducer';
 const reducer = combineReducers({
   userReducer,
   accountReducer,
   insightReducer,
+  budgetReducer,
   errorReducer,
 });
 const middleware = composeWithDevTools(
