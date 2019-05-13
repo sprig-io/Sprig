@@ -19,12 +19,14 @@ import PropTypes from 'prop-types';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import Assessment from '@material-ui/icons/Assessment';
+import TimelineIcon from '@material-ui/icons/Timeline';
 import Dashboard from '@material-ui/icons/Dashboard';
 import classNames from 'classnames';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import { Link } from 'react-router-dom';
 import './dashboard/Summary.css';
+import InsightsPage from '../../client/components/dashboard/insights/InsightsPage';
 
 const drawerWidth = 240;
 
@@ -177,6 +179,15 @@ class Navbar extends React.Component {
                 <ListItemText primary="Budget" />
               </ListItem>
             </Link>
+            <Link to="/insights" style={{ color: 'black' }}>
+              <ListItem button>
+                <ListItemIcon>
+                  <TimelineIcon />
+                </ListItemIcon>
+                <ListItemText primary="Insights" />
+              </ListItem>
+            </Link>
+
             <Link to="/addAccount" style={{ color: 'black' }}>
               <ListItem button>
                 <ListItemIcon>
