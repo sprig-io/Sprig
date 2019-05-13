@@ -6,6 +6,7 @@ import setAuthToken from '../utils/setAuthToken';
 const initialState = {
   isAuthenticated: false,
   user: {},
+  errors: {},
 };
 
 const isEmpty = require('is-empty');
@@ -35,6 +36,7 @@ export const createdUser = user => async dispatch => {
   try {
     const { data } = await axios.post('/api/users/register', user);
     dispatch(createUser(data));
+    dispatch(getErrors('No errors'));
   } catch (err) {
     dispatch(getErrors(err.response.data));
   }
@@ -77,6 +79,11 @@ export default function(state = initialState, action) {
         ...state,
         user: action.user,
         isAuthenticated: !isEmpty(action.user),
+      };
+    case GET_ERRORS:
+      return {
+        ...state,
+        errors: action.err,
       };
     default:
       return state;
