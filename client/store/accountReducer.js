@@ -6,7 +6,7 @@ const initialState = {
   balance: [],
 };
 
-import { simplifyMonthly, balancesCondensed } from './utils';
+import { simplifyMonthly } from './utils';
 //ACTION TYPES
 const ADD_ACCOUNT = 'ADD_ACCOUNT';
 const GET_TRANSACTIONS = 'GET_TRANSACTIONS';
@@ -28,7 +28,6 @@ const getAccounts = plaidAccountData => {
 };
 
 const deleteAccount = accountId => {
-  console.log('in the action creator');
   return {
     type: DELETE_ACCOUNT,
     accountId,
@@ -99,19 +98,18 @@ export default function(state = initialState, action) {
       return {
         ...state,
         accounts: [
-          ...state.accounts.filter(account => {
-            return account._id !== action.accountId;
-          }),
+          ...state.accounts.filter(
+            account => account.accountId !== action.accountId
+          ),
         ],
       };
     case GET_TRANSACTIONS:
       let simplified = simplifyMonthly([...action.plaidAccountData]);
       return { ...state, transactions: simplified };
     case GET_ACCOUNTS:
-      return { ...state, accounts: action.plaidAccountData };
+      return { ...state, accounts: [...action.plaidAccountData] };
     case GET_BALANCE:
-      const balanceData = balancesCondensed(action.plaidAccountData);
-      return { ...state, balance: balanceData };
+      return { ...state, balance: [...action.plaidAccountData] };
     default:
       return state;
   }

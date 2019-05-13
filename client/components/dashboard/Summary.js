@@ -25,9 +25,12 @@ class Summary extends React.Component {
     );
     let accountId = targetAccount[0]._id;
     this.props.deletingAccount(accountId);
+    console.log('TARGET', targetAccount);
   };
   async componentDidMount() {}
   render() {
+    console.log('ACCOUNTID', this.props);
+    const balanceData = balancesCondensed(this.props.balance);
     return (
       <div>
         <Paper className="root">
@@ -40,8 +43,8 @@ class Summary extends React.Component {
               </TableRow>
             </TableHead>
             <TableBody>
-              {this.props.balance.map((row, ind) => (
-                <TableRow key={row.accountName}>
+              {balanceData.map((row, ind) => (
+                <TableRow key={ind}>
                   <TableCell className="cellLeft" component="th" scope="row">
                     <DeleteOutlinedIcon
                       onClick={() => this.handleRemove(row.accountName)}
