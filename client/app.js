@@ -12,7 +12,7 @@ import setAuthToken from './utils/setAuthToken';
 import { fetchUser, logoutUser } from './store/userReducer';
 import store from './store';
 import { Provider } from 'react-redux';
-import Budget from './components/Budget';
+import BudgetIndex from './components/budget';
 import PlaidAccount from './components/PlaidAccount';
 
 if (localStorage.jwt) {
@@ -43,7 +43,7 @@ export default class App extends React.Component {
 
           <Route exact path="/register" component={Register} />
           <Switch>
-            <PrivateRoute exact path="/budget" component={Budget} />
+            <PrivateRoute exact path="/budget" component={BudgetIndex} />
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
             <PrivateRoute exact path="/addAccount" component={PlaidAccount} />
           </Switch>
