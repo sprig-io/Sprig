@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ReactTable from 'material-table';
+import * as startOfDay from 'date-fns';
 
 class Transactions extends Component {
   constructor(props) {
