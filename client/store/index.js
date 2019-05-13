@@ -11,7 +11,6 @@ const reducer = combineReducers({
   accountReducer,
   insightReducer,
   budgetReducer,
-  errorReducer,
 });
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({ collapsed: true }))
