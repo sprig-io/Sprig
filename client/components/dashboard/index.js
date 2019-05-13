@@ -31,23 +31,6 @@ class Dashboard extends Component {
       accountsExist: false,
     };
   }
-
-  async componentWillReceiveProps(nextProps) {
-    if (nextProps.accounts.length !== this.props.accounts.length) {
-      this.setState({ loading: false });
-      await this.props.gettingAccounts();
-      await this.props.gettingTransactions(this.props.accounts);
-      await this.props.gettingBalance(this.props.accounts);
-      this.props.getLargest(this.props.transactions);
-      this.props.getRestaurantSpend(this.props.transactions);
-      this.props.getMerchantSpend(this.props.transactions);
-      this.props.getTranspoSpend(this.props.transactions);
-      this.setState({ loading: true });
-    } else {
-      this.setState({ loading: true });
-    }
-  }
-
   async componentDidMount() {
     await this.props.gettingAccounts();
     const { accounts } = this.props;
