@@ -32,7 +32,9 @@ router.post('/', async (req, res, next) => {
 router.get('/', async (req, res, next) => {
   try {
     const budget = await Budget.findOne({ userId: req.body.userId });
-    res.send(budget.monthlyGoal);
+    if (budget) {
+      res.send(budget.monthlyGoal);
+    }
   } catch (error) {
     next(error);
   }
