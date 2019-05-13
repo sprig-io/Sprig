@@ -21,7 +21,7 @@ class Register extends React.Component {
   handleChange(event) {
     this.setState({ [event.target.name]: event.target.value });
   }
-  handleSubmit(event) {
+  async handleSubmit(event) {
     //this is where we wanna map dispatch the thunk?
     event.preventDefault();
     const emailValid = '@';
@@ -54,10 +54,21 @@ class Register extends React.Component {
         password2: '',
       });
     } else {
-      this.props.createdUser(this.state);
-      return this.props.history.push({
-        pathname: '/login',
-      });
+      await this.props.createdUser(this.state);
+      const { errors } = this.props;
+      if (errors.email === 'Email already exists') {
+        this.setState({
+          errMessage: errors.email,
+          name: '',
+          email: '',
+          password: '',
+          password2: '',
+        });
+      } else {
+        return this.props.history.push({
+          pathname: '/login',
+        });
+      }
     }
   }
   render() {
@@ -145,6 +156,7 @@ class Register extends React.Component {
 
 const mapStateToProps = state => ({
   currentUser: state.userReducer.user,
+  errors: state.userReducer.errors,
 });
 
 const mapDispatchToProps = dispatch => ({
