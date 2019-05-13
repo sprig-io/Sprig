@@ -1,10 +1,5 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
-import {
-  gettingAccounts,
-  gettingTransactions,
-} from '../../../store/accountReducer';
-
 import Cards from './cards';
 
 class InsightCard extends Component {

@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import Login from './Login';
-import Register from './Register';
 
-class Home extends React.Component {
+class Home extends Component {
   constructor() {
     super();
   }

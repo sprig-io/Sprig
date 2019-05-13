@@ -25,11 +25,9 @@ class Summary extends React.Component {
     );
     let accountId = targetAccount[0]._id;
     this.props.deletingAccount(accountId);
-    console.log('TARGET', targetAccount);
   };
   async componentDidMount() {}
   render() {
-    console.log('ACCOUNTID', this.props);
     const balanceData = balancesCondensed(this.props.balance);
     return (
       <div>

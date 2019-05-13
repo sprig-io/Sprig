@@ -107,7 +107,6 @@ class Navbar extends React.Component {
     this.props.logoutUser();
   }
   handleLinkAccount() {
-    console.log(this.props.history, 'this.props');
     return this.props.history.push({
       pathname: '/addAccount',
     });

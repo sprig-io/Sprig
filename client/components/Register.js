@@ -24,7 +24,6 @@ class Register extends React.Component {
   handleSubmit(event) {
     //this is where we wanna map dispatch the thunk?
     event.preventDefault();
-    console.log(this.state, 'STATE');
     const emailValid = '@';
     const emailValid2 = '.';
     if (this.state.password !== this.state.password2) {
@@ -146,7 +145,6 @@ class Register extends React.Component {
 
 const mapStateToProps = state => ({
   currentUser: state.userReducer.user,
-  // isLoggedIn: state.userReducer.isLoggedIn
 });
 
 const mapDispatchToProps = dispatch => ({

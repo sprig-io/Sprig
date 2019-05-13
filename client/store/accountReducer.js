@@ -51,39 +51,56 @@ const getBalance = plaidAccountData => {
 //Thunk
 
 export const gettingAccounts = () => async dispatch => {
-  const { data } = await axios.get('/api/plaid/accounts');
-  dispatch(getAccounts(data));
+  try {
+    const { data } = await axios.get('/api/plaid/accounts');
+    dispatch(getAccounts(data));
+  } catch (error) {
+    console.error(error);
+  }
 };
 export const addingAccount = plaidAccountData => async dispatch => {
-  const { data } = await axios.post(
-    '/api/plaid/accounts/add',
-    plaidAccountData
-  );
-  dispatch(addAccount(data));
+  try {
+    const { data } = await axios.post(
+      '/api/plaid/accounts/add',
+      plaidAccountData
+    );
+    dispatch(addAccount(data));
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 export const deletingAccount = accountId => async dispatch => {
-  await axios.delete(`/api/plaid/accounts/${accountId}`);
-  dispatch(deleteAccount(accountId));
+  try {
+    await axios.delete(`/api/plaid/accounts/${accountId}`);
+    dispatch(deleteAccount(accountId));
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 export const gettingTransactions = plaidAccountData => async dispatch => {
-  // const accountTransactions = plaidAccountData.accounts;
-  const { data } = await axios.post(
-    '/api/plaid/accounts/transactions/monthly',
-    plaidAccountData
-  );
-  console.log('the data');
-  dispatch(getTransactions(data));
+  try {
+    const { data } = await axios.post(
+      '/api/plaid/accounts/transactions/monthly',
+      plaidAccountData
+    );
+    dispatch(getTransactions(data));
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 export const gettingBalance = plaidAccountData => async dispatch => {
-  const { data } = await axios.post(
-    '/api/plaid/accounts/balance',
-    plaidAccountData
-  );
-  console.log('BALANCE DATA', data);
-  dispatch(getBalance(data));
+  try {
+    const { data } = await axios.post(
+      '/api/plaid/accounts/balance',
+      plaidAccountData
+    );
+    dispatch(getBalance(data));
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 //REDUCER

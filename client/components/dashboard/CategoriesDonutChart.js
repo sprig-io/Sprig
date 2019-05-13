@@ -1,15 +1,6 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
-import {
-  gettingAccounts,
-  gettingTransactions,
-} from '../../store/accountReducer';
-import {
-  getCategorySpend,
-  getLargestTransaction,
-  allCategorySpend,
-} from './utils';
-import Chart from 'chart.js';
+import { allCategorySpend } from './utils';
 import { Doughnut } from 'react-chartjs-2';
 
 const data = {
