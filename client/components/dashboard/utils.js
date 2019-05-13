@@ -1,3 +1,5 @@
+import { simplifyMonthly } from '../../store/utils';
+
 //reformats this.props.transactions to include transactions across accounts in a flat array. NOTE: account name is not included.
 
 // returns amount spent on a given category ACROSS accounts - takes this.props.transactions and a category string
@@ -144,4 +146,37 @@ export const subscriptionFinder = transactions => {
 };
 
 //call simplifiedMonthly first
-export const totalMonthly = transactions => {};
+const dict = {
+  '01': 'January',
+  '02': 'February',
+  '03': 'March',
+  '04': 'April',
+  '05': 'May',
+  '06': 'June',
+  '07': 'July',
+  '08': 'August',
+  '09': 'September',
+  '10': 'October',
+  '11': 'November',
+  '12': 'December',
+};
+
+export const totalMonthly = transactions => {
+  let data = simplifyMonthly(transactions);
+  let returned = {};
+  for (let i = 0; i < data.length; i++) {
+    let current = data[i];
+    let trans = current.transactions;
+    for (let j = 0; j < trans.length; j++) {
+      let monthNum = trans[j].date.slice(5, 7);
+      let month = dict[monthNum];
+      console.log(month);
+      if (returned[month]) {
+        returned[month] += trans[j].amount;
+      } else {
+        returned[month] = trans[j].amount;
+      }
+    }
+  }
+  return returned;
+};
