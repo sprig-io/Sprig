@@ -9,7 +9,6 @@ class PlaidAccount extends Component {
     this.state = {
       loaded: false
     };
-
     this.handleOnSuccess = this.handleOnSuccess.bind(this);
   }
 
@@ -21,6 +20,7 @@ class PlaidAccount extends Component {
       accounts: accounts
     };
     this.props.addingAccount(plaidData);
+    window.location.reload();
   }
 
   render() {
@@ -39,7 +39,7 @@ class PlaidAccount extends Component {
             product: ["transactions"],
             onSuccess: this.handleOnSuccess
           }}
-          onScriptLoad={() => this.setState({ loaded: true })}
+          onScriptLoad={() => this.setState(this.state)}
           id="plaid-button"
         >
           Add Accounts
@@ -64,3 +64,6 @@ const ConnectedPlaidAccount = connect(
 )(PlaidAccount);
 
 export default ConnectedPlaidAccount;
+/* onScriptLoad={() => this.setState(this.state)}
+          id="plaid-button"
+ */
