@@ -142,3 +142,6 @@ export const subscriptionFinder = transactions => {
   }
   return finalList;
 };
+
+//call simplifiedMonthly first
+export const totalMonthly = transactions => {};
