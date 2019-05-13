@@ -64,6 +64,3 @@ const ConnectedPlaidAccount = connect(
 )(PlaidAccount);
 
 export default ConnectedPlaidAccount;
-/* onScriptLoad={() => this.setState(this.state)}
-          id="plaid-button"
- */
