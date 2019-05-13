@@ -23,7 +23,18 @@
   flex-grow: 1;
   padding-right: 10px;
 }
-
+.sliderContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 15px;
+}
+.budgetForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 150px;
+}
 .lrg {
   display: flex;
   justify-content: space-around;
