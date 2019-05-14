@@ -50,6 +50,10 @@ const options = {
 
 export default class LineGraph extends React.Component {
   render() {
+    if ()
+
+
+
     return (
       <div>
         <Line />
