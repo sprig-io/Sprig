@@ -25,7 +25,7 @@ class Transactions extends Component {
         Amount: element.amount,
         category: element.category[0],
         companyName: element.name,
-        date: new Date(element.date).toUTCString()
+        date: new Date(element.date).toDateString()
       });
     });
 
