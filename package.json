@@ -14,7 +14,7 @@
     "start-dev": "NODE_ENV='development' npm run build-client-watch & NODE_ENV='development' npm run start-server",
     "start-server": "nodemon server -e html,js,scss --ignore public --ignore client",
     "test": "NODE_ENV='test' mocha \"./routes/**/*.spec.js\"   --require @babel/polyfill",
-    "deploy": "deploy"
+    "deploy": "scripts/deploy"
   },
   "repository": {
     "type": "git",
