@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import ReactDOM from 'react-dom';
 import MUIDataTable from 'mui-datatables';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 

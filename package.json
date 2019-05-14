@@ -13,7 +13,8 @@
     "build-client-watch": "webpack -w",
     "start-dev": "NODE_ENV='development' npm run build-client-watch & NODE_ENV='development' npm run start-server",
     "start-server": "nodemon server -e html,js,scss --ignore public --ignore client",
-    "test": "NODE_ENV='test' mocha \"./routes/**/*.spec.js\"   --require @babel/polyfill"
+    "test": "NODE_ENV='test' mocha \"./routes/**/*.spec.js\"   --require @babel/polyfill",
+    "deploy": "scripts/deploy"
   },
   "repository": {
     "type": "git",
@@ -27,6 +28,7 @@
   "homepage": "https://github.com/sprig-io/Sprig#readme",
   "dependencies": {
     "@babel/polyfill": "^7.4.4",
+    "@material-ui/lab": "^3.0.0-alpha.30",
     "@material-ui/pickers": "latest",
     "@material-ui/styles": "^4.0.0-beta.1",
     "axios": "^0.18.0",
