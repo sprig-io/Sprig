@@ -40,8 +40,8 @@ class BudgetComp extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      currentBudget: this.props.budget,
       goal: 0,
-      income: 150,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -57,13 +57,17 @@ class BudgetComp extends Component {
 
   async handleSubmit(event) {
     event.preventDefault();
-    this.props.addingBudget({
-      userId: this.props.user.id,
-      monthlyGoal: this.state.goal,
-    });
+    this.props.addingBudget(
+      {
+        userId: this.props.user.id,
+        monthlyGoal: this.state.goal,
+      },
+      this.props.monthlyIncome
+    );
   }
 
   render() {
+    console.log(this.props.budget, 'budget!');
     const { classes } = this.props;
     return (
       <div className="budgetForm">
@@ -79,7 +83,7 @@ class BudgetComp extends Component {
                 aria-labelledby="label"
                 onChange={this.handleSliderChange}
                 min={0}
-                max={this.state.income}
+                max={this.props.monthlyIncome}
               />
               <TextField
                 id="outlined-adornment-amount"
@@ -107,13 +111,14 @@ class BudgetComp extends Component {
   }
 }
 const mapState = state => ({
-  budget: state.budgetReducer.budget,
+  budget: state.budgetReducer.budget.monthylGoal,
   user: state.userReducer.user,
+  monthlyIncome: state.accountReducer.monthlyIncome,
 });
 
 const mapDispatchToProps = dispatch => ({
   gettingBudget: userId => dispatch(gettingBudget(userId)),
-  addingBudget: budgetData => dispatch(addingBudget(budgetData)),
+  addingBudget: budgetData => dispatch(addingBudget(budgetData, monthlyIncome)),
 });
 
 const SetBudget = connect(

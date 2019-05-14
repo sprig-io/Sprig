@@ -5,9 +5,10 @@ const initialState = {
   transactions: [],
   balance: [],
   income: [],
+  monthlyIncome: 1,
 };
 
-import { simplifyMonthly } from './utils';
+import { simplifyMonthly, getIncomeTotal } from './utils';
 //ACTION TYPES
 const ADD_ACCOUNT = 'ADD_ACCOUNT';
 const GET_TRANSACTIONS = 'GET_TRANSACTIONS';
@@ -146,7 +147,8 @@ export default function(state = initialState, action) {
     case GET_BALANCE:
       return { ...state, balance: [...action.plaidAccountData] };
     case GET_INCOME:
-      return { ...state, income: [...action.income] };
+      const monthlyIncome = getIncomeTotal([...action.income]);
+      return { ...state, income: [...action.income], monthlyIncome };
     default:
       return state;
   }

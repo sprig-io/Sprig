@@ -8,6 +8,14 @@ const {
   PLAID_SECRET,
   PLAID_PUBLIC_KEY,
 } = require('../secret');
+const simplifyIncome = incomeArray => {
+  let newArray = incomeArray.map(account => {
+    return [...account.income.income_streams];
+  });
+
+  newArray = [].concat(...newArray);
+  return newArray;
+};
 
 // Load Account and User models
 const Account = require('../../models/Account');
@@ -266,6 +274,7 @@ router.post(
     }
   }
 );
+
 router.post(
   '/income',
   passport.authenticate('jwt', { session: false }),
@@ -283,7 +292,7 @@ router.post(
             income: result.income,
           });
           if (income.length === accounts.length) {
-            res.json(income);
+            res.json(simplifyIncome(income));
           }
         });
       }

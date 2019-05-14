@@ -9,6 +9,7 @@ const addBudget = budgetData => {
   return {
     type: ADD_BUDGET,
     budgetData,
+    monthlyIncome,
   };
 };
 
@@ -21,14 +22,15 @@ const getBudget = budget => {
 export const addingBudget = budgetData => async dispatch => {
   try {
     const { data } = await axios.post('/api/budget', budgetData);
-    dispatch(addBudget(data));
+    dispatch(addBudget(data, monthlyIncome));
   } catch (error) {
     console.error(error);
   }
 };
 export const gettingBudget = userId => async dispatch => {
   try {
-    const { data } = await axios.get('/api/budget/', userId);
+    const { data } = await axios.get(`/api/budget/${userId}`);
+    console.log(data, 'budgetttt');
     dispatch(getBudget(data));
   } catch (error) {
     console.error(error);
@@ -40,6 +42,7 @@ export default function(state = initialState, action) {
       return {
         ...state,
         budget: action.budgetData,
+        m,
       };
     case GET_BUDGET:
       return {

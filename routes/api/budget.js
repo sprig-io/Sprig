@@ -29,11 +29,11 @@ router.post('/', async (req, res, next) => {
   }
 });
 
-router.get('/', async (req, res, next) => {
+router.get('/:userId', async (req, res, next) => {
   try {
-    const budget = await Budget.findOne({ userId: req.body.userId });
+    const budget = await Budget.findOne({ userId: req.params.userId });
     if (budget) {
-      res.send(budget.monthlyGoal);
+      res.send(budget);
     }
   } catch (error) {
     next(error);
