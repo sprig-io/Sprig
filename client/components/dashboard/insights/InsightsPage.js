@@ -17,7 +17,6 @@ class InsightsPage extends Component {
   async componentDidMount() {
     await this.props.gettingAccounts();
     const { accounts } = this.props;
-    await this.props.gettingTransactions(accounts);
     await this.props.getThreeMonthsData(accounts);
   }
   render() {
@@ -30,7 +29,7 @@ class InsightsPage extends Component {
           <InsightCards />
         </div>
         <div className="insight-graph">
-          <LineGraph transactions={this.props.transactions} />
+          <LineGraph />
         </div>
         <div className="insight-card">Recommendations </div>
       </div>

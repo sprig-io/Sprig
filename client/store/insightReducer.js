@@ -5,7 +5,9 @@ import {
   getCategorySpend,
   largestByMerchant,
   totalMonthly,
+  finalLineGraphData,
 } from '../components/dashboard/utils';
+import { simplifyMonthly } from './utils';
 
 const GET_LARGEST = 'GET_LARGEST';
 const GET_RESTAURANT = 'GET_RESTAURANT';
@@ -71,6 +73,19 @@ export const getThreeMonthsData = plaidAccountData => async dispatch => {
   }
 };
 
+export const getThreeMonthsDataCategory = plaidAccountData => async dispatch => {
+  try {
+    const { data } = await axios.post(
+      'api/plaid/accounts/transactions/monthly',
+      plaidAccountData
+    );
+    console.log('dispatched', data);
+    dispatch(getThreeMonthsCategory(data));
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 export default function(state = initialState, action) {
   switch (action.type) {
     case GET_LARGEST:
@@ -91,6 +106,12 @@ export default function(state = initialState, action) {
     case GET_THREE_MONTHS:
       let threeMonthsData = totalMonthly(action.threeMonthsData);
       return { ...state, threeMonthsData: threeMonthsData };
+    case GET_THREE_MONTHS_CATEGORY:
+      let threeMonthsCategory = finalLineGraphData(
+        simplifyMonthly(action.threeMonthsData)
+      );
+
+      return { ...state, threeMonthsCategory: threeMonthsCategory };
     default:
       return state;
   }
