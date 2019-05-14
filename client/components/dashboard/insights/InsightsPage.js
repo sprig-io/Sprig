@@ -4,6 +4,7 @@ import BarGraph from './BarGraph';
 import { getThreeMonthsData } from '../../../store/insightReducer';
 import { gettingAccounts } from '../../../store/accountReducer';
 import { connect } from 'react-redux';
+import LineGraph from './LineGraph';
 
 class InsightsPage extends Component {
   constructor(props) {
@@ -25,7 +26,9 @@ class InsightsPage extends Component {
         <div className="insight-card">
           <InsightCards />
         </div>
-        <div className="insight-graph">Insight Graph</div>
+        <div className="insight-graph">
+          <LineGraph />
+        </div>
         <div className="insight-card">Recommendations </div>
       </div>
     );
