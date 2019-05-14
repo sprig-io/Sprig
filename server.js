@@ -5,6 +5,7 @@ const MongoClient = require('mongodb');
 const uri = 'mongodb://localhost:27017/Capstone';
 const passport = require('passport');
 const users = require('./routes/api/user');
+const budget = require('./routes/api/budget');
 const path = require('path');
 const plaid = require('./routes/api/plaid');
 const app = express();
