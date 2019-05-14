@@ -4,21 +4,7 @@ const router = express.Router();
 
 const passport = require('passport');
 const moment = require('moment');
-const {
-  PLAID_CLIENT_ID,
-  PLAID_SECRET,
-  PLAID_PUBLIC_KEY,
-} = require('../secret');
-const simplifyIncome = incomeArray => {
-  let newArray = incomeArray.map(account => {
-    return [...account.income.income_streams];
-  });
-
-  newArray = [].concat(...newArray);
-  return newArray;
-};
-
-require('../secret');
+if (process.env.NODE_ENV === 'development') require('../../secret');
 
 // Load Account and User models
 const Account = require('../../models/Account');
