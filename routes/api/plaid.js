@@ -146,7 +146,6 @@ router.post(
       }
       const starting = `${currentYear}-${startingMonth}-01`;
       const ending = `${currentYear}-${currentMonth}-01`;
-      console.log('starting', 'ending');
 
       let transactions = [];
 

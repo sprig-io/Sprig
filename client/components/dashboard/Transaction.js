@@ -8,7 +8,7 @@ class Transactions extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loaded: false
+      loaded: false,
     };
     this.onLogoutClick = this.onLogoutClick.bind(this);
   }
@@ -40,6 +40,7 @@ class Transactions extends Component {
         Category: element.category[0],
         Vendor: element.name,
         Amount: element.amount,
+<<<<<<< HEAD
         Bank: element.accountName
       });
     });
@@ -61,6 +62,34 @@ class Transactions extends Component {
             }}
           />
         </MuiThemeProvider>
+=======
+        category: element.category[0],
+        companyName: element.name,
+        date: new Date(element.date).toDateString(),
+      });
+    });
+
+    let columnNames = [
+      { title: 'Date', field: 'date' },
+      { title: 'Category', field: 'category' },
+      { title: 'Vendor', field: 'companyName' },
+      { title: 'Amount', field: 'Amount' },
+      { title: 'Bank Name', field: 'Name' },
+    ];
+    return (
+      <div
+        style={{
+          marginRight: '25px',
+          marginLeft: '25px',
+        }}
+        className="tabletrans"
+      >
+        <ReactTable
+          title="Transactions"
+          data={transData}
+          columns={columnNames}
+        />
+>>>>>>> master
       </div>
     );
   }
@@ -69,7 +98,7 @@ class Transactions extends Component {
 const mapStateToProps = state => ({
   user: state.userReducer.user,
   accounts: state.accountReducer.accounts,
-  transactions: state.accountReducer.transactions
+  transactions: state.accountReducer.transactions,
 });
 
 const PlaidAccountTransactions = connect(mapStateToProps)(Transactions);
