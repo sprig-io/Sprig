@@ -234,8 +234,8 @@ export const getMonthsSpending = (transactions, counter) => {
 //this will push three objects of three different monthly transactions
 export const simplifyMonthlyData = transactions => {
   let finalArray = [];
-  let counter = 0;
-  while (counter < 3) {
+  let counter = -1;
+  while (counter < 2) {
     const trans = getMonthsSpending(transactions, counter);
     finalArray.push(trans);
     counter += 1;

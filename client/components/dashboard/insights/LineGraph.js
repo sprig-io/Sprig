@@ -1,5 +1,7 @@
 import React from 'react';
 import { Line } from 'react-chartjs-2';
+import { simplifyMonthly } from '../../../store/utils';
+import { finalLineGraphData } from '../utils';
 
 const data = {
   labels: [],
@@ -55,6 +57,9 @@ export default class LineGraph extends React.Component {
   render() {
     if (this.props.transactions.length) {
       console.log(this.props.transactions, 'TRANS IN LINE');
+      //   let simplified = simplifyMonthly(this.props.transactions);
+      let lineData = finalLineGraphData(this.props.transactions);
+      console.log(lineData, 'lineData');
     }
     return (
       <div>

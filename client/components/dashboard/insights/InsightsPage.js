@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import InsightCards from './InsightCards';
 import BarGraph from './BarGraph';
-import {
-  getThreeMonthsData,
-  getThreeMonthsByCategory,
-} from '../../../store/insightReducer';
+import { getThreeMonthsData } from '../../../store/insightReducer';
 import {
   gettingAccounts,
   gettingTransactions,
@@ -51,8 +48,6 @@ const mapDispatchToProps = dispatch => ({
   getThreeMonthsData: plaidAccountData =>
     dispatch(getThreeMonthsData(plaidAccountData)),
   gettingAccounts: () => dispatch(gettingAccounts()),
-  getThreeMonthsByCategory: plaidAccountData =>
-    dispatch(getThreeMonthsByCategory(plaidAccountData)),
   gettingTransactions: plaidAccountData =>
     dispatch(gettingTransactions(plaidAccountData)),
 });
