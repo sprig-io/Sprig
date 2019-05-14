@@ -22,6 +22,15 @@ var PUBLIC_TOKEN = null;
 var ACCESS_TOKEN = null;
 var ITEM_ID = null;
 
+const simplifyIncome = incomeArray => {
+  let newArray = incomeArray.map(account => {
+    return [...account.income.income_streams];
+  });
+
+  newArray = [].concat(...newArray);
+  return newArray;
+};
+
 // @route GET api/plaid/accounts
 // @desc Get all accounts linked with plaid for a specific user
 // @access Private
