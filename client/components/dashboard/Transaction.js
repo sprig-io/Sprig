@@ -1,21 +1,13 @@
-<<<<<<< HEAD
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import ReactDOM from 'react-dom';
 import MUIDataTable from 'mui-datatables';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
-=======
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import MUIDataTable from "mui-datatables";
-import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
->>>>>>> 0a2b6e3695a3e719e246f2cd0fe4499624772094
 
 class Transactions extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loaded: false
+      loaded: false,
     };
     this.onLogoutClick = this.onLogoutClick.bind(this);
   }
@@ -76,7 +68,7 @@ class Transactions extends Component {
 const mapStateToProps = state => ({
   user: state.userReducer.user,
   accounts: state.accountReducer.accounts,
-  transactions: state.accountReducer.transactions
+  transactions: state.accountReducer.transactions,
 });
 
 const PlaidAccountTransactions = connect(mapStateToProps)(Transactions);
