@@ -9,3 +9,9 @@ export const simplifyMonthly = transactionProps => {
   newArray = [].concat(...newArray);
   return newArray;
 };
+
+export const getIncomeTotal = incomeProps => {
+  return incomeProps.reduce((accum, elem) => {
+    return accum + elem.monthly_income;
+  }, 0);
+};

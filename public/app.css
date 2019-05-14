@@ -1,6 +1,6 @@
 .main-btn {
   width: 185px;
-  height: 105px;
+  height: 65px;
   letter-spacing: 1.5px;
   border-radius: 3px;
   margin-top: 1rem;
@@ -27,7 +27,37 @@
   flex-grow: 1;
   padding-right: 10px;
 }
-
+.sliderContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 15px;
+}
+.titleNumber {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  align-items: center;
+}
+.spacer {
+  padding-top: 100px;
+}
+.barAmounts {
+  display: flex;
+  justify-content: space-around;
+  margin-right: 45px;
+  margin-left: 45px;
+}
+.budgetForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 150px;
+}
+.spending {
+  margin-right: 145px;
+  margin-left: 145px;
+}
 .lrg {
   display: flex;
   justify-content: space-around;

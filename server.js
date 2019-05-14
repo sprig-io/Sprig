@@ -5,9 +5,11 @@ const MongoClient = require('mongodb');
 const uri = 'mongodb://localhost:27017/Capstone';
 const passport = require('passport');
 const users = require('./routes/api/user');
+const budget = require('./routes/api/budget');
 const path = require('path');
 const plaid = require('./routes/api/plaid');
 const app = express();
+if (process.env.NODE_ENV === 'development') require('./config/keys');
 // Bodyparser middleware
 app.use(
   bodyParser.urlencoded({
@@ -21,17 +23,8 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // DB Config
-const db = require('./config/keys').mongoURI;
+const db = process.env.mongoURI;
 
-MongoClient.connect(
-  uri,
-  { useNewUrlParser: true },
-  function(err, db) {
-    if (err) throw err;
-    console.log('Database created!');
-    db.close();
-  }
-);
 // Connect to MongoDB
 mongoose
   .connect(
@@ -46,6 +39,8 @@ app.use(passport.initialize());
 
 //Passport config
 require('./config/passport')(passport);
+
+app.use('/api/budget', budget);
 
 app.use('/api/users', users);
 app.use('/api/plaid', plaid);
