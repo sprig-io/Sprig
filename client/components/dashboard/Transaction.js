@@ -40,32 +40,27 @@ class Transactions extends Component {
         Category: element.category[0],
         Vendor: element.name,
         Amount: element.amount,
-        category: element.category[0],
-        companyName: element.name,
-        date: new Date(element.date).toDateString(),
+        Bank: element.accountName,
       });
     });
 
-    let columnNames = [
-      { title: 'Date', field: 'date' },
-      { title: 'Category', field: 'category' },
-      { title: 'Vendor', field: 'companyName' },
-      { title: 'Amount', field: 'Amount' },
-      { title: 'Bank Name', field: 'Name' },
-    ];
+    const columns = ['Date', 'Category', 'Vendor', 'Amount', 'Bank'];
+
     return (
-      <div
-        style={{
-          marginRight: '25px',
-          marginLeft: '25px',
-        }}
-        className="tabletrans"
-      >
-        <ReactTable
-          title="Transactions"
-          data={transData}
-          columns={columnNames}
-        />
+      <div className="containerTable">
+        <MuiThemeProvider theme={this.getMuiTheme()}>
+          <MUIDataTable
+            style={{ width: '90%' }}
+            title={'Transactions'}
+            data={transData}
+            columns={columns}
+            options={{
+              selectableRows: false,
+              filter: false,
+              viewColumns: false,
+            }}
+          />
+        </MuiThemeProvider>
       </div>
     );
   }
