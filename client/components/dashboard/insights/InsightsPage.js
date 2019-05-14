@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import InsightCards from './InsightCards';
 import BarGraph from './BarGraph';
-import {getThreeMonthsData} from '../../../store/insightReducer'
-import {gettingAccounts} from '../../../store/accountReducer'
-import {connect} from 'react-redux'
+import { getThreeMonthsData } from '../../../store/insightReducer';
+import { gettingAccounts } from '../../../store/accountReducer';
+import { connect } from 'react-redux';
 
 class InsightsPage extends Component {
   constructor(props) {
@@ -34,12 +34,16 @@ class InsightsPage extends Component {
 
 const mapState = state => ({
   accounts: state.accountReducer.accounts,
-  threeMonthsData: state.insightReducer.threeMonthsData
+  threeMonthsData: state.insightReducer.threeMonthsData,
 });
 
 const mapDispatchToProps = dispatch => ({
-  getThreeMonthsData: plaidAccountData => dispatch(getThreeMonthsData(plaidAccountData));
-  gettingAccounts: () => dispatch(gettingAccounts())
-})
+  getThreeMonthsData: plaidAccountData =>
+    dispatch(getThreeMonthsData(plaidAccountData)),
+  gettingAccounts: () => dispatch(gettingAccounts()),
+});
 
-export default connect(mapState, mapDispatchToProps)(InsightsPage);
+export default connect(
+  mapState,
+  mapDispatchToProps
+)(InsightsPage);
