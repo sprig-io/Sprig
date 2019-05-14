@@ -1,24 +1,20 @@
-const express = require('express');
-const plaid = require('plaid');
+const express = require("express");
+const plaid = require("plaid");
 const router = express.Router();
-const passport = require('passport');
-const moment = require('moment');
-const {
-  PLAID_CLIENT_ID,
-  PLAID_SECRET,
-  PLAID_PUBLIC_KEY,
-} = require('../secret');
+const passport = require("passport");
+const moment = require("moment");
+require("../secret");
 
 // Load Account and User models
-const Account = require('../../models/Account');
-const User = require('../../models/User');
+const Account = require("../../models/Account");
+const User = require("../../models/User");
 
 const client = new plaid.Client(
-  PLAID_CLIENT_ID,
-  PLAID_SECRET,
-  PLAID_PUBLIC_KEY,
+  process.env.PLAID_CLIENT_ID,
+  process.env.PLAID_SECRET,
+  process.env.PLAID_PUBLIC_KEY,
   plaid.environments.sandbox,
-  { version: '2018-05-22' }
+  { version: "2018-05-22" }
 );
 
 var PUBLIC_TOKEN = null;
@@ -30,8 +26,8 @@ var ITEM_ID = null;
 // @access Private
 
 router.get(
-  '/accounts',
-  passport.authenticate('jwt', { session: false }),
+  "/accounts",
+  passport.authenticate("jwt", { session: false }),
   async (req, res, next) => {
     try {
       const accounts = await Account.find({ userId: req.user.id });
@@ -44,8 +40,8 @@ router.get(
 );
 
 router.post(
-  '/accounts/add',
-  passport.authenticate('jwt', { session: false }),
+  "/accounts/add",
+  passport.authenticate("jwt", { session: false }),
   async (req, res, next) => {
     try {
       PUBLIC_TOKEN = req.body.public_token;
@@ -59,17 +55,17 @@ router.post(
         ITEM_ID = exchangeResponse.item_id;
         const account = await Account.findOne({
           userId: req.user.id,
-          institutionId: institution_id,
+          institutionId: institution_id
         });
         if (account) {
-          return res.send('Account already exists');
+          return res.send("Account already exists");
         } else {
           const newAccount = new Account({
             userId: userId,
             accessToken: ACCESS_TOKEN,
             itemId: ITEM_ID,
             institutionId: institution_id,
-            institutionName: name,
+            institutionName: name
           });
           await newAccount.save();
           return res.json(newAccount);
@@ -104,8 +100,8 @@ router.post(
 // @desc Del ete account with given id
 // @access Private
 router.delete(
-  '/accounts/:id',
-  passport.authenticate('jwt', { session: false }),
+  "/accounts/:id",
+  passport.authenticate("jwt", { session: false }),
   async (req, res, next) => {
     try {
       const account = await Account.findById(req.params.id);
@@ -121,8 +117,8 @@ router.delete(
 // @desc Fetch transactions from past 30 days from all linked accounts
 // @access Private
 router.post(
-  '/accounts/transactions/monthly',
-  passport.authenticate('jwt', { session: false }),
+  "/accounts/transactions/monthly",
+  passport.authenticate("jwt", { session: false }),
   (req, res) => {
     try {
       let today = new Date();
@@ -146,7 +142,6 @@ router.post(
       }
       const starting = `${currentYear}-${startingMonth}-01`;
       const ending = `${currentYear}-${currentMonth}-01`;
-      console.log('starting', 'ending');
 
       let transactions = [];
 
@@ -174,7 +169,7 @@ router.post(
           // })
           transactions.push({
             accountName: institutionName,
-            transactions: response.transactions,
+            transactions: response.transactions
           });
 
           if (transactions.length === accounts.length) {
@@ -189,13 +184,13 @@ router.post(
 );
 
 router.post(
-  '/accounts/transactions',
-  passport.authenticate('jwt', { session: false }),
+  "/accounts/transactions",
+  passport.authenticate("jwt", { session: false }),
   (req, res) => {
     try {
       const now = moment();
-      const today = now.format('YYYY-MM-DD');
-      const thirtyDaysAgo = now.subtract(30, 'days').format('YYYY-MM-DD');
+      const today = now.format("YYYY-MM-DD");
+      const thirtyDaysAgo = now.subtract(30, "days").format("YYYY-MM-DD");
       let transactions = [];
       const accounts = req.body;
 
@@ -221,7 +216,7 @@ router.post(
           // .catch(err => console.log(err));
           transactions.push({
             accountName: institutionName,
-            transactions: response.transactions,
+            transactions: response.transactions
           });
 
           if (transactions.length === accounts.length) {
@@ -236,8 +231,8 @@ router.post(
 );
 
 router.post(
-  '/accounts/balance',
-  passport.authenticate('jwt', { session: false }),
+  "/accounts/balance",
+  passport.authenticate("jwt", { session: false }),
   async (req, res, next) => {
     try {
       // const now = moment();
@@ -253,7 +248,7 @@ router.post(
           const result = await client.getBalance(ACCESS_TOKEN);
           accountBalance.push({
             accountName: institutionName,
-            balance: result.accounts,
+            balance: result.accounts
           });
 
           if (accountBalance.length === accounts.length) {

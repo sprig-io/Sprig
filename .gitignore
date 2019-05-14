@@ -1,4 +1,6 @@
-/node_modules
+node_modules
 package-lock.json
 keys.js
 secret.js
+bundle.js
+bundle.js.map
