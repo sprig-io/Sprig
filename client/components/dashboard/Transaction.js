@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ReactTable from 'material-table';
-// import * as startOfDay from 'date-fns';
+//import * as startOfDay from 'date-fns';
 
 class Transactions extends Component {
   constructor(props) {
@@ -25,7 +25,7 @@ class Transactions extends Component {
         Amount: element.amount,
         category: element.category[0],
         companyName: element.name,
-        date: element.date,
+        date: new Date(element.date).toDateString(),
       });
     });
 
