@@ -166,13 +166,22 @@ export const totalMonthly = data => {
   for (let i = 0; i < data.length; i++) {
     let current = data[i];
     let trans = current.transactions;
-    for (let j = 0; j < trans.length; j++) {
-      let monthNum = trans[j].date.slice(5, 7);
+    let filtered = trans.filter(elem => {
+      if (elem.category.length === 2) {
+        return (
+          elem.category[0] !== 'Payment' && elem.category[1] !== 'Credit Card'
+        );
+      } else {
+        return elem;
+      }
+    });
+    for (let j = 0; j < filtered.length; j++) {
+      let monthNum = filtered[j].date.slice(5, 7);
       let month = dict[monthNum];
       if (returned[month]) {
-        returned[month] += trans[j].amount;
+        returned[month] += filtered[j].amount;
       } else {
-        returned[month] = trans[j].amount;
+        returned[month] = filtered[j].amount;
       }
     }
   }
