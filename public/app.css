@@ -13,6 +13,10 @@
 .btn:hover {
   opacity: 0.8;
 }
+.containerTable {
+  margin-right: 25px;
+  margin-left: 25px;
+}
 .insightCont {
   display: flex;
   justify-content: center;
