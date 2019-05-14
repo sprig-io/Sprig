@@ -266,5 +266,30 @@ router.post(
     }
   }
 );
-
+router.post(
+  '/income',
+  passport.authenticate('jwt', { session: false }),
+  async (req, res, next) => {
+    try {
+      let income = [];
+      const accounts = req.body;
+      if (accounts) {
+        accounts.forEach(async function(account) {
+          ACCESS_TOKEN = account.accessToken;
+          const institutionName = account.institutionName;
+          const result = await client.getIncome(ACCESS_TOKEN);
+          income.push({
+            accountName: institutionName,
+            income: result.income,
+          });
+          if (income.length === accounts.length) {
+            res.json(income);
+          }
+        });
+      }
+    } catch (error) {
+      next(error);
+    }
+  }
+);
 module.exports = router;

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
@@ -21,7 +22,7 @@ const styles = theme => ({
   },
 });
 
-class BudgetSummary extends React.Component {
+class BudgetSummaryComp extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -47,6 +48,7 @@ class BudgetSummary extends React.Component {
       <div>
         <Paper className={classes.root} elevation={1}>
           <Typography variant="h4">{month[d.getMonth()]}</Typography>
+          <Typography variant="h3">{this.props.income}</Typography>
           <div className={classes.headers}>
             <div>
               <Typography
@@ -72,14 +74,38 @@ class BudgetSummary extends React.Component {
                 Spending So Far
               </Typography>
             </div>
+            <div>
+              <Typography
+                className={classes.titles}
+                variant="h5"
+                component="h3"
+              >
+                {this.props.income}
+              </Typography>
+              <Typography className={classes.amounts} variant="subtitle1">
+                Income
+              </Typography>
+            </div>
           </div>
         </Paper>
       </div>
     );
   }
 }
-BudgetSummary.propTypes = {
+
+BudgetSummaryComp.propTypes = {
   classes: PropTypes.object.isRequired,
 };
+
+const mapState = state => ({
+  budget: state.budgetReducer.budget,
+  user: state.userReducer.user,
+  accounts: state.accountReducer.accounts,
+});
+
+const BudgetSummary = connect(
+  mapState,
+  null
+)(BudgetSummaryComp);
 
 export default withStyles(styles)(BudgetSummary);

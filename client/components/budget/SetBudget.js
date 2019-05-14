@@ -68,20 +68,6 @@ class BudgetComp extends Component {
     return (
       <div className="budgetForm">
         <form className={classes.root2} onSubmit={this.handleSubmit}>
-          <TextField
-            id="outlined-adornment-amount"
-            className={classes.margin}
-            className={classes.textField}
-            variant="outlined"
-            value={this.state.income}
-            label="Monthly Income"
-            onChange={this.handleChange('income')}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">$</InputAdornment>
-              ),
-            }}
-          />
           <div className="sliderContainer">
             <div className={classes.root}>
               <Typography id="label">

@@ -4,6 +4,7 @@ const initialState = {
   accounts: [],
   transactions: [],
   balance: [],
+  income: [],
 };
 
 import { simplifyMonthly } from './utils';
@@ -13,13 +14,20 @@ const GET_TRANSACTIONS = 'GET_TRANSACTIONS';
 const DELETE_ACCOUNT = 'DELETE_ACCOUNT';
 const GET_ACCOUNTS = 'GET_ACCOUNTS';
 const GET_BALANCE = 'GET_BALANCE';
-
+const GET_INCOME = 'GET_INCOME';
 //ACTION CREATOR
 
 const addAccount = plaidAccountData => {
   return {
     type: ADD_ACCOUNT,
     plaidAccountData,
+  };
+};
+
+const getIncome = income => {
+  return {
+    type: GET_INCOME,
+    income,
   };
 };
 
@@ -58,6 +66,7 @@ export const gettingAccounts = () => async dispatch => {
     console.error(error);
   }
 };
+
 export const addingAccount = plaidAccountData => async dispatch => {
   try {
     const { data } = await axios.post(
@@ -102,6 +111,15 @@ export const gettingBalance = plaidAccountData => async dispatch => {
     console.error(error);
   }
 };
+export const gettingIncome = plaidAccountData => async dispatch => {
+  try {
+    const { data } = await axios.post('/api/plaid/income', plaidAccountData);
+    console.log('data', data);
+    dispatch(getIncome(data));
+  } catch (error) {
+    console.error(error);
+  }
+};
 
 //REDUCER
 export default function(state = initialState, action) {
@@ -127,6 +145,8 @@ export default function(state = initialState, action) {
       return { ...state, accounts: [...action.plaidAccountData] };
     case GET_BALANCE:
       return { ...state, balance: [...action.plaidAccountData] };
+    case GET_INCOME:
+      return { ...state, income: [...action.income] };
     default:
       return state;
   }
