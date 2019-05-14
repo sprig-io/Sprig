@@ -3,7 +3,7 @@ const plaid = require("plaid");
 const router = express.Router();
 const passport = require("passport");
 const moment = require("moment");
-require("../secret");
+if (process.env.NODE_ENV === "development") require("../../secret");
 
 // Load Account and User models
 const Account = require("../../models/Account");
