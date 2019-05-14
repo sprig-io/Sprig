@@ -169,7 +169,6 @@ export const totalMonthly = data => {
     for (let j = 0; j < trans.length; j++) {
       let monthNum = trans[j].date.slice(5, 7);
       let month = dict[monthNum];
-      console.log(month);
       if (returned[month]) {
         returned[month] += trans[j].amount;
       } else {
@@ -178,4 +177,16 @@ export const totalMonthly = data => {
     }
   }
   return returned;
+};
+
+//this will give an object where the labels is an array of months
+//and the total is an array of all the total per month
+//the obj it takes in is the result of calling totalMonthly
+export const condenseTotalMonthly = obj => {
+  let newObj = {};
+  let labels = Object.keys(obj);
+  let total = Object.values(obj);
+  newObj.labels = labels;
+  newObj.total = total;
+  return newObj;
 };

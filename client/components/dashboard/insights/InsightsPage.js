@@ -14,18 +14,17 @@ class InsightsPage extends Component {
     await this.props.gettingAccounts();
     const { accounts } = this.props;
     await this.props.getThreeMonthsData(accounts);
-    console.log(this.props.threeMonthsData, 'THREE MONTHS DATA');
   }
   render() {
     return (
       <div id="insights-container">
         <div className="insight-graph">
-          <BarGraph />
+          <BarGraph threeMonthsData={[this.props.threeMonthsData]} />
         </div>
         <div className="insight-card">
           <InsightCards />
         </div>
-        <div className="insight-graph">Second Graph </div>
+        <div className="insight-graph">Insight Graph</div>
         <div className="insight-card">Recommendations </div>
       </div>
     );

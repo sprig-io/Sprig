@@ -106,9 +106,12 @@ body {
 #insights-container {
   display: flex;
   flex-wrap: wrap;
-  margin-top: 500px;
+  margin: 200px 350px 200px 100px;
+  justify-content: space-around;
 }
 
-.insight-graph {
-  size: 30px;
+.insight-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
