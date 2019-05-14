@@ -53,7 +53,7 @@ class CategoriesDonut extends Component {
   render() {
     if (this.props.transactions.length) {
       const donutInfo = allCategorySpend(this.props.transactions);
-
+      console.log(donutInfo);
       donutInfo.spend = donutInfo.spend.map(
         elem => Math.round(elem * 100) / 100
       );

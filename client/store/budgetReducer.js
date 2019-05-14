@@ -1,11 +1,12 @@
 import axios from 'axios';
 const initialState = {
-  budget: {},
+  budget: 0,
+  spendingLimit: 0,
 };
 const ADD_BUDGET = 'ADD_BUDGET';
 const GET_BUDGET = 'GET_BUDGET';
 
-const addBudget = budgetData => {
+const addBudget = (budgetData, monthlyIncome) => {
   return {
     type: ADD_BUDGET,
     budgetData,
@@ -13,13 +14,14 @@ const addBudget = budgetData => {
   };
 };
 
-const getBudget = budget => {
+const getBudget = (budget, monthlyIncome) => {
   return {
     type: GET_BUDGET,
     budget,
+    monthlyIncome,
   };
 };
-export const addingBudget = budgetData => async dispatch => {
+export const addingBudget = (budgetData, monthlyIncome) => async dispatch => {
   try {
     const { data } = await axios.post('/api/budget', budgetData);
     dispatch(addBudget(data, monthlyIncome));
@@ -27,11 +29,10 @@ export const addingBudget = budgetData => async dispatch => {
     console.error(error);
   }
 };
-export const gettingBudget = userId => async dispatch => {
+export const gettingBudget = (userId, monthlyIncome) => async dispatch => {
   try {
     const { data } = await axios.get(`/api/budget/${userId}`);
-    console.log(data, 'budgetttt');
-    dispatch(getBudget(data));
+    dispatch(getBudget(data.monthlyGoal, monthlyIncome));
   } catch (error) {
     console.error(error);
   }
@@ -42,12 +43,19 @@ export default function(state = initialState, action) {
       return {
         ...state,
         budget: action.budgetData,
-        m,
+        spendingLimit:
+          Math.round(
+            (Number(action.monthlyIncome) - Number(action.budgetData)) * 100
+          ) / 100,
       };
     case GET_BUDGET:
       return {
         ...state,
         budget: action.budget,
+        spendingLimit:
+          Math.round(
+            (Number(action.monthlyIncome) - Number(action.budget)) * 100
+          ) / 100,
       };
 
     default:

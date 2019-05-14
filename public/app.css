@@ -29,15 +29,30 @@
   align-items: center;
   padding-top: 15px;
 }
-
+.titleNumber {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  align-items: center;
+}
 .spacer {
   padding-top: 100px;
+}
+.barAmounts {
+  display: flex;
+  justify-content: space-around;
+  margin-right: 45px;
+  margin-left: 45px;
 }
 .budgetForm {
   display: flex;
   justify-content: center;
   align-items: center;
   padding-top: 150px;
+}
+.spending {
+  margin-right: 145px;
+  margin-left: 145px;
 }
 .lrg {
   display: flex;

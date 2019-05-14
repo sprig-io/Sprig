@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { addingBudget, gettingBudget } from '../../store/budgetReducer';
+import { addingBudget } from '../../store/budgetReducer';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -23,6 +23,7 @@ const styles = theme => ({
   },
   slider: {
     padding: '22px 0px',
+    touchAction: 'none',
   },
 
   margin: {
@@ -40,24 +41,20 @@ class BudgetComp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentBudget: this.props.budget,
       goal: 0,
     };
-    this.handleChange = this.handleChange.bind(this);
+
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleSliderChange = this.handleSliderChange.bind(this);
   }
 
   handleSliderChange(event, value) {
-    this.setState({ goal: value });
+    this.setState({ goal: Math.floor(value) });
   }
-  handleChange = prop => event => {
-    this.setState({ [prop]: event.target.value });
-  };
 
   async handleSubmit(event) {
     event.preventDefault();
-    this.props.addingBudget(
+    await this.props.addingBudget(
       {
         userId: this.props.user.id,
         monthlyGoal: this.state.goal,
@@ -117,8 +114,8 @@ const mapState = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  gettingBudget: userId => dispatch(gettingBudget(userId)),
-  addingBudget: budgetData => dispatch(addingBudget(budgetData, monthlyIncome)),
+  addingBudget: (budgetData, monthlyIncome) =>
+    dispatch(addingBudget(budgetData, monthlyIncome)),
 });
 
 const SetBudget = connect(
