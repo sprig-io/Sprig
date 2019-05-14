@@ -57,7 +57,6 @@ export const getThreeMonthsData = plaidAccountData => async dispatch => {
       'api/plaid/accounts/transactions/monthly',
       plaidAccountData
     );
-    console.log(Array.isArray(data), 'GET THREE MONTHS DATA');
     dispatch(getThreeMonths(data));
   } catch (error) {
     console.error(error);

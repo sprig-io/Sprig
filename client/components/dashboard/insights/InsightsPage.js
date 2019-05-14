@@ -13,7 +13,6 @@ class InsightsPage extends Component {
   async componentDidMount() {
     await this.props.gettingAccounts();
     const { accounts } = this.props;
-    console.log('ACCOUNTS', accounts);
     await this.props.getThreeMonthsData(accounts);
     console.log(this.props.threeMonthsData, 'THREE MONTHS DATA');
   }

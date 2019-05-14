@@ -165,9 +165,7 @@ export const totalMonthly = data => {
   let returned = {};
   for (let i = 0; i < data.length; i++) {
     let current = data[i];
-    console.log('CURRENT', current);
     let trans = current.transactions;
-    console.log(trans, 'TRANS');
     for (let j = 0; j < trans.length; j++) {
       let monthNum = trans[j].date.slice(5, 7);
       let month = dict[monthNum];
