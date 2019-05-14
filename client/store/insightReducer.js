@@ -13,6 +13,7 @@ const GET_MERCHANT = 'GET_MERCHANT';
 const GET_TRANSPO = 'GET_TRANSPO';
 const GET_FEES = 'GET_FEES';
 const GET_THREE_MONTHS = 'GET_THREE_MONTHS ';
+const GET_THREE_MONTHS_CATEGORY = 'GET_THREE_MONTHS_CATEGORY ';
 
 export const getLargest = props => ({
   type: GET_LARGEST,
@@ -43,6 +44,11 @@ export const getThreeMonths = threeMonthsData => ({
   threeMonthsData,
 });
 
+export const getThreeMonthsCategory = threeMonthsData => ({
+  type: GET_THREE_MONTHS_CATEGORY,
+  threeMonthsData,
+});
+
 const initialState = {
   largest: {},
   merchantSpend: {},
@@ -50,6 +56,7 @@ const initialState = {
   transpoSpend: '',
   fees: 0,
   threeMonthsData: {},
+  threeMonthsCategory: {},
 };
 
 export const getThreeMonthsData = plaidAccountData => async dispatch => {
@@ -60,6 +67,18 @@ export const getThreeMonthsData = plaidAccountData => async dispatch => {
     );
     console.log('DATA', data);
     dispatch(getThreeMonths(data));
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const getThreeMonthsByCategory = plaidAccountData => async dispatch => {
+  try {
+    const { data } = await axios.post(
+      'apo/plaid/accounts/transactions/monthly',
+      plaidAccountData
+    );
+    console.log('CATEGORY THREE MONTHS', data);
   } catch (error) {
     console.error(error);
   }
@@ -85,6 +104,9 @@ export default function(state = initialState, action) {
     case GET_THREE_MONTHS:
       let threeMonthsData = totalMonthly(action.threeMonthsData);
       return { ...state, threeMonthsData: threeMonthsData };
+    // case GET_THREE_MONTHS_CATEGORY:
+    // let threeMonthsCategory = totalMonthly(action.threeMonthsData);
+    // return { ...state, threeMonthsData: threeMonthsData };
     default:
       return state;
   }
