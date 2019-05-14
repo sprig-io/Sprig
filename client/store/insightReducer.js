@@ -1,3 +1,4 @@
+/* eslint-disable no-case-declarations */
 import axios from 'axios';
 import {
   getLargestTransaction,
@@ -11,7 +12,7 @@ const GET_RESTAURANT = 'GET_RESTAURANT';
 const GET_MERCHANT = 'GET_MERCHANT';
 const GET_TRANSPO = 'GET_TRANSPO';
 const GET_FEES = 'GET_FEES';
-const GET_THREE_MONTHS = 'GET_THREE_MONTHS';
+const GET_THREE_MONTHS = 'GET_THREE_MONTHS ';
 
 export const getLargest = props => ({
   type: GET_LARGEST,
@@ -81,8 +82,8 @@ export default function(state = initialState, action) {
       let transpo = getCategorySpend(action.props, 'Travel');
       return { ...state, transpoSpend: transpo };
     case GET_THREE_MONTHS:
-      let totalObject = totalMonthly(action.threeMonthsData);
-      return { ...state, threeMonthsData: totalObject };
+      let threeMonthsData = totalMonthly(action.threeMonthsData);
+      return { ...state, threeMonthsData: threeMonthsData };
     default:
       return state;
   }
