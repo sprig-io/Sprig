@@ -164,7 +164,7 @@ class Navbar extends React.Component {
           <Divider />
           <List>
             <Link to="/dashboard" style={{ color: 'black' }}>
-              <ListItem button>
+              <ListItem button onClick={this.handleDrawerClose}>
                 <ListItemIcon>
                   <Dashboard />
                 </ListItemIcon>
@@ -172,7 +172,7 @@ class Navbar extends React.Component {
               </ListItem>
             </Link>
             <Link to="/budget" style={{ color: 'black' }}>
-              <ListItem button>
+              <ListItem button onClick={this.handleDrawerClose}>
                 <ListItemIcon>
                   <Assessment />
                 </ListItemIcon>
@@ -180,7 +180,7 @@ class Navbar extends React.Component {
               </ListItem>
             </Link>
             <Link to="/insights" style={{ color: 'black' }}>
-              <ListItem button>
+              <ListItem button onClick={this.handleDrawerClose}>
                 <ListItemIcon>
                   <TimelineIcon />
                 </ListItemIcon>
@@ -189,7 +189,7 @@ class Navbar extends React.Component {
             </Link>
 
             <Link to="/addAccount" style={{ color: 'black' }}>
-              <ListItem button>
+              <ListItem button onClick={this.handleDrawerClose}>
                 <ListItemIcon>
                   <AddBoxIcon />
                 </ListItemIcon>
