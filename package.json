@@ -28,6 +28,7 @@
   "homepage": "https://github.com/sprig-io/Sprig#readme",
   "dependencies": {
     "@babel/polyfill": "^7.4.4",
+    "@material-ui/lab": "^3.0.0-alpha.30",
     "@material-ui/pickers": "latest",
     "@material-ui/styles": "^4.0.0-beta.1",
     "axios": "^0.18.0",
