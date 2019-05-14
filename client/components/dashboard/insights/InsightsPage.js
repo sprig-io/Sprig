@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import InsightCards from './InsightCards';
 import BarGraph from './BarGraph';
-import { getThreeMonthsData } from '../../../store/insightReducer';
+import {
+  getThreeMonthsData,
+  getThreeMonthsByCategory,
+} from '../../../store/insightReducer';
 import { gettingAccounts } from '../../../store/accountReducer';
 import { connect } from 'react-redux';
+import LineGraph from './LineGraph';
 
 class InsightsPage extends Component {
   constructor(props) {
@@ -14,7 +18,8 @@ class InsightsPage extends Component {
     await this.props.gettingAccounts();
     const { accounts } = this.props;
     await this.props.getThreeMonthsData(accounts);
-    console.log(this.props.threeMonthsData, 'THREE MONTHS DATA');
+    const cat = await this.props.getThreeMonthsByCategory(accounts);
+    console.log(cat, 'CATEGORY');
   }
   render() {
     return (
@@ -25,7 +30,9 @@ class InsightsPage extends Component {
         <div className="insight-card">
           <InsightCards />
         </div>
-        <div className="insight-graph">Insight Graph</div>
+        <div className="insight-graph">
+          <LineGraph />
+        </div>
         <div className="insight-card">Recommendations </div>
       </div>
     );
@@ -35,12 +42,15 @@ class InsightsPage extends Component {
 const mapState = state => ({
   accounts: state.accountReducer.accounts,
   threeMonthsData: state.insightReducer.threeMonthsData,
+  threeMonthsCategory: state.insightReducer.threeMonthsCategory,
 });
 
 const mapDispatchToProps = dispatch => ({
   getThreeMonthsData: plaidAccountData =>
     dispatch(getThreeMonthsData(plaidAccountData)),
   gettingAccounts: () => dispatch(gettingAccounts()),
+  getThreeMonthsByCategory: plaidAccountData =>
+    dispatch(getThreeMonthsByCategory(plaidAccountData)),
 });
 
 export default connect(
