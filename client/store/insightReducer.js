@@ -1,8 +1,10 @@
+/* eslint-disable no-case-declarations */
 import axios from 'axios';
 import {
   getLargestTransaction,
   getCategorySpend,
   largestByMerchant,
+  totalMonthly,
 } from '../components/dashboard/utils';
 
 const GET_LARGEST = 'GET_LARGEST';
@@ -10,6 +12,7 @@ const GET_RESTAURANT = 'GET_RESTAURANT';
 const GET_MERCHANT = 'GET_MERCHANT';
 const GET_TRANSPO = 'GET_TRANSPO';
 const GET_FEES = 'GET_FEES';
+const GET_THREE_MONTHS = 'GET_THREE_MONTHS ';
 
 export const getLargest = props => ({
   type: GET_LARGEST,
@@ -35,12 +38,31 @@ export const getFees = props => ({
   props,
 });
 
+export const getThreeMonths = threeMonthsData => ({
+  type: GET_THREE_MONTHS,
+  threeMonthsData,
+});
+
 const initialState = {
   largest: {},
   merchantSpend: {},
   restaurantSpend: '',
   transpoSpend: '',
   fees: 0,
+  threeMonthsData: {},
+};
+
+export const getThreeMonthsData = plaidAccountData => async dispatch => {
+  try {
+    const { data } = await axios.post(
+      'api/plaid/accounts/transactions/monthly',
+      plaidAccountData
+    );
+    console.log('DATA', data);
+    dispatch(getThreeMonths(data));
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 export default function(state = initialState, action) {
@@ -60,6 +82,9 @@ export default function(state = initialState, action) {
     case GET_TRANSPO:
       let transpo = getCategorySpend(action.props, 'Travel');
       return { ...state, transpoSpend: transpo };
+    case GET_THREE_MONTHS:
+      let threeMonthsData = totalMonthly(action.threeMonthsData);
+      return { ...state, threeMonthsData: threeMonthsData };
     default:
       return state;
   }

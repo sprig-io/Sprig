@@ -85,6 +85,7 @@ export const gettingTransactions = plaidAccountData => async dispatch => {
       '/api/plaid/accounts/transactions/monthly',
       plaidAccountData
     );
+    console.log('data transactions', data);
     dispatch(getTransactions(data));
   } catch (error) {
     console.error(error);

@@ -1,3 +1,5 @@
+import { simplifyMonthly } from '../../store/utils';
+
 //reformats this.props.transactions to include transactions across accounts in a flat array. NOTE: account name is not included.
 
 // returns amount spent on a given category ACROSS accounts - takes this.props.transactions and a category string
@@ -141,4 +143,59 @@ export const subscriptionFinder = transactions => {
     }
   }
   return finalList;
+};
+
+//call simplifiedMonthly first
+const dict = {
+  '01': 'January',
+  '02': 'February',
+  '03': 'March',
+  '04': 'April',
+  '05': 'May',
+  '06': 'June',
+  '07': 'July',
+  '08': 'August',
+  '09': 'September',
+  '10': 'October',
+  '11': 'November',
+  '12': 'December',
+};
+
+export const totalMonthly = data => {
+  let returned = {};
+  for (let i = 0; i < data.length; i++) {
+    let current = data[i];
+    let trans = current.transactions;
+    let filtered = trans.filter(elem => {
+      if (elem.category.length === 2) {
+        return (
+          elem.category[0] !== 'Payment' && elem.category[1] !== 'Credit Card'
+        );
+      } else {
+        return elem;
+      }
+    });
+    for (let j = 0; j < filtered.length; j++) {
+      let monthNum = filtered[j].date.slice(5, 7);
+      let month = dict[monthNum];
+      if (returned[month]) {
+        returned[month] += filtered[j].amount;
+      } else {
+        returned[month] = filtered[j].amount;
+      }
+    }
+  }
+  return returned;
+};
+
+//this will give an object where the labels is an array of months
+//and the total is an array of all the total per month
+//the obj it takes in is the result of calling totalMonthly
+export const condenseTotalMonthly = obj => {
+  let newObj = {};
+  let labels = Object.keys(obj);
+  let total = Object.values(obj);
+  newObj.labels = labels;
+  newObj.total = total;
+  return newObj;
 };
