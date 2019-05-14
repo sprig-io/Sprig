@@ -13,6 +13,10 @@
 .btn:hover {
   opacity: 0.8;
 }
+.containerTable {
+  margin-right: 25px;
+  margin-left: 25px;
+}
 .insightCont {
   display: flex;
   justify-content: center;
@@ -131,4 +135,17 @@ body {
   flex-direction: column;
   color: #4c9f70;
   margin-top: 100px;
+}
+
+#insights-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 200px 350px 200px 100px;
+  justify-content: space-around;
+}
+
+.insight-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
