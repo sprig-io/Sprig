@@ -199,3 +199,61 @@ export const condenseTotalMonthly = obj => {
   newObj.total = total;
   return newObj;
 };
+
+//counter is basically getting the fullMonth until counter months before
+export const getMonth = (transactions, counter) => {
+  const d = new Date();
+  let currentYear = d.getFullYear().toString();
+  let monthNumber = Number(d.getMonth()) - counter;
+  let monthNum = monthNumber.toString();
+  if (monthNum.length === 1) {
+    monthNum = '0' + monthNum;
+  } else if (Number(monthNum) < 4) {
+    monthNum = (Number(monthNum) + 12).toString();
+  }
+  const fullDate = currentYear + '-' + monthNum;
+  return fullDate;
+};
+
+//this will give -- based on the month that is being passed on fullDate, will return an
+//array of all the transaction objects in that month
+export const getMonthsSpending = (transactions, counter) => {
+  const fullDate = getMonth(transactions, counter);
+  let newTrans = transactions.filter(transaction => {
+    return (
+      transaction.date.slice(0, 7) === fullDate &&
+      !transaction.category.includes('Payment')
+    );
+  });
+  return {
+    date: fullDate,
+    trans: newTrans,
+  };
+};
+
+//this will push three objects of three different monthly transactions
+export const simplifyMonthlyData = transactions => {
+  let finalArray = [];
+  let counter = 0;
+  while (counter < 3) {
+    const trans = getMonthsSpending(transactions, counter);
+    finalArray.push(trans);
+    counter += 1;
+  }
+
+  return finalArray;
+};
+
+// this is what we want to manipulate for the line graph which will give us an array
+// of three different objects (since we're doing three different months)
+//with their date in it as well
+// NOTE: make sure to pass in transactions returned from simplifyMonthly!
+export const finalLineGraphData = transactions => {
+  let arr = simplifyMonthlyData(transactions);
+  return arr.map(elem => {
+    let ret = allCategorySpend(elem.trans);
+    let returned = {};
+    returned[elem.date] = ret;
+    return returned;
+  });
+};

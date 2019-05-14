@@ -49,7 +49,13 @@ const options = {
 };
 
 export default class LineGraph extends React.Component {
+  constructor() {
+    super();
+  }
   render() {
+    if (this.props.transactions.length) {
+      console.log(this.props.transactions, 'TRANS IN LINE');
+    }
     return (
       <div>
         <Line />

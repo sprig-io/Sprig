@@ -65,20 +65,7 @@ export const getThreeMonthsData = plaidAccountData => async dispatch => {
       'api/plaid/accounts/transactions/monthly',
       plaidAccountData
     );
-    console.log('DATA', data);
     dispatch(getThreeMonths(data));
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-export const getThreeMonthsByCategory = plaidAccountData => async dispatch => {
-  try {
-    const { data } = await axios.post(
-      'apo/plaid/accounts/transactions/monthly',
-      plaidAccountData
-    );
-    console.log('CATEGORY THREE MONTHS', data);
   } catch (error) {
     console.error(error);
   }
@@ -104,9 +91,6 @@ export default function(state = initialState, action) {
     case GET_THREE_MONTHS:
       let threeMonthsData = totalMonthly(action.threeMonthsData);
       return { ...state, threeMonthsData: threeMonthsData };
-    // case GET_THREE_MONTHS_CATEGORY:
-    // let threeMonthsCategory = totalMonthly(action.threeMonthsData);
-    // return { ...state, threeMonthsData: threeMonthsData };
     default:
       return state;
   }

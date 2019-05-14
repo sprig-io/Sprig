@@ -5,7 +5,10 @@ import {
   getThreeMonthsData,
   getThreeMonthsByCategory,
 } from '../../../store/insightReducer';
-import { gettingAccounts } from '../../../store/accountReducer';
+import {
+  gettingAccounts,
+  gettingTransactions,
+} from '../../../store/accountReducer';
 import { connect } from 'react-redux';
 import LineGraph from './LineGraph';
 
@@ -17,9 +20,8 @@ class InsightsPage extends Component {
   async componentDidMount() {
     await this.props.gettingAccounts();
     const { accounts } = this.props;
+    await this.props.gettingTransactions(accounts);
     await this.props.getThreeMonthsData(accounts);
-    const cat = await this.props.getThreeMonthsByCategory(accounts);
-    console.log(cat, 'CATEGORY');
   }
   render() {
     return (
@@ -31,7 +33,7 @@ class InsightsPage extends Component {
           <InsightCards />
         </div>
         <div className="insight-graph">
-          <LineGraph />
+          <LineGraph transactions={this.props.transactions} />
         </div>
         <div className="insight-card">Recommendations </div>
       </div>
@@ -42,7 +44,7 @@ class InsightsPage extends Component {
 const mapState = state => ({
   accounts: state.accountReducer.accounts,
   threeMonthsData: state.insightReducer.threeMonthsData,
-  threeMonthsCategory: state.insightReducer.threeMonthsCategory,
+  transactions: state.accountReducer.transactions,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -51,6 +53,8 @@ const mapDispatchToProps = dispatch => ({
   gettingAccounts: () => dispatch(gettingAccounts()),
   getThreeMonthsByCategory: plaidAccountData =>
     dispatch(getThreeMonthsByCategory(plaidAccountData)),
+  gettingTransactions: plaidAccountData =>
+    dispatch(gettingTransactions(plaidAccountData)),
 });
 
 export default connect(
