@@ -24,23 +24,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 // DB Config
 const db = process.env.mongoURI;
 
-<<<<<<< HEAD
-MongoClient.connect(
-  uri,
-  { useNewUrlParser: true },
-  function(err, db) {
-    if (err) throw err;
-    console.log('Database created!');
-    db.close();
-  }
-);
-=======
-/* MongoClient.connect(uri, { useNewUrlParser: true }, function(err, db) {
-  if (err) throw err;
-  console.log("Database created!");
-  db.close();
-}); */
->>>>>>> master
 // Connect to MongoDB
 mongoose
   .connect(
