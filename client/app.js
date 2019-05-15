@@ -15,6 +15,7 @@ import { Provider } from 'react-redux';
 import BudgetIndex from './components/budget';
 import PlaidAccount from './components/PlaidAccount';
 import InsightsPage from './components/dashboard/insights/InsightsPage';
+import About from './components/About';
 
 if (localStorage.jwt) {
   // Set auth token header auth
@@ -48,6 +49,7 @@ export default class App extends React.Component {
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
             <PrivateRoute exact path="/addAccount" component={PlaidAccount} />
             <PrivateRoute exact path="/insights" component={InsightsPage} />
+            <PrivateRoute exact path="/about" component={About} />
           </Switch>
         </BrowserRouter>
       </Provider>
