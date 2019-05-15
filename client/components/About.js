@@ -2,6 +2,11 @@ import React from 'react';
 
 export default class About extends React.Component {
   render() {
-    return <div>This is our abouts page</div>;
+    return (
+      <div>
+        <h1>About</h1>
+        <h1>Meet our team!</h1>
+      </div>
+    );
   }
 }
