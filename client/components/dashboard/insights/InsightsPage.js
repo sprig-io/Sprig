@@ -23,9 +23,13 @@ class InsightsPage extends Component {
     return (
       <div id="insights-container">
         <div className="insight-graph">
+          <div className="insights-title">Three Months Total Spending</div>
           <BarGraph threeMonthsData={[this.props.threeMonthsData]} />
         </div>
         <div className="insight-graph">
+          <div className="insights-title">
+            Three Months Spending by Category
+          </div>
           <LineGraph />
         </div>
       </div>

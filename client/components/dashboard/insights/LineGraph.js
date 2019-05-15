@@ -11,29 +11,29 @@ const data = {
     {
       data: [0, 0, 0],
       label: 'Food and Drink',
-      borderColor: '#3e95cd',
-      hoverBorderColor: 'rgb(255,250,250)',
+      borderColor: '#A8DADC',
+      hoverBorderColor: '#40bcc1',
       fill: false,
     },
     {
       data: [0, 0, 0],
       label: 'Shops',
-      borderColor: '#8e5ea2',
-      hoverBorderColor: 'rgb(255,250,250)',
+      borderColor: '#f9bd49',
+      hoverBorderColor: '#dda412',
       fill: false,
     },
     {
       data: [0, 0, 0],
       label: 'Travel',
-      borderColor: '#3cba9f',
-      hoverBorderColor: 'rgb(255,250,250)',
+      borderColor: '#1D3557',
+      hoverBorderColor: '#04142b',
       fill: false,
     },
     {
       data: [0, 0, 0],
       label: 'Recreation',
-      borderColor: '#e8c3b9',
-      hoverBorderColor: 'rgb(255,250,250)',
+      borderColor: '#E63946',
+      hoverBorderColor: '#8e3339',
       fill: false,
     },
   ],
@@ -84,7 +84,8 @@ class LineGraph extends React.Component {
         }
         elem[label].labels.map((categories, ind) => {
           let catIndex = catsArray.indexOf(categories);
-          data.datasets[catIndex].data[index] += elem[label].spend[ind];
+          data.datasets[catIndex].data[index] +=
+            Math.round(elem[label].spend[ind] * 100) / 100;
         });
       });
       this.setState({ data: data });
