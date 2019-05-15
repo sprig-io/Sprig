@@ -17,6 +17,34 @@
   margin-right: 25px;
   margin-left: 25px;
 }
+#monthHeader {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 15px;
+  color: #798598;
+}
+.editor {
+  align-self: flex-end;
+  padding-right: 10px;
+}
+.buttonRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.buttonUpd {
+  height: 50px;
+  padding-bottom: 15px;
+}
+.headerBudg {
+  display: flex;
+  justify-content: center;
+  font-size: 32px;
+  color: rgb(92, 92, 92);
+}
+#overBudget {
+  color: rgba(245, 111, 82, 1);
+}
 .insightCont {
   display: flex;
   justify-content: center;
@@ -33,14 +61,43 @@
   align-items: center;
   padding-top: 15px;
 }
+.col {
+  margin-left: 30%;
+  margin-right: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  flex-direction: row-reverse;
+}
+#limit {
+  font-size: 25px;
+  font-weight: bold;
+  padding-left: 5px;
+}
+.col2 {
+  margin-left: 26%;
+  margin-right: 26%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 10px;
+  color: white;
+  background-color: rgb(143, 167, 238);
+  display: flex;
+  justify-content: center;
+}
+.titleNumber2 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
 .titleNumber {
   display: flex;
-  flex-direction: row-reverse;
-  justify-content: flex-end;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
 }
 .spacer {
-  padding-top: 100px;
+  padding-top: 75px;
 }
 .barAmounts {
   display: flex;
@@ -52,11 +109,36 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 150px;
+  margin-top: 20px;
 }
 .spending {
-  margin-right: 145px;
-  margin-left: 145px;
+  padding-top: 20px;
+  margin-right: 150px;
+  margin-left: 150px;
+  display: flex;
+  justify-content: center;
+}
+.chartResult {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.overSpent {
+  color: rgba(245, 111, 82, 1);
+  padding: none;
+}
+.visContainer {
+  margin-top: 15px;
+  background-color: rgb(230, 230, 230);
+  margin-left: 150px;
+  margin-right: 150px;
+  margin-bottom: 100px;
+}
+.textDiv {
+  padding: 20px;
+}
+#label {
+  font-size: 24px;
 }
 .lrg {
   display: flex;
