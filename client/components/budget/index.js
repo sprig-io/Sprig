@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import BudgetSummary from './BudgetSummary';
 import BudgetVis from './BudgetVis';
-
+import Loading from '../dashboard/Loading';
+import Footer from '../Footer';
 import {
   gettingAccounts,
   gettingIncome,
@@ -10,20 +11,37 @@ import {
 } from '../../store/accountReducer';
 import { gettingBudget } from '../../store/budgetReducer';
 class BudgetIndex extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: false,
+    };
+  }
   async componentDidMount() {
     await this.props.gettingAccounts();
     await this.props.gettingTransactions(this.props.accounts);
     await this.props.gettingIncome(this.props.accounts);
-    this.props.gettingBudget(this.props.user.id, this.props.income);
+    await this.props.gettingBudget(this.props.user.id, this.props.income);
+    this.setState({ loading: true });
   }
   render() {
     return (
       <div>
-        <div className="spacer" />
-        <BudgetSummary />
-        <div className="visContainer">
-          <BudgetVis />
-        </div>
+        {this.state.loading ? (
+          <div className="budgBack">
+            <div className="spacer" />
+            <BudgetSummary />
+            <div className="visContainer">
+              <BudgetVis />
+            </div>
+            <Footer />
+          </div>
+        ) : (
+          <div className="loading">
+            <Loading />
+            <h2 className="loading">Calculating your budget</h2>
+          </div>
+        )}
       </div>
     );
   }
