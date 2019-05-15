@@ -8,7 +8,7 @@ class BudgetVis extends Component {
     const currentSpend = getMonthsSpending(this.props.transactions);
     const data = {
       labels: [
-        `INCOME: $${this.props.monthlyIncome}`,
+        `BUDGET: $${this.props.spendingLimit}`,
         `TOTAL SPENDING: $${currentSpend}`,
       ],
 
@@ -24,48 +24,89 @@ class BudgetVis extends Component {
         },
       ],
     };
+    const d = new Date();
+    const month = new Array();
+    month[0] = 'January';
+    month[1] = 'February';
+    month[2] = 'March';
+    month[3] = 'April';
+    month[4] = 'May';
+    month[5] = 'June';
+    month[6] = 'July';
+    month[7] = 'August';
+    month[8] = 'September';
+    month[9] = 'October';
+    month[10] = 'November';
+    month[11] = 'December';
+
+    const currentMonth = month[d.getMonth()];
+    let currentSpend2 = getMonthsSpending(this.props.transactions);
     return (
-      <div className="spending">
-        <div>
-          <Bar
-            data={data}
-            width={500}
-            height={200}
-            options={{
-              maintainAspectRatio: false,
-              legend: {
-                display: false,
-              },
+      <div>
+        {currentSpend2 > this.props.spendingLimit ? (
+          <div className="headerBudg">
+            <h6>
+              You are{' '}
+              <span id="overBudget">
+                ${currentSpend2 - this.props.spendingLimit}{' '}
+              </span>
+              over budget
+            </h6>
+          </div>
+        ) : (
+          <div className="headerBudg">
+            <h6>
+              You are{' '}
+              <span id="underBudget">
+                ${this.props.spendingLimit - currentSpend2}
+              </span>{' '}
+              under budget
+            </h6>
+          </div>
+        )}
 
-              responsive: false,
-              scales: {
-                xAxes: [
-                  {
-                    barPercentage: 1,
+        <div className="spending">
+          <div>
+            <Bar
+              data={data}
+              width={500}
+              height={200}
+              options={{
+                maintainAspectRatio: false,
+                legend: {
+                  display: false,
+                },
 
-                    minBarLength: 2,
-                    gridLines: {
+                responsive: false,
+                scales: {
+                  xAxes: [
+                    {
+                      barPercentage: 1,
+
+                      minBarLength: 2,
+                      gridLines: {
+                        display: false,
+                      },
+                    },
+                  ],
+                  yAxes: [
+                    {
+                      ticks: {
+                        min: 0,
+
+                        stepSize: 200,
+                      },
+                      barPercentage: 0.5,
+                      gridLines: {
+                        display: false,
+                      },
                       display: false,
                     },
-                  },
-                ],
-                yAxes: [
-                  {
-                    ticks: {
-                      min: 0,
-
-                      stepSize: 200,
-                    },
-                    barPercentage: 0.5,
-                    gridLines: {
-                      display: false,
-                    },
-                    display: false,
-                  },
-                ],
-              },
-            }}
-          />
+                  ],
+                },
+              }}
+            />
+          </div>
         </div>
       </div>
     );

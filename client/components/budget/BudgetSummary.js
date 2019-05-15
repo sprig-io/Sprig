@@ -28,11 +28,17 @@ const styles = theme => ({
     fontSize: '25px',
     fontWeight: 'bold',
   },
+  savingsGoal: {
+    display: 'flex',
+  },
 
   amounts: {
     paddingRight: '10px',
     paddingTop: '20px',
-    fontSize: '15px',
+    fontSize: '20px',
+  },
+  budget: {
+    fontSize: '20px',
   },
   titles: {
     paddingTop: '20px',
@@ -69,36 +75,53 @@ class BudgetSummaryComp extends React.Component {
     return (
       <div>
         <Paper className={classes.root} elevation={1}>
-          <Typography variant="h4">{currentMonth} Spending</Typography>
-          <div className={classes.headers}>
-            <div className="col">
-              <div className="titleNumber">
-                <Typography
-                  className={classes.titles}
-                  variant="h5"
-                  component="h3"
-                >
-                  ${this.props.budget}
-                </Typography>
+          <div id="monthHeader">
+            <Typography variant="h4">{currentMonth} Budget</Typography>
+          </div>
+
+          <div className="col">
+            <div className="titleNumber2">
+              <Typography
+                className={classes.titles}
+                variant="h5"
+                component="h3"
+              >
+                ${this.props.monthlyIncome}
+              </Typography>
+              <Typography
+                className={classes.titles}
+                variant="h5"
+                component="h3"
+              >
+                ${this.props.budget}
+              </Typography>
+            </div>
+
+            <div className="titleNumber">
+              <Typography className={classes.amounts} variant="subtitle1">
+                Income:
+              </Typography>
+              <div className={classes.savingsGoal}>
                 <Typography className={classes.amounts} variant="subtitle1">
                   Savings Goal:
                 </Typography>
-              </div>
-              <div className="titleNumber">
-                <Typography
-                  className={classes.titles}
-                  variant="h5"
-                  component="h3"
-                >
-                  ${this.props.monthlyIncome}
-                </Typography>
-                <Typography className={classes.amounts} variant="subtitle1">
-                  Income:
-                </Typography>
+                <SetBudget />
               </div>
             </div>
           </div>
-          <SetBudget />
+          <hr size="2" width="550" />
+          <div className="col2">
+            <div className="titleNumber2">
+              <Typography
+                className={classes.budget}
+                variant="h5"
+                component="h3"
+              >
+                Your spending limit for May is{' '}
+                <span id="limit"> ${this.props.spendingLimit}</span>
+              </Typography>
+            </div>
+          </div>
         </Paper>
       </div>
     );
