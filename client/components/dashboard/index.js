@@ -53,6 +53,7 @@ class Dashboard extends Component {
           <div>
             <div className="index">
               <Summary />
+              <ConnectedPlaidAccount />
               <div className="lrg">
                 <div className="insightCont">
                   <CategoriesDonut />
@@ -61,7 +62,7 @@ class Dashboard extends Component {
               </div>
 
               <PlaidAccountTransactions />
-              <ConnectedPlaidAccount />
+
               <Footer />
             </div>
           </div>

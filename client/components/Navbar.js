@@ -96,7 +96,6 @@ class Navbar extends React.Component {
     this.onLogoutClick = this.onLogoutClick.bind(this);
     this.handleDrawerOpen = this.handleDrawerOpen.bind(this);
     this.handleDrawerClose = this.handleDrawerClose.bind(this);
-    this.handleLinkAccount = this.handleLinkAccount.bind(this);
   }
 
   handleDrawerOpen = () => {
@@ -110,11 +109,7 @@ class Navbar extends React.Component {
     e.preventDefault();
     this.props.logoutUser();
   }
-  handleLinkAccount() {
-    return this.props.history.push({
-      pathname: '/addAccount',
-    });
-  }
+
   render() {
     const { classes, theme } = this.props;
     const { open } = this.state;
@@ -145,6 +140,9 @@ class Navbar extends React.Component {
                 style={{ marginTop: '9px' }}
               />
             </Link>
+            <a id="logouts" onClick={this.onLogoutClick}>
+              Logout
+            </a>
           </Toolbar>
         </AppBar>
         <Drawer
@@ -200,14 +198,6 @@ class Navbar extends React.Component {
               </ListItem>
             </Link>
 
-            <Link to="/addAccount" style={{ color: 'black' }}>
-              <ListItem button onClick={this.handleDrawerClose}>
-                <ListItemIcon>
-                  <AddBoxIcon />
-                </ListItemIcon>
-                <ListItemText primary="Add Account" />
-              </ListItem>
-            </Link>
             <ListItem button onClick={this.onLogoutClick}>
               <ListItemIcon>
                 <ExitToAppIcon />
