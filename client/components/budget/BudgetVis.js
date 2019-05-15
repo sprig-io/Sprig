@@ -7,13 +7,17 @@ class BudgetVis extends Component {
   render() {
     const currentSpend = getMonthsSpending(this.props.transactions);
     const data = {
-      labels: [`BUDGET: $${this.props.budget}`, `SPENDING: $${currentSpend}`],
+      labels: [
+        `INCOME: $${this.props.monthlyIncome}`,
+        `TOTAL SPENDING: $${currentSpend}`,
+      ],
 
       datasets: [
         {
           backgroundColor: ['rgb(143, 167, 238)', 'rgba(245, 111, 82, 1)'],
           borderColor: ['rgb(143, 167, 238)', 'rgba(245, 111, 82, 1)'],
           borderWidth: 1,
+
           hoverBackgroundColor: ['rgb(143, 167, 238)', 'rgba(245, 111, 82, 1)'],
           hoverBorderColor: ['rgb(143, 167, 238)', 'rgba(245, 111, 82, 1)'],
           data: [this.props.spendingLimit, currentSpend],
@@ -21,19 +25,19 @@ class BudgetVis extends Component {
       ],
     };
     return (
-      <div>
-        <div className="spending">
-          <h5 />
+      <div className="spending">
+        <div>
           <Bar
             data={data}
-            width={150}
+            width={500}
             height={200}
             options={{
               maintainAspectRatio: false,
               legend: {
                 display: false,
               },
-              responsive: true,
+
+              responsive: false,
               scales: {
                 xAxes: [
                   {

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import SetBudget from './SetBudget';
 import { connect } from 'react-redux';
 import BudgetSummary from './BudgetSummary';
 import BudgetVis from './BudgetVis';
@@ -22,8 +21,9 @@ class BudgetIndex extends Component {
       <div>
         <div className="spacer" />
         <BudgetSummary />
-        <BudgetVis />
-        <SetBudget />
+        <div className="visContainer">
+          <BudgetVis />
+        </div>
       </div>
     );
   }

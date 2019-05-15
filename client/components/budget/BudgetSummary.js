@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-
+import SetBudget from './SetBudget';
 import { getMonthsSpending } from './utils';
 
 const styles = theme => ({
@@ -12,8 +12,8 @@ const styles = theme => ({
     ...theme.mixins.gutters(),
     paddingTop: theme.spacing.unit * 2,
     paddingBottom: theme.spacing.unit * 2,
-    marginLeft: '200px',
-    marginRight: '200px',
+    marginLeft: '150px',
+    marginRight: '150px',
   },
 
   red: {
@@ -28,10 +28,7 @@ const styles = theme => ({
     fontSize: '25px',
     fontWeight: 'bold',
   },
-  headers: {
-    display: 'flex',
-    justifyContent: 'space-around',
-  },
+
   amounts: {
     paddingRight: '10px',
     paddingTop: '20px',
@@ -41,6 +38,7 @@ const styles = theme => ({
     paddingTop: '20px',
     fontSize: '25px',
     fontWeight: 'bold',
+    color: '#4c9f70',
   },
 });
 
@@ -71,9 +69,7 @@ class BudgetSummaryComp extends React.Component {
     return (
       <div>
         <Paper className={classes.root} elevation={1}>
-          <Typography variant="h4">
-            Monthly Budget for {currentMonth}
-          </Typography>
+          <Typography variant="h4">{currentMonth} Spending</Typography>
           <div className={classes.headers}>
             <div className="col">
               <div className="titleNumber">
@@ -101,45 +97,8 @@ class BudgetSummaryComp extends React.Component {
                 </Typography>
               </div>
             </div>
-            <div className="col">
-              <div className="titleNumber">
-                <Typography
-                  className={classes.titles}
-                  variant="h5"
-                  component="h3"
-                >
-                  ${this.props.spendingLimit}
-                </Typography>
-                <Typography className={classes.amounts} variant="subtitle1">
-                  Spending Budget:
-                </Typography>
-              </div>
-              <div className="titleNumber">
-                {currentSpend > this.props.spendingLimit ? (
-                  <Typography
-                    className={classes.titles}
-                    className={classes.red}
-                    variant="h5"
-                    component="h3"
-                  >
-                    ${currentSpend}
-                  </Typography>
-                ) : (
-                  <Typography
-                    className={classes.titles}
-                    className={classes.green}
-                    variant="h5"
-                    component="h3"
-                  >
-                    ${currentSpend}
-                  </Typography>
-                )}
-                <Typography className={classes.amounts} variant="subtitle1">
-                  Current Spending:
-                </Typography>
-              </div>
-            </div>
           </div>
+          <SetBudget />
         </Paper>
       </div>
     );

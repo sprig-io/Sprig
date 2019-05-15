@@ -15,12 +15,11 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 
 const styles = theme => ({
   root: {
-    width: 300,
-  },
-  roo2t: {
     display: 'flex',
-    flexWrap: 'wrap',
+    flexDirection: 'column',
+    alignItems: 'center',
   },
+
   slider: {
     padding: '22px 0px',
     touchAction: 'none',
@@ -30,7 +29,7 @@ const styles = theme => ({
     margin: theme.spacing.unit,
   },
   textField: {
-    flexBasis: 200,
+    color: '#4c9f70',
   },
   input: {
     borderBottom: 'none',
@@ -82,24 +81,27 @@ class BudgetComp extends Component {
                 min={0}
                 max={this.props.monthlyIncome}
               />
-              <TextField
-                id="outlined-adornment-amount"
-                className={classes.margin}
-                className={classes.textField}
-                variant="outlined"
-                value={this.state.goal}
-                label="Savings Target"
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">$</InputAdornment>
-                  ),
-                }}
-              />
-              <br />
-              <br />
-              <Button type="submit" variant="contained">
-                Update Budget
-              </Button>
+              <div className="buttonRow">
+                <div className="textDiv">
+                  <TextField
+                    disabled={true}
+                    id="outlined-adornment-amount"
+                    className={classes.margin}
+                    className={classes.textField}
+                    variant="outlined"
+                    value={this.state.goal}
+                    label="Savings Target"
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">$</InputAdornment>
+                      ),
+                    }}
+                  />
+                </div>
+                <Button className="buttonUpd" type="submit" variant="contained">
+                  Update Goal
+                </Button>
+              </div>
             </div>
           </div>
         </form>
