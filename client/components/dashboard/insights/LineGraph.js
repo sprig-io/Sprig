@@ -49,7 +49,7 @@ const data = {
 
 const options = {
   legend: {
-    display: false,
+    display: true,
     position: 'bottom',
     labels: {
       fontColor: 'black',
@@ -90,13 +90,13 @@ class LineGraph extends React.Component {
           data.datasets[catIndex].data[index] += elem[label].spend[ind];
         });
       });
-      console.log(data, '***');
     }
-    console.log(data, 'DATA');
-    return (
+    return this.props.threeMonthsCategory.length ? (
       <div>
-        <Line data={data} height={500} width={700} />
+        <Line data={data} options={options} height={500} width={700} />
       </div>
+    ) : (
+      <div />
     );
   }
 }
