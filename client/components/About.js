@@ -28,14 +28,14 @@ const styles = {
 function About(props) {
   const { classes } = props;
   return (
-    <div className="about-container">
-      <h1 className="team">The Team</h1>
-      <div className="about">
-        <Card className={classes.card}>
-          <CardActionArea>
+    <div>
+      <div className="about-container">
+        <h1 className="team">The Team</h1>
+        <div className="about">
+          <Card className={classes.card}>
             <CardMedia
               className={classes.media}
-              image="https://files.slack.com/files-pri/T024FPYBQ-FJQDF6J72/unadjustednonraw_thumb_99.jpg"
+              image="/char.jpg"
               title="Contemplative Reptile"
             />
             <CardContent>
@@ -50,36 +50,35 @@ function About(props) {
               <br />
               <br />
               <Typography className={classes.bold}>
-                Favorite array prototype method:
+                Favorite array method:
               </Typography>
               <Typography>filter()</Typography>
             </CardContent>
-          </CardActionArea>
-          <CardActions>
-            <Button
-              size="small"
-              color="primary"
-              href="https://github.com/charlynmanuyag"
-              target="_blank"
-            >
-              Github
-            </Button>
-            <Button
-              size="small"
-              color="primary"
-              href="https://www.linkedin.com/in/cmanuyag/"
-              target="_blank"
-            >
-              LinkedIn
-            </Button>
-          </CardActions>
-        </Card>
 
-        <Card className={classes.card}>
-          <CardActionArea>
+            <CardActions>
+              <Button
+                size="small"
+                color="primary"
+                href="https://github.com/charlynmanuyag"
+                target="_blank"
+              >
+                Github
+              </Button>
+              <Button
+                size="small"
+                color="primary"
+                href="https://www.linkedin.com/in/cmanuyag/"
+                target="_blank"
+              >
+                LinkedIn
+              </Button>
+            </CardActions>
+          </Card>
+
+          <Card className={classes.card}>
             <CardMedia
               className={classes.media}
-              image="https://files.slack.com/files-pri/T024FPYBQ-FJD08RL58/img_1770.jpg"
+              image="/ramya.jpg"
               height="80px"
               title="Contemplative Reptile"
             />
@@ -95,39 +94,38 @@ function About(props) {
               <br />
               <br />
               <Typography className={classes.bold}>
-                Favorite array prototype method:
+                Favorite array method:
               </Typography>
               <Typography>
                 filter() - because it gives us what we ask for. We can use
                 filter in life to remove all worries and negativity.
               </Typography>
             </CardContent>
-          </CardActionArea>
-          <CardActions>
-            <Button
-              size="small"
-              color="primary"
-              href="https://github.com/rsampath19"
-              target="_blank"
-            >
-              Github
-            </Button>
-            <Button
-              size="small"
-              color="primary"
-              href="https://www.linkedin.com/in/ramya-sampath-2a624517a/"
-              target="_blank"
-            >
-              LinkedIn
-            </Button>
-          </CardActions>
-        </Card>
 
-        <Card className={classes.card}>
-          <CardActionArea>
+            <CardActions>
+              <Button
+                size="small"
+                color="primary"
+                href="https://github.com/rsampath19"
+                target="_blank"
+              >
+                Github
+              </Button>
+              <Button
+                size="small"
+                color="primary"
+                href="https://www.linkedin.com/in/ramya-sampath-2a624517a/"
+                target="_blank"
+              >
+                LinkedIn
+              </Button>
+            </CardActions>
+          </Card>
+
+          <Card className={classes.card}>
             <CardMedia
               className={classes.media}
-              image="https://avatars1.githubusercontent.com/u/45411931?s=400&u=f3a76f2589026b40793e7215935635e479b5d387&v=4"
+              image="/lucy.jpg"
               title="Contemplative Reptile"
             />
             <CardContent>
@@ -143,36 +141,35 @@ function About(props) {
               <br />
               <br />
               <Typography className={classes.bold}>
-                Favorite array prototype method:
+                Favorite array method:
               </Typography>
               <Typography>map()</Typography>
             </CardContent>
-          </CardActionArea>
-          <CardActions>
-            <Button
-              size="small"
-              color="primary"
-              href="https://github.com/lucymar"
-              target="_blank"
-            >
-              Github
-            </Button>
-            <Button
-              size="small"
-              color="primary"
-              href="https://www.linkedin.com/in/lucy-marshall1/"
-              target="_blank"
-            >
-              LinkedIn
-            </Button>
-          </CardActions>
-        </Card>
 
-        <Card className={classes.card}>
-          <CardActionArea>
+            <CardActions>
+              <Button
+                size="small"
+                color="primary"
+                href="https://github.com/lucymar"
+                target="_blank"
+              >
+                Github
+              </Button>
+              <Button
+                size="small"
+                color="primary"
+                href="https://www.linkedin.com/in/lucy-marshall1/"
+                target="_blank"
+              >
+                LinkedIn
+              </Button>
+            </CardActions>
+          </Card>
+
+          <Card className={classes.card}>
             <CardMedia
               className={classes.media}
-              image="https://files.slack.com/files-pri/T024FPYBQ-FJS7QFYT1/p5ffz5tg__3_.jpg"
+              image="/katie.jpg"
               title="Contemplative Reptile"
             />
             <CardContent>
@@ -183,36 +180,36 @@ function About(props) {
                 After exploring the business side of tech for 3 years at
                 American Express, I wanted to move on from the client side of
                 product management to actually developing products myself. I’m
-                now a full-stack developer specializing in the NERDS and MERN
-                stacks.
+                now a full-stack specializing in the MERN and NERDS stacks.
               </Typography>
               <br />
               <br />
               <Typography className={classes.bold}>
-                Favorite array prototype method:
+                Favorite array method:
               </Typography>
               <Typography>reduce()</Typography>
             </CardContent>
-          </CardActionArea>
-          <CardActions>
-            <Button
-              size="small"
-              color="primary"
-              href="https://github.com/kagresta"
-              target="_blank"
-            >
-              Github
-            </Button>
-            <Button
-              size="small"
-              color="primary"
-              href="https://www.linkedin.com/in/katieagresta/"
-              target="_blank"
-            >
-              LinkedIn
-            </Button>
-          </CardActions>
-        </Card>
+
+            <CardActions>
+              <Button
+                size="small"
+                color="primary"
+                href="https://github.com/kagresta"
+                target="_blank"
+              >
+                Github
+              </Button>
+              <Button
+                size="small"
+                color="primary"
+                href="https://www.linkedin.com/in/katieagresta/"
+                target="_blank"
+              >
+                LinkedIn
+              </Button>
+            </CardActions>
+          </Card>
+        </div>
       </div>
       <Footer />
     </div>
