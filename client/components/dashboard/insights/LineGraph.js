@@ -9,29 +9,38 @@ const data = {
   labels: [],
   datasets: [
     {
-      data: [],
-      label: null,
+      data: [0, 0, 0],
+      label: 'Food and Drink',
       //   backgroundColor: ['#A8DADC', '#f9bd49', '#1D3557'],
       //   hoverBackgroundColor: ['#40bcc1', '#dda412', '#04142b'],
-      borderColor: 'rgb(214, 214, 214)',
+      borderColor: '#3e95cd',
       hoverBorderColor: 'rgb(255,250,250)',
       fill: false,
     },
     {
-      data: [],
-      label: null,
+      data: [0, 0, 0],
+      label: 'Shops',
       //   backgroundColor: ['#A8DADC', '#f9bd49', '#1D3557'],
       //   hoverBackgroundColor: ['#40bcc1', '#dda412', '#04142b'],
-      borderColor: 'rgb(214, 214, 214)',
+      borderColor: '#8e5ea2',
       hoverBorderColor: 'rgb(255,250,250)',
       fill: false,
     },
     {
-      data: [],
-      label: null,
+      data: [0, 0, 0],
+      label: 'Travel',
       //   backgroundColor: ['#A8DADC', '#f9bd49', '#1D3557'],
       //   hoverBackgroundColor: ['#40bcc1', '#dda412', '#04142b'],
-      borderColor: 'rgb(214, 214, 214)',
+      borderColor: '#3cba9f',
+      hoverBorderColor: 'rgb(255,250,250)',
+      fill: false,
+    },
+    {
+      data: [0, 0, 0],
+      label: 'Recreation',
+      //   backgroundColor: ['#A8DADC', '#f9bd49', '#1D3557'],
+      //   hoverBackgroundColor: ['#40bcc1', '#dda412', '#04142b'],
+      borderColor: '#e8c3b9',
       hoverBorderColor: 'rgb(255,250,250)',
       fill: false,
     },
@@ -69,25 +78,24 @@ class LineGraph extends React.Component {
   }
   render() {
     if (this.props.threeMonthsCategory.length) {
+      let catsArray = ['Food and Drink', 'Shops', 'Travel', 'Recreation'];
       let lineData = this.props.threeMonthsCategory;
       console.log(lineData, 'lineData');
-      let ind = 0;
-      lineData.map(elem => {
+      lineData.map((elem, index) => {
+        console.log('elem', elem);
         let label = Object.keys(elem)[0];
         data.labels.push(label);
-        let spends = elem[label].spend;
-        data.datasets[ind].data.push(...spends);
-        console.log(elem, 'ELEM');
-        let category = elem[label].labels;
-        console.log(category, 'CATEGORY');
-        data.datasets[ind].label = category[ind];
-        ind += 1;
+        elem[label].labels.map((categories, ind) => {
+          let catIndex = catsArray.indexOf(categories);
+          data.datasets[catIndex].data[index] += elem[label].spend[ind];
+        });
       });
       console.log(data, '***');
     }
+    console.log(data, 'DATA');
     return (
       <div>
-        <Line data={data} options={options} height={500} width={700} />
+        <Line data={data} height={500} width={700} />
       </div>
     );
   }
