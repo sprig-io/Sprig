@@ -137,11 +137,13 @@ class Navbar extends React.Component {
             >
               <MenuIcon />
             </IconButton>
-            <img
-              src="/navBarLogo.png"
-              height="40"
-              style={{ marginTop: '8px' }}
-            />
+            <Link to="/dashboard">
+              <img
+                src="/navBarLogo.png"
+                height="40"
+                style={{ marginTop: '9px' }}
+              />
+            </Link>
           </Toolbar>
         </AppBar>
         <Drawer
