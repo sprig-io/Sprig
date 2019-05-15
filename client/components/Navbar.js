@@ -138,9 +138,13 @@ class Navbar extends React.Component {
             >
               <MenuIcon />
             </IconButton>
-            <Typography variant="h6" color="inherit" noWrap>
-              Sprig
-            </Typography>
+            <Link to="/dashboard">
+              <img
+                src="/navBarLogo.png"
+                height="40"
+                style={{ marginTop: '9px' }}
+              />
+            </Link>
           </Toolbar>
         </AppBar>
         <Drawer

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import InsightCards from './InsightCards';
 import BarGraph from './BarGraph';
+import { getThreeMonthsData } from '../../../store/insightReducer';
 import {
-  getThreeMonthsData,
-  getThreeMonthsByCategory,
-} from '../../../store/insightReducer';
-import { gettingAccounts } from '../../../store/accountReducer';
+  gettingAccounts,
+  gettingTransactions,
+} from '../../../store/accountReducer';
 import { connect } from 'react-redux';
 import LineGraph from './LineGraph';
 
@@ -18,22 +18,20 @@ class InsightsPage extends Component {
     await this.props.gettingAccounts();
     const { accounts } = this.props;
     await this.props.getThreeMonthsData(accounts);
-    const cat = await this.props.getThreeMonthsByCategory(accounts);
-    console.log(cat, 'CATEGORY');
   }
   render() {
     return (
       <div id="insights-container">
         <div className="insight-graph">
+          <div className="insights-title">Three Months Total Spending</div>
           <BarGraph threeMonthsData={[this.props.threeMonthsData]} />
         </div>
-        <div className="insight-card">
-          <InsightCards />
-        </div>
         <div className="insight-graph">
+          <div className="insights-title">
+            Three Months Spending by Category
+          </div>
           <LineGraph />
         </div>
-        <div className="insight-card">Recommendations </div>
       </div>
     );
   }
@@ -42,15 +40,15 @@ class InsightsPage extends Component {
 const mapState = state => ({
   accounts: state.accountReducer.accounts,
   threeMonthsData: state.insightReducer.threeMonthsData,
-  threeMonthsCategory: state.insightReducer.threeMonthsCategory,
+  transactions: state.accountReducer.transactions,
 });
 
 const mapDispatchToProps = dispatch => ({
   getThreeMonthsData: plaidAccountData =>
     dispatch(getThreeMonthsData(plaidAccountData)),
   gettingAccounts: () => dispatch(gettingAccounts()),
-  getThreeMonthsByCategory: plaidAccountData =>
-    dispatch(getThreeMonthsByCategory(plaidAccountData)),
+  gettingTransactions: plaidAccountData =>
+    dispatch(gettingTransactions(plaidAccountData)),
 });
 
 export default connect(

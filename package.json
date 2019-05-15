@@ -71,6 +71,7 @@
     "babel-loader": "^8.0.5",
     "chai": "^4.2.0",
     "css-loader": "^2.1.1",
+    "file-loader": "^3.0.1",
     "install": "^0.12.2",
     "mocha": "^6.1.4",
     "nodemon": "^1.19.0",
