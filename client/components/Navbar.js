@@ -26,7 +26,6 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import { Link } from 'react-router-dom';
 import './dashboard/Summary.css';
-import InsightsPage from '../../client/components/dashboard/insights/InsightsPage';
 
 const drawerWidth = 240;
 
@@ -138,9 +137,11 @@ class Navbar extends React.Component {
             >
               <MenuIcon />
             </IconButton>
-            <Typography variant="h6" color="inherit" noWrap>
-              Sprig
-            </Typography>
+            <img
+              src="/navBarLogo.png"
+              height="40"
+              style={{ marginTop: '8px' }}
+            />
           </Toolbar>
         </AppBar>
         <Drawer
