@@ -25,6 +25,7 @@ import classNames from 'classnames';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import { Link } from 'react-router-dom';
+import ChromeReaderModeIcon from '@material-ui/icons/ChromeReaderMode';
 import './dashboard/Summary.css';
 
 const drawerWidth = 240;
@@ -172,6 +173,14 @@ class Navbar extends React.Component {
                   <Dashboard />
                 </ListItemIcon>
                 <ListItemText primary="Dashboard" />
+              </ListItem>
+            </Link>
+            <Link to="/about" style={{ color: 'black' }}>
+              <ListItem button onClick={this.handleDrawerClose}>
+                <ListItemIcon>
+                  <ChromeReaderModeIcon />
+                </ListItemIcon>
+                <ListItemText primary="About" />
               </ListItem>
             </Link>
             <Link to="/budget" style={{ color: 'black' }}>

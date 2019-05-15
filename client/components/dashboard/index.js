@@ -1,33 +1,34 @@
-import React, { Component } from "react";
-import Summary from "./Summary";
-import ConnectedPlaidAccount from "../PlaidAccount";
-import PlaidAccountTransactions from "../dashboard/Transaction";
-import InsightCard from "./insights/InsightCards";
-import { connect } from "react-redux";
-import CategoriesDonut from "./CategoriesDonutChart";
-import Navbar from "../Navbar";
+import React, { Component } from 'react';
+import Summary from './Summary';
+import ConnectedPlaidAccount from '../PlaidAccount';
+import PlaidAccountTransactions from '../dashboard/Transaction';
+import InsightCard from './insights/InsightCards';
+import { connect } from 'react-redux';
+import CategoriesDonut from './CategoriesDonutChart';
+import Navbar from '../Navbar';
+import Footer from '../Footer';
 import {
   gettingAccounts,
   gettingTransactions,
-  gettingBalance
-} from "../../store/accountReducer";
+  gettingBalance,
+} from '../../store/accountReducer';
 import {
   getLargest,
   getRestaurantSpend,
   getMerchantSpend,
   getTranspoSpend,
-  getFees
-} from "../../store/insightReducer";
+  getFees,
+} from '../../store/insightReducer';
 
-import Loading from "./Loading";
+import Loading from './Loading';
 
-import { logoutUser } from "../../store/userReducer";
-import "../dashboard/Summary.css";
+import { logoutUser } from '../../store/userReducer';
+import '../dashboard/Summary.css';
 class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: false
+      loading: false,
     };
   }
   async componentDidMount() {
@@ -61,6 +62,7 @@ class Dashboard extends Component {
 
               <PlaidAccountTransactions />
               <ConnectedPlaidAccount />
+              <Footer />
             </div>
           </div>
         ) : this.state.loading && !this.props.accounts.length ? (
@@ -71,6 +73,7 @@ class Dashboard extends Component {
 
             <ConnectedPlaidAccount />
             <h4 className="header">Please link an account to continue</h4>
+            <Footer />
           </div>
         ) : (
           <div className="loading">
@@ -86,7 +89,7 @@ class Dashboard extends Component {
 const mapStateToProps = state => ({
   user: state.userReducer,
   accounts: state.accountReducer.accounts,
-  transactions: state.accountReducer.transactions
+  transactions: state.accountReducer.transactions,
 });
 const mapDispatchToProps = dispatch => ({
   gettingTransactions: plaidAccountData =>
@@ -99,7 +102,7 @@ const mapDispatchToProps = dispatch => ({
   getRestaurantSpend: props => dispatch(getRestaurantSpend(props)),
   getMerchantSpend: props => dispatch(getMerchantSpend(props)),
   getTranspoSpend: props => dispatch(getTranspoSpend(props)),
-  getFees: props => dispatch(getFees(props))
+  getFees: props => dispatch(getFees(props)),
 });
 export default connect(
   mapStateToProps,
