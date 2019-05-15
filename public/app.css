@@ -219,15 +219,17 @@ body {
   margin-top: 100px;
 }
 
+/* INSITGHTS PAGE */
 #insights-container {
   display: flex;
   flex-wrap: wrap;
-  margin: 200px 350px 200px 100px;
+  margin: 200px 50px 100px 50px;
   justify-content: space-around;
 }
 
-.insight-card {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.insights-title {
+  font-size: 30px;
+  font-family: 'Raleway', sans-serif;
+  text-align: center;
+  color: rgb(113, 113, 113);
 }
