@@ -138,7 +138,7 @@ class Navbar extends React.Component {
             >
               <MenuIcon />
             </IconButton>
-            <Link to="/dashboard">
+            <Link to="/dashboard" onClick={this.handleDrawerClose}>
               <img
                 src="/navBarLogo.png"
                 height="40"

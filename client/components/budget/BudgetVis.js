@@ -48,7 +48,7 @@ class BudgetVis extends Component {
             <h4>
               You are{' '}
               <span id="overBudget">
-                ${currentSpend2 - this.props.spendingLimit}{' '}
+                ${Math.floor(currentSpend2 - this.props.spendingLimit)}{' '}
               </span>
               over budget
             </h4>

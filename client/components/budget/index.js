@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import BudgetSummary from './BudgetSummary';
 import BudgetVis from './BudgetVis';
 import Loading from '../dashboard/Loading';
+import Footer from '../Footer';
 import {
   gettingAccounts,
   gettingIncome,
@@ -33,6 +34,7 @@ class BudgetIndex extends Component {
             <div className="visContainer">
               <BudgetVis />
             </div>
+            <Footer />
           </div>
         ) : (
           <div className="loading">
