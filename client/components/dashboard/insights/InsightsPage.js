@@ -32,6 +32,7 @@ class InsightsPage extends Component {
           </div>
           <LineGraph />
         </div>
+        <Footer />
       </div>
     );
   }

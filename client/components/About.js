@@ -8,6 +8,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import Footer from './Footer';
 
 const styles = {
   card: {
@@ -21,18 +22,14 @@ const styles = {
   bold: {
     fontWeight: 'bold',
   },
-  header: {
-    size: 34,
-    marginLeft: 30,
-  },
+  header: {},
 };
 
 function About(props) {
   const { classes } = props;
   return (
-    <div>
-      <h1 className="header">The Team:</h1>
-
+    <div className="about-container">
+      <h1 className="team">The Team</h1>
       <div className="about">
         <Card className={classes.card}>
           <CardActionArea>
@@ -139,8 +136,9 @@ function About(props) {
               </Typography>
               <Typography component="p">
                 I am a full stack software engineer with a background in
-                international development in Latin America. Prior to moving to
-                NYC I lived in Cuba and Peru
+                communications and diplomacy in Latin America. Prior to moving
+                to NYC I lived in Cuba and Peru working for the UN and various
+                development projects.
               </Typography>
               <br />
               <br />
@@ -216,6 +214,7 @@ function About(props) {
           </CardActions>
         </Card>
       </div>
+      <Footer />
     </div>
   );
 }

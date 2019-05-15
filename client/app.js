@@ -4,6 +4,7 @@ import React from 'react';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import Login from './components/Login.js';
 import Register from './components/Register.js';
+import Footer from './components/Footer';
 import Dashboard from './components/dashboard/index.js';
 import Home from './components/Home';
 import PrivateRoute from './components/private-route/PrivateRoute';
