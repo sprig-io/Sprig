@@ -78,7 +78,7 @@ function About(props) {
           <Card className={classes.card}>
             <CardMedia
               className={classes.media}
-              image="/ramya.jpg"
+              image="/ramya.jpeg"
               height="80px"
               title="Contemplative Reptile"
             />
