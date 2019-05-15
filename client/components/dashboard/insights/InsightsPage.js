@@ -25,13 +25,9 @@ class InsightsPage extends Component {
         <div className="insight-graph">
           <BarGraph threeMonthsData={[this.props.threeMonthsData]} />
         </div>
-        <div className="insight-card">
-          <InsightCards />
-        </div>
         <div className="insight-graph">
           <LineGraph />
         </div>
-        <div className="insight-card">Recommendations </div>
       </div>
     );
   }
