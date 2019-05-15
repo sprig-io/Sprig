@@ -7,7 +7,14 @@ const data = {
   datasets: [
     {
       data: [],
-      backgroundColor: ['#A8DADC', '#f9bd49', '#1D3557'],
+      backgroundColor: [
+        '#A8DADC',
+        '#f9bd49',
+        '#1D3557',
+        // '#E63946',
+        // '#FFE066',
+        // '#dd9cd8',
+      ],
       hoverBackgroundColor: ['#40bcc1', '#dda412', '#04142b'],
       borderColor: 'rgb(214, 214, 214)',
       hoverBorderColor: 'rgb(255,250,250)',
