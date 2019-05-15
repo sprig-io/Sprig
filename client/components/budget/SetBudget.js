@@ -18,8 +18,6 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 
-import Edit from "@material-ui/icons/edit";
-
 const styles = theme => ({
   root: {
     display: "flex",
