@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import SetBudget from './SetBudget';
 import { connect } from 'react-redux';
 import BudgetSummary from './BudgetSummary';
 import BudgetVis from './BudgetVis';
+
 import {
   gettingAccounts,
   gettingIncome,
@@ -17,13 +17,13 @@ class BudgetIndex extends Component {
     this.props.gettingBudget(this.props.user.id, this.props.income);
   }
   render() {
-    console.log('spendingLimit', this.props.spendingLimit);
     return (
       <div>
         <div className="spacer" />
         <BudgetSummary />
-        <BudgetVis />
-        <SetBudget />
+        <div className="visContainer">
+          <BudgetVis />
+        </div>
       </div>
     );
   }
