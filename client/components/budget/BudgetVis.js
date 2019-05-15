@@ -45,17 +45,17 @@ class BudgetVis extends Component {
       <div>
         {currentSpend2 > this.props.spendingLimit ? (
           <div className="headerBudg">
-            <h6>
+            <h4>
               You are{' '}
               <span id="overBudget">
                 ${currentSpend2 - this.props.spendingLimit}{' '}
               </span>
               over budget
-            </h6>
+            </h4>
           </div>
         ) : (
           <div className="headerBudg">
-            <h6>
+            <h6 className="headerBudget">
               You are{' '}
               <span id="underBudget">
                 ${this.props.spendingLimit - currentSpend2}

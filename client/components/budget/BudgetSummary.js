@@ -14,6 +14,8 @@ const styles = theme => ({
     paddingBottom: theme.spacing.unit * 2,
     marginLeft: '150px',
     marginRight: '150px',
+    color: 'rgb(92, 92, 92)',
+    backgroundColor: 'rgb(240, 236, 236)',
   },
 
   red: {
