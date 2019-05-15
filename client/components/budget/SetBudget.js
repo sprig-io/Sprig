@@ -1,46 +1,46 @@
-import React, { Component } from 'react';
-import { addingBudget } from '../../store/budgetReducer';
-import { connect } from 'react-redux';
-import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import Slider from '@material-ui/lab/Slider';
-import Button from '@material-ui/core/Button';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import FormControl from '@material-ui/core/FormControl';
-import TextField from '@material-ui/core/TextField';
-import Grid from '@material-ui/core/Grid';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
+import React, { Component } from "react";
+import { addingBudget } from "../../store/budgetReducer";
+import { connect } from "react-redux";
+import { withStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
+import Slider from "@material-ui/lab/Slider";
+import Button from "@material-ui/core/Button";
+import Input from "@material-ui/core/Input";
+import InputLabel from "@material-ui/core/InputLabel";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import FormControl from "@material-ui/core/FormControl";
+import TextField from "@material-ui/core/TextField";
+import Grid from "@material-ui/core/Grid";
+import AccountCircle from "@material-ui/icons/AccountCircle";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
 
-import Edit from '@material-ui/icons/edit';
+import Edit from "@material-ui/icons/edit";
 
 const styles = theme => ({
   root: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center"
   },
 
   slider: {
-    padding: '22px 0px',
-    touchAction: 'none',
+    padding: "22px 0px",
+    touchAction: "none"
   },
 
   margin: {
-    margin: theme.spacing.unit,
+    margin: theme.spacing.unit
   },
   textField: {
-    color: '#4c9f70',
+    color: "#4c9f70"
   },
   input: {
-    borderBottom: 'none',
-  },
+    borderBottom: "none"
+  }
 });
 
 class BudgetComp extends Component {
@@ -48,7 +48,7 @@ class BudgetComp extends Component {
     super(props);
     this.state = {
       goal: 0,
-      open: false,
+      open: false
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -70,7 +70,7 @@ class BudgetComp extends Component {
     await this.props.addingBudget(
       {
         userId: this.props.user.id,
-        monthlyGoal: this.state.goal,
+        monthlyGoal: this.state.goal
       },
       this.props.monthlyIncome
     );
@@ -80,7 +80,10 @@ class BudgetComp extends Component {
     const { classes } = this.props;
     return (
       <div className="editor">
-        <Edit onClick={this.handleClickOpen} />
+        <i className="material-icons" onClick={this.handleClickOpen}>
+          {" "}
+          edit{" "}
+        </i>
 
         <Dialog
           open={this.state.open}
@@ -89,7 +92,7 @@ class BudgetComp extends Component {
           aria-describedby="alert-dialog-description"
         >
           <DialogTitle id="alert-dialog-title">
-            {'How much would you like to save this month?'}
+            {"How much would you like to save this month?"}
           </DialogTitle>
           <DialogContent>
             <div className="budgetForm">
@@ -119,7 +122,7 @@ class BudgetComp extends Component {
                               <InputAdornment position="start">
                                 $
                               </InputAdornment>
-                            ),
+                            )
                           }}
                         />
                       </div>
@@ -151,12 +154,12 @@ class BudgetComp extends Component {
 const mapState = state => ({
   budget: state.budgetReducer.budget.monthylGoal,
   user: state.userReducer.user,
-  monthlyIncome: state.accountReducer.monthlyIncome,
+  monthlyIncome: state.accountReducer.monthlyIncome
 });
 
 const mapDispatchToProps = dispatch => ({
   addingBudget: (budgetData, monthlyIncome) =>
-    dispatch(addingBudget(budgetData, monthlyIncome)),
+    dispatch(addingBudget(budgetData, monthlyIncome))
 });
 
 const SetBudget = connect(
