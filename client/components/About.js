@@ -1,28 +1,28 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import Footer from './Footer';
+import React from "react";
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
+import Card from "@material-ui/core/Card";
+import CardActionArea from "@material-ui/core/CardActionArea";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
+import CardMedia from "@material-ui/core/CardMedia";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
+import Footer from "./Footer";
 
 const styles = {
   card: {
     maxWidth: 245,
-    display: 'block',
+    display: "block"
   },
   media: {
     height: 280,
-    margin: 3,
+    margin: 3
   },
   bold: {
-    fontWeight: 'bold',
+    fontWeight: "bold"
   },
-  header: {},
+  header: {}
 };
 
 function About(props) {
@@ -78,7 +78,7 @@ function About(props) {
           <Card className={classes.card}>
             <CardMedia
               className={classes.media}
-              image="/ramya.jpeg"
+              image="/ramya.jpg"
               height="80px"
               title="Contemplative Reptile"
             />
@@ -217,7 +217,7 @@ function About(props) {
 }
 
 About.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(About);
