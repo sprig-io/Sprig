@@ -115,7 +115,7 @@ class Navbar extends React.Component {
     const { open } = this.state;
 
     return (
-      <div className={classes.root}>
+      <div id="navbar" className={classes.root}>
         <CssBaseline />
         <AppBar
           position="fixed"
