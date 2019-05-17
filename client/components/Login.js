@@ -77,7 +77,7 @@ class Login extends React.Component {
             className="row"
           >
             <div className="col">
-              <form onSubmit={this.handleSubmit}>
+              <form className="form" onSubmit={this.handleSubmit}>
                 <label>
                   Email:
                   <input
@@ -100,11 +100,16 @@ class Login extends React.Component {
                 </label>
                 <input
                   className="btn btn-large waves-effect waves-light hoverable btnThings accent-3"
-                  style={{ marginLeft: '40%', marginTop: '10px' }}
+                  style={{
+                    marginTop: '10px',
+                  }}
                   type="submit"
                   value="Log In"
                   id="registerTwo"
                 />
+                <p className="grey-text text-darken-1">
+                  Don't have an account? <Link to="/Register">Register</Link>
+                </p>
               </form>
             </div>
           </div>
