@@ -213,6 +213,15 @@ body {
   right: 0;
   padding-right: 30px;
 }
+#welcome {
+  text-decoration: none;
+  color: white;
+  font-family: "Raleway", sans-serif;
+  font-size: 17px;
+  position: center;
+  right: 0;
+  padding-left: 100px;
+}
 #logouts:hover {
   cursor: pointer;
   text-decoration: underline;
