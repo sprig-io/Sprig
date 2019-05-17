@@ -64,7 +64,7 @@
   display: flex;
   justify-content: center;
   font-size: 25px;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   color: rgb(92, 92, 92);
 }
 
@@ -98,7 +98,7 @@
 }
 #limit {
   font-size: 25px;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   font-weight: bold;
   padding-left: 5px;
 }
@@ -112,7 +112,7 @@
   background-color: rgb(143, 167, 238);
   display: flex;
   justify-content: center;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
 }
 .titleNumber2 {
   display: flex;
@@ -168,7 +168,7 @@
 }
 #label {
   font-size: 24px;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
 }
 .lrg {
   display: flex;
@@ -242,17 +242,19 @@ body {
 #logouts {
   text-decoration: none;
   color: white;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   font-size: 15px;
+  font-weight: bold;
   position: absolute;
   right: 0;
-  padding-right: 30px;
+  padding-right: 50px;
 }
 #welcome {
   text-decoration: none;
   color: white;
   font-family: "Raleway", sans-serif;
   font-size: 17px;
+  font-weight: bold;
   position: center;
   right: 0;
   padding-left: 100px;
@@ -303,7 +305,7 @@ body {
 
 .insights-title {
   font-size: 30px;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   text-align: center;
   color: rgb(113, 113, 113);
 }
@@ -322,7 +324,7 @@ body {
   text-align: center !important;
   font-size: 18;
   margin-top: 100px;
-  font-family: 'Raleway', sans-serif !important;
+  font-family: "Raleway", sans-serif !important;
 }
 .header {
   margin-top: 100px;

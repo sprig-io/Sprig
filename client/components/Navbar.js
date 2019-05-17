@@ -114,7 +114,6 @@ class Navbar extends React.Component {
     const { classes, theme } = this.props;
     const { open } = this.state;
     let welcome = this.props.user.name;
-    console.log("this props from navbar", this.props);
     return (
       <div id="navbar" className={classes.root}>
         <CssBaseline />
