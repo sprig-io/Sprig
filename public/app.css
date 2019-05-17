@@ -275,6 +275,10 @@ body {
 .description {
   font-size: 12px;
 }
+.sandboxcred {
+  font-size: 10px;
+  font-family: "Raleway", sans-serif !important;
+}
 
 .donut {
   height: 25%;
