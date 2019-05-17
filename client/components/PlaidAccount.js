@@ -26,24 +26,26 @@ class PlaidAccount extends Component {
   render() {
     return (
       <div id="plaid-button" className="boxes">
-        <PlaidLinkButton
-          buttonProps={{
-            className:
-              'btn waves-effect waves-light hoverable accent-3 main-btn',
-            id: 'plaidButton',
-          }}
-          plaidLinkProps={{
-            clientName: 'Sprig',
-            key: '371579f573cc098b5fbbee72dcc928',
-            env: 'sandbox',
-            product: ['transactions'],
-            onSuccess: this.handleOnSuccess,
-          }}
-          onScriptLoad={() => this.setState(this.state)}
-          id="plaid-button"
-        >
-          Add Accounts
-        </PlaidLinkButton>
+        <div className="newdiv">
+          <PlaidLinkButton
+            buttonProps={{
+              className:
+                'btn waves-effect waves-light hoverable accent-3 main-btn',
+              id: 'plaidButton',
+            }}
+            plaidLinkProps={{
+              clientName: 'Sprig',
+              key: '371579f573cc098b5fbbee72dcc928',
+              env: 'sandbox',
+              product: ['transactions'],
+              onSuccess: this.handleOnSuccess,
+            }}
+            onScriptLoad={() => this.setState(this.state)}
+            id="plaid-button"
+          >
+            Add Accounts
+          </PlaidLinkButton>
+        </div>
         <p className="description">Powered by Plaid</p>
       </div>
     );

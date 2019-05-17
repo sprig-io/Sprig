@@ -116,7 +116,7 @@ class Navbar extends React.Component {
     let welcome = this.props.user.name;
     console.log("this props from navbar", this.props);
     return (
-      <div className={classes.root}>
+      <div id="navbar" className={classes.root}>
         <CssBaseline />
         <AppBar
           position="fixed"

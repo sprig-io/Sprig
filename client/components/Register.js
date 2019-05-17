@@ -98,58 +98,69 @@ class Register extends React.Component {
           </h6>
           <div className="row">
             <div className="col s6" style={{ marginLeft: '25%' }}>
-              <div className="col s6" style={{ paddingLeft: '11.250px' }} />
-              <br />
-              <br />
-              <form onSubmit={this.handleSubmit}>
-                <label>
-                  Name:
+              <div className="col s6" style={{ paddingLeft: '11.250px' }}>
+                <br />
+                <br />
+                <form onSubmit={this.handleSubmit}>
+                  <label>
+                    Name:
+                    <input
+                      type="text"
+                      name="name"
+                      value={this.state.name}
+                      onChange={this.handleChange}
+                      required
+                    />
+                  </label>
+                  <label>
+                    Email:
+                    <input
+                      type="text"
+                      name="email"
+                      value={this.state.email}
+                      onChange={this.handleChange}
+                      required
+                    />
+                  </label>
+                  <label>
+                    Password:
+                    <input
+                      type="password"
+                      name="password"
+                      value={this.state.password}
+                      onChange={this.handleChange}
+                      required
+                    />
+                  </label>
+                  <label>
+                    Confirm Password:
+                    <input
+                      type="password"
+                      name="password2"
+                      value={this.state.password2}
+                      onChange={this.handleChange}
+                      required
+                    />
+                  </label>
                   <input
-                    type="text"
-                    name="name"
-                    value={this.state.name}
-                    onChange={this.handleChange}
-                    required
+                    type="submit"
+                    value="Register"
+                    className=" btnThings btn btn-large waves-effect waves-light hoverable accent-3"
+                    id="registerTwo"
+                    style={{
+                      marginLeft: '200px',
+                      marginRight: '200px',
+                      marginTop: '15px',
+                    }}
                   />
-                </label>
-                <label>
-                  Email:
-                  <input
-                    type="text"
-                    name="email"
-                    value={this.state.email}
-                    onChange={this.handleChange}
-                    required
-                  />
-                </label>
-                <label>
-                  Password:
-                  <input
-                    type="password"
-                    name="password"
-                    value={this.state.password}
-                    onChange={this.handleChange}
-                    required
-                  />
-                </label>
-                <label>
-                  Confirm Password:
-                  <input
-                    type="password"
-                    name="password2"
-                    value={this.state.password2}
-                    onChange={this.handleChange}
-                    required
-                  />
-                </label>
-                <input
-                  type="submit"
-                  value="Register"
-                  className=" btnThings btn btn-large waves-effect waves-light hoverable accent-3"
-                  id="registerTwo"
-                  style={{ marginLeft: '200px', marginTop: '10px' }}
-                />
-              </form>
+                  <p
+                    className="grey-text text-darken-1"
+                    style={{ marginLeft: '160px' }}
+                  >
+                    Already have an account? <Link to="/Login">Log In</Link>
+                  </p>
+                </form>
+              </div>
             </div>
           </div>
         </div>

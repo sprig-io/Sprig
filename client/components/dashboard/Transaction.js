@@ -24,6 +24,7 @@ class Transactions extends Component {
           root: {
             backgroundColor: 'white',
             maxwidth: '50%',
+            overflowX: 'auto',
             padding: '8px',
             leftmargin: '50px',
             rightmargin: '50px',
@@ -31,6 +32,7 @@ class Transactions extends Component {
         },
       },
     });
+
   render() {
     let transData = [];
     this.props.transactions.forEach(function(element) {

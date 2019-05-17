@@ -48,7 +48,7 @@ export default class BarGraph extends React.Component {
     }
     return (
       <div className="barGraphContainer">
-        <Bar data={data} options={options} height={500} width={700} />
+        <Bar data={data} options={options} height={300} width={450} />
       </div>
     );
   }

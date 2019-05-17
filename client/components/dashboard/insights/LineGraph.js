@@ -94,7 +94,7 @@ class LineGraph extends React.Component {
   render() {
     return this.props.threeMonthsCategory.length ? (
       <div>
-        <Line data={data} options={options} height={500} width={700} />
+        <Line data={data} options={options} height={400} width={450} />
       </div>
     ) : (
       <div />

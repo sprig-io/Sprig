@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 class Footer extends React.Component {
   render() {
     return (
-      <footer className="footer">
+      <footer id="footer" className="footer">
         <div className="paddingFoot">
           <div className="row">
             <div id="footer-cont">
