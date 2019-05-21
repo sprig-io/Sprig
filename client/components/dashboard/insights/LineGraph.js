@@ -1,62 +1,62 @@
-import React from 'react';
-import { Line } from 'react-chartjs-2';
-import { finalLineGraphData } from '../utils';
-import { gettingAccounts } from '../../../store/accountReducer';
-import { getThreeMonthsDataCategory } from '../../../store/insightReducer';
-import { connect } from 'react-redux';
+import React from "react";
+import { Line } from "react-chartjs-2";
+import { finalLineGraphData } from "../utils";
+import { gettingAccounts } from "../../../store/accountReducer";
+import { getThreeMonthsDataCategory } from "../../../store/insightReducer";
+import { connect } from "react-redux";
 
 const data = {
   labels: [],
   datasets: [
     {
       data: [0, 0, 0],
-      label: 'Food and Drink',
-      borderColor: '#A8DADC',
-      hoverBorderColor: '#40bcc1',
-      fill: false,
+      label: "Food and Drink",
+      borderColor: "#A8DADC",
+      hoverBorderColor: "#40bcc1",
+      fill: false
     },
     {
       data: [0, 0, 0],
-      label: 'Shops',
-      borderColor: '#f9bd49',
-      hoverBorderColor: '#dda412',
-      fill: false,
+      label: "Shops",
+      borderColor: "#f9bd49",
+      hoverBorderColor: "#dda412",
+      fill: false
     },
     {
       data: [0, 0, 0],
-      label: 'Travel',
-      borderColor: '#1D3557',
-      hoverBorderColor: '#04142b',
-      fill: false,
+      label: "Travel",
+      borderColor: "#1D3557",
+      hoverBorderColor: "#04142b",
+      fill: false
     },
     {
       data: [0, 0, 0],
-      label: 'Recreation',
-      borderColor: '#E63946',
-      hoverBorderColor: '#8e3339',
-      fill: false,
-    },
-  ],
+      label: "Recreation",
+      borderColor: "#E63946",
+      hoverBorderColor: "#8e3339",
+      fill: false
+    }
+  ]
 };
 
 const options = {
   legend: {
     display: true,
-    position: 'bottom',
+    position: "bottom",
     labels: {
-      fontColor: 'black',
-    },
+      fontColor: "black"
+    }
   },
   layout: {
     padding: {
       left: 30,
       right: 50,
       top: 50,
-      bottom: 40,
+      bottom: 40
     },
     maintainAspectRatio: false,
-    responsive: true,
-  },
+    responsive: true
+  }
 };
 
 class LineGraph extends React.Component {
@@ -74,10 +74,9 @@ class LineGraph extends React.Component {
 
   populateData() {
     if (this.props.threeMonthsCategory.length) {
-      let catsArray = ['Food and Drink', 'Shops', 'Travel', 'Recreation'];
+      let catsArray = ["Food and Drink", "Shops", "Travel", "Recreation"];
       let lineData = this.props.threeMonthsCategory;
       lineData.map((elem, index) => {
-        console.log('elem', elem);
         let label = Object.keys(elem)[0];
         if (!data.labels.includes(label)) {
           data.labels.push(label);
@@ -104,13 +103,13 @@ class LineGraph extends React.Component {
 
 const mapState = state => ({
   accounts: state.accountReducer.accounts,
-  threeMonthsCategory: state.insightReducer.threeMonthsCategory,
+  threeMonthsCategory: state.insightReducer.threeMonthsCategory
 });
 
 const mapDispatchToProps = dispatch => ({
   gettingAccounts: () => dispatch(gettingAccounts()),
   getThreeMonthsDataCategory: plaidAccountData =>
-    dispatch(getThreeMonthsDataCategory(plaidAccountData)),
+    dispatch(getThreeMonthsDataCategory(plaidAccountData))
 });
 
 export default connect(

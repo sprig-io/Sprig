@@ -1,34 +1,34 @@
-import axios from 'axios';
+import axios from "axios";
 //initial state
 const initialState = {
   accounts: [],
   transactions: [],
   balance: [],
   income: [],
-  monthlyIncome: 1,
+  monthlyIncome: 1
 };
 
-import { simplifyMonthly, getIncomeTotal } from './utils';
+import { simplifyMonthly, getIncomeTotal } from "./utils";
 //ACTION TYPES
-const ADD_ACCOUNT = 'ADD_ACCOUNT';
-const GET_TRANSACTIONS = 'GET_TRANSACTIONS';
-const DELETE_ACCOUNT = 'DELETE_ACCOUNT';
-const GET_ACCOUNTS = 'GET_ACCOUNTS';
-const GET_BALANCE = 'GET_BALANCE';
-const GET_INCOME = 'GET_INCOME';
+const ADD_ACCOUNT = "ADD_ACCOUNT";
+const GET_TRANSACTIONS = "GET_TRANSACTIONS";
+const DELETE_ACCOUNT = "DELETE_ACCOUNT";
+const GET_ACCOUNTS = "GET_ACCOUNTS";
+const GET_BALANCE = "GET_BALANCE";
+const GET_INCOME = "GET_INCOME";
 //ACTION CREATOR
 
 const addAccount = plaidAccountData => {
   return {
     type: ADD_ACCOUNT,
-    plaidAccountData,
+    plaidAccountData
   };
 };
 
 const getIncome = income => {
   return {
     type: GET_INCOME,
-    income,
+    income
   };
 };
 
@@ -39,21 +39,21 @@ const getAccounts = plaidAccountData => {
 const deleteAccount = accountId => {
   return {
     type: DELETE_ACCOUNT,
-    accountId,
+    accountId
   };
 };
 
 const getTransactions = plaidAccountData => {
   return {
     type: GET_TRANSACTIONS,
-    plaidAccountData,
+    plaidAccountData
   };
 };
 
 const getBalance = plaidAccountData => {
   return {
     type: GET_BALANCE,
-    plaidAccountData,
+    plaidAccountData
   };
 };
 
@@ -61,7 +61,7 @@ const getBalance = plaidAccountData => {
 
 export const gettingAccounts = () => async dispatch => {
   try {
-    const { data } = await axios.get('/api/plaid/accounts');
+    const { data } = await axios.get("/api/plaid/accounts");
     dispatch(getAccounts(data));
   } catch (error) {
     console.error(error);
@@ -71,7 +71,7 @@ export const gettingAccounts = () => async dispatch => {
 export const addingAccount = plaidAccountData => async dispatch => {
   try {
     const { data } = await axios.post(
-      '/api/plaid/accounts/add',
+      "/api/plaid/accounts/add",
       plaidAccountData
     );
     dispatch(addAccount(data));
@@ -92,10 +92,10 @@ export const deletingAccount = accountId => async dispatch => {
 export const gettingTransactions = plaidAccountData => async dispatch => {
   try {
     const { data } = await axios.post(
-      '/api/plaid/accounts/transactions/monthly',
+      "/api/plaid/accounts/transactions/monthly",
       plaidAccountData
     );
-    console.log('data transactions', data);
+
     dispatch(getTransactions(data));
   } catch (error) {
     console.error(error);
@@ -105,7 +105,7 @@ export const gettingTransactions = plaidAccountData => async dispatch => {
 export const gettingBalance = plaidAccountData => async dispatch => {
   try {
     const { data } = await axios.post(
-      '/api/plaid/accounts/balance',
+      "/api/plaid/accounts/balance",
       plaidAccountData
     );
     dispatch(getBalance(data));
@@ -115,8 +115,7 @@ export const gettingBalance = plaidAccountData => async dispatch => {
 };
 export const gettingIncome = plaidAccountData => async dispatch => {
   try {
-    const { data } = await axios.post('/api/plaid/income', plaidAccountData);
-    console.log('data', data);
+    const { data } = await axios.post("/api/plaid/income", plaidAccountData);
     dispatch(getIncome(data));
   } catch (error) {
     console.error(error);
@@ -129,7 +128,7 @@ export default function(state = initialState, action) {
     case ADD_ACCOUNT:
       return {
         ...state,
-        accounts: [action.plaidAccountData, ...state.accounts],
+        accounts: [action.plaidAccountData, ...state.accounts]
       };
     case DELETE_ACCOUNT:
       return {
@@ -137,8 +136,8 @@ export default function(state = initialState, action) {
         accounts: [
           ...state.accounts.filter(
             account => account.accountId !== action.accountId
-          ),
-        ],
+          )
+        ]
       };
     case GET_TRANSACTIONS:
       let simplified = simplifyMonthly([...action.plaidAccountData]);
