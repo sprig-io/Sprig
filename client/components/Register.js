@@ -36,7 +36,7 @@ class Register extends React.Component {
     event.preventDefault();
     const emailValid = "@";
     const emailValid2 = ".";
-    if (!this.state.name.match(/^([a-zA-Z])$/)) {
+    if (!this.state.name.match(/^([a-zA-Z0-9])/)) {
       this.setState({
         errMessage: "Please enter a valid name",
         name: "",
@@ -44,9 +44,13 @@ class Register extends React.Component {
         password: "",
         password2: ""
       });
-    } else if (this.state.password !== this.state.password2) {
+    } else if (
+      !this.state.password.match(/^([a-zA-Z0-9])/) ||
+      this.state.password !== this.state.password2
+    ) {
       this.setState({
-        errMessage: "Password does not match",
+        errMessage:
+          "Password cannot include space, please check password entered",
         name: "",
         email: "",
         password: "",
