@@ -24,6 +24,9 @@ router.post("/register", async (req, res, next) => {
     if (user) {
       return res.status(400).send({ email: "Email already exists" });
     }
+    if (req.body.name === "" || req.body.password === "") {
+      return res.status(400).send({ name: "Cannot save empty string as name" });
+    }
     const newUser = new User({
       name: req.body.name,
       email: req.body.email,
